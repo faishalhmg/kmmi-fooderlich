@@ -1,0 +1,1119 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/scroll_view.dart', 'packages/flutter/src/rendering/sliver_grid.dart', 'packages/fooderlich/components/recipe_thumbnail.dart', 'packages/fooderlich/models/simple_recipe.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/fooderlich/models/post.dart', 'packages/fooderlich/components/circle_image.dart', 'packages/flutter/src/painting/image_resolution.dart', 'packages/flutter/src/material/colors.dart', 'packages/fooderlich/components/card1.dart', 'packages/fooderlich/components/card2.dart', 'packages/fooderlich/components/card3.dart', 'packages/fooderlich/models/explore_recipe.dart'], (function load__packages__fooderlich__components__recipes_grid_view_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__scroll_view$46dart, packages__flutter__src__rendering__sliver_grid$46dart, packages__fooderlich__components__recipe_thumbnail$46dart, packages__fooderlich__models__simple_recipe$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__painting__basic_types$46dart, packages__fooderlich__models__post$46dart, packages__fooderlich__components__circle_image$46dart, packages__flutter__src__painting__image_resolution$46dart, packages__flutter__src__material__colors$46dart, packages__fooderlich__components__card1$46dart, packages__fooderlich__components__card2$46dart, packages__fooderlich__components__card3$46dart, packages__fooderlich__models__explore_recipe$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const scroll_physics = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_physics;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const scroll_view = packages__flutter__src__widgets__scroll_view$46dart.src__widgets__scroll_view;
+  const sliver_grid = packages__flutter__src__rendering__sliver_grid$46dart.src__rendering__sliver_grid;
+  const recipe_thumbnail = packages__fooderlich__components__recipe_thumbnail$46dart.components__recipe_thumbnail;
+  const simple_recipe = packages__fooderlich__models__simple_recipe$46dart.models__simple_recipe;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const theme = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const post = packages__fooderlich__models__post$46dart.models__post;
+  const circle_image = packages__fooderlich__components__circle_image$46dart.components__circle_image;
+  const image_resolution = packages__flutter__src__painting__image_resolution$46dart.src__painting__image_resolution;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const card1 = packages__fooderlich__components__card1$46dart.components__card1;
+  const card2 = packages__fooderlich__components__card2$46dart.components__card2;
+  const card3 = packages__fooderlich__components__card3$46dart.components__card3;
+  const explore_recipe = packages__fooderlich__models__explore_recipe$46dart.models__explore_recipe;
+  var recipes_grid_view = Object.create(dart.library);
+  var friend_post_list_view = Object.create(dart.library);
+  var friend_post_tile = Object.create(dart.library);
+  var today_recipe_list_view = Object.create(dart.library);
+  var components = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    RecipeThumbnailL: () => (T.RecipeThumbnailL = dart.constFn(dart.legacy(recipe_thumbnail.RecipeThumbnail)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    BuildContextLAndintLToRecipeThumbnailL: () => (T.BuildContextLAndintLToRecipeThumbnailL = dart.constFn(dart.fnType(T.RecipeThumbnailL(), [T.BuildContextL(), T.intL()])))(),
+    FriendPostTileL: () => (T.FriendPostTileL = dart.constFn(dart.legacy(friend_post_tile.FriendPostTile)))(),
+    BuildContextLAndintLToFriendPostTileL: () => (T.BuildContextLAndintLToFriendPostTileL = dart.constFn(dart.fnType(T.FriendPostTileL(), [T.BuildContextL(), T.intL()])))(),
+    SizedBoxL: () => (T.SizedBoxL = dart.constFn(dart.legacy(basic.SizedBox)))(),
+    BuildContextLAndintLToSizedBoxL: () => (T.BuildContextLAndintLToSizedBoxL = dart.constFn(dart.fnType(T.SizedBoxL(), [T.BuildContextL(), T.intL()])))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
+    BuildContextLAndintLToWidgetL: () => (T.BuildContextLAndintLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.intL()])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 16,
+        [EdgeInsets_top]: 16,
+        [EdgeInsets_left]: 16
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.prototype,
+        [SliverGridDelegateWithMaxCrossAxisExtent_mainAxisExtent]: null,
+        [SliverGridDelegateWithMaxCrossAxisExtent_childAspectRatio]: 1,
+        [SliverGridDelegateWithMaxCrossAxisExtent_crossAxisSpacing]: 0,
+        [SliverGridDelegateWithMaxCrossAxisExtent_mainAxisSpacing]: 0,
+        [SliverGridDelegateWithMaxCrossAxisExtent_maxCrossAxisExtent]: 1000
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "recipe",
+        [_Location_column]: 38,
+        [_Location_line]: 20,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[4] || CT.C4], T._LocationL());
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[3] || CT.C3,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 20,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/recipes_grid_view.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 13,
+        [_Location_line]: 15,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "gridDelegate",
+        [_Location_column]: 13,
+        [_Location_line]: 16,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 13,
+        [_Location_line]: 18,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 14,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/recipes_grid_view.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 9,
+        [_Location_line]: 13,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 14,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 12,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/recipes_grid_view.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 16,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 16
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 16,
+        [_Location_line]: 15,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 15,
+        [_Location_line]: 16,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.constList([C[17] || CT.C17, C[18] || CT.C18], T._LocationL());
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 15,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_list_view.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 26,
+        [_Location_line]: 17,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.constList([C[22] || CT.C22], T._LocationL());
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[21] || CT.C21,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 17,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_list_view.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[20] || CT.C20,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 16,
+        [SizedBox_width]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: scroll_physics.NeverScrollableScrollPhysics.prototype,
+        [ScrollPhysics_parent]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "post",
+        [_Location_column]: 39,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.constList([C[26] || CT.C26], T._LocationL());
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[25] || CT.C25,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 26,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_list_view.dart"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 39,
+        [_Location_line]: 29,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.constList([C[30] || CT.C30], T._LocationL());
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[29] || CT.C29,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 29,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_list_view.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[28] || CT.C28,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 16,
+        [SizedBox_width]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "primary",
+        [_Location_column]: 15,
+        [_Location_line]: 19,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 15,
+        [_Location_line]: 20,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkWrap",
+        [_Location_column]: 15,
+        [_Location_line]: 21,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 15,
+        [_Location_line]: 22,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 15,
+        [_Location_line]: 23,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 15,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "separatorBuilder",
+        [_Location_column]: 15,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36, C[37] || CT.C37, C[38] || CT.C38, C[39] || CT.C39], T._LocationL());
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 18,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_list_view.dart"
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 26,
+        [_Location_line]: 31,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.constList([C[43] || CT.C43], T._LocationL());
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[42] || CT.C42,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 31,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_list_view.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[41] || CT.C41,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 16,
+        [SizedBox_width]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 23,
+        [_Location_line]: 14,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 69,
+        [_Location_line]: 14,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.constList([C[46] || CT.C46, C[47] || CT.C47], T._LocationL());
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[45] || CT.C45,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 14,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_list_view.dart"
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 12,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_list_view.dart"
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "imageProvider",
+        [_Location_column]: 15,
+        [_Location_line]: 17,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "imageRadius",
+        [_Location_column]: 15,
+        [_Location_line]: 18,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.constList([C[51] || CT.C51, C[52] || CT.C52], T._LocationL());
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[50] || CT.C50,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 16,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_tile.dart"
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 26,
+        [_Location_line]: 19,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.constList([C[56] || CT.C56], T._LocationL());
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[55] || CT.C55,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 19,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_tile.dart"
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[54] || CT.C54,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: 16
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 27,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.constList([C[59] || CT.C59], T._LocationL());
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[58] || CT.C58,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 24,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_tile.dart"
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 50,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 21,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C61() {
+      return C[61] = dart.constList([C[62] || CT.C62, C[63] || CT.C63], T._LocationL());
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[61] || CT.C61,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 25,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_tile.dart"
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 19,
+        [_Location_line]: 22,
+        [_Location_file]: null
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 19,
+        [_Location_line]: 23,
+        [_Location_file]: null
+      });
+    },
+    get C65() {
+      return C[65] = dart.constList([C[66] || CT.C66, C[67] || CT.C67], T._LocationL());
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[65] || CT.C65,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 21,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_tile.dart"
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 21,
+        [_Location_file]: null
+      });
+    },
+    get C69() {
+      return C[69] = dart.constList([C[70] || CT.C70], T._LocationL());
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[69] || CT.C69,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 20,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_tile.dart"
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 13,
+        [_Location_file]: null
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 14,
+        [_Location_file]: null
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 15,
+        [_Location_file]: null
+      });
+    },
+    get C72() {
+      return C[72] = dart.constList([C[73] || CT.C73, C[74] || CT.C74, C[75] || CT.C75], T._LocationL());
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[72] || CT.C72,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 12,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/friend_post_tile.dart"
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 15,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[21] || CT.C21,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 17,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[78] || CT.C78,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 16,
+        [SizedBox_width]: null
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 43,
+        [_Location_line]: 29,
+        [_Location_file]: null
+      });
+    },
+    get C81() {
+      return C[81] = dart.constList([C[82] || CT.C82], T._LocationL());
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[81] || CT.C81,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 29,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[80] || CT.C80,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: 16
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 19,
+        [_Location_line]: 22,
+        [_Location_file]: null
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 19,
+        [_Location_line]: 23,
+        [_Location_file]: null
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 19,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "separatorBuilder",
+        [_Location_column]: 19,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C84() {
+      return C[84] = dart.constList([C[85] || CT.C85, C[86] || CT.C86, C[87] || CT.C87, C[88] || CT.C88], T._LocationL());
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[84] || CT.C84,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 21,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 15,
+        [_Location_line]: 19,
+        [_Location_file]: null
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 15,
+        [_Location_line]: 20,
+        [_Location_file]: null
+      });
+    },
+    get C90() {
+      return C[90] = dart.constList([C[91] || CT.C91, C[92] || CT.C92, C[70] || CT.C70], T._LocationL());
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[90] || CT.C90,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 18,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[45] || CT.C45,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 14,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 12,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "recipe",
+        [_Location_column]: 20,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C96() {
+      return C[96] = dart.constList([C[97] || CT.C97], T._LocationL());
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[96] || CT.C96,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 36,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "recipe",
+        [_Location_column]: 20,
+        [_Location_line]: 38,
+        [_Location_file]: null
+      });
+    },
+    get C99() {
+      return C[99] = dart.constList([C[100] || CT.C100], T._LocationL());
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[99] || CT.C99,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 38,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "recipe",
+        [_Location_column]: 20,
+        [_Location_line]: 40,
+        [_Location_file]: null
+      });
+    },
+    get C102() {
+      return C[102] = dart.constList([C[103] || CT.C103], T._LocationL());
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[102] || CT.C102,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 40,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/today_recipe_list_view.dart"
+      });
+    }
+  }, false);
+  var C = Array(104).fill(void 0);
+  var I = [
+    "package:fooderlich/components/recipes_grid_view.dart",
+    "package:fooderlich/components/friend_post_list_view.dart",
+    "package:fooderlich/components/friend_post_tile.dart",
+    "package:fooderlich/components/today_recipe_list_view.dart"
+  ];
+  var recipes$ = dart.privateName(recipes_grid_view, "RecipesGridView.recipes");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var SliverGridDelegateWithMaxCrossAxisExtent_mainAxisExtent = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.mainAxisExtent");
+  var SliverGridDelegateWithMaxCrossAxisExtent_childAspectRatio = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.childAspectRatio");
+  var SliverGridDelegateWithMaxCrossAxisExtent_crossAxisSpacing = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.crossAxisSpacing");
+  var SliverGridDelegateWithMaxCrossAxisExtent_mainAxisSpacing = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.mainAxisSpacing");
+  var SliverGridDelegateWithMaxCrossAxisExtent_maxCrossAxisExtent = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.maxCrossAxisExtent");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  recipes_grid_view.RecipesGridView = class RecipesGridView extends framework.StatelessWidget {
+    get recipes() {
+      return this[recipes$];
+    }
+    set recipes(value) {
+      super.recipes = value;
+    }
+    build(context) {
+      return new basic.Padding.new({padding: C[0] || CT.C0, child: new scroll_view.GridView.builder({itemCount: this.recipes[$length], gridDelegate: C[1] || CT.C1, itemBuilder: dart.fn((context, index) => {
+            let simpleRecipe = this.recipes[$_get](index);
+            return new recipe_thumbnail.RecipeThumbnail.new({recipe: simpleRecipe, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+          }, T.BuildContextLAndintLToRecipeThumbnailL()), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), $creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+    }
+  };
+  (recipes_grid_view.RecipesGridView.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let recipes = opts && 'recipes' in opts ? opts.recipes : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[recipes$] = recipes;
+    recipes_grid_view.RecipesGridView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = recipes_grid_view.RecipesGridView.prototype;
+  dart.addTypeTests(recipes_grid_view.RecipesGridView);
+  dart.addTypeCaches(recipes_grid_view.RecipesGridView);
+  dart.setMethodSignature(recipes_grid_view.RecipesGridView, () => ({
+    __proto__: dart.getMethods(recipes_grid_view.RecipesGridView.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(recipes_grid_view.RecipesGridView, I[0]);
+  dart.setFieldSignature(recipes_grid_view.RecipesGridView, () => ({
+    __proto__: dart.getFields(recipes_grid_view.RecipesGridView.__proto__),
+    recipes: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(simple_recipe.SimpleRecipe))))
+  }));
+  var friendPosts$ = dart.privateName(friend_post_list_view, "FriendPostListView.friendPosts");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  var ScrollPhysics_parent = dart.privateName(scroll_physics, "ScrollPhysics.parent");
+  friend_post_list_view.FriendPostListView = class FriendPostListView extends framework.StatelessWidget {
+    get friendPosts() {
+      return this[friendPosts$];
+    }
+    set friendPosts(value) {
+      super.friendPosts = value;
+    }
+    build(context) {
+      return new basic.Padding.new({padding: C[14] || CT.C14, child: new basic.Column.new({crossAxisAlignment: flex.CrossAxisAlignment.start, children: T.JSArrayOfWidgetL().of([new text.Text.new("Social Chefs 👩‍🍳", {style: theme.Theme.of(context).textTheme.headline1, $creationLocationd_0dea112b090073317d4: C[15] || CT.C15}), C[19] || CT.C19, new scroll_view.ListView.separated({primary: false, physics: C[23] || CT.C23, shrinkWrap: true, scrollDirection: basic_types.Axis.vertical, itemCount: this.friendPosts[$length], itemBuilder: dart.fn((context, index) => {
+                let post = this.friendPosts[$_get](index);
+                return new friend_post_tile.FriendPostTile.new({post: post, $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+              }, T.BuildContextLAndintLToFriendPostTileL()), separatorBuilder: dart.fn((context, index) => C[27] || CT.C27, T.BuildContextLAndintLToSizedBoxL()), $creationLocationd_0dea112b090073317d4: C[31] || CT.C31}), C[40] || CT.C40]), $creationLocationd_0dea112b090073317d4: C[44] || CT.C44}), $creationLocationd_0dea112b090073317d4: C[48] || CT.C48});
+    }
+  };
+  (friend_post_list_view.FriendPostListView.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let friendPosts = opts && 'friendPosts' in opts ? opts.friendPosts : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[friendPosts$] = friendPosts;
+    friend_post_list_view.FriendPostListView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = friend_post_list_view.FriendPostListView.prototype;
+  dart.addTypeTests(friend_post_list_view.FriendPostListView);
+  dart.addTypeCaches(friend_post_list_view.FriendPostListView);
+  dart.setMethodSignature(friend_post_list_view.FriendPostListView, () => ({
+    __proto__: dart.getMethods(friend_post_list_view.FriendPostListView.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(friend_post_list_view.FriendPostListView, I[1]);
+  dart.setFieldSignature(friend_post_list_view.FriendPostListView, () => ({
+    __proto__: dart.getFields(friend_post_list_view.FriendPostListView.__proto__),
+    friendPosts: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(post.Post))))
+  }));
+  var post$ = dart.privateName(friend_post_tile, "FriendPostTile.post");
+  friend_post_tile.FriendPostTile = class FriendPostTile extends framework.StatelessWidget {
+    get post() {
+      return this[post$];
+    }
+    set post(value) {
+      super.post = value;
+    }
+    build(context) {
+      return new basic.Row.new({crossAxisAlignment: flex.CrossAxisAlignment.start, mainAxisAlignment: flex.MainAxisAlignment.start, children: T.JSArrayOfWidgetL().of([new circle_image.CircleImage.new({imageProvider: new image_resolution.AssetImage.new(dart.str(this.post.profileImageUrl)), imageRadius: 20.0, $creationLocationd_0dea112b090073317d4: C[49] || CT.C49}), C[53] || CT.C53, new basic.Expanded.new({child: new basic.Column.new({crossAxisAlignment: flex.CrossAxisAlignment.start, children: T.JSArrayOfWidgetL().of([new text.Text.new(this.post.comment, {$creationLocationd_0dea112b090073317d4: C[57] || CT.C57}), new text.Text.new(dart.str(this.post.timestamp) + " mins ago", {style: theme.Theme.of(context).textTheme.bodyText1, $creationLocationd_0dea112b090073317d4: C[60] || CT.C60})]), $creationLocationd_0dea112b090073317d4: C[64] || CT.C64}), $creationLocationd_0dea112b090073317d4: C[68] || CT.C68})]), $creationLocationd_0dea112b090073317d4: C[71] || CT.C71});
+    }
+  };
+  (friend_post_tile.FriendPostTile.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let post = opts && 'post' in opts ? opts.post : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[post$] = post;
+    friend_post_tile.FriendPostTile.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = friend_post_tile.FriendPostTile.prototype;
+  dart.addTypeTests(friend_post_tile.FriendPostTile);
+  dart.addTypeCaches(friend_post_tile.FriendPostTile);
+  dart.setMethodSignature(friend_post_tile.FriendPostTile, () => ({
+    __proto__: dart.getMethods(friend_post_tile.FriendPostTile.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(friend_post_tile.FriendPostTile, I[2]);
+  dart.setFieldSignature(friend_post_tile.FriendPostTile, () => ({
+    __proto__: dart.getFields(friend_post_tile.FriendPostTile.__proto__),
+    post: dart.finalFieldType(dart.legacy(post.Post))
+  }));
+  var recipes$0 = dart.privateName(today_recipe_list_view, "TodayRecipeListView.recipes");
+  today_recipe_list_view.TodayRecipeListView = class TodayRecipeListView extends framework.StatelessWidget {
+    get recipes() {
+      return this[recipes$0];
+    }
+    set recipes(value) {
+      super.recipes = value;
+    }
+    build(context) {
+      return new basic.Padding.new({padding: C[0] || CT.C0, child: new basic.Column.new({crossAxisAlignment: flex.CrossAxisAlignment.start, children: T.JSArrayOfWidgetL().of([new text.Text.new("Recipes of the Day 🍳", {style: theme.Theme.of(context).textTheme.headline1, $creationLocationd_0dea112b090073317d4: C[76] || CT.C76}), C[77] || CT.C77, new container.Container.new({height: 400.0, color: colors.Colors.transparent, child: new scroll_view.ListView.separated({scrollDirection: basic_types.Axis.horizontal, itemCount: this.recipes[$length], itemBuilder: dart.fn((context, index) => {
+                  let recipe = this.recipes[$_get](index);
+                  return this.buildCard(recipe);
+                }, T.BuildContextLAndintLToWidgetL()), separatorBuilder: dart.fn((context, index) => C[79] || CT.C79, T.BuildContextLAndintLToSizedBoxL()), $creationLocationd_0dea112b090073317d4: C[83] || CT.C83}), $creationLocationd_0dea112b090073317d4: C[89] || CT.C89})]), $creationLocationd_0dea112b090073317d4: C[93] || CT.C93}), $creationLocationd_0dea112b090073317d4: C[94] || CT.C94});
+    }
+    buildCard(recipe) {
+      if (recipe.cardType === "card1") {
+        return new card1.Card1.new({recipe: recipe, $creationLocationd_0dea112b090073317d4: C[95] || CT.C95});
+      } else if (recipe.cardType === "card2") {
+        return new card2.Card2.new({recipe: recipe, $creationLocationd_0dea112b090073317d4: C[98] || CT.C98});
+      } else if (recipe.cardType === "card3") {
+        return new card3.Card3.new({recipe: recipe, $creationLocationd_0dea112b090073317d4: C[101] || CT.C101});
+      } else {
+        dart.throw(core.Exception.new("This card doesn't exist yet"));
+      }
+    }
+  };
+  (today_recipe_list_view.TodayRecipeListView.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let recipes = opts && 'recipes' in opts ? opts.recipes : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[recipes$0] = recipes;
+    today_recipe_list_view.TodayRecipeListView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = today_recipe_list_view.TodayRecipeListView.prototype;
+  dart.addTypeTests(today_recipe_list_view.TodayRecipeListView);
+  dart.addTypeCaches(today_recipe_list_view.TodayRecipeListView);
+  dart.setMethodSignature(today_recipe_list_view.TodayRecipeListView, () => ({
+    __proto__: dart.getMethods(today_recipe_list_view.TodayRecipeListView.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]),
+    buildCard: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(explore_recipe.ExploreRecipe)])
+  }));
+  dart.setLibraryUri(today_recipe_list_view.TodayRecipeListView, I[3]);
+  dart.setFieldSignature(today_recipe_list_view.TodayRecipeListView, () => ({
+    __proto__: dart.getFields(today_recipe_list_view.TodayRecipeListView.__proto__),
+    recipes: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(explore_recipe.ExploreRecipe))))
+  }));
+  dart.trackLibraries("packages/fooderlich/components/recipes_grid_view.dart", {
+    "package:fooderlich/components/recipes_grid_view.dart": recipes_grid_view,
+    "package:fooderlich/components/friend_post_list_view.dart": friend_post_list_view,
+    "package:fooderlich/components/friend_post_tile.dart": friend_post_tile,
+    "package:fooderlich/components/today_recipe_list_view.dart": today_recipe_list_view,
+    "package:fooderlich/components/components.dart": components
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["recipes_grid_view.dart","friend_post_list_view.dart","friend_post_tile.dart","today_recipe_list_view.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAK2B;;;;;;UAKC;AACxB,YAAO,uDAEa,6CACD,AAAQ,iEAGN,SAAC,SAAS;AACf,+BAAe,AAAO,oBAAC,KAAK;AAClC,kBAAO,mDAAwB,YAAY;;IAEvD;;;QAd2B;QAAU;;;AAAY,qEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;ICF/C;;;;;;UAKS;AACxB,YAAO,yDAEI,0CAA8C,yCAAiB,yBACpE,kBAAK,4BACY,AAAY,AAAU,eAAnB,OAAO,mGAElB,6CACI,6CAEG,uBACU,sCACX,AAAY,wCACV,SAAC,SAAS;AACf,2BAAO,AAAW,wBAAC,KAAK;AAC9B,sBAAO,gDAAqB,IAAI;+EAEhB,SAAC,SAAS;IAKxC;;;QAzB8B;QAAU;;;AAAgB,4EAAW,GAAG;;EAAC;;;;;;;;;;;;;;ICF5D;;;;;;UAKe;AACxB,YAAO,wCACoC,kDACF,wCAC3B,yBACR,iDACmB,oCAAoC,SAAtB,AAAK,0CACrB,kFAEjB,+BACW,0CACoC,yCAC7B,yBACZ,kBAAK,AAAK,+EACV,kBAAiC,SAAzB,AAAK,uBAAU,qBACN,AAAY,AAAU,eAAnB,OAAO;IAGzC;;;QArB0B;QAAU;;;AAAS,mEAAW,GAAG;;EAAC;;;;;;;;;;;;;;ICFlC;;;;;;UAKA;AACxB,YAAO,uDAEI,0CAA8C,yCAAiB,yBACpE,kBAAK,gCACY,AAAY,AAAU,eAAnB,OAAO,mGAE3B,qCACY,cACM,kCACE,qDACU,wCACX,AAAQ,oCACN,SAAC,SAAS;AACf,+BAAS,AAAO,oBAAC,KAAK;AAC5B,wBAAO,gBAAU,MAAM;yEAEP,SAAC,SAAS;IAI5C;cAE+B;AAC7B,UAAI,AAAO,AAAS,MAAV;AACR,cAAO,8BAAc,MAAM;YACtB,KAAI,AAAO,AAAS,MAAV;AACf,cAAO,8BAAc,MAAM;YACtB,KAAI,AAAO,AAAS,MAAV;AACf,cAAO,8BAAc,MAAM;;AAEoB,QAA/C,WAAM,mBAAU;;IAEpB;;;QApC+B;QAAU;;;AAAY,8EAAW,GAAG;;EAAC","file":"../../../../../../../../../packages/fooderlich/components/recipes_grid_view.dart.lib.js"}');
+  // Exports:
+  return {
+    components__recipes_grid_view: recipes_grid_view,
+    components__friend_post_list_view: friend_post_list_view,
+    components__friend_post_tile: friend_post_tile,
+    components__today_recipe_list_view: today_recipe_list_view,
+    components__components: components
+  };
+}));
+
+//# sourceMappingURL=recipes_grid_view.dart.lib.js.map

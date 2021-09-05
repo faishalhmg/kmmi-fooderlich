@@ -1,0 +1,1085 @@
+define(['dart_sdk', 'packages/flutter/src/services/text_input.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/material/input_border.dart', 'packages/flutter/src/widgets/preferred_size.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/foundation/key.dart', 'packages/flutter/src/foundation/_platform_web.dart', 'packages/flutter/src/material/text_field.dart', 'packages/flutter/src/widgets/animated_switcher.dart'], (function load__packages__flutter__src__material__search_dart(dart_sdk, packages__flutter__src__services__text_input$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__material__input_border$46dart, packages__flutter__src__widgets__preferred_size$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__foundation__key$46dart, packages__flutter__src__foundation___platform_web$46dart, packages__flutter__src__material__text_field$46dart, packages__flutter__src__widgets__animated_switcher$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
+  const editable_text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__editable_text;
+  const navigator = packages__flutter__src__widgets__widget_span$46dart.src__widgets__navigator;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const focus_manager = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_manager;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const pages = packages__flutter__src__widgets__widget_span$46dart.src__widgets__pages;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  const theme$ = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const app_bar_theme = packages__flutter__src__material__icon_button$46dart.src__material__app_bar_theme;
+  const input_decorator = packages__flutter__src__material__icon_button$46dart.src__material__input_decorator;
+  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
+  const debug = packages__flutter__src__material__icon_button$46dart.src__material__debug;
+  const material_localizations = packages__flutter__src__material__icon_button$46dart.src__material__material_localizations;
+  const scaffold = packages__flutter__src__material__icon_button$46dart.src__material__scaffold;
+  const app_bar = packages__flutter__src__material__icon_button$46dart.src__material__app_bar;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const input_border = packages__flutter__src__material__input_border$46dart.src__material__input_border;
+  const preferred_size = packages__flutter__src__widgets__preferred_size$46dart.src__widgets__preferred_size;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const key = packages__flutter__src__foundation__key$46dart.src__foundation__key;
+  const platform = packages__flutter__src__foundation___platform_web$46dart.src__foundation__platform;
+  const text_field = packages__flutter__src__material__text_field$46dart.src__material__text_field;
+  const animated_switcher = packages__flutter__src__widgets__animated_switcher$46dart.src__widgets__animated_switcher;
+  var search = Object.create(dart.library);
+  var $runtimeType = dartx.runtimeType;
+  dart._checkModuleNullSafetyMode(false);
+  var T$ = {
+    _SearchBodyN: () => (T$._SearchBodyN = dart.constFn(dart.nullable(search._SearchBody)))(),
+    ValueNotifierOf_SearchBodyN: () => (T$.ValueNotifierOf_SearchBodyN = dart.constFn(change_notifier.ValueNotifier$(T$._SearchBodyN())))(),
+    RouteTobool: () => (T$.RouteTobool = dart.constFn(dart.fnType(core.bool, [navigator.Route])))(),
+    _SearchBodyL: () => (T$._SearchBodyL = dart.constFn(dart.legacy(search._SearchBody)))(),
+    _LocationL: () => (T$._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    ValueKeyOf_SearchBodyL: () => (T$.ValueKeyOf_SearchBodyL = dart.constFn(key.ValueKey$(T$._SearchBodyL())))(),
+    VoidToString: () => (T$.VoidToString = dart.constFn(dart.fnType(core.String, [])))(),
+    StringTodynamic: () => (T$.StringTodynamic = dart.constFn(dart.fnType(dart.dynamic, [core.String])))(),
+    StringTovoid: () => (T$.StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: text_input.TextInputAction.prototype,
+        [_name]: "TextInputAction.search",
+        index: 4
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: search._SearchBody.prototype,
+        [_name$]: "_SearchBody.suggestions",
+        index: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: search._SearchBody.prototype,
+        [_name$]: "_SearchBody.results",
+        index: 1
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[1] || CT.C1, C[2] || CT.C2], T$._SearchBodyL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 300000
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 7,
+        [_Location_line]: 409,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 410,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8], T$._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 408,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "delegate",
+        [_Location_column]: 7,
+        [_Location_line]: 428,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 7,
+        [_Location_line]: 429,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T$._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 427,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: T$.ValueKeyOf_SearchBodyL().prototype,
+        [ValueKey_value]: C[1] || CT.C1
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 11,
+        [_Location_line]: 531,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 532,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.constList([C[16] || CT.C16, C[17] || CT.C17], T$._LocationL());
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[15] || CT.C15,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 530,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: T$.ValueKeyOf_SearchBodyL().prototype,
+        [ValueKey_value]: C[2] || CT.C2
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 11,
+        [_Location_line]: 537,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 538,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.constList([C[21] || CT.C21, C[22] || CT.C22], T$._LocationL());
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[20] || CT.C20,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 536,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: platform.TargetPlatform.prototype,
+        [_name$0]: "TargetPlatform.iOS",
+        index: 2
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: platform.TargetPlatform.prototype,
+        [_name$0]: "TargetPlatform.macOS",
+        index: 4
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: platform.TargetPlatform.prototype,
+        [_name$0]: "TargetPlatform.android",
+        index: 0
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: platform.TargetPlatform.prototype,
+        [_name$0]: "TargetPlatform.fuchsia",
+        index: 1
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: platform.TargetPlatform.prototype,
+        [_name$0]: "TargetPlatform.linux",
+        index: 3
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: platform.TargetPlatform.prototype,
+        [_name$0]: "TargetPlatform.windows",
+        index: 5
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 15,
+        [_Location_line]: 569,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "focusNode",
+        [_Location_column]: 15,
+        [_Location_line]: 570,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 15,
+        [_Location_line]: 571,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textInputAction",
+        [_Location_column]: 15,
+        [_Location_line]: 572,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "keyboardType",
+        [_Location_column]: 15,
+        [_Location_line]: 573,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onSubmitted",
+        [_Location_column]: 15,
+        [_Location_line]: 574,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 15,
+        [_Location_line]: 577,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.constList([C[31] || CT.C31, C[32] || CT.C32, C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36, C[37] || CT.C37], T$._LocationL());
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[30] || CT.C30,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 568,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "leading",
+        [_Location_column]: 13,
+        [_Location_line]: 567,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 13,
+        [_Location_line]: 568,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "actions",
+        [_Location_column]: 13,
+        [_Location_line]: 579,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "bottom",
+        [_Location_column]: 13,
+        [_Location_line]: 580,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.constList([C[40] || CT.C40, C[41] || CT.C41, C[42] || CT.C42, C[43] || CT.C43], T$._LocationL());
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[39] || CT.C39,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 566,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 13,
+        [_Location_line]: 583,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 584,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.constList([C[46] || CT.C46, C[47] || CT.C47], T$._LocationL());
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[45] || CT.C45,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 582,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "appBar",
+        [_Location_column]: 11,
+        [_Location_line]: 566,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "body",
+        [_Location_column]: 11,
+        [_Location_line]: 582,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.constList([C[50] || CT.C50, C[51] || CT.C51], T$._LocationL());
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[49] || CT.C49,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 565,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 9,
+        [_Location_line]: 564,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 565,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.constList([C[54] || CT.C54, C[55] || CT.C55], T$._LocationL());
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[53] || CT.C53,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 563,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "explicitChildNodes",
+        [_Location_column]: 7,
+        [_Location_line]: 559,
+        [_Location_file]: null
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scopesRoute",
+        [_Location_column]: 7,
+        [_Location_line]: 560,
+        [_Location_file]: null
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "namesRoute",
+        [_Location_column]: 7,
+        [_Location_line]: 561,
+        [_Location_file]: null
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "label",
+        [_Location_column]: 7,
+        [_Location_line]: 562,
+        [_Location_file]: null
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 563,
+        [_Location_file]: null
+      });
+    },
+    get C57() {
+      return C[57] = dart.constList([C[58] || CT.C58, C[59] || CT.C59, C[60] || CT.C60, C[61] || CT.C61, C[62] || CT.C62], T$._LocationL());
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[57] || CT.C57,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 558,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart"
+      });
+    }
+  }, false);
+  var C = Array(63).fill(void 0);
+  var I = [
+    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/material/search.dart",
+    "package:flutter/src/material/search.dart"
+  ];
+  var searchFieldLabel$ = dart.privateName(search, "SearchDelegate.searchFieldLabel");
+  var searchFieldStyle$ = dart.privateName(search, "SearchDelegate.searchFieldStyle");
+  var searchFieldDecorationTheme$ = dart.privateName(search, "SearchDelegate.searchFieldDecorationTheme");
+  var keyboardType$ = dart.privateName(search, "SearchDelegate.keyboardType");
+  var textInputAction$ = dart.privateName(search, "SearchDelegate.textInputAction");
+  var _route = dart.privateName(search, "SearchDelegate._route");
+  var _name = dart.privateName(text_input, "_name");
+  var _focusNode = dart.privateName(search, "_focusNode");
+  var _queryTextController = dart.privateName(search, "_queryTextController");
+  var _proxyAnimation = dart.privateName(search, "_proxyAnimation");
+  var _currentBodyNotifier = dart.privateName(search, "_currentBodyNotifier");
+  var _route$ = dart.privateName(search, "_route");
+  var _currentBody = dart.privateName(search, "_currentBody");
+  const _is_SearchDelegate_default = Symbol('_is_SearchDelegate_default');
+  search.SearchDelegate$ = dart.generic(T => {
+    var _SearchPageRouteOfT = () => (_SearchPageRouteOfT = dart.constFn(search._SearchPageRoute$(T)))();
+    var _SearchPageRouteNOfT = () => (_SearchPageRouteNOfT = dart.constFn(dart.nullable(_SearchPageRouteOfT())))();
+    class SearchDelegate extends core.Object {
+      get searchFieldLabel() {
+        return this[searchFieldLabel$];
+      }
+      set searchFieldLabel(value) {
+        super.searchFieldLabel = value;
+      }
+      get searchFieldStyle() {
+        return this[searchFieldStyle$];
+      }
+      set searchFieldStyle(value) {
+        super.searchFieldStyle = value;
+      }
+      get searchFieldDecorationTheme() {
+        return this[searchFieldDecorationTheme$];
+      }
+      set searchFieldDecorationTheme(value) {
+        super.searchFieldDecorationTheme = value;
+      }
+      get keyboardType() {
+        return this[keyboardType$];
+      }
+      set keyboardType(value) {
+        super.keyboardType = value;
+      }
+      get textInputAction() {
+        return this[textInputAction$];
+      }
+      set textInputAction(value) {
+        super.textInputAction = value;
+      }
+      get [_route$]() {
+        return this[_route];
+      }
+      set [_route$](value) {
+        this[_route] = _SearchPageRouteNOfT().as(value);
+      }
+      buildBottom(context) {
+        if (context == null) dart.nullFailed(I[0], 206, 49, "context");
+        return null;
+      }
+      appBarTheme(context) {
+        let t1, t0;
+        if (context == null) dart.nullFailed(I[0], 224, 38, "context");
+        if (!(context != null)) dart.assertFailed(null, I[0], 225, 12, "context != null");
+        let theme = theme$.Theme.of(context);
+        let colorScheme = theme.colorScheme;
+        if (!(theme != null)) dart.assertFailed(null, I[0], 228, 12, "theme != null");
+        return theme.copyWith({appBarTheme: new app_bar_theme.AppBarTheme.new({brightness: colorScheme.brightness, backgroundColor: colorScheme.brightness == ui.Brightness.dark ? colors.Colors.grey._get(900) : colors.Colors.white, iconTheme: theme.primaryIconTheme.copyWith({color: colors.Colors.grey}), textTheme: theme.textTheme}), inputDecorationTheme: (t0 = this.searchFieldDecorationTheme, t0 == null ? new input_decorator.InputDecorationTheme.new({hintStyle: (t1 = this.searchFieldStyle, t1 == null ? theme.inputDecorationTheme.hintStyle : t1), border: input_border.InputBorder.none}) : t0)});
+      }
+      get query() {
+        return this[_queryTextController].text;
+      }
+      set query(value) {
+        if (value == null) dart.nullFailed(I[0], 251, 20, "value");
+        if (!(this.query != null)) dart.assertFailed(null, I[0], 252, 12, "query != null");
+        this[_queryTextController].text = value;
+      }
+      showResults(context) {
+        let t0;
+        if (context == null) dart.nullFailed(I[0], 267, 33, "context");
+        t0 = this[_focusNode];
+        t0 == null ? null : t0.unfocus();
+        this[_currentBody] = search._SearchBody.results;
+      }
+      showSuggestions(context) {
+        if (context == null) dart.nullFailed(I[0], 284, 37, "context");
+        if (!(this[_focusNode] != null)) dart.assertFailed("_focusNode must be set by route before showSuggestions is called.", I[0], 285, 12, "_focusNode != null");
+        dart.nullCheck(this[_focusNode]).requestFocus();
+        this[_currentBody] = search._SearchBody.suggestions;
+      }
+      close(context, result) {
+        let t0, t0$;
+        if (context == null) dart.nullFailed(I[0], 294, 27, "context");
+        T.as(result);
+        this[_currentBody] = null;
+        t0 = this[_focusNode];
+        t0 == null ? null : t0.unfocus();
+        t0$ = navigator.Navigator.of(context);
+        (() => {
+          t0$.popUntil(dart.fn(route => {
+            if (route == null) dart.nullFailed(I[0], 298, 34, "route");
+            return dart.equals(route, this[_route$]);
+          }, T$.RouteTobool()));
+          t0$.pop(T, result);
+          return t0$;
+        })();
+      }
+      get transitionAnimation() {
+        return this[_proxyAnimation];
+      }
+      get [_currentBody]() {
+        return this[_currentBodyNotifier].value;
+      }
+      set [_currentBody](value) {
+        this[_currentBodyNotifier].value = value;
+      }
+    }
+    (SearchDelegate.new = function(opts) {
+      let searchFieldLabel = opts && 'searchFieldLabel' in opts ? opts.searchFieldLabel : null;
+      let searchFieldStyle = opts && 'searchFieldStyle' in opts ? opts.searchFieldStyle : null;
+      let searchFieldDecorationTheme = opts && 'searchFieldDecorationTheme' in opts ? opts.searchFieldDecorationTheme : null;
+      let keyboardType = opts && 'keyboardType' in opts ? opts.keyboardType : null;
+      let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : C[0] || CT.C0;
+      if (textInputAction == null) dart.nullFailed(I[0], 139, 10, "textInputAction");
+      this[_focusNode] = null;
+      this[_queryTextController] = new editable_text.TextEditingController.new();
+      this[_proxyAnimation] = new animations.ProxyAnimation.new(animations.kAlwaysDismissedAnimation);
+      this[_currentBodyNotifier] = new (T$.ValueNotifierOf_SearchBodyN()).new(null);
+      this[_route] = null;
+      this[searchFieldLabel$] = searchFieldLabel;
+      this[searchFieldStyle$] = searchFieldStyle;
+      this[searchFieldDecorationTheme$] = searchFieldDecorationTheme;
+      this[keyboardType$] = keyboardType;
+      this[textInputAction$] = textInputAction;
+      if (!(searchFieldStyle == null || searchFieldDecorationTheme == null)) dart.assertFailed(null, I[0], 140, 15, "searchFieldStyle == null || searchFieldDecorationTheme == null");
+      ;
+    }).prototype = SearchDelegate.prototype;
+    dart.addTypeTests(SearchDelegate);
+    SearchDelegate.prototype[_is_SearchDelegate_default] = true;
+    dart.addTypeCaches(SearchDelegate);
+    dart.setMethodSignature(SearchDelegate, () => ({
+      __proto__: dart.getMethods(SearchDelegate.__proto__),
+      buildBottom: dart.fnType(dart.nullable(preferred_size.PreferredSizeWidget), [framework.BuildContext]),
+      appBarTheme: dart.fnType(theme_data.ThemeData, [framework.BuildContext]),
+      showResults: dart.fnType(dart.void, [framework.BuildContext]),
+      showSuggestions: dart.fnType(dart.void, [framework.BuildContext]),
+      close: dart.fnType(dart.void, [framework.BuildContext, dart.nullable(core.Object)])
+    }));
+    dart.setGetterSignature(SearchDelegate, () => ({
+      __proto__: dart.getGetters(SearchDelegate.__proto__),
+      query: core.String,
+      transitionAnimation: animation.Animation$(core.double),
+      [_currentBody]: dart.nullable(search._SearchBody)
+    }));
+    dart.setSetterSignature(SearchDelegate, () => ({
+      __proto__: dart.getSetters(SearchDelegate.__proto__),
+      query: core.String,
+      [_currentBody]: dart.nullable(search._SearchBody)
+    }));
+    dart.setLibraryUri(SearchDelegate, I[1]);
+    dart.setFieldSignature(SearchDelegate, () => ({
+      __proto__: dart.getFields(SearchDelegate.__proto__),
+      searchFieldLabel: dart.finalFieldType(dart.nullable(core.String)),
+      searchFieldStyle: dart.finalFieldType(dart.nullable(text_style.TextStyle)),
+      searchFieldDecorationTheme: dart.finalFieldType(dart.nullable(input_decorator.InputDecorationTheme)),
+      keyboardType: dart.finalFieldType(dart.nullable(text_input.TextInputType)),
+      textInputAction: dart.finalFieldType(text_input.TextInputAction),
+      [_focusNode]: dart.fieldType(dart.nullable(focus_manager.FocusNode)),
+      [_queryTextController]: dart.finalFieldType(editable_text.TextEditingController),
+      [_proxyAnimation]: dart.finalFieldType(animations.ProxyAnimation),
+      [_currentBodyNotifier]: dart.finalFieldType(change_notifier.ValueNotifier$(dart.nullable(search._SearchBody))),
+      [_route$]: dart.fieldType(dart.nullable(search._SearchPageRoute$(T)))
+    }));
+    return SearchDelegate;
+  });
+  search.SearchDelegate = search.SearchDelegate$();
+  dart.addTypeTests(search.SearchDelegate, _is_SearchDelegate_default);
+  var _name$ = dart.privateName(search, "_name");
+  search._SearchBody = class _SearchBody extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (search._SearchBody.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 362, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 362, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = search._SearchBody.prototype;
+  dart.addTypeTests(search._SearchBody);
+  dart.addTypeCaches(search._SearchBody);
+  dart.setLibraryUri(search._SearchBody, I[1]);
+  dart.setFieldSignature(search._SearchBody, () => ({
+    __proto__: dart.getFields(search._SearchBody.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(search._SearchBody, ['toString']);
+  search._SearchBody.suggestions = C[1] || CT.C1;
+  search._SearchBody.results = C[2] || CT.C2;
+  search._SearchBody.values = C[3] || CT.C3;
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const _is__SearchPageRoute_default = Symbol('_is__SearchPageRoute_default');
+  search._SearchPageRoute$ = dart.generic(T => {
+    var _SearchPageOfT = () => (_SearchPageOfT = dart.constFn(search._SearchPage$(T)))();
+    var TN = () => (TN = dart.constFn(dart.nullable(T)))();
+    class _SearchPageRoute extends pages.PageRoute$(T) {
+      get barrierColor() {
+        return null;
+      }
+      get barrierLabel() {
+        return null;
+      }
+      get transitionDuration() {
+        return C[4] || CT.C4;
+      }
+      get maintainState() {
+        return false;
+      }
+      buildTransitions(context, animation, secondaryAnimation, child) {
+        if (context == null) dart.nullFailed(I[0], 403, 18, "context");
+        if (animation == null) dart.nullFailed(I[0], 404, 23, "animation");
+        if (secondaryAnimation == null) dart.nullFailed(I[0], 405, 23, "secondaryAnimation");
+        if (child == null) dart.nullFailed(I[0], 406, 12, "child");
+        return new transitions.FadeTransition.new({opacity: animation, child: child, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+      }
+      createAnimation() {
+        let animation = super.createAnimation();
+        this.delegate[_proxyAnimation].parent = animation;
+        return animation;
+      }
+      buildPage(context, animation, secondaryAnimation) {
+        if (context == null) dart.nullFailed(I[0], 423, 18, "context");
+        if (animation == null) dart.nullFailed(I[0], 424, 23, "animation");
+        if (secondaryAnimation == null) dart.nullFailed(I[0], 425, 23, "secondaryAnimation");
+        return new (_SearchPageOfT()).new({delegate: this.delegate, animation: animation, $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+      }
+      didComplete(result) {
+        TN().as(result);
+        super.didComplete(result);
+        if (!dart.equals(this.delegate[_route$], this)) dart.assertFailed(null, I[0], 436, 12, "delegate._route == this");
+        this.delegate[_route$] = null;
+        this.delegate[_currentBody] = null;
+      }
+    }
+    (_SearchPageRoute.new = function(opts) {
+      let delegate = opts && 'delegate' in opts ? opts.delegate : null;
+      if (delegate == null) dart.nullFailed(I[0], 376, 19, "delegate");
+      this.delegate = delegate;
+      if (!(delegate != null)) dart.assertFailed(null, I[0], 377, 15, "delegate != null");
+      _SearchPageRoute.__proto__.new.call(this);
+      if (!(this.delegate[_route$] == null)) dart.assertFailed("The " + dart.str(dart.runtimeType(this.delegate)) + " instance is currently used by another active " + "search. Please close that search by calling close() on the SearchDelegate " + "before opening another search with the same delegate instance.", I[0], 379, 7, "delegate._route == null");
+      this.delegate[_route$] = this;
+    }).prototype = _SearchPageRoute.prototype;
+    dart.addTypeTests(_SearchPageRoute);
+    _SearchPageRoute.prototype[_is__SearchPageRoute_default] = true;
+    dart.addTypeCaches(_SearchPageRoute);
+    dart.setMethodSignature(_SearchPageRoute, () => ({
+      __proto__: dart.getMethods(_SearchPageRoute.__proto__),
+      buildPage: dart.fnType(framework.Widget, [framework.BuildContext, animation.Animation$(core.double), animation.Animation$(core.double)])
+    }));
+    dart.setGetterSignature(_SearchPageRoute, () => ({
+      __proto__: dart.getGetters(_SearchPageRoute.__proto__),
+      barrierColor: dart.nullable(ui.Color),
+      barrierLabel: dart.nullable(core.String),
+      transitionDuration: core.Duration,
+      maintainState: core.bool
+    }));
+    dart.setLibraryUri(_SearchPageRoute, I[1]);
+    dart.setFieldSignature(_SearchPageRoute, () => ({
+      __proto__: dart.getFields(_SearchPageRoute.__proto__),
+      delegate: dart.finalFieldType(search.SearchDelegate$(T))
+    }));
+    return _SearchPageRoute;
+  });
+  search._SearchPageRoute = search._SearchPageRoute$();
+  dart.addTypeTests(search._SearchPageRoute, _is__SearchPageRoute_default);
+  var delegate$ = dart.privateName(search, "_SearchPage.delegate");
+  var animation$ = dart.privateName(search, "_SearchPage.animation");
+  const _is__SearchPage_default = Symbol('_is__SearchPage_default');
+  search._SearchPage$ = dart.generic(T => {
+    var _SearchPageStateOfT = () => (_SearchPageStateOfT = dart.constFn(search._SearchPageState$(T)))();
+    class _SearchPage extends framework.StatefulWidget {
+      get delegate() {
+        return this[delegate$];
+      }
+      set delegate(value) {
+        super.delegate = value;
+      }
+      get animation() {
+        return this[animation$];
+      }
+      set animation(value) {
+        super.animation = value;
+      }
+      createState() {
+        return new (_SearchPageStateOfT()).new();
+      }
+    }
+    (_SearchPage.new = function(opts) {
+      let delegate = opts && 'delegate' in opts ? opts.delegate : null;
+      if (delegate == null) dart.nullFailed(I[0], 444, 19, "delegate");
+      let animation = opts && 'animation' in opts ? opts.animation : null;
+      if (animation == null) dart.nullFailed(I[0], 445, 19, "animation");
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[delegate$] = delegate;
+      this[animation$] = animation;
+      _SearchPage.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = _SearchPage.prototype;
+    dart.addTypeTests(_SearchPage);
+    _SearchPage.prototype[_is__SearchPage_default] = true;
+    dart.addTypeCaches(_SearchPage);
+    dart.setMethodSignature(_SearchPage, () => ({
+      __proto__: dart.getMethods(_SearchPage.__proto__),
+      createState: dart.fnType(framework.State$(framework.StatefulWidget), [])
+    }));
+    dart.setLibraryUri(_SearchPage, I[1]);
+    dart.setFieldSignature(_SearchPage, () => ({
+      __proto__: dart.getFields(_SearchPage.__proto__),
+      delegate: dart.finalFieldType(search.SearchDelegate$(T)),
+      animation: dart.finalFieldType(animation.Animation$(core.double))
+    }));
+    return _SearchPage;
+  });
+  search._SearchPage = search._SearchPage$();
+  dart.addTypeTests(search._SearchPage, _is__SearchPage_default);
+  var _onQueryChanged = dart.privateName(search, "_onQueryChanged");
+  var _onAnimationStatusChanged = dart.privateName(search, "_onAnimationStatusChanged");
+  var _onSearchBodyChanged = dart.privateName(search, "_onSearchBodyChanged");
+  var _onFocusChanged = dart.privateName(search, "_onFocusChanged");
+  var ValueKey_value = dart.privateName(key, "ValueKey.value");
+  var _name$0 = dart.privateName(platform, "_name");
+  const _is__SearchPageState_default = Symbol('_is__SearchPageState_default');
+  search._SearchPageState$ = dart.generic(T => {
+    var _SearchPageOfT = () => (_SearchPageOfT = dart.constFn(search._SearchPage$(T)))();
+    class _SearchPageState extends framework.State$(search._SearchPage$(T)) {
+      initState() {
+        super.initState();
+        this.widget.delegate[_queryTextController].addListener(dart.bind(this, _onQueryChanged));
+        this.widget.animation.addStatusListener(dart.bind(this, _onAnimationStatusChanged));
+        this.widget.delegate[_currentBodyNotifier].addListener(dart.bind(this, _onSearchBodyChanged));
+        this.focusNode.addListener(dart.bind(this, _onFocusChanged));
+        this.widget.delegate[_focusNode] = this.focusNode;
+      }
+      dispose() {
+        super.dispose();
+        this.widget.delegate[_queryTextController].removeListener(dart.bind(this, _onQueryChanged));
+        this.widget.animation.removeStatusListener(dart.bind(this, _onAnimationStatusChanged));
+        this.widget.delegate[_currentBodyNotifier].removeListener(dart.bind(this, _onSearchBodyChanged));
+        this.widget.delegate[_focusNode] = null;
+        this.focusNode.dispose();
+      }
+      [_onAnimationStatusChanged](status) {
+        if (status == null) dart.nullFailed(I[0], 480, 50, "status");
+        if (status != animation.AnimationStatus.completed) {
+          return;
+        }
+        this.widget.animation.removeStatusListener(dart.bind(this, _onAnimationStatusChanged));
+        if (this.widget.delegate[_currentBody] == search._SearchBody.suggestions) {
+          this.focusNode.requestFocus();
+        }
+      }
+      didUpdateWidget(oldWidget) {
+        _SearchPageOfT().as(oldWidget);
+        if (oldWidget == null) dart.nullFailed(I[0], 491, 39, "oldWidget");
+        super.didUpdateWidget(oldWidget);
+        if (!dart.equals(this.widget.delegate, oldWidget.delegate)) {
+          oldWidget.delegate[_queryTextController].removeListener(dart.bind(this, _onQueryChanged));
+          this.widget.delegate[_queryTextController].addListener(dart.bind(this, _onQueryChanged));
+          oldWidget.delegate[_currentBodyNotifier].removeListener(dart.bind(this, _onSearchBodyChanged));
+          this.widget.delegate[_currentBodyNotifier].addListener(dart.bind(this, _onSearchBodyChanged));
+          oldWidget.delegate[_focusNode] = null;
+          this.widget.delegate[_focusNode] = this.focusNode;
+        }
+      }
+      [_onFocusChanged]() {
+        if (dart.test(this.focusNode.hasFocus) && this.widget.delegate[_currentBody] != search._SearchBody.suggestions) {
+          this.widget.delegate.showSuggestions(this.context);
+        }
+      }
+      [_onQueryChanged]() {
+        this.setState(dart.fn(() => {
+        }, T$.VoidTovoid()));
+      }
+      [_onSearchBodyChanged]() {
+        this.setState(dart.fn(() => {
+        }, T$.VoidTovoid()));
+      }
+      build(context) {
+        let t0;
+        if (context == null) dart.nullFailed(I[0], 522, 29, "context");
+        if (!dart.test(debug.debugCheckHasMaterialLocalizations(context))) dart.assertFailed(null, I[0], 523, 12, "debugCheckHasMaterialLocalizations(context)");
+        let theme = this.widget.delegate.appBarTheme(context);
+        let searchFieldLabel = (t0 = this.widget.delegate.searchFieldLabel, t0 == null ? material_localizations.MaterialLocalizations.of(context).searchFieldLabel : t0);
+        let body = null;
+        switch (this.widget.delegate[_currentBody]) {
+          case C[1] || CT.C1:
+          {
+            body = new basic.KeyedSubtree.new({key: C[13] || CT.C13, child: this.widget.delegate.buildSuggestions(context), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14});
+            break;
+          }
+          case C[2] || CT.C2:
+          {
+            body = new basic.KeyedSubtree.new({key: C[18] || CT.C18, child: this.widget.delegate.buildResults(context), $creationLocationd_0dea112b090073317d4: C[19] || CT.C19});
+            break;
+          }
+          case null:
+          {
+            break;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
+        let routeName = null;
+        let routeName$35isSet = false;
+        function routeName$35get() {
+          return routeName$35isSet ? routeName : dart.throw(new _internal.LateError.localNI("routeName"));
+        }
+        dart.fn(routeName$35get, T$.VoidToString());
+        function routeName$35set(t3) {
+          if (t3 == null) dart.nullFailed(I[0], 545, 23, "null");
+          if (routeName$35isSet)
+            dart.throw(new _internal.LateError.localAI("routeName"));
+          else {
+            routeName$35isSet = true;
+            return routeName = t3;
+          }
+        }
+        dart.fn(routeName$35set, T$.StringTodynamic());
+        switch (theme.platform) {
+          case C[23] || CT.C23:
+          case C[24] || CT.C24:
+          {
+            routeName$35set("");
+            break;
+          }
+          case C[25] || CT.C25:
+          case C[26] || CT.C26:
+          case C[27] || CT.C27:
+          case C[28] || CT.C28:
+          {
+            routeName$35set(searchFieldLabel);
+            break;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
+        return new basic.Semantics.new({explicitChildNodes: true, scopesRoute: true, namesRoute: true, label: routeName$35get(), child: new theme$.Theme.new({data: theme, child: new scaffold.Scaffold.new({appBar: new app_bar.AppBar.new({leading: this.widget.delegate.buildLeading(context), title: new text_field.TextField.new({controller: this.widget.delegate[_queryTextController], focusNode: this.focusNode, style: theme.textTheme.headline6, textInputAction: this.widget.delegate.textInputAction, keyboardType: this.widget.delegate.keyboardType, onSubmitted: dart.fn(_ => {
+                    if (_ == null) dart.nullFailed(I[0], 574, 36, "_");
+                    this.widget.delegate.showResults(context);
+                  }, T$.StringTovoid()), decoration: new input_decorator.InputDecoration.new({hintText: searchFieldLabel}), $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), actions: this.widget.delegate.buildActions(context), bottom: this.widget.delegate.buildBottom(context), $creationLocationd_0dea112b090073317d4: C[38] || CT.C38}), body: new animated_switcher.AnimatedSwitcher.new({duration: C[4] || CT.C4, child: body, $creationLocationd_0dea112b090073317d4: C[44] || CT.C44}), $creationLocationd_0dea112b090073317d4: C[48] || CT.C48}), $creationLocationd_0dea112b090073317d4: C[52] || CT.C52}), $creationLocationd_0dea112b090073317d4: C[56] || CT.C56});
+      }
+    }
+    (_SearchPageState.new = function() {
+      this.focusNode = new focus_manager.FocusNode.new();
+      _SearchPageState.__proto__.new.call(this);
+      ;
+    }).prototype = _SearchPageState.prototype;
+    dart.addTypeTests(_SearchPageState);
+    _SearchPageState.prototype[_is__SearchPageState_default] = true;
+    dart.addTypeCaches(_SearchPageState);
+    dart.setMethodSignature(_SearchPageState, () => ({
+      __proto__: dart.getMethods(_SearchPageState.__proto__),
+      [_onAnimationStatusChanged]: dart.fnType(dart.void, [animation.AnimationStatus]),
+      [_onFocusChanged]: dart.fnType(dart.void, []),
+      [_onQueryChanged]: dart.fnType(dart.void, []),
+      [_onSearchBodyChanged]: dart.fnType(dart.void, []),
+      build: dart.fnType(framework.Widget, [framework.BuildContext])
+    }));
+    dart.setLibraryUri(_SearchPageState, I[1]);
+    dart.setFieldSignature(_SearchPageState, () => ({
+      __proto__: dart.getFields(_SearchPageState.__proto__),
+      focusNode: dart.fieldType(focus_manager.FocusNode)
+    }));
+    return _SearchPageState;
+  });
+  search._SearchPageState = search._SearchPageState$();
+  dart.addTypeTests(search._SearchPageState, _is__SearchPageState_default);
+  search.showSearch = function showSearch(T, opts) {
+    let t5;
+    let context = opts && 'context' in opts ? opts.context : null;
+    if (context == null) dart.nullFailed(I[0], 54, 25, "context");
+    let delegate = opts && 'delegate' in opts ? opts.delegate : null;
+    if (delegate == null) dart.nullFailed(I[0], 55, 30, "delegate");
+    let query = opts && 'query' in opts ? opts.query : "";
+    if (!(delegate != null)) dart.assertFailed(null, I[0], 58, 10, "delegate != null");
+    if (!(context != null)) dart.assertFailed(null, I[0], 59, 10, "context != null");
+    delegate.query = (t5 = query, t5 == null ? delegate.query : t5);
+    delegate[_currentBody] = search._SearchBody.suggestions;
+    return navigator.Navigator.of(context).push(T, new (search._SearchPageRoute$(T)).new({delegate: delegate}));
+  };
+  dart.trackLibraries("packages/flutter/src/material/search.dart", {
+    "package:flutter/src/material/search.dart": search
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["search.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/material/search.dart.lib.js"}');
+  // Exports:
+  return {
+    src__material__search: search
+  };
+}));
+
+//# sourceMappingURL=search.dart.lib.js.map

@@ -1,0 +1,4 @@
+#Sun Sep 05 17:48:06 ICT 2021
+base.0=C\:\\Users\\lenovo\\Documents\\Andoid Flutter\\Fooderlich2\\Fooderlich\\fooderlich\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
