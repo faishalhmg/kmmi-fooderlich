@@ -15,10 +15,8 @@ class _Search extends State<Search> {
       ),
     );
 
-    //Save the searchText to SharedPref so that next time you can use them as recent searches.
     await _saveToRecentSearches(searchText);
 
-    //Do something with searchText. Note: This is not a result.
   }
 
   Future<List<String>> _getRecentSearchesLike(String keywords) async {
@@ -28,14 +26,12 @@ class _Search extends State<Search> {
   }
 
   Future<void> _saveToRecentSearches(String searchText) async {
-    if (searchText == null) return; //Should not be null
+    if (searchText == null) return; 
     final pref = await SharedPreferences.getInstance();
 
-    //Use `Set` to avoid duplication of recentSearches
     Set<String> allSearches =
         pref.getStringList("recentSearches")?.toSet() ?? {};
 
-    //Place it at first in the set
     allSearches = {searchText, ...allSearches};
     pref.setStringList("recentSearches", allSearches.toList());
   }
