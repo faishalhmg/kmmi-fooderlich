@@ -1,205 +1,402 @@
-define(['dart_sdk', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/rendering/sliver_multi_box_adaptor.dart'], (function load__packages__flutter__src__rendering__sliver_list_dart(dart_sdk, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart) {
+define(['dart_sdk', 'packages/flutter/src/services/system_channels.dart'], (function load__packages__flutter__src__services__system_chrome_dart(dart_sdk, packages__flutter__src__services__system_channels$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const sliver = packages__flutter__src__rendering__sliver$46dart.src__rendering__sliver;
-  const sliver_multi_box_adaptor = packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart.src__rendering__sliver_multi_box_adaptor;
-  var sliver_list = Object.create(dart.library);
+  const system_channels = packages__flutter__src__services__system_channels$46dart.src__services__system_channels;
+  var system_chrome = Object.create(dart.library);
+  var $toString = dartx.toString;
+  var $runtimeType = dartx.runtimeType;
+  var $add = dartx.add;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))()
+    DeviceOrientationL: () => (T.DeviceOrientationL = dart.constFn(dart.legacy(system_chrome.DeviceOrientation)))(),
+    SystemUiOverlayL: () => (T.SystemUiOverlayL = dart.constFn(dart.legacy(system_chrome.SystemUiOverlay)))(),
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: system_chrome.DeviceOrientation.prototype,
+        [_name$]: "DeviceOrientation.portraitUp",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: system_chrome.DeviceOrientation.prototype,
+        [_name$]: "DeviceOrientation.landscapeLeft",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: system_chrome.DeviceOrientation.prototype,
+        [_name$]: "DeviceOrientation.portraitDown",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: system_chrome.DeviceOrientation.prototype,
+        [_name$]: "DeviceOrientation.landscapeRight",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3], T.DeviceOrientationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: system_chrome.SystemUiOverlay.prototype,
+        [_name$]: "SystemUiOverlay.top",
+        index: 0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: system_chrome.SystemUiOverlay.prototype,
+        [_name$]: "SystemUiOverlay.bottom",
+        index: 1
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([C[5] || CT.C5, C[6] || CT.C6], T.SystemUiOverlayL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Brightness.prototype,
+        [_name]: "Brightness.light",
+        index: 1
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: ui.Brightness.prototype,
+        [_name]: "Brightness.dark",
+        index: 0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: system_chrome.SystemUiOverlayStyle.prototype,
+        [statusBarIconBrightness$]: C[9] || CT.C9,
+        [statusBarBrightness$]: C[10] || CT.C10,
+        [statusBarColor$]: null,
+        [systemNavigationBarIconBrightness$]: C[9] || CT.C9,
+        [systemNavigationBarDividerColor$]: null,
+        [systemNavigationBarColor$]: C[11] || CT.C11
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: system_chrome.SystemUiOverlayStyle.prototype,
+        [statusBarIconBrightness$]: C[10] || CT.C10,
+        [statusBarBrightness$]: C[9] || CT.C9,
+        [statusBarColor$]: null,
+        [systemNavigationBarIconBrightness$]: C[9] || CT.C9,
+        [systemNavigationBarDividerColor$]: null,
+        [systemNavigationBarColor$]: C[11] || CT.C11
+      });
+    }
+  }, false);
+  var C = Array(13).fill(void 0);
   var I = [
-    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/rendering/sliver_list.dart",
-    "package:flutter/src/rendering/sliver_list.dart"
+    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/services/system_chrome.dart",
+    "package:flutter/src/services/system_chrome.dart"
   ];
-  sliver_list.RenderSliverList = class RenderSliverList extends sliver_multi_box_adaptor.RenderSliverMultiBoxAdaptor {
-    performLayout() {
-      let constraints = this.constraints;
-      this.childManager.didStartLayout();
-      this.childManager.setDidUnderflow(false);
-      let scrollOffset = dart.notNull(constraints.scrollOffset) + dart.notNull(constraints.cacheOrigin);
-      if (!(scrollOffset >= 0.0)) dart.assertFailed(null, I[0], 52, 12, "scrollOffset >= 0.0");
-      let remainingExtent = constraints.remainingCacheExtent;
-      if (!(dart.notNull(remainingExtent) >= 0.0)) dart.assertFailed(null, I[0], 54, 12, "remainingExtent >= 0.0");
-      let targetEndScrollOffset = scrollOffset + dart.notNull(remainingExtent);
-      let childConstraints = constraints.asBoxConstraints();
-      let leadingGarbage = 0;
-      let trailingGarbage = 0;
-      let reachedEnd = false;
-      if (this.firstChild == null) {
-        if (!dart.test(this.addInitialChild())) {
-          this.geometry = sliver.SliverGeometry.zero;
-          this.childManager.didFinishLayout();
-          return;
-        }
-      }
-      let leadingChildWithLayout = null;
-      let trailingChildWithLayout = null;
-      let earliestUsefulChild = this.firstChild;
-      if (this.childScrollOffset(dart.nullCheck(this.firstChild)) == null) {
-        let leadingChildrenWithoutLayoutOffset = 0;
-        while (earliestUsefulChild != null && this.childScrollOffset(earliestUsefulChild) == null) {
-          earliestUsefulChild = this.childAfter(earliestUsefulChild);
-          leadingChildrenWithoutLayoutOffset = leadingChildrenWithoutLayoutOffset + 1;
-        }
-        this.collectGarbage(leadingChildrenWithoutLayoutOffset, 0);
-        if (this.firstChild == null) {
-          if (!dart.test(this.addInitialChild())) {
-            this.geometry = sliver.SliverGeometry.zero;
-            this.childManager.didFinishLayout();
-            return;
-          }
-        }
-      }
-      earliestUsefulChild = this.firstChild;
-      for (let earliestScrollOffset = dart.nullCheck(this.childScrollOffset(dart.nullCheck(earliestUsefulChild))); earliestScrollOffset > scrollOffset; earliestScrollOffset = dart.nullCheck(this.childScrollOffset(earliestUsefulChild))) {
-        earliestUsefulChild = this.insertAndLayoutLeadingChild(childConstraints, {parentUsesSize: true});
-        if (earliestUsefulChild == null) {
-          let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(dart.nullCheck(this.firstChild).parentData));
-          childParentData.layoutOffset = 0.0;
-          if (scrollOffset === 0.0) {
-            dart.nullCheck(this.firstChild).layout(childConstraints, {parentUsesSize: true});
-            earliestUsefulChild = this.firstChild;
-            leadingChildWithLayout = earliestUsefulChild;
-            trailingChildWithLayout == null ? trailingChildWithLayout = earliestUsefulChild : null;
-            break;
-          } else {
-            this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: -scrollOffset});
-            return;
-          }
-        }
-        let firstChildScrollOffset = earliestScrollOffset - dart.notNull(this.paintExtentOf(dart.nullCheck(this.firstChild)));
-        if (firstChildScrollOffset < -1e-10) {
-          this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: -firstChildScrollOffset});
-          let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(dart.nullCheck(this.firstChild).parentData));
-          childParentData.layoutOffset = 0.0;
-          return;
-        }
-        let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(earliestUsefulChild.parentData));
-        childParentData.layoutOffset = firstChildScrollOffset;
-        if (!dart.equals(earliestUsefulChild, this.firstChild)) dart.assertFailed(null, I[0], 168, 14, "earliestUsefulChild == firstChild");
-        leadingChildWithLayout = earliestUsefulChild;
-        trailingChildWithLayout == null ? trailingChildWithLayout = earliestUsefulChild : null;
-      }
-      if (!(dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild))) > -1e-10)) dart.assertFailed(null, I[0], 173, 12, "childScrollOffset(firstChild!)! > -precisionErrorTolerance");
-      if (scrollOffset < 1e-10) {
-        while (dart.notNull(this.indexOf(dart.nullCheck(this.firstChild))) > 0) {
-          let earliestScrollOffset = dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild)));
-          earliestUsefulChild = this.insertAndLayoutLeadingChild(childConstraints, {parentUsesSize: true});
-          if (!(earliestUsefulChild != null)) dart.assertFailed(null, I[0], 186, 16, "earliestUsefulChild != null");
-          let firstChildScrollOffset = earliestScrollOffset - dart.notNull(this.paintExtentOf(dart.nullCheck(this.firstChild)));
-          let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(dart.nullCheck(this.firstChild).parentData));
-          childParentData.layoutOffset = 0.0;
-          if (firstChildScrollOffset < -1e-10) {
-            this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: -firstChildScrollOffset});
-            return;
-          }
-        }
-      }
-      if (!dart.equals(earliestUsefulChild, this.firstChild)) dart.assertFailed(null, I[0], 208, 12, "earliestUsefulChild == firstChild");
-      if (!(dart.nullCheck(this.childScrollOffset(dart.nullCheck(earliestUsefulChild))) <= scrollOffset)) dart.assertFailed(null, I[0], 209, 12, "childScrollOffset(earliestUsefulChild!)! <= scrollOffset");
-      if (leadingChildWithLayout == null) {
-        dart.nullCheck(earliestUsefulChild).layout(childConstraints, {parentUsesSize: true});
-        leadingChildWithLayout = earliestUsefulChild;
-        trailingChildWithLayout = earliestUsefulChild;
-      }
-      let inLayoutRange = true;
-      let child = earliestUsefulChild;
-      let index = this.indexOf(dart.nullCheck(child));
-      let endScrollOffset = dart.nullCheck(this.childScrollOffset(child)) + dart.notNull(this.paintExtentOf(child));
-      const advance = () => {
-        if (!(child != null)) dart.assertFailed(null, I[0], 229, 14, "child != null");
-        if (dart.equals(child, trailingChildWithLayout)) inLayoutRange = false;
-        child = this.childAfter(dart.nullCheck(child));
-        if (child == null) inLayoutRange = false;
-        index = dart.notNull(index) + 1;
-        if (!inLayoutRange) {
-          if (child == null || this.indexOf(dart.nullCheck(child)) != index) {
-            child = this.insertAndLayoutChild(childConstraints, {after: trailingChildWithLayout, parentUsesSize: true});
-            if (child == null) {
-              return false;
-            }
-          } else {
-            dart.nullCheck(child).layout(childConstraints, {parentUsesSize: true});
-          }
-          trailingChildWithLayout = child;
-        }
-        if (!(child != null)) dart.assertFailed(null, I[0], 253, 14, "child != null");
-        let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(dart.nullCheck(child).parentData));
-        childParentData.layoutOffset = endScrollOffset;
-        if (!(childParentData.index == index)) dart.assertFailed(null, I[0], 256, 14, "childParentData.index == index");
-        endScrollOffset = dart.nullCheck(this.childScrollOffset(dart.nullCheck(child))) + dart.notNull(this.paintExtentOf(dart.nullCheck(child)));
-        return true;
-      };
-      dart.fn(advance, T.VoidTobool());
-      while (endScrollOffset < scrollOffset) {
-        leadingGarbage = leadingGarbage + 1;
-        if (!dart.test(advance())) {
-          if (!(leadingGarbage === this.childCount)) dart.assertFailed(null, I[0], 265, 16, "leadingGarbage == childCount");
-          if (!(child == null)) dart.assertFailed(null, I[0], 266, 16, "child == null");
-          this.collectGarbage(leadingGarbage - 1, 0);
-          if (!dart.equals(this.firstChild, this.lastChild)) dart.assertFailed(null, I[0], 269, 16, "firstChild == lastChild");
-          let extent = dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.lastChild))) + dart.notNull(this.paintExtentOf(dart.nullCheck(this.lastChild)));
-          this.geometry = new sliver.SliverGeometry.new({scrollExtent: extent, paintExtent: 0.0, maxPaintExtent: extent});
-          return;
-        }
-      }
-      while (endScrollOffset < targetEndScrollOffset) {
-        if (!dart.test(advance())) {
-          reachedEnd = true;
-          break;
-        }
-      }
-      if (child != null) {
-        child = this.childAfter(dart.nullCheck(child));
-        while (child != null) {
-          trailingGarbage = trailingGarbage + 1;
-          child = this.childAfter(dart.nullCheck(child));
-        }
-      }
-      this.collectGarbage(leadingGarbage, trailingGarbage);
-      if (!dart.test(this.debugAssertChildListIsNonEmptyAndContiguous())) dart.assertFailed(null, I[0], 302, 12, "debugAssertChildListIsNonEmptyAndContiguous()");
-      let estimatedMaxScrollOffset = null;
-      if (reachedEnd) {
-        estimatedMaxScrollOffset = endScrollOffset;
-      } else {
-        estimatedMaxScrollOffset = this.childManager.estimateMaxScrollOffset(constraints, {firstIndex: this.indexOf(dart.nullCheck(this.firstChild)), lastIndex: this.indexOf(dart.nullCheck(this.lastChild)), leadingScrollOffset: this.childScrollOffset(dart.nullCheck(this.firstChild)), trailingScrollOffset: endScrollOffset});
-        if (!(dart.notNull(estimatedMaxScrollOffset) >= endScrollOffset - dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild))))) dart.assertFailed(null, I[0], 314, 14, "estimatedMaxScrollOffset >= endScrollOffset - childScrollOffset(firstChild!)!");
-      }
-      let paintExtent = this.calculatePaintOffset(constraints, {from: dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild))), to: endScrollOffset});
-      let cacheExtent = this.calculateCacheOffset(constraints, {from: dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild))), to: endScrollOffset});
-      let targetEndScrollOffsetForPaint = dart.notNull(constraints.scrollOffset) + dart.notNull(constraints.remainingPaintExtent);
-      this.geometry = new sliver.SliverGeometry.new({scrollExtent: estimatedMaxScrollOffset, paintExtent: paintExtent, cacheExtent: cacheExtent, maxPaintExtent: estimatedMaxScrollOffset, hasVisualOverflow: endScrollOffset > targetEndScrollOffsetForPaint || dart.notNull(constraints.scrollOffset) > 0.0});
-      if (estimatedMaxScrollOffset === endScrollOffset) this.childManager.setDidUnderflow(true);
-      this.childManager.didFinishLayout();
+  var _name$ = dart.privateName(system_chrome, "_name");
+  system_chrome.DeviceOrientation = class DeviceOrientation extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (sliver_list.RenderSliverList.new = function(opts) {
-    let childManager = opts && 'childManager' in opts ? opts.childManager : null;
-    if (childManager == null) dart.nullFailed(I[0], 42, 42, "childManager");
-    sliver_list.RenderSliverList.__proto__.new.call(this, {childManager: childManager});
+  (system_chrome.DeviceOrientation.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 31, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 31, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = sliver_list.RenderSliverList.prototype;
-  dart.addTypeTests(sliver_list.RenderSliverList);
-  dart.addTypeCaches(sliver_list.RenderSliverList);
-  dart.setMethodSignature(sliver_list.RenderSliverList, () => ({
-    __proto__: dart.getMethods(sliver_list.RenderSliverList.__proto__),
-    performLayout: dart.fnType(dart.void, [])
+  }).prototype = system_chrome.DeviceOrientation.prototype;
+  dart.addTypeTests(system_chrome.DeviceOrientation);
+  dart.addTypeCaches(system_chrome.DeviceOrientation);
+  dart.setLibraryUri(system_chrome.DeviceOrientation, I[1]);
+  dart.setFieldSignature(system_chrome.DeviceOrientation, () => ({
+    __proto__: dart.getFields(system_chrome.DeviceOrientation.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setLibraryUri(sliver_list.RenderSliverList, I[1]);
-  dart.trackLibraries("packages/flutter/src/rendering/sliver_list.dart", {
-    "package:flutter/src/rendering/sliver_list.dart": sliver_list
+  dart.defineExtensionMethods(system_chrome.DeviceOrientation, ['toString']);
+  system_chrome.DeviceOrientation.portraitUp = C[0] || CT.C0;
+  system_chrome.DeviceOrientation.landscapeLeft = C[1] || CT.C1;
+  system_chrome.DeviceOrientation.portraitDown = C[2] || CT.C2;
+  system_chrome.DeviceOrientation.landscapeRight = C[3] || CT.C3;
+  system_chrome.DeviceOrientation.values = C[4] || CT.C4;
+  var label$ = dart.privateName(system_chrome, "ApplicationSwitcherDescription.label");
+  var primaryColor$ = dart.privateName(system_chrome, "ApplicationSwitcherDescription.primaryColor");
+  system_chrome.ApplicationSwitcherDescription = class ApplicationSwitcherDescription extends core.Object {
+    get label() {
+      return this[label$];
+    }
+    set label(value) {
+      super.label = value;
+    }
+    get primaryColor() {
+      return this[primaryColor$];
+    }
+    set primaryColor(value) {
+      super.primaryColor = value;
+    }
+  };
+  (system_chrome.ApplicationSwitcherDescription.new = function(opts) {
+    let label = opts && 'label' in opts ? opts.label : null;
+    let primaryColor = opts && 'primaryColor' in opts ? opts.primaryColor : null;
+    this[label$] = label;
+    this[primaryColor$] = primaryColor;
+    ;
+  }).prototype = system_chrome.ApplicationSwitcherDescription.prototype;
+  dart.addTypeTests(system_chrome.ApplicationSwitcherDescription);
+  dart.addTypeCaches(system_chrome.ApplicationSwitcherDescription);
+  dart.setLibraryUri(system_chrome.ApplicationSwitcherDescription, I[1]);
+  dart.setFieldSignature(system_chrome.ApplicationSwitcherDescription, () => ({
+    __proto__: dart.getFields(system_chrome.ApplicationSwitcherDescription.__proto__),
+    label: dart.finalFieldType(dart.nullable(core.String)),
+    primaryColor: dart.finalFieldType(dart.nullable(core.int))
+  }));
+  system_chrome.SystemUiOverlay = class SystemUiOverlay extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (system_chrome.SystemUiOverlay.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 74, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 74, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = system_chrome.SystemUiOverlay.prototype;
+  dart.addTypeTests(system_chrome.SystemUiOverlay);
+  dart.addTypeCaches(system_chrome.SystemUiOverlay);
+  dart.setLibraryUri(system_chrome.SystemUiOverlay, I[1]);
+  dart.setFieldSignature(system_chrome.SystemUiOverlay, () => ({
+    __proto__: dart.getFields(system_chrome.SystemUiOverlay.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(system_chrome.SystemUiOverlay, ['toString']);
+  system_chrome.SystemUiOverlay.top = C[5] || CT.C5;
+  system_chrome.SystemUiOverlay.bottom = C[6] || CT.C6;
+  system_chrome.SystemUiOverlay.values = C[7] || CT.C7;
+  var systemNavigationBarColor$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarColor");
+  var systemNavigationBarDividerColor$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarDividerColor");
+  var systemNavigationBarIconBrightness$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarIconBrightness");
+  var statusBarColor$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.statusBarColor");
+  var statusBarBrightness$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.statusBarBrightness");
+  var statusBarIconBrightness$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.statusBarIconBrightness");
+  var _toMap = dart.privateName(system_chrome, "_toMap");
+  var _name = dart.privateName(ui, "_name");
+  var Color_value = dart.privateName(ui, "Color.value");
+  system_chrome.SystemUiOverlayStyle = class SystemUiOverlayStyle extends core.Object {
+    get systemNavigationBarColor() {
+      return this[systemNavigationBarColor$];
+    }
+    set systemNavigationBarColor(value) {
+      super.systemNavigationBarColor = value;
+    }
+    get systemNavigationBarDividerColor() {
+      return this[systemNavigationBarDividerColor$];
+    }
+    set systemNavigationBarDividerColor(value) {
+      super.systemNavigationBarDividerColor = value;
+    }
+    get systemNavigationBarIconBrightness() {
+      return this[systemNavigationBarIconBrightness$];
+    }
+    set systemNavigationBarIconBrightness(value) {
+      super.systemNavigationBarIconBrightness = value;
+    }
+    get statusBarColor() {
+      return this[statusBarColor$];
+    }
+    set statusBarColor(value) {
+      super.statusBarColor = value;
+    }
+    get statusBarBrightness() {
+      return this[statusBarBrightness$];
+    }
+    set statusBarBrightness(value) {
+      super.statusBarBrightness = value;
+    }
+    get statusBarIconBrightness() {
+      return this[statusBarIconBrightness$];
+    }
+    set statusBarIconBrightness(value) {
+      super.statusBarIconBrightness = value;
+    }
+    [_toMap]() {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      return new (T.IdentityMapOfString$dynamic()).from(["systemNavigationBarColor", (t0 = this.systemNavigationBarColor, t0 == null ? null : t0.value), "systemNavigationBarDividerColor", (t0$ = this.systemNavigationBarDividerColor, t0$ == null ? null : t0$.value), "statusBarColor", (t0$0 = this.statusBarColor, t0$0 == null ? null : t0$0.value), "statusBarBrightness", (t0$1 = this.statusBarBrightness, t0$1 == null ? null : dart.toString(t0$1)), "statusBarIconBrightness", (t0$2 = this.statusBarIconBrightness, t0$2 == null ? null : dart.toString(t0$2)), "systemNavigationBarIconBrightness", (t0$3 = this.systemNavigationBarIconBrightness, t0$3 == null ? null : dart.toString(t0$3))]);
+    }
+    toString() {
+      return dart.toString(this[_toMap]());
+    }
+    copyWith(opts) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      let systemNavigationBarColor = opts && 'systemNavigationBarColor' in opts ? opts.systemNavigationBarColor : null;
+      let systemNavigationBarDividerColor = opts && 'systemNavigationBarDividerColor' in opts ? opts.systemNavigationBarDividerColor : null;
+      let statusBarColor = opts && 'statusBarColor' in opts ? opts.statusBarColor : null;
+      let statusBarBrightness = opts && 'statusBarBrightness' in opts ? opts.statusBarBrightness : null;
+      let statusBarIconBrightness = opts && 'statusBarIconBrightness' in opts ? opts.statusBarIconBrightness : null;
+      let systemNavigationBarIconBrightness = opts && 'systemNavigationBarIconBrightness' in opts ? opts.systemNavigationBarIconBrightness : null;
+      return new system_chrome.SystemUiOverlayStyle.new({systemNavigationBarColor: (t0 = systemNavigationBarColor, t0 == null ? this.systemNavigationBarColor : t0), systemNavigationBarDividerColor: (t0$ = systemNavigationBarDividerColor, t0$ == null ? this.systemNavigationBarDividerColor : t0$), statusBarColor: (t0$0 = statusBarColor, t0$0 == null ? this.statusBarColor : t0$0), statusBarIconBrightness: (t0$1 = statusBarIconBrightness, t0$1 == null ? this.statusBarIconBrightness : t0$1), statusBarBrightness: (t0$2 = statusBarBrightness, t0$2 == null ? this.statusBarBrightness : t0$2), systemNavigationBarIconBrightness: (t0$3 = systemNavigationBarIconBrightness, t0$3 == null ? this.systemNavigationBarIconBrightness : t0$3)});
+    }
+    get hashCode() {
+      return ui.hashValues(this.systemNavigationBarColor, this.systemNavigationBarDividerColor, this.statusBarColor, this.statusBarBrightness, this.statusBarIconBrightness, this.systemNavigationBarIconBrightness);
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
+      return system_chrome.SystemUiOverlayStyle.is(other) && dart.equals(other.systemNavigationBarColor, this.systemNavigationBarColor) && dart.equals(other.systemNavigationBarDividerColor, this.systemNavigationBarDividerColor) && dart.equals(other.statusBarColor, this.statusBarColor) && other.statusBarIconBrightness == this.statusBarIconBrightness && other.statusBarBrightness == this.statusBarBrightness && other.systemNavigationBarIconBrightness == this.systemNavigationBarIconBrightness;
+    }
+  };
+  (system_chrome.SystemUiOverlayStyle.new = function(opts) {
+    let systemNavigationBarColor = opts && 'systemNavigationBarColor' in opts ? opts.systemNavigationBarColor : null;
+    let systemNavigationBarDividerColor = opts && 'systemNavigationBarDividerColor' in opts ? opts.systemNavigationBarDividerColor : null;
+    let systemNavigationBarIconBrightness = opts && 'systemNavigationBarIconBrightness' in opts ? opts.systemNavigationBarIconBrightness : null;
+    let statusBarColor = opts && 'statusBarColor' in opts ? opts.statusBarColor : null;
+    let statusBarBrightness = opts && 'statusBarBrightness' in opts ? opts.statusBarBrightness : null;
+    let statusBarIconBrightness = opts && 'statusBarIconBrightness' in opts ? opts.statusBarIconBrightness : null;
+    this[systemNavigationBarColor$] = systemNavigationBarColor;
+    this[systemNavigationBarDividerColor$] = systemNavigationBarDividerColor;
+    this[systemNavigationBarIconBrightness$] = systemNavigationBarIconBrightness;
+    this[statusBarColor$] = statusBarColor;
+    this[statusBarBrightness$] = statusBarBrightness;
+    this[statusBarIconBrightness$] = statusBarIconBrightness;
+    ;
+  }).prototype = system_chrome.SystemUiOverlayStyle.prototype;
+  dart.addTypeTests(system_chrome.SystemUiOverlayStyle);
+  dart.addTypeCaches(system_chrome.SystemUiOverlayStyle);
+  dart.setMethodSignature(system_chrome.SystemUiOverlayStyle, () => ({
+    __proto__: dart.getMethods(system_chrome.SystemUiOverlayStyle.__proto__),
+    [_toMap]: dart.fnType(core.Map$(core.String, dart.dynamic), []),
+    copyWith: dart.fnType(system_chrome.SystemUiOverlayStyle, [], {statusBarBrightness: dart.nullable(ui.Brightness), statusBarColor: dart.nullable(ui.Color), statusBarIconBrightness: dart.nullable(ui.Brightness), systemNavigationBarColor: dart.nullable(ui.Color), systemNavigationBarDividerColor: dart.nullable(ui.Color), systemNavigationBarIconBrightness: dart.nullable(ui.Brightness)}, {})
+  }));
+  dart.setLibraryUri(system_chrome.SystemUiOverlayStyle, I[1]);
+  dart.setFieldSignature(system_chrome.SystemUiOverlayStyle, () => ({
+    __proto__: dart.getFields(system_chrome.SystemUiOverlayStyle.__proto__),
+    systemNavigationBarColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    systemNavigationBarDividerColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    systemNavigationBarIconBrightness: dart.finalFieldType(dart.nullable(ui.Brightness)),
+    statusBarColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    statusBarBrightness: dart.finalFieldType(dart.nullable(ui.Brightness)),
+    statusBarIconBrightness: dart.finalFieldType(dart.nullable(ui.Brightness))
+  }));
+  dart.defineExtensionMethods(system_chrome.SystemUiOverlayStyle, ['toString', '_equals']);
+  dart.defineExtensionAccessors(system_chrome.SystemUiOverlayStyle, ['hashCode']);
+  dart.defineLazy(system_chrome.SystemUiOverlayStyle, {
+    /*system_chrome.SystemUiOverlayStyle.light*/get light() {
+      return C[8] || CT.C8;
+    },
+    /*system_chrome.SystemUiOverlayStyle.dark*/get dark() {
+      return C[12] || CT.C12;
+    }
+  }, false);
+  system_chrome.SystemChrome = class SystemChrome extends core.Object {
+    static setPreferredOrientations(orientations) {
+      if (orientations == null) dart.nullFailed(I[0], 241, 72, "orientations");
+      return async.async(dart.void, function* setPreferredOrientations() {
+        yield system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.setPreferredOrientations", system_chrome._stringify(orientations));
+      });
+    }
+    static setApplicationSwitcherDescription(description) {
+      if (description == null) dart.nullFailed(I[0], 253, 88, "description");
+      return async.async(dart.void, function* setApplicationSwitcherDescription() {
+        yield system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.setApplicationSwitcherDescription", new (T.IdentityMapOfString$dynamic()).from(["label", description.label, "primaryColor", description.primaryColor]));
+      });
+    }
+    static setEnabledSystemUIOverlays(overlays) {
+      if (overlays == null) dart.nullFailed(I[0], 285, 72, "overlays");
+      return async.async(dart.void, function* setEnabledSystemUIOverlays() {
+        yield system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.setEnabledSystemUIOverlays", system_chrome._stringify(overlays));
+      });
+    }
+    static restoreSystemUIOverlays() {
+      return async.async(dart.void, function* restoreSystemUIOverlays() {
+        yield system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.restoreSystemUIOverlays", null);
+      });
+    }
+    static setSystemUIOverlayStyle(style) {
+      if (style == null) dart.nullFailed(I[0], 394, 60, "style");
+      if (!(style != null)) dart.assertFailed(null, I[0], 395, 12, "style != null");
+      if (system_chrome.SystemChrome._pendingStyle != null) {
+        system_chrome.SystemChrome._pendingStyle = style;
+        return;
+      }
+      if (dart.equals(style, system_chrome.SystemChrome._latestStyle)) {
+        return;
+      }
+      system_chrome.SystemChrome._pendingStyle = style;
+      async.scheduleMicrotask(dart.fn(() => {
+        if (!(system_chrome.SystemChrome._pendingStyle != null)) dart.assertFailed(null, I[0], 408, 14, "_pendingStyle != null");
+        if (!dart.equals(system_chrome.SystemChrome._pendingStyle, system_chrome.SystemChrome._latestStyle)) {
+          system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.setSystemUIOverlayStyle", dart.nullCheck(system_chrome.SystemChrome._pendingStyle)[_toMap]());
+          system_chrome.SystemChrome._latestStyle = system_chrome.SystemChrome._pendingStyle;
+        }
+        system_chrome.SystemChrome._pendingStyle = null;
+      }, T.VoidTovoid()));
+    }
+    static get latestStyle() {
+      return system_chrome.SystemChrome._latestStyle;
+    }
+  };
+  (system_chrome.SystemChrome.__ = function() {
+    ;
+  }).prototype = system_chrome.SystemChrome.prototype;
+  dart.addTypeTests(system_chrome.SystemChrome);
+  dart.addTypeCaches(system_chrome.SystemChrome);
+  dart.setLibraryUri(system_chrome.SystemChrome, I[1]);
+  dart.defineLazy(system_chrome.SystemChrome, {
+    /*system_chrome.SystemChrome._pendingStyle*/get _pendingStyle() {
+      return null;
+    },
+    set _pendingStyle(_) {},
+    /*system_chrome.SystemChrome._latestStyle*/get _latestStyle() {
+      return null;
+    },
+    set _latestStyle(_) {}
+  }, false);
+  system_chrome._stringify = function _stringify(list) {
+    if (list == null) dart.nullFailed(I[0], 213, 39, "list");
+    return (() => {
+      let t0 = T.JSArrayOfString().of([]);
+      for (let item of list)
+        t0[$add](dart.toString(item));
+      return t0;
+    })();
+  };
+  dart.trackLibraries("packages/flutter/src/services/system_chrome.dart", {
+    "package:flutter/src/services/system_chrome.dart": system_chrome
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["sliver_list.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/rendering/sliver_list.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["system_chrome.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAgDA;;;QAlBK;;;;;EAkBL;;;;;;;;;;;;;;;;;;IAagB;;;;;;IAMH;;;;;;;;QATiC;QAAY;IAAZ;IAAY;;EAAe;;;;;;;;;;;;IAuBzE;;;QARK;;;;;EAQL;;;;;;;;;;;;;;;;;;;;;;;IAoBe;;;;;;IAKA;;;;;;IAOK;;;;;;IAKL;;;;;;IAKK;;;;;;IAKA;;;;;;;;AA0BhB,YAAwB,6CACtB,8EAA4B,OAA0B,WACtD,8FAAmC,OAAiC,YACpE,8DAAkB,OAAgB,aAClC,wEAAuB,OAAqB,sBAC5C,gFAA2B,OAAyB,sBACpD,oGAAqC,OAAmC;IAE5E;;AAGqB,YAAS,eAAT;IAAmB;;;UAI/B;UACA;UACA;UACK;UACA;UACA;AAEZ,YAAO,wEAC8C,KAAzB,wBAAwB,EAAxB,aAAiC,uEACM,MAAhC,+BAA+B,EAA/B,cAAwC,8DAC1C,OAAf,cAAc,EAAd,eAAuB,uDACU,OAAxB,uBAAuB,EAAvB,eAAgC,4DAChB,OAApB,mBAAmB,EAAnB,eAA4B,sEACoB,OAAlC,iCAAiC,EAAjC,eAA0C;IAEjF;;AAIE,YAAO,eACL,+BACA,sCACA,qBACA,0BACA,8BACA;IAEJ;;UAGwB;AACtB,uBAAU,iBAAN,KAAK,GAAgB,qBACvB,MAAO;AACT,YAAa,AAMT,uCANG,KAAK,KAC0B,YAA/B,AAAM,KAAD,2BAA6B,kCACI,YAAtC,AAAM,KAAD,kCAAoC,yCACpB,YAArB,AAAM,KAAD,iBAAmB,wBACxB,AAAM,AAAwB,KAAzB,4BAA4B,gCACjC,AAAM,AAAoB,KAArB,wBAAwB,4BAC7B,AAAM,AAAkC,KAAnC,sCAAsC;IACpD;;;QAvHO;QACA;QACA;QACA;QACA;QACA;IALA;IACA;IACA;IACA;IACA;IACA;;EACL;;;;;;;;;;;;;;;;;;;;;MAoCgC,wCAAK;;;MAWL,uCAAI;;;;;;UAiG+B;AAAzB;AAIzC,QAHD,MAAqB,AAAS,gEAC5B,yCACA,yBAAW,YAAY;MAE3B;;;UAOqF;AAAhC;AAOlD,QAND,MAAqB,AAAS,gEAC5B,kDACiB,4CACf,SAAS,AAAY,WAAD,QACpB,gBAAgB,AAAY,WAAD;MAGjC;;;UAwBqE;AAAvB;AAI3C,QAHD,MAAqB,AAAS,gEAC5B,2CACA,yBAAW,QAAQ;MAEvB;;;AAW2C;AAIxC,QAHD,MAAqB,AAAS,gEAC5B,wCACA;MAEJ;;;UAwFyD;AACvD,YAAO,AAAM,KAAD;AACZ,UAAI;AAEmB,QAArB,2CAAgB,KAAK;AACrB;;AAEF,UAAU,YAAN,KAAK,EAAI;AAGX;;AAEmB,MAArB,2CAAgB,KAAK;AAWnB,MAVF,wBAAkB;AAChB,cAAO,AAAc;AACrB,yBAAI,0CAAiB;AAIlB,UAHc,AAAS,gEACtB,wCACa,AAAE,eAAf;AAE0B,UAA5B,0CAAe;;AAEG,QAApB,2CAAgB;;IAEpB;;AAMgD;IAAY;;;;EA1M5C;;;;;MAsMa,wCAAa;;;;MAKb,uCAAY;;;;;;QApNL;AAAS,UAAQ;;AACrD,eAAmB,OAAQ,KAAI;AAAO,+BAAL,IAAI;;;EACtC","file":"../../../../../../../../../packages/flutter/src/services/system_chrome.dart.lib.js"}');
   // Exports:
   return {
-    src__rendering__sliver_list: sliver_list
+    src__services__system_chrome: system_chrome
   };
 }));
 
-//# sourceMappingURL=sliver_list.dart.lib.js.map
+//# sourceMappingURL=system_chrome.dart.lib.js.map

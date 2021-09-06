@@ -1,486 +1,424 @@
-define(['dart_sdk', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__widgets__safe_area_dart(dart_sdk, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/gestures/lsq_solver.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__gestures__velocity_tracker_dart(dart_sdk, packages__flutter__src__gestures__lsq_solver$46dart, packages__flutter__src__foundation__debug$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const math = dart_sdk.math;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const debug = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
-  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var safe_area = Object.create(dart.library);
+  const lsq_solver = packages__flutter__src__gestures__lsq_solver$46dart.src__gestures__lsq_solver;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  var velocity_tracker = Object.create(dart.library);
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $_set = dartx._set;
+  var $_get = dartx._get;
+  var $toDouble = dartx.toDouble;
+  var $abs = dartx.abs;
+  var $add = dartx.add;
+  var $modulo = dartx['%'];
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+    _PointAtTimeN: () => (T._PointAtTimeN = dart.constFn(dart.nullable(velocity_tracker._PointAtTime)))(),
+    ListOf_PointAtTimeN: () => (T.ListOf_PointAtTimeN = dart.constFn(core.List$(T._PointAtTimeN())))(),
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: edge_insets.EdgeInsets.prototype,
-        [EdgeInsets_bottom]: 0,
-        [EdgeInsets_right]: 0,
-        [EdgeInsets_top]: 0,
-        [EdgeInsets_left]: 0
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 0,
+        [OffsetBase__dx]: 0
       });
     },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "context",
-        [_Location_column]: 9,
-        [_Location_line]: 112,
-        [_Location_file]: null
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: velocity_tracker.Velocity.prototype,
+        [pixelsPerSecond$]: C[1] || CT.C1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: ui.PointerDeviceKind.prototype,
+        [_name]: "PointerDeviceKind.touch",
+        index: 0
       });
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeLeft",
-        [_Location_column]: 9,
-        [_Location_line]: 113,
-        [_Location_file]: null
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 0
       });
     },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeTop",
-        [_Location_column]: 9,
-        [_Location_line]: 114,
-        [_Location_file]: null
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeRight",
-        [_Location_column]: 9,
-        [_Location_line]: 115,
-        [_Location_file]: null
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeBottom",
-        [_Location_column]: 9,
-        [_Location_line]: 116,
-        [_Location_file]: null
-      });
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 117,
-        [_Location_file]: null
-      });
-    },
-    get C2() {
-      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[2] || CT.C2,
-        [_Location_name]: null,
-        [_Location_column]: 25,
-        [_Location_line]: 111,
-        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 7,
-        [_Location_line]: 105,
-        [_Location_file]: null
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 111,
-        [_Location_file]: null
-      });
-    },
-    get C10() {
-      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[10] || CT.C10,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 104,
-        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "context",
-        [_Location_column]: 9,
-        [_Location_line]: 206,
-        [_Location_file]: null
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeLeft",
-        [_Location_column]: 9,
-        [_Location_line]: 207,
-        [_Location_file]: null
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeTop",
-        [_Location_column]: 9,
-        [_Location_line]: 208,
-        [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeRight",
-        [_Location_column]: 9,
-        [_Location_line]: 209,
-        [_Location_file]: null
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeBottom",
-        [_Location_column]: 9,
-        [_Location_line]: 210,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 211,
-        [_Location_file]: null
-      });
-    },
-    get C14() {
-      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], T._LocationL());
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[14] || CT.C14,
-        [_Location_name]: null,
-        [_Location_column]: 26,
-        [_Location_line]: 205,
-        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
-      });
-    },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 7,
-        [_Location_line]: 199,
-        [_Location_file]: null
-      });
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "sliver",
-        [_Location_column]: 7,
-        [_Location_line]: 205,
-        [_Location_file]: null
-      });
-    },
-    get C22() {
-      return C[22] = dart.constList([C[23] || CT.C23, C[24] || CT.C24], T._LocationL());
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[22] || CT.C22,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 198,
-        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: velocity_tracker.VelocityEstimate.prototype,
+        [offset$]: C[1] || CT.C1,
+        [duration$]: C[4] || CT.C4,
+        [confidence$]: 0,
+        [pixelsPerSecond$0]: C[1] || CT.C1
       });
     }
   }, false);
-  var C = Array(25).fill(void 0);
+  var C = Array(5).fill(void 0);
   var I = [
-    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/widgets/safe_area.dart",
-    "package:flutter/src/widgets/safe_area.dart"
+    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/gestures/velocity_tracker.dart",
+    "package:flutter/src/gestures/velocity_tracker.dart"
   ];
-  var left$ = dart.privateName(safe_area, "SafeArea.left");
-  var top$ = dart.privateName(safe_area, "SafeArea.top");
-  var right$ = dart.privateName(safe_area, "SafeArea.right");
-  var bottom$ = dart.privateName(safe_area, "SafeArea.bottom");
-  var minimum$ = dart.privateName(safe_area, "SafeArea.minimum");
-  var maintainBottomViewPadding$ = dart.privateName(safe_area, "SafeArea.maintainBottomViewPadding");
-  var child$ = dart.privateName(safe_area, "SafeArea.child");
-  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
-  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
-  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
-  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  safe_area.SafeArea = class SafeArea extends framework.StatelessWidget {
-    get left() {
-      return this[left$];
+  var pixelsPerSecond$ = dart.privateName(velocity_tracker, "Velocity.pixelsPerSecond");
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  velocity_tracker.Velocity = class Velocity extends core.Object {
+    get pixelsPerSecond() {
+      return this[pixelsPerSecond$];
     }
-    set left(value) {
-      super.left = value;
+    set pixelsPerSecond(value) {
+      super.pixelsPerSecond = value;
     }
-    get top() {
-      return this[top$];
+    _negate() {
+      return new velocity_tracker.Velocity.new({pixelsPerSecond: this.pixelsPerSecond._negate()});
     }
-    set top(value) {
-      super.top = value;
+    ['-'](other) {
+      if (other == null) dart.nullFailed(I[0], 33, 32, "other");
+      return new velocity_tracker.Velocity.new({pixelsPerSecond: this.pixelsPerSecond['-'](other.pixelsPerSecond)});
     }
-    get right() {
-      return this[right$];
+    ['+'](other) {
+      if (other == null) dart.nullFailed(I[0], 38, 32, "other");
+      return new velocity_tracker.Velocity.new({pixelsPerSecond: this.pixelsPerSecond['+'](other.pixelsPerSecond)});
     }
-    set right(value) {
-      super.right = value;
+    clampMagnitude(minValue, maxValue) {
+      if (minValue == null) dart.nullFailed(I[0], 52, 34, "minValue");
+      if (maxValue == null) dart.nullFailed(I[0], 52, 51, "maxValue");
+      if (!(minValue != null && dart.notNull(minValue) >= 0.0)) dart.assertFailed(null, I[0], 53, 12, "minValue != null && minValue >= 0.0");
+      if (!(maxValue != null && dart.notNull(maxValue) >= 0.0 && dart.notNull(maxValue) >= dart.notNull(minValue))) dart.assertFailed(null, I[0], 54, 12, "maxValue != null && maxValue >= 0.0 && maxValue >= minValue");
+      let valueSquared = this.pixelsPerSecond.distanceSquared;
+      if (dart.notNull(valueSquared) > dart.notNull(maxValue) * dart.notNull(maxValue)) return new velocity_tracker.Velocity.new({pixelsPerSecond: this.pixelsPerSecond['/'](this.pixelsPerSecond.distance)['*'](maxValue)});
+      if (dart.notNull(valueSquared) < dart.notNull(minValue) * dart.notNull(minValue)) return new velocity_tracker.Velocity.new({pixelsPerSecond: this.pixelsPerSecond['/'](this.pixelsPerSecond.distance)['*'](minValue)});
+      return this;
     }
-    get bottom() {
-      return this[bottom$];
+    _equals(other) {
+      if (other == null) return false;
+      return velocity_tracker.Velocity.is(other) && dart.equals(other.pixelsPerSecond, this.pixelsPerSecond);
     }
-    set bottom(value) {
-      super.bottom = value;
+    get hashCode() {
+      return dart.hashCode(this.pixelsPerSecond);
     }
-    get minimum() {
-      return this[minimum$];
-    }
-    set minimum(value) {
-      super.minimum = value;
-    }
-    get maintainBottomViewPadding() {
-      return this[maintainBottomViewPadding$];
-    }
-    set maintainBottomViewPadding(value) {
-      super.maintainBottomViewPadding = value;
-    }
-    get child() {
-      return this[child$];
-    }
-    set child(value) {
-      super.child = value;
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 96, 29, "context");
-      if (!dart.test(debug.debugCheckHasMediaQuery(context))) dart.assertFailed(null, I[0], 97, 12, "debugCheckHasMediaQuery(context)");
-      let data = media_query.MediaQuery.of(context);
-      let padding = data.padding;
-      if (data.padding.bottom === 0.0 && data.viewInsets.bottom !== 0.0 && dart.test(this.maintainBottomViewPadding)) padding = padding.copyWith({bottom: data.viewPadding.bottom});
-      return new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({left: math.max(core.double, dart.test(this.left) ? padding.left : 0.0, this.minimum.left), top: math.max(core.double, dart.test(this.top) ? padding.top : 0.0, this.minimum.top), right: math.max(core.double, dart.test(this.right) ? padding.right : 0.0, this.minimum.right), bottom: math.max(core.double, dart.test(this.bottom) ? padding.bottom : 0.0, this.minimum.bottom)}), child: media_query.MediaQuery.removePadding({context: context, removeLeft: this.left, removeTop: this.top, removeRight: this.right, removeBottom: this.bottom, child: this.child, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 123, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.FlagProperty.new("left", {value: this.left, ifTrue: "avoid left padding"}));
-      properties.add(new diagnostics.FlagProperty.new("top", {value: this.top, ifTrue: "avoid top padding"}));
-      properties.add(new diagnostics.FlagProperty.new("right", {value: this.right, ifTrue: "avoid right padding"}));
-      properties.add(new diagnostics.FlagProperty.new("bottom", {value: this.bottom, ifTrue: "avoid bottom padding"}));
+    toString() {
+      return "Velocity(" + this.pixelsPerSecond.dx[$toStringAsFixed](1) + ", " + this.pixelsPerSecond.dy[$toStringAsFixed](1) + ")";
     }
   };
-  (safe_area.SafeArea.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let left = opts && 'left' in opts ? opts.left : true;
-    if (left == null) dart.nullFailed(I[0], 43, 10, "left");
-    let top = opts && 'top' in opts ? opts.top : true;
-    if (top == null) dart.nullFailed(I[0], 44, 10, "top");
-    let right = opts && 'right' in opts ? opts.right : true;
-    if (right == null) dart.nullFailed(I[0], 45, 10, "right");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : true;
-    if (bottom == null) dart.nullFailed(I[0], 46, 10, "bottom");
-    let minimum = opts && 'minimum' in opts ? opts.minimum : C[0] || CT.C0;
-    if (minimum == null) dart.nullFailed(I[0], 47, 10, "minimum");
-    let maintainBottomViewPadding = opts && 'maintainBottomViewPadding' in opts ? opts.maintainBottomViewPadding : false;
-    if (maintainBottomViewPadding == null) dart.nullFailed(I[0], 48, 10, "maintainBottomViewPadding");
-    let child = opts && 'child' in opts ? opts.child : null;
-    if (child == null) dart.nullFailed(I[0], 49, 19, "child");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[left$] = left;
-    this[top$] = top;
-    this[right$] = right;
-    this[bottom$] = bottom;
-    this[minimum$] = minimum;
-    this[maintainBottomViewPadding$] = maintainBottomViewPadding;
-    this[child$] = child;
-    if (!(left != null)) dart.assertFailed(null, I[0], 50, 15, "left != null");
-    if (!(top != null)) dart.assertFailed(null, I[0], 51, 15, "top != null");
-    if (!(right != null)) dart.assertFailed(null, I[0], 52, 15, "right != null");
-    if (!(bottom != null)) dart.assertFailed(null, I[0], 53, 15, "bottom != null");
-    safe_area.SafeArea.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (velocity_tracker.Velocity.new = function(opts) {
+    let pixelsPerSecond = opts && 'pixelsPerSecond' in opts ? opts.pixelsPerSecond : null;
+    if (pixelsPerSecond == null) dart.nullFailed(I[0], 20, 19, "pixelsPerSecond");
+    this[pixelsPerSecond$] = pixelsPerSecond;
+    if (!(pixelsPerSecond != null)) dart.assertFailed(null, I[0], 21, 15, "pixelsPerSecond != null");
     ;
-  }).prototype = safe_area.SafeArea.prototype;
-  dart.addTypeTests(safe_area.SafeArea);
-  dart.addTypeCaches(safe_area.SafeArea);
-  dart.setMethodSignature(safe_area.SafeArea, () => ({
-    __proto__: dart.getMethods(safe_area.SafeArea.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = velocity_tracker.Velocity.prototype;
+  dart.addTypeTests(velocity_tracker.Velocity);
+  dart.addTypeCaches(velocity_tracker.Velocity);
+  dart.setMethodSignature(velocity_tracker.Velocity, () => ({
+    __proto__: dart.getMethods(velocity_tracker.Velocity.__proto__),
+    _negate: dart.fnType(velocity_tracker.Velocity, []),
+    '-': dart.fnType(velocity_tracker.Velocity, [velocity_tracker.Velocity]),
+    '+': dart.fnType(velocity_tracker.Velocity, [velocity_tracker.Velocity]),
+    clampMagnitude: dart.fnType(velocity_tracker.Velocity, [core.double, core.double])
   }));
-  dart.setLibraryUri(safe_area.SafeArea, I[1]);
-  dart.setFieldSignature(safe_area.SafeArea, () => ({
-    __proto__: dart.getFields(safe_area.SafeArea.__proto__),
-    left: dart.finalFieldType(core.bool),
-    top: dart.finalFieldType(core.bool),
-    right: dart.finalFieldType(core.bool),
-    bottom: dart.finalFieldType(core.bool),
-    minimum: dart.finalFieldType(edge_insets.EdgeInsets),
-    maintainBottomViewPadding: dart.finalFieldType(core.bool),
-    child: dart.finalFieldType(framework.Widget)
+  dart.setLibraryUri(velocity_tracker.Velocity, I[1]);
+  dart.setFieldSignature(velocity_tracker.Velocity, () => ({
+    __proto__: dart.getFields(velocity_tracker.Velocity.__proto__),
+    pixelsPerSecond: dart.finalFieldType(ui.Offset)
   }));
-  var left$0 = dart.privateName(safe_area, "SliverSafeArea.left");
-  var top$0 = dart.privateName(safe_area, "SliverSafeArea.top");
-  var right$0 = dart.privateName(safe_area, "SliverSafeArea.right");
-  var bottom$0 = dart.privateName(safe_area, "SliverSafeArea.bottom");
-  var minimum$0 = dart.privateName(safe_area, "SliverSafeArea.minimum");
-  var sliver$ = dart.privateName(safe_area, "SliverSafeArea.sliver");
-  safe_area.SliverSafeArea = class SliverSafeArea extends framework.StatelessWidget {
-    get left() {
-      return this[left$0];
+  dart.defineExtensionMethods(velocity_tracker.Velocity, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(velocity_tracker.Velocity, ['hashCode']);
+  dart.defineLazy(velocity_tracker.Velocity, {
+    /*velocity_tracker.Velocity.zero*/get zero() {
+      return C[0] || CT.C0;
     }
-    set left(value) {
-      super.left = value;
+  }, false);
+  var pixelsPerSecond$0 = dart.privateName(velocity_tracker, "VelocityEstimate.pixelsPerSecond");
+  var confidence$ = dart.privateName(velocity_tracker, "VelocityEstimate.confidence");
+  var duration$ = dart.privateName(velocity_tracker, "VelocityEstimate.duration");
+  var offset$ = dart.privateName(velocity_tracker, "VelocityEstimate.offset");
+  velocity_tracker.VelocityEstimate = class VelocityEstimate extends core.Object {
+    get pixelsPerSecond() {
+      return this[pixelsPerSecond$0];
     }
-    get top() {
-      return this[top$0];
+    set pixelsPerSecond(value) {
+      super.pixelsPerSecond = value;
     }
-    set top(value) {
-      super.top = value;
+    get confidence() {
+      return this[confidence$];
     }
-    get right() {
-      return this[right$0];
+    set confidence(value) {
+      super.confidence = value;
     }
-    set right(value) {
-      super.right = value;
+    get duration() {
+      return this[duration$];
     }
-    get bottom() {
-      return this[bottom$0];
+    set duration(value) {
+      super.duration = value;
     }
-    set bottom(value) {
-      super.bottom = value;
+    get offset() {
+      return this[offset$];
     }
-    get minimum() {
-      return this[minimum$0];
+    set offset(value) {
+      super.offset = value;
     }
-    set minimum(value) {
-      super.minimum = value;
-    }
-    get sliver() {
-      return this[sliver$];
-    }
-    set sliver(value) {
-      super.sliver = value;
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 195, 29, "context");
-      if (!dart.test(debug.debugCheckHasMediaQuery(context))) dart.assertFailed(null, I[0], 196, 12, "debugCheckHasMediaQuery(context)");
-      let padding = media_query.MediaQuery.of(context).padding;
-      return new basic.SliverPadding.new({padding: new edge_insets.EdgeInsets.only({left: math.max(core.double, dart.test(this.left) ? padding.left : 0.0, this.minimum.left), top: math.max(core.double, dart.test(this.top) ? padding.top : 0.0, this.minimum.top), right: math.max(core.double, dart.test(this.right) ? padding.right : 0.0, this.minimum.right), bottom: math.max(core.double, dart.test(this.bottom) ? padding.bottom : 0.0, this.minimum.bottom)}), sliver: media_query.MediaQuery.removePadding({context: context, removeLeft: this.left, removeTop: this.top, removeRight: this.right, removeBottom: this.bottom, child: this.sliver, $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[21] || CT.C21});
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 217, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.FlagProperty.new("left", {value: this.left, ifTrue: "avoid left padding"}));
-      properties.add(new diagnostics.FlagProperty.new("top", {value: this.top, ifTrue: "avoid top padding"}));
-      properties.add(new diagnostics.FlagProperty.new("right", {value: this.right, ifTrue: "avoid right padding"}));
-      properties.add(new diagnostics.FlagProperty.new("bottom", {value: this.bottom, ifTrue: "avoid bottom padding"}));
+    toString() {
+      return "VelocityEstimate(" + this.pixelsPerSecond.dx[$toStringAsFixed](1) + ", " + this.pixelsPerSecond.dy[$toStringAsFixed](1) + "; offset: " + dart.str(this.offset) + ", duration: " + dart.str(this.duration) + ", confidence: " + this.confidence[$toStringAsFixed](1) + ")";
     }
   };
-  (safe_area.SliverSafeArea.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let left = opts && 'left' in opts ? opts.left : true;
-    if (left == null) dart.nullFailed(I[0], 158, 10, "left");
-    let top = opts && 'top' in opts ? opts.top : true;
-    if (top == null) dart.nullFailed(I[0], 159, 10, "top");
-    let right = opts && 'right' in opts ? opts.right : true;
-    if (right == null) dart.nullFailed(I[0], 160, 10, "right");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : true;
-    if (bottom == null) dart.nullFailed(I[0], 161, 10, "bottom");
-    let minimum = opts && 'minimum' in opts ? opts.minimum : C[0] || CT.C0;
-    if (minimum == null) dart.nullFailed(I[0], 162, 10, "minimum");
-    let sliver = opts && 'sliver' in opts ? opts.sliver : null;
-    if (sliver == null) dart.nullFailed(I[0], 163, 19, "sliver");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[left$0] = left;
-    this[top$0] = top;
-    this[right$0] = right;
-    this[bottom$0] = bottom;
-    this[minimum$0] = minimum;
-    this[sliver$] = sliver;
-    if (!(left != null)) dart.assertFailed(null, I[0], 164, 15, "left != null");
-    if (!(top != null)) dart.assertFailed(null, I[0], 165, 15, "top != null");
-    if (!(right != null)) dart.assertFailed(null, I[0], 166, 15, "right != null");
-    if (!(bottom != null)) dart.assertFailed(null, I[0], 167, 15, "bottom != null");
-    safe_area.SliverSafeArea.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (velocity_tracker.VelocityEstimate.new = function(opts) {
+    let pixelsPerSecond = opts && 'pixelsPerSecond' in opts ? opts.pixelsPerSecond : null;
+    if (pixelsPerSecond == null) dart.nullFailed(I[0], 94, 19, "pixelsPerSecond");
+    let confidence = opts && 'confidence' in opts ? opts.confidence : null;
+    if (confidence == null) dart.nullFailed(I[0], 95, 19, "confidence");
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    if (duration == null) dart.nullFailed(I[0], 96, 19, "duration");
+    let offset = opts && 'offset' in opts ? opts.offset : null;
+    if (offset == null) dart.nullFailed(I[0], 97, 19, "offset");
+    this[pixelsPerSecond$0] = pixelsPerSecond;
+    this[confidence$] = confidence;
+    this[duration$] = duration;
+    this[offset$] = offset;
+    if (!(pixelsPerSecond != null)) dart.assertFailed(null, I[0], 98, 15, "pixelsPerSecond != null");
+    if (!(confidence != null)) dart.assertFailed(null, I[0], 99, 15, "confidence != null");
+    if (!(duration != null)) dart.assertFailed(null, I[0], 100, 15, "duration != null");
+    if (!(offset != null)) dart.assertFailed(null, I[0], 101, 15, "offset != null");
     ;
-  }).prototype = safe_area.SliverSafeArea.prototype;
-  dart.addTypeTests(safe_area.SliverSafeArea);
-  dart.addTypeCaches(safe_area.SliverSafeArea);
-  dart.setMethodSignature(safe_area.SliverSafeArea, () => ({
-    __proto__: dart.getMethods(safe_area.SliverSafeArea.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = velocity_tracker.VelocityEstimate.prototype;
+  dart.addTypeTests(velocity_tracker.VelocityEstimate);
+  dart.addTypeCaches(velocity_tracker.VelocityEstimate);
+  dart.setLibraryUri(velocity_tracker.VelocityEstimate, I[1]);
+  dart.setFieldSignature(velocity_tracker.VelocityEstimate, () => ({
+    __proto__: dart.getFields(velocity_tracker.VelocityEstimate.__proto__),
+    pixelsPerSecond: dart.finalFieldType(ui.Offset),
+    confidence: dart.finalFieldType(core.double),
+    duration: dart.finalFieldType(core.Duration),
+    offset: dart.finalFieldType(ui.Offset)
   }));
-  dart.setLibraryUri(safe_area.SliverSafeArea, I[1]);
-  dart.setFieldSignature(safe_area.SliverSafeArea, () => ({
-    __proto__: dart.getFields(safe_area.SliverSafeArea.__proto__),
-    left: dart.finalFieldType(core.bool),
-    top: dart.finalFieldType(core.bool),
-    right: dart.finalFieldType(core.bool),
-    bottom: dart.finalFieldType(core.bool),
-    minimum: dart.finalFieldType(edge_insets.EdgeInsets),
-    sliver: dart.finalFieldType(framework.Widget)
+  dart.defineExtensionMethods(velocity_tracker.VelocityEstimate, ['toString']);
+  var time$ = dart.privateName(velocity_tracker, "_PointAtTime.time");
+  var point$ = dart.privateName(velocity_tracker, "_PointAtTime.point");
+  velocity_tracker._PointAtTime = class _PointAtTime extends core.Object {
+    get time() {
+      return this[time$];
+    }
+    set time(value) {
+      super.time = value;
+    }
+    get point() {
+      return this[point$];
+    }
+    set point(value) {
+      super.point = value;
+    }
+    toString() {
+      return "_PointAtTime(" + dart.str(this.point) + " at " + dart.str(this.time) + ")";
+    }
+  };
+  (velocity_tracker._PointAtTime.new = function(point, time) {
+    if (point == null) dart.nullFailed(I[0], 125, 27, "point");
+    if (time == null) dart.nullFailed(I[0], 125, 39, "time");
+    this[point$] = point;
+    this[time$] = time;
+    if (!(point != null)) dart.assertFailed(null, I[0], 126, 14, "point != null");
+    if (!(time != null)) dart.assertFailed(null, I[0], 127, 14, "time != null");
+    ;
+  }).prototype = velocity_tracker._PointAtTime.prototype;
+  dart.addTypeTests(velocity_tracker._PointAtTime);
+  dart.addTypeCaches(velocity_tracker._PointAtTime);
+  dart.setLibraryUri(velocity_tracker._PointAtTime, I[1]);
+  dart.setFieldSignature(velocity_tracker._PointAtTime, () => ({
+    __proto__: dart.getFields(velocity_tracker._PointAtTime.__proto__),
+    time: dart.finalFieldType(core.Duration),
+    point: dart.finalFieldType(ui.Offset)
   }));
-  dart.trackLibraries("packages/flutter/src/widgets/safe_area.dart", {
-    "package:flutter/src/widgets/safe_area.dart": safe_area
+  dart.defineExtensionMethods(velocity_tracker._PointAtTime, ['toString']);
+  var kind$ = dart.privateName(velocity_tracker, "VelocityTracker.kind");
+  var _name = dart.privateName(ui, "_name");
+  var _samples = dart.privateName(velocity_tracker, "_samples");
+  var _index = dart.privateName(velocity_tracker, "_index");
+  velocity_tracker.VelocityTracker = class VelocityTracker extends core.Object {
+    get kind() {
+      return this[kind$];
+    }
+    set kind(value) {
+      super.kind = value;
+    }
+    addPosition(time, position) {
+      if (time == null) dart.nullFailed(I[0], 170, 29, "time");
+      if (position == null) dart.nullFailed(I[0], 170, 42, "position");
+      this[_index] = dart.notNull(this[_index]) + 1;
+      if (this[_index] === 20) this[_index] = 0;
+      this[_samples][$_set](this[_index], new velocity_tracker._PointAtTime.new(position, time));
+    }
+    getVelocityEstimate() {
+      let x = T.JSArrayOfdouble().of([]);
+      let y = T.JSArrayOfdouble().of([]);
+      let w = T.JSArrayOfdouble().of([]);
+      let time = T.JSArrayOfdouble().of([]);
+      let sampleCount = 0;
+      let index = this[_index];
+      let newestSample = this[_samples][$_get](index);
+      if (newestSample == null) return null;
+      let previousSample = newestSample;
+      let oldestSample = newestSample;
+      do {
+        let sample = this[_samples][$_get](index);
+        if (sample == null) break;
+        let age = newestSample.time['-'](sample.time).inMicroseconds[$toDouble]() / 1000;
+        let delta = sample.time['-'](previousSample.time).inMicroseconds[$abs]()[$toDouble]() / 1000;
+        previousSample = sample;
+        if (age > 100 || delta > 40) break;
+        oldestSample = sample;
+        let position = sample.point;
+        x[$add](position.dx);
+        y[$add](position.dy);
+        w[$add](1.0);
+        time[$add](-age);
+        index = dart.notNull(index === 0 ? 20 : index) - 1;
+        sampleCount = sampleCount + 1;
+      } while (sampleCount < 20);
+      if (sampleCount >= 3) {
+        let xSolver = new lsq_solver.LeastSquaresSolver.new(time, x, w);
+        let xFit = xSolver.solve(2);
+        if (xFit != null) {
+          let ySolver = new lsq_solver.LeastSquaresSolver.new(time, y, w);
+          let yFit = ySolver.solve(2);
+          if (yFit != null) {
+            return new velocity_tracker.VelocityEstimate.new({pixelsPerSecond: new ui.Offset.new(dart.notNull(xFit.coefficients[$_get](1)) * 1000, dart.notNull(yFit.coefficients[$_get](1)) * 1000), confidence: dart.notNull(xFit.confidence) * dart.notNull(yFit.confidence), duration: newestSample.time['-'](oldestSample.time), offset: newestSample.point['-'](oldestSample.point)});
+          }
+        }
+      }
+      return new velocity_tracker.VelocityEstimate.new({pixelsPerSecond: ui.Offset.zero, confidence: 1.0, duration: newestSample.time['-'](oldestSample.time), offset: newestSample.point['-'](oldestSample.point)});
+    }
+    getVelocity() {
+      let estimate = this.getVelocityEstimate();
+      if (estimate == null || dart.equals(estimate.pixelsPerSecond, ui.Offset.zero)) return velocity_tracker.Velocity.zero;
+      return new velocity_tracker.Velocity.new({pixelsPerSecond: estimate.pixelsPerSecond});
+    }
+  };
+  (velocity_tracker.VelocityTracker.new = function(kind = C[2] || CT.C2) {
+    if (kind == null) dart.nullFailed(I[0], 152, 25, "kind");
+    this[_samples] = T.ListOf_PointAtTimeN().filled(20, null, {growable: false});
+    this[_index] = 0;
+    this[kind$] = kind;
+    ;
+  }).prototype = velocity_tracker.VelocityTracker.prototype;
+  (velocity_tracker.VelocityTracker.withKind = function(kind) {
+    if (kind == null) dart.nullFailed(I[0], 155, 33, "kind");
+    this[_samples] = T.ListOf_PointAtTimeN().filled(20, null, {growable: false});
+    this[_index] = 0;
+    this[kind$] = kind;
+    ;
+  }).prototype = velocity_tracker.VelocityTracker.prototype;
+  dart.addTypeTests(velocity_tracker.VelocityTracker);
+  dart.addTypeCaches(velocity_tracker.VelocityTracker);
+  dart.setMethodSignature(velocity_tracker.VelocityTracker, () => ({
+    __proto__: dart.getMethods(velocity_tracker.VelocityTracker.__proto__),
+    addPosition: dart.fnType(dart.void, [core.Duration, ui.Offset]),
+    getVelocityEstimate: dart.fnType(dart.nullable(velocity_tracker.VelocityEstimate), []),
+    getVelocity: dart.fnType(velocity_tracker.Velocity, [])
+  }));
+  dart.setLibraryUri(velocity_tracker.VelocityTracker, I[1]);
+  dart.setFieldSignature(velocity_tracker.VelocityTracker, () => ({
+    __proto__: dart.getFields(velocity_tracker.VelocityTracker.__proto__),
+    kind: dart.finalFieldType(ui.PointerDeviceKind),
+    [_samples]: dart.finalFieldType(core.List$(dart.nullable(velocity_tracker._PointAtTime))),
+    [_index]: dart.fieldType(core.int)
+  }));
+  dart.defineLazy(velocity_tracker.VelocityTracker, {
+    /*velocity_tracker.VelocityTracker._assumePointerMoveStoppedMilliseconds*/get _assumePointerMoveStoppedMilliseconds() {
+      return 40;
+    },
+    /*velocity_tracker.VelocityTracker._historySize*/get _historySize() {
+      return 20;
+    },
+    /*velocity_tracker.VelocityTracker._horizonMilliseconds*/get _horizonMilliseconds() {
+      return 100;
+    },
+    /*velocity_tracker.VelocityTracker._minSampleSize*/get _minSampleSize() {
+      return 3;
+    }
+  }, false);
+  var _touchSamples = dart.privateName(velocity_tracker, "_touchSamples");
+  var _previousVelocityAt = dart.privateName(velocity_tracker, "_previousVelocityAt");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  velocity_tracker.IOSScrollViewFlingVelocityTracker = class IOSScrollViewFlingVelocityTracker extends velocity_tracker.VelocityTracker {
+    addPosition(time, position) {
+      if (time == null) dart.nullFailed(I[0], 298, 29, "time");
+      if (position == null) dart.nullFailed(I[0], 298, 42, "position");
+      if (!dart.test(dart.fn(() => {
+        let previousPoint = this[_touchSamples][$_get](this[_index]);
+        if (previousPoint == null || dart.test(previousPoint.time['<='](time))) return true;
+        dart.throw(assertions.FlutterError.new("The position being added (" + dart.str(position) + ") has a smaller timestamp (" + dart.str(time) + ") " + "than its predecessor: " + dart.str(previousPoint) + "."));
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 299, 12, "() {\r\n      final _PointAtTime? previousPoint = _touchSamples[_index];\r\n      if (previousPoint == null || previousPoint.time <= time)\r\n        return true;\r\n      throw FlutterError(\r\n        'The position being added ($position) has a smaller timestamp ($time) '\r\n        'than its predecessor: $previousPoint.',\r\n      );\r\n    }()");
+      this[_index] = (dart.notNull(this[_index]) + 1)[$modulo](20);
+      this[_touchSamples][$_set](this[_index], new velocity_tracker._PointAtTime.new(position, time));
+    }
+    [_previousVelocityAt](index) {
+      if (index == null) dart.nullFailed(I[0], 315, 34, "index");
+      let endIndex = (dart.notNull(this[_index]) + dart.notNull(index))[$modulo](20);
+      let startIndex = (dart.notNull(this[_index]) + dart.notNull(index) - 1)[$modulo](20);
+      let end = this[_touchSamples][$_get](endIndex);
+      let start = this[_touchSamples][$_get](startIndex);
+      if (end == null || start == null) {
+        return ui.Offset.zero;
+      }
+      let dt = end.time['-'](start.time).inMicroseconds;
+      if (!(dart.notNull(dt) >= 0)) dart.assertFailed(null, I[0], 326, 12, "dt >= 0");
+      return dart.notNull(dt) > 0 ? end.point['-'](start.point)['*'](1000.0)['/'](dt[$toDouble]() / 1000) : ui.Offset.zero;
+    }
+    getVelocityEstimate() {
+      let estimatedVelocity = this[_previousVelocityAt](-2)['*'](0.6)['+'](this[_previousVelocityAt](-1)['*'](0.35))['+'](this[_previousVelocityAt](0)['*'](0.05));
+      let newestSample = this[_touchSamples][$_get](this[_index]);
+      let oldestNonNullSample = null;
+      for (let i = 1; i <= 20; i = i + 1) {
+        oldestNonNullSample = this[_touchSamples][$_get]((dart.notNull(this[_index]) + i)[$modulo](20));
+        if (oldestNonNullSample != null) break;
+      }
+      if (oldestNonNullSample == null || newestSample == null) {
+        if (!false) dart.assertFailed("There must be at least 1 point in _touchSamples: " + dart.str(this[_touchSamples]), I[0], 356, 14, "false");
+        return C[3] || CT.C3;
+      } else {
+        return new velocity_tracker.VelocityEstimate.new({pixelsPerSecond: estimatedVelocity, confidence: 1.0, duration: newestSample.time['-'](oldestNonNullSample.time), offset: newestSample.point['-'](oldestNonNullSample.point)});
+      }
+    }
+  };
+  (velocity_tracker.IOSScrollViewFlingVelocityTracker.new = function(kind) {
+    if (kind == null) dart.nullFailed(I[0], 287, 55, "kind");
+    this[_touchSamples] = T.ListOf_PointAtTimeN().filled(20, null, {growable: false});
+    velocity_tracker.IOSScrollViewFlingVelocityTracker.__proto__.withKind.call(this, kind);
+    ;
+  }).prototype = velocity_tracker.IOSScrollViewFlingVelocityTracker.prototype;
+  dart.addTypeTests(velocity_tracker.IOSScrollViewFlingVelocityTracker);
+  dart.addTypeCaches(velocity_tracker.IOSScrollViewFlingVelocityTracker);
+  dart.setMethodSignature(velocity_tracker.IOSScrollViewFlingVelocityTracker, () => ({
+    __proto__: dart.getMethods(velocity_tracker.IOSScrollViewFlingVelocityTracker.__proto__),
+    [_previousVelocityAt]: dart.fnType(ui.Offset, [core.int]),
+    getVelocityEstimate: dart.fnType(velocity_tracker.VelocityEstimate, [])
+  }));
+  dart.setLibraryUri(velocity_tracker.IOSScrollViewFlingVelocityTracker, I[1]);
+  dart.setFieldSignature(velocity_tracker.IOSScrollViewFlingVelocityTracker, () => ({
+    __proto__: dart.getFields(velocity_tracker.IOSScrollViewFlingVelocityTracker.__proto__),
+    [_touchSamples]: dart.finalFieldType(core.List$(dart.nullable(velocity_tracker._PointAtTime)))
+  }));
+  dart.defineLazy(velocity_tracker.IOSScrollViewFlingVelocityTracker, {
+    /*velocity_tracker.IOSScrollViewFlingVelocityTracker._sampleSize*/get _sampleSize() {
+      return 20;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/gestures/velocity_tracker.dart", {
+    "package:flutter/src/gestures/velocity_tracker.dart": velocity_tracker
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["safe_area.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAwDa;;;;;;IAIA;;;;;;IAGA;;;;;;IAGA;;;;;;IAKM;;;;;;IAaN;;;;;;IAQE;;;;;;;UAGa;AACxB,qBAAO,8BAAwB,OAAO;AACjB,iBAAkB,0BAAG,OAAO;AACtC,oBAAU,AAAK,IAAD;AAEzB,UAAI,AAAK,AAAQ,AAAO,IAAhB,oBAAmB,OAAO,AAAK,AAAW,IAAZ,uBAAsB,iBAAO,iCACjE,AAA2D,UAAjD,AAAQ,OAAD,mBAAkB,AAAK,AAAY,IAAb;AAEzC,YAAO,iCACe,uCACZ,gCAAS,aAAO,AAAQ,OAAD,QAAQ,KAAK,AAAQ,yBAC7C,gCAAS,YAAM,AAAQ,OAAD,OAAO,KAAK,AAAQ,0BACxC,gCAAS,cAAQ,AAAQ,OAAD,SAAS,KAAK,AAAQ,6BAC7C,gCAAS,eAAS,AAAQ,OAAD,UAAU,KAAK,AAAQ,+BAExC,+CACP,OAAO,cACJ,sBACD,uBACE,0BACC,oBACP;IAGb;;UAGqD;AACd,MAA/B,0BAAoB,UAAU;AAC2C,MAA/E,AAAW,UAAD,KAAK,iCAAa,gBAAe,mBAAc;AACmB,MAA5E,AAAW,UAAD,KAAK,iCAAa,eAAc,kBAAa;AAC2B,MAAlF,AAAW,UAAD,KAAK,iCAAa,iBAAgB,oBAAe;AAC0B,MAArF,AAAW,UAAD,KAAK,iCAAa,kBAAiB,qBAAgB;IAC/D;;;QAvFO;QACA;;QACA;;QACA;;QACA;;QACA;;QACA;;QACS;;;IANT;IACA;IACA;IACA;IACA;IACA;IACS;UACJ,AAAK,IAAD;UACJ,AAAI,GAAD;UACH,AAAM,KAAD;UACL,AAAO,MAAD;AACb,sDAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;IAqHT;;;;;;IAIA;;;;;;IAGA;;;;;;IAGA;;;;;;IAKM;;;;;;IAMJ;;;;;;;UAGa;AACxB,qBAAO,8BAAwB,OAAO;AACrB,oBAAqB,AAAY,0BAAT,OAAO;AAChD,YAAO,uCACe,uCACZ,gCAAS,aAAO,AAAQ,OAAD,QAAQ,KAAK,AAAQ,yBAC7C,gCAAS,YAAM,AAAQ,OAAD,OAAO,KAAK,AAAQ,0BACxC,gCAAS,cAAQ,AAAQ,OAAD,SAAS,KAAK,AAAQ,6BAC7C,gCAAS,eAAS,AAAQ,OAAD,UAAU,KAAK,AAAQ,gCAEvC,+CACR,OAAO,cACJ,sBACD,uBACE,0BACC,oBACP;IAGb;;UAGqD;AACd,MAA/B,0BAAoB,UAAU;AAC2C,MAA/E,AAAW,UAAD,KAAK,iCAAa,gBAAe,mBAAc;AACmB,MAA5E,AAAW,UAAD,KAAK,iCAAa,eAAc,kBAAa;AAC2B,MAAlF,AAAW,UAAD,KAAK,iCAAa,iBAAgB,oBAAe;AAC0B,MAArF,AAAW,UAAD,KAAK,iCAAa,kBAAiB,qBAAgB;IAC/D;;;QAlEO;QACA;;QACA;;QACA;;QACA;;QACA;;QACS;;;IALT;IACA;IACA;IACA;IACA;IACS;UACJ,AAAK,IAAD;UACJ,AAAI,GAAD;UACH,AAAM,KAAD;UACL,AAAO,MAAD;AACb,4DAAW,GAAG;;EAAC","file":"../../../../../../../../../packages/flutter/src/widgets/safe_area.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["velocity_tracker.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/gestures/velocity_tracker.dart.lib.js"}');
   // Exports:
   return {
-    src__widgets__safe_area: safe_area
+    src__gestures__velocity_tracker: velocity_tracker
   };
 }));
 
-//# sourceMappingURL=safe_area.dart.lib.js.map
+//# sourceMappingURL=velocity_tracker.dart.lib.js.map

@@ -1,585 +1,336 @@
-define(['dart_sdk', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/painting/_network_image_web.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/image_stream.dart', 'packages/flutter/src/painting/debug.dart', 'packages/flutter/src/scheduler/binding.dart'], (function load__packages__flutter__src__painting__decoration_image_dart(dart_sdk, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__painting___network_image_web$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__image_stream$46dart, packages__flutter__src__painting__debug$46dart, packages__flutter__src__scheduler__binding$46dart) {
+define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/foundation/change_notifier.dart'], (function load__packages__flutter__src__rendering__custom_layout_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__foundation__change_notifier$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
   const _interceptors = dart_sdk._interceptors;
   const collection = dart_sdk.collection;
-  const _engine = dart_sdk._engine;
-  const developer = dart_sdk.developer;
   const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
-  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
   const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
   const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const image_stream = packages__flutter__src__painting__image_stream$46dart.src__painting__image_stream;
-  const debug = packages__flutter__src__painting__debug$46dart.src__painting__debug;
-  const binding = packages__flutter__src__scheduler__binding$46dart.src__scheduler__binding;
-  var decoration_image = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
-  var $add = dartx.add;
-  var $join = dartx.join;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $toDouble = dartx.toDouble;
-  var $truncate = dartx.truncate;
-  var $toInt = dartx.toInt;
+  const object$ = packages__flutter__src__foundation__object$46dart.src__foundation__object;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  var custom_layout = Object.create(dart.library);
   var $_get = dartx._get;
   var $_set = dartx._set;
-  var $values = dartx.values;
-  var $toSet = dartx.toSet;
-  var $isEmpty = dartx.isEmpty;
-  var $floor = dartx.floor;
-  var $ceil = dartx.ceil;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $length = dartx.length;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $runtimeType = dartx.runtimeType;
+  var $isFinite = dartx.isFinite;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    ImageRepeatL: () => (T.ImageRepeatL = dart.constFn(dart.legacy(decoration_image.ImageRepeat)))(),
-    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
-    DiagnosticsPropertyOfDecorationImage: () => (T.DiagnosticsPropertyOfDecorationImage = dart.constFn(diagnostics.DiagnosticsProperty$(decoration_image.DecorationImage)))(),
-    DiagnosticsPropertyOfImageConfiguration: () => (T.DiagnosticsPropertyOfImageConfiguration = dart.constFn(diagnostics.DiagnosticsProperty$(image_provider.ImageConfiguration)))(),
+    DiagnosticsPropertyOfAssertionError: () => (T.DiagnosticsPropertyOfAssertionError = dart.constFn(diagnostics.DiagnosticsProperty$(core.AssertionError)))(),
     JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
     VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    LinkedHashSetOfImageSizeInfo: () => (T.LinkedHashSetOfImageSizeInfo = dart.constFn(collection.LinkedHashSet$(debug.ImageSizeInfo)))(),
-    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
-    IdentityMapOfString$Object: () => (T.IdentityMapOfString$Object = dart.constFn(_js_helper.IdentityMap$(core.String, core.Object)))(),
-    IdentityMapOfString$ImageSizeInfo: () => (T.IdentityMapOfString$ImageSizeInfo = dart.constFn(_js_helper.IdentityMap$(core.String, debug.ImageSizeInfo)))(),
-    DurationTovoid: () => (T.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))(),
-    SyncIterableOfRect: () => (T.SyncIterableOfRect = dart.constFn(_js_helper.SyncIterable$(ui.Rect)))()
+    DiagnosticsPropertyOfRenderBox: () => (T.DiagnosticsPropertyOfRenderBox = dart.constFn(diagnostics.DiagnosticsProperty$(box.RenderBox)))(),
+    LinkedHashSetOfRenderBox: () => (T.LinkedHashSetOfRenderBox = dart.constFn(collection.LinkedHashSet$(box.RenderBox)))(),
+    LinkedMapOfObject$RenderBox: () => (T.LinkedMapOfObject$RenderBox = dart.constFn(_js_helper.LinkedMap$(core.Object, box.RenderBox)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: decoration_image.ImageRepeat.prototype,
-        [_name$]: "ImageRepeat.repeat",
-        index: 0
-      });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: decoration_image.ImageRepeat.prototype,
-        [_name$]: "ImageRepeat.repeatX",
-        index: 1
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: decoration_image.ImageRepeat.prototype,
-        [_name$]: "ImageRepeat.repeatY",
-        index: 2
-      });
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: decoration_image.ImageRepeat.prototype,
-        [_name$]: "ImageRepeat.noRepeat",
-        index: 3
-      });
-    },
-    get C4() {
-      return C[4] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3], T.ImageRepeatL());
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [Alignment_y]: 0,
-        [Alignment_x]: 0
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: ui.FilterQuality.prototype,
-        [_name]: "FilterQuality.low",
-        index: 1
-      });
-    },
-    get C8() {
-      return C[8] = dart.constList([-1, 0, 0, 0, 255, 0, -1, 0, 0, 255, 0, 0, -1, 0, 255, 0, 0, 0, 1, 0], T.doubleL());
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: _engine._CkMatrixColorFilter.prototype,
-        [_CkMatrixColorFilter_matrix]: C[8] || CT.C8
-      });
-    }
-  }, false);
-  var C = Array(9).fill(void 0);
   var I = [
-    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/painting/decoration_image.dart",
-    "package:flutter/src/painting/decoration_image.dart"
+    "package:flutter/src/rendering/custom_layout.dart",
+    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/rendering/custom_layout.dart"
   ];
-  var _name$ = dart.privateName(decoration_image, "_name");
-  decoration_image.ImageRepeat = class ImageRepeat extends core.Object {
-    toString() {
-      return this[_name$];
+  var id = dart.privateName(custom_layout, "MultiChildLayoutParentData.id");
+  custom_layout.MultiChildLayoutParentData = class MultiChildLayoutParentData extends box.ContainerBoxParentData$(box.RenderBox) {
+    get id() {
+      return this[id];
     }
-  };
-  (decoration_image.ImageRepeat.new = function(index, _name) {
-    if (index == null) dart.nullFailed(I[0], 21, 6, "index");
-    if (_name == null) dart.nullFailed(I[0], 21, 6, "_name");
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = decoration_image.ImageRepeat.prototype;
-  dart.addTypeTests(decoration_image.ImageRepeat);
-  dart.addTypeCaches(decoration_image.ImageRepeat);
-  dart.setLibraryUri(decoration_image.ImageRepeat, I[1]);
-  dart.setFieldSignature(decoration_image.ImageRepeat, () => ({
-    __proto__: dart.getFields(decoration_image.ImageRepeat.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(decoration_image.ImageRepeat, ['toString']);
-  decoration_image.ImageRepeat.repeat = C[0] || CT.C0;
-  decoration_image.ImageRepeat.repeatX = C[1] || CT.C1;
-  decoration_image.ImageRepeat.repeatY = C[2] || CT.C2;
-  decoration_image.ImageRepeat.noRepeat = C[3] || CT.C3;
-  decoration_image.ImageRepeat.values = C[4] || CT.C4;
-  var image$ = dart.privateName(decoration_image, "DecorationImage.image");
-  var onError$ = dart.privateName(decoration_image, "DecorationImage.onError");
-  var colorFilter$ = dart.privateName(decoration_image, "DecorationImage.colorFilter");
-  var fit$ = dart.privateName(decoration_image, "DecorationImage.fit");
-  var alignment$ = dart.privateName(decoration_image, "DecorationImage.alignment");
-  var centerSlice$ = dart.privateName(decoration_image, "DecorationImage.centerSlice");
-  var repeat$ = dart.privateName(decoration_image, "DecorationImage.repeat");
-  var matchTextDirection$ = dart.privateName(decoration_image, "DecorationImage.matchTextDirection");
-  var scale$ = dart.privateName(decoration_image, "DecorationImage.scale");
-  var Alignment_y = dart.privateName(alignment, "Alignment.y");
-  var Alignment_x = dart.privateName(alignment, "Alignment.x");
-  decoration_image.DecorationImage = class DecorationImage extends core.Object {
-    get image() {
-      return this[image$];
-    }
-    set image(value) {
-      super.image = value;
-    }
-    get onError() {
-      return this[onError$];
-    }
-    set onError(value) {
-      super.onError = value;
-    }
-    get colorFilter() {
-      return this[colorFilter$];
-    }
-    set colorFilter(value) {
-      super.colorFilter = value;
-    }
-    get fit() {
-      return this[fit$];
-    }
-    set fit(value) {
-      super.fit = value;
-    }
-    get alignment() {
-      return this[alignment$];
-    }
-    set alignment(value) {
-      super.alignment = value;
-    }
-    get centerSlice() {
-      return this[centerSlice$];
-    }
-    set centerSlice(value) {
-      super.centerSlice = value;
-    }
-    get repeat() {
-      return this[repeat$];
-    }
-    set repeat(value) {
-      super.repeat = value;
-    }
-    get matchTextDirection() {
-      return this[matchTextDirection$];
-    }
-    set matchTextDirection(value) {
-      super.matchTextDirection = value;
-    }
-    get scale() {
-      return this[scale$];
-    }
-    set scale(value) {
-      super.scale = value;
-    }
-    createPainter(onChanged) {
-      if (onChanged == null) dart.nullFailed(I[0], 149, 53, "onChanged");
-      if (!(onChanged != null)) dart.assertFailed(null, I[0], 150, 12, "onChanged != null");
-      return new decoration_image.DecorationImagePainter.__(this, onChanged);
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (this === other) return true;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return decoration_image.DecorationImage.is(other) && dart.equals(other.image, this.image) && dart.equals(other.colorFilter, this.colorFilter) && other.fit == this.fit && dart.equals(other.alignment, this.alignment) && dart.equals(other.centerSlice, this.centerSlice) && other.repeat == this.repeat && other.matchTextDirection == this.matchTextDirection && other.scale == this.scale;
-    }
-    get hashCode() {
-      return ui.hashValues(this.image, this.colorFilter, this.fit, this.alignment, this.centerSlice, this.repeat, this.matchTextDirection, this.scale);
+    set id(value) {
+      this[id] = value;
     }
     toString() {
-      let properties = (() => {
-        let t0 = T.JSArrayOfString().of([dart.str(this.image)]);
-        if (this.colorFilter != null) t0[$add](dart.str(this.colorFilter));
-        if (this.fit != null && !(this.fit == box_fit.BoxFit.fill && this.centerSlice != null) && !(this.fit == box_fit.BoxFit.scaleDown && this.centerSlice == null)) t0[$add](dart.str(this.fit));
-        t0[$add](dart.str(this.alignment));
-        if (this.centerSlice != null) t0[$add]("centerSlice: " + dart.str(this.centerSlice));
-        if (this.repeat != decoration_image.ImageRepeat.noRepeat) t0[$add](dart.str(this.repeat));
-        if (dart.test(this.matchTextDirection)) t0[$add]("match text direction");
-        t0[$add]("scale: " + dart.str(this.scale));
-        return t0;
-      })();
-      return dart.str(object.objectRuntimeType(this, "DecorationImage")) + "(" + dart.str(properties[$join](", ")) + ")";
+      return dart.str(super.toString()) + "; id=" + dart.str(this.id);
     }
   };
-  (decoration_image.DecorationImage.new = function(opts) {
-    let image = opts && 'image' in opts ? opts.image : null;
-    if (image == null) dart.nullFailed(I[0], 46, 19, "image");
-    let onError = opts && 'onError' in opts ? opts.onError : null;
-    let colorFilter = opts && 'colorFilter' in opts ? opts.colorFilter : null;
-    let fit = opts && 'fit' in opts ? opts.fit : null;
-    let alignment = opts && 'alignment' in opts ? opts.alignment : C[5] || CT.C5;
-    if (alignment == null) dart.nullFailed(I[0], 50, 10, "alignment");
-    let centerSlice = opts && 'centerSlice' in opts ? opts.centerSlice : null;
-    let repeat = opts && 'repeat' in opts ? opts.repeat : C[3] || CT.C3;
-    if (repeat == null) dart.nullFailed(I[0], 52, 10, "repeat");
-    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : false;
-    if (matchTextDirection == null) dart.nullFailed(I[0], 53, 10, "matchTextDirection");
-    let scale = opts && 'scale' in opts ? opts.scale : 1;
-    if (scale == null) dart.nullFailed(I[0], 54, 10, "scale");
-    this[image$] = image;
-    this[onError$] = onError;
-    this[colorFilter$] = colorFilter;
-    this[fit$] = fit;
-    this[alignment$] = alignment;
-    this[centerSlice$] = centerSlice;
-    this[repeat$] = repeat;
-    this[matchTextDirection$] = matchTextDirection;
-    this[scale$] = scale;
-    if (!(image != null)) dart.assertFailed(null, I[0], 55, 15, "image != null");
-    if (!(alignment != null)) dart.assertFailed(null, I[0], 56, 15, "alignment != null");
-    if (!(repeat != null)) dart.assertFailed(null, I[0], 57, 15, "repeat != null");
-    if (!(matchTextDirection != null)) dart.assertFailed(null, I[0], 58, 15, "matchTextDirection != null");
-    if (!(scale != null)) dart.assertFailed(null, I[0], 59, 15, "scale != null");
+  (custom_layout.MultiChildLayoutParentData.new = function() {
+    this[id] = null;
+    custom_layout.MultiChildLayoutParentData.__proto__.new.call(this);
     ;
-  }).prototype = decoration_image.DecorationImage.prototype;
-  dart.addTypeTests(decoration_image.DecorationImage);
-  dart.addTypeCaches(decoration_image.DecorationImage);
-  dart.setMethodSignature(decoration_image.DecorationImage, () => ({
-    __proto__: dart.getMethods(decoration_image.DecorationImage.__proto__),
-    createPainter: dart.fnType(decoration_image.DecorationImagePainter, [dart.fnType(dart.void, [])])
+  }).prototype = custom_layout.MultiChildLayoutParentData.prototype;
+  dart.addTypeTests(custom_layout.MultiChildLayoutParentData);
+  dart.addTypeCaches(custom_layout.MultiChildLayoutParentData);
+  dart.setLibraryUri(custom_layout.MultiChildLayoutParentData, I[0]);
+  dart.setFieldSignature(custom_layout.MultiChildLayoutParentData, () => ({
+    __proto__: dart.getFields(custom_layout.MultiChildLayoutParentData.__proto__),
+    id: dart.fieldType(dart.nullable(core.Object))
   }));
-  dart.setLibraryUri(decoration_image.DecorationImage, I[1]);
-  dart.setFieldSignature(decoration_image.DecorationImage, () => ({
-    __proto__: dart.getFields(decoration_image.DecorationImage.__proto__),
-    image: dart.finalFieldType(image_provider.ImageProvider$(core.Object)),
-    onError: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.Object, dart.nullable(core.StackTrace)]))),
-    colorFilter: dart.finalFieldType(dart.nullable(ui.ColorFilter)),
-    fit: dart.finalFieldType(dart.nullable(box_fit.BoxFit)),
-    alignment: dart.finalFieldType(alignment.AlignmentGeometry),
-    centerSlice: dart.finalFieldType(dart.nullable(ui.Rect)),
-    repeat: dart.finalFieldType(decoration_image.ImageRepeat),
-    matchTextDirection: dart.finalFieldType(core.bool),
-    scale: dart.finalFieldType(core.double)
-  }));
-  dart.defineExtensionMethods(decoration_image.DecorationImage, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(decoration_image.DecorationImage, ['hashCode']);
-  var _imageStream = dart.privateName(decoration_image, "_imageStream");
-  var _image = dart.privateName(decoration_image, "_image");
-  var _details$ = dart.privateName(decoration_image, "_details");
-  var _onChanged$ = dart.privateName(decoration_image, "_onChanged");
-  var _handleImage = dart.privateName(decoration_image, "_handleImage");
-  decoration_image.DecorationImagePainter = class DecorationImagePainter extends core.Object {
-    paint(canvas, rect, clipPath, configuration) {
-      let t1, t1$;
-      if (canvas == null) dart.nullFailed(I[0], 231, 21, "canvas");
-      if (rect == null) dart.nullFailed(I[0], 231, 34, "rect");
-      if (configuration == null) dart.nullFailed(I[0], 231, 75, "configuration");
-      if (!(canvas != null)) dart.assertFailed(null, I[0], 232, 12, "canvas != null");
-      if (!(rect != null)) dart.assertFailed(null, I[0], 233, 12, "rect != null");
-      if (!(configuration != null)) dart.assertFailed(null, I[0], 234, 12, "configuration != null");
-      let flipHorizontally = false;
-      if (dart.test(this[_details$].matchTextDirection)) {
-        if (!dart.test(dart.fn(() => {
-          if (configuration.textDirection == null) {
-            dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("DecorationImage.matchTextDirection can only be used when a TextDirection is available."), new assertions.ErrorDescription.new("When DecorationImagePainter.paint() was called, there was no text direction provided " + "in the ImageConfiguration object to match."), new (T.DiagnosticsPropertyOfDecorationImage()).new("The DecorationImage was", this[_details$], {style: diagnostics.DiagnosticsTreeStyle.errorProperty}), new (T.DiagnosticsPropertyOfImageConfiguration()).new("The ImageConfiguration was", configuration, {style: diagnostics.DiagnosticsTreeStyle.errorProperty})])));
-          }
-          return true;
-        }, T.VoidTobool())())) dart.assertFailed(null, I[0], 238, 14, "() {\r\n        // We check this first so that the assert will fire immediately, not just\r\n        // when the image is ready.\r\n        if (configuration.textDirection == null) {\r\n          throw FlutterError.fromParts(<DiagnosticsNode>[\r\n            ErrorSummary('DecorationImage.matchTextDirection can only be used when a TextDirection is available.'),\r\n            ErrorDescription(\r\n              'When DecorationImagePainter.paint() was called, there was no text direction provided '\r\n              'in the ImageConfiguration object to match.',\r\n            ),\r\n            DiagnosticsProperty<DecorationImage>('The DecorationImage was', _details, style: DiagnosticsTreeStyle.errorProperty),\r\n            DiagnosticsProperty<ImageConfiguration>('The ImageConfiguration was', configuration, style: DiagnosticsTreeStyle.errorProperty),\r\n          ]);\r\n        }\r\n        return true;\r\n      }()");
-        if (configuration.textDirection == ui.TextDirection.rtl) flipHorizontally = true;
-      }
-      let newImageStream = this[_details$].image.resolve(configuration);
-      if (!dart.equals(newImageStream.key, (t1 = this[_imageStream], t1 == null ? null : t1.key))) {
-        let listener = new image_stream.ImageStreamListener.new(dart.bind(this, _handleImage), {onError: this[_details$].onError});
-        t1$ = this[_imageStream];
-        t1$ == null ? null : t1$.removeListener(listener);
-        this[_imageStream] = newImageStream;
-        dart.nullCheck(this[_imageStream]).addListener(listener);
-      }
-      if (this[_image] == null) return;
-      if (clipPath != null) {
-        canvas.save();
-        canvas.clipPath(clipPath);
-      }
-      decoration_image.paintImage({canvas: canvas, rect: rect, image: dart.nullCheck(this[_image]).image, debugImageLabel: dart.nullCheck(this[_image]).debugLabel, scale: dart.notNull(this[_details$].scale) * dart.notNull(dart.nullCheck(this[_image]).scale), colorFilter: this[_details$].colorFilter, fit: this[_details$].fit, alignment: this[_details$].alignment.resolve(configuration.textDirection), centerSlice: this[_details$].centerSlice, repeat: this[_details$].repeat, flipHorizontally: flipHorizontally, filterQuality: ui.FilterQuality.low});
-      if (clipPath != null) canvas.restore();
+  dart.defineExtensionMethods(custom_layout.MultiChildLayoutParentData, ['toString']);
+  var _idToChild = dart.privateName(custom_layout, "_idToChild");
+  var _debugChildrenNeedingLayout = dart.privateName(custom_layout, "_debugChildrenNeedingLayout");
+  var _relayout = dart.privateName(custom_layout, "_relayout");
+  var _debugDescribeChild = dart.privateName(custom_layout, "_debugDescribeChild");
+  var _callPerformLayout = dart.privateName(custom_layout, "_callPerformLayout");
+  custom_layout.MultiChildLayoutDelegate = class MultiChildLayoutDelegate extends core.Object {
+    hasChild(childId) {
+      if (childId == null) dart.nullFailed(I[1], 133, 24, "childId");
+      return dart.nullCheck(this[_idToChild])[$_get](childId) != null;
     }
-    [_handleImage](value, synchronousCall) {
-      let t1;
-      if (value == null) dart.nullFailed(I[0], 295, 31, "value");
-      if (synchronousCall == null) dart.nullFailed(I[0], 295, 43, "synchronousCall");
-      if (dart.equals(this[_image], value)) return;
-      if (this[_image] != null && dart.test(dart.nullCheck(this[_image]).isCloneOf(value))) {
-        value.dispose();
-        return;
-      }
-      t1 = this[_image];
-      t1 == null ? null : t1.dispose();
-      this[_image] = value;
-      if (!(this[_onChanged$] != null)) dart.assertFailed(null, I[0], 304, 12, "_onChanged != null");
-      if (!dart.test(synchronousCall)) this[_onChanged$]();
-    }
-    dispose() {
-      let t1, t1$;
-      t1 = this[_imageStream];
-      t1 == null ? null : t1.removeListener(new image_stream.ImageStreamListener.new(dart.bind(this, _handleImage), {onError: this[_details$].onError}));
-      t1$ = this[_image];
-      t1$ == null ? null : t1$.dispose();
-      this[_image] = null;
-    }
-    toString() {
-      return dart.str(object.objectRuntimeType(this, "DecorationImagePainter")) + "(stream: " + dart.str(this[_imageStream]) + ", image: " + dart.str(this[_image]) + ") for " + dart.str(this[_details$]);
-    }
-  };
-  (decoration_image.DecorationImagePainter.__ = function(_details, _onChanged) {
-    if (_details == null) dart.nullFailed(I[0], 209, 33, "_details");
-    if (_onChanged == null) dart.nullFailed(I[0], 209, 48, "_onChanged");
-    this[_imageStream] = null;
-    this[_image] = null;
-    this[_details$] = _details;
-    this[_onChanged$] = _onChanged;
-    if (!(_details != null)) dart.assertFailed(null, I[0], 209, 69, "_details != null");
-    ;
-  }).prototype = decoration_image.DecorationImagePainter.prototype;
-  dart.addTypeTests(decoration_image.DecorationImagePainter);
-  dart.addTypeCaches(decoration_image.DecorationImagePainter);
-  dart.setMethodSignature(decoration_image.DecorationImagePainter, () => ({
-    __proto__: dart.getMethods(decoration_image.DecorationImagePainter.__proto__),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect, dart.nullable(ui.Path), image_provider.ImageConfiguration]),
-    [_handleImage]: dart.fnType(dart.void, [image_stream.ImageInfo, core.bool]),
-    dispose: dart.fnType(dart.void, [])
-  }));
-  dart.setLibraryUri(decoration_image.DecorationImagePainter, I[1]);
-  dart.setFieldSignature(decoration_image.DecorationImagePainter, () => ({
-    __proto__: dart.getFields(decoration_image.DecorationImagePainter.__proto__),
-    [_details$]: dart.finalFieldType(decoration_image.DecorationImage),
-    [_onChanged$]: dart.finalFieldType(dart.fnType(dart.void, [])),
-    [_imageStream]: dart.fieldType(dart.nullable(image_stream.ImageStream)),
-    [_image]: dart.fieldType(dart.nullable(image_stream.ImageInfo))
-  }));
-  dart.defineExtensionMethods(decoration_image.DecorationImagePainter, ['toString']);
-  var _name = dart.privateName(ui, "_name");
-  var _CkMatrixColorFilter_matrix = dart.privateName(_engine, "_CkMatrixColorFilter.matrix");
-  decoration_image.debugFlushLastFrameImageSizeInfo = function debugFlushLastFrameImageSizeInfo() {
-    if (!dart.test(dart.fn(() => {
-      decoration_image._lastFrameImageSizeInfo = T.LinkedHashSetOfImageSizeInfo().new();
-      return true;
-    }, T.VoidTobool())())) dart.assertFailed(null, I[0], 343, 10, "() {\r\n    _lastFrameImageSizeInfo = <ImageSizeInfo>{};\r\n    return true;\r\n  }()");
-  };
-  decoration_image.paintImage = function paintImage(opts) {
-    let t1, t1$, t1$0, t1$1, t1$2;
-    let canvas = opts && 'canvas' in opts ? opts.canvas : null;
-    if (canvas == null) dart.nullFailed(I[0], 418, 19, "canvas");
-    let rect = opts && 'rect' in opts ? opts.rect : null;
-    if (rect == null) dart.nullFailed(I[0], 419, 17, "rect");
-    let image = opts && 'image' in opts ? opts.image : null;
-    if (image == null) dart.nullFailed(I[0], 420, 21, "image");
-    let debugImageLabel = opts && 'debugImageLabel' in opts ? opts.debugImageLabel : null;
-    let scale = opts && 'scale' in opts ? opts.scale : 1;
-    if (scale == null) dart.nullFailed(I[0], 422, 10, "scale");
-    let colorFilter = opts && 'colorFilter' in opts ? opts.colorFilter : null;
-    let fit = opts && 'fit' in opts ? opts.fit : null;
-    let alignment = opts && 'alignment' in opts ? opts.alignment : C[5] || CT.C5;
-    if (alignment == null) dart.nullFailed(I[0], 425, 13, "alignment");
-    let centerSlice = opts && 'centerSlice' in opts ? opts.centerSlice : null;
-    let repeat = opts && 'repeat' in opts ? opts.repeat : C[3] || CT.C3;
-    if (repeat == null) dart.nullFailed(I[0], 427, 15, "repeat");
-    let flipHorizontally = opts && 'flipHorizontally' in opts ? opts.flipHorizontally : false;
-    if (flipHorizontally == null) dart.nullFailed(I[0], 428, 8, "flipHorizontally");
-    let invertColors = opts && 'invertColors' in opts ? opts.invertColors : false;
-    if (invertColors == null) dart.nullFailed(I[0], 429, 8, "invertColors");
-    let filterQuality = opts && 'filterQuality' in opts ? opts.filterQuality : C[6] || CT.C6;
-    if (filterQuality == null) dart.nullFailed(I[0], 430, 17, "filterQuality");
-    let isAntiAlias = opts && 'isAntiAlias' in opts ? opts.isAntiAlias : false;
-    if (isAntiAlias == null) dart.nullFailed(I[0], 431, 8, "isAntiAlias");
-    if (!(canvas != null)) dart.assertFailed(null, I[0], 433, 10, "canvas != null");
-    if (!(image != null)) dart.assertFailed(null, I[0], 434, 10, "image != null");
-    if (!(alignment != null)) dart.assertFailed(null, I[0], 435, 10, "alignment != null");
-    if (!(repeat != null)) dart.assertFailed(null, I[0], 436, 10, "repeat != null");
-    if (!(flipHorizontally != null)) dart.assertFailed(null, I[0], 437, 10, "flipHorizontally != null");
-    if (!(isAntiAlias != null)) dart.assertFailed(null, I[0], 438, 10, "isAntiAlias != null");
-    if (!dart.test((t1$ = (t1 = image.debugGetOpenHandleStackTraces(), t1 == null ? null : t1[$isNotEmpty]), t1$ == null ? true : t1$))) dart.assertFailed("Cannot paint an image that is disposed.\n" + "The caller of paintImage is expected to wait to dispose the image until " + "after painting has completed.", I[0], 440, 5, "image.debugGetOpenHandleStackTraces()?.isNotEmpty ?? true");
-    if (dart.test(rect.isEmpty)) return;
-    let outputSize = rect.size;
-    let inputSize = new ui.Size.new(image.width[$toDouble](), image.height[$toDouble]());
-    let sliceBorder = null;
-    if (centerSlice != null) {
-      sliceBorder = ui.Offset.as(inputSize['/'](scale)['-'](centerSlice.size));
-      outputSize = ui.Size.as(outputSize['-'](sliceBorder));
-      inputSize = ui.Size.as(inputSize['-'](sliceBorder['*'](scale)));
-    }
-    fit == null ? fit = centerSlice == null ? box_fit.BoxFit.scaleDown : box_fit.BoxFit.fill : null;
-    if (!(centerSlice == null || fit != box_fit.BoxFit.none && fit != box_fit.BoxFit.cover)) dart.assertFailed(null, I[0], 456, 10, "centerSlice == null || (fit != BoxFit.none && fit != BoxFit.cover)");
-    let fittedSizes = box_fit.applyBoxFit(fit, inputSize['/'](scale), outputSize);
-    let sourceSize = fittedSizes.source['*'](scale);
-    let destinationSize = fittedSizes.destination;
-    if (centerSlice != null) {
-      outputSize = outputSize['+'](dart.nullCheck(sliceBorder));
-      destinationSize = destinationSize['+'](sliceBorder);
-      if (!dart.equals(sourceSize, inputSize)) dart.assertFailed("centerSlice was used with a BoxFit that does not guarantee that the image is fully visible.", I[0], 465, 12, "sourceSize == inputSize");
-    }
-    if (repeat != decoration_image.ImageRepeat.noRepeat && dart.equals(destinationSize, outputSize)) {
-      repeat = decoration_image.ImageRepeat.noRepeat;
-    }
-    let paint = (t1$0 = ui.Paint.new(), (() => {
-      t1$0.isAntiAlias = isAntiAlias;
-      return t1$0;
-    })());
-    if (colorFilter != null) paint.colorFilter = colorFilter;
-    paint.filterQuality = filterQuality;
-    paint.invertColors = invertColors;
-    let halfWidthDelta = (dart.notNull(outputSize.width) - dart.notNull(destinationSize.width)) / 2.0;
-    let halfHeightDelta = (dart.notNull(outputSize.height) - dart.notNull(destinationSize.height)) / 2.0;
-    let dx = halfWidthDelta + dart.notNull(dart.test(flipHorizontally) ? -dart.notNull(alignment.x) : alignment.x) * halfWidthDelta;
-    let dy = halfHeightDelta + dart.notNull(alignment.y) * halfHeightDelta;
-    let destinationPosition = rect.topLeft.translate(dx, dy);
-    let destinationRect = destinationPosition['&'](destinationSize);
-    let invertedCanvas = false;
-    if (!false) {
-      let sizeInfo = new debug.ImageSizeInfo.new({source: (t1$1 = debugImageLabel, t1$1 == null ? "<Unknown Image(" + dart.str(image.width) + "×" + dart.str(image.height) + ")>" : t1$1), imageSize: new ui.Size.new(image.width[$toDouble](), image.height[$toDouble]()), displaySize: outputSize});
+    layoutChild(childId, constraints) {
+      if (childId == null) dart.nullFailed(I[1], 141, 27, "childId");
+      if (constraints == null) dart.nullFailed(I[1], 141, 51, "constraints");
+      let child = dart.nullCheck(this[_idToChild])[$_get](childId);
       if (!dart.test(dart.fn(() => {
-        let t1;
-        if (dart.test(debug.debugInvertOversizedImages) && dart.notNull(sizeInfo.decodedSizeInBytes) > dart.notNull(sizeInfo.displaySizeInBytes) + dart.notNull(debug.debugImageOverheadAllowance)) {
-          let overheadInKilobytes = ((dart.notNull(sizeInfo.decodedSizeInBytes) - dart.notNull(sizeInfo.displaySizeInBytes)) / 1024)[$truncate]();
-          let outputWidth = outputSize.width[$toInt]();
-          let outputHeight = outputSize.height[$toInt]();
-          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: "Image " + dart.str(debugImageLabel) + " has a display size of " + dart.str(outputWidth) + "×" + dart.str(outputHeight) + " but a decode size of " + dart.str(image.width) + "×" + dart.str(image.height) + ", which uses an additional " + dart.str(overheadInKilobytes) + "KB.\n\n" + "Consider resizing the asset ahead of time, supplying a cacheWidth " + "parameter of " + dart.str(outputWidth) + ", a cacheHeight parameter of " + dart.str(outputHeight) + ", or using a ResizeImage.", library: "painting library", context: new assertions.ErrorDescription.new("while painting an image")}));
-          canvas.saveLayer(destinationRect, (t1 = ui.Paint.new(), (() => {
-            t1.colorFilter = C[7] || CT.C7;
-            return t1;
-          })()));
-          let dy = -(dart.notNull(rect.top) + dart.notNull(rect.height) / 2.0);
-          canvas.translate(0.0, -dy);
-          canvas.scale(1.0, -1.0);
-          canvas.translate(0.0, dy);
-          invertedCanvas = true;
+        if (child == null) {
+          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate tried to lay out a non-existent child.\n" + "There is no child with the id \"" + dart.str(childId) + "\"."));
+        }
+        if (!dart.test(dart.nullCheck(this[_debugChildrenNeedingLayout]).remove(child))) {
+          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate tried to lay out the child with id \"" + dart.str(childId) + "\" more than once.\n" + "Each child must be laid out exactly once."));
+        }
+        try {
+          if (!dart.test(constraints.debugAssertIsValid({isAppliedConstraint: true}))) dart.assertFailed(null, I[1], 157, 16, "constraints.debugAssertIsValid(isAppliedConstraint: true)");
+        } catch (e) {
+          let exception = dart.getThrown(e);
+          if (core.AssertionError.is(exception)) {
+            dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("The " + dart.str(this) + " custom multichild layout delegate provided invalid box constraints for the child with id \"" + dart.str(childId) + "\"."), new (T.DiagnosticsPropertyOfAssertionError()).new("Exception", exception, {showName: false}), new assertions.ErrorDescription.new("The minimum width and height must be greater than or equal to zero.\n" + "The maximum width must be greater than or equal to the minimum width.\n" + "The maximum height must be greater than or equal to the minimum height.")])));
+          } else
+            throw e;
         }
         return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 495, 12, "() {\r\n      if (debugInvertOversizedImages &&\r\n          sizeInfo.decodedSizeInBytes > sizeInfo.displaySizeInBytes + debugImageOverheadAllowance) {\r\n        final int overheadInKilobytes = (sizeInfo.decodedSizeInBytes - sizeInfo.displaySizeInBytes) ~/ 1024;\r\n        final int outputWidth = outputSize.width.toInt();\r\n        final int outputHeight = outputSize.height.toInt();\r\n        FlutterError.reportError(FlutterErrorDetails(\r\n          exception: 'Image $debugImageLabel has a display size of '\r\n            '$outputWidth×$outputHeight but a decode size of '\r\n            '${image.width}×${image.height}, which uses an additional '\r\n            '${overheadInKilobytes}KB.\\n\\n'\r\n            'Consider resizing the asset ahead of time, supplying a cacheWidth '\r\n            'parameter of $outputWidth, a cacheHeight parameter of '\r\n            '$outputHeight, or using a ResizeImage.',\r\n          library: 'painting library',\r\n          context: ErrorDescription('while painting an image'),\r\n        ));\r\n        // Invert the colors of the canvas.\r\n        canvas.saveLayer(\r\n          destinationRect,\r\n          Paint()..colorFilter = const ColorFilter.matrix(<double>[\r\n            -1,  0,  0, 0, 255,\r\n             0, -1,  0, 0, 255,\r\n             0,  0, -1, 0, 255,\r\n             0,  0,  0, 1,   0,\r\n          ]),\r\n        );\r\n        // Flip the canvas vertically.\r\n        final double dy = -(rect.top + rect.height / 2.0);\r\n        canvas.translate(0.0, -dy);\r\n        canvas.scale(1.0, -1.0);\r\n        canvas.translate(0.0, dy);\r\n        invertedCanvas = true;\r\n      }\r\n      return true;\r\n    }()");
-      if (!dart.test(decoration_image._lastFrameImageSizeInfo.contains(sizeInfo))) {
-        let existingSizeInfo = decoration_image._pendingImageSizeInfo[$_get](sizeInfo.source);
-        if (existingSizeInfo == null || dart.notNull(existingSizeInfo.displaySizeInBytes) < dart.notNull(sizeInfo.displaySizeInBytes)) {
-          decoration_image._pendingImageSizeInfo[$_set](dart.nullCheck(sizeInfo.source), sizeInfo);
+      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 143, 12, "() {\r\n      if (child == null) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate tried to lay out a non-existent child.\\n'\r\n          'There is no child with the id \"$childId\".',\r\n        );\r\n      }\r\n      if (!_debugChildrenNeedingLayout!.remove(child)) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate tried to lay out the child with id \"$childId\" more than once.\\n'\r\n          'Each child must be laid out exactly once.',\r\n        );\r\n      }\r\n      try {\r\n        assert(constraints.debugAssertIsValid(isAppliedConstraint: true));\r\n      } on AssertionError catch (exception) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('The $this custom multichild layout delegate provided invalid box constraints for the child with id \"$childId\".'),\r\n          DiagnosticsProperty<AssertionError>('Exception', exception, showName: false),\r\n          ErrorDescription(\r\n            'The minimum width and height must be greater than or equal to zero.\\n'\r\n            'The maximum width must be greater than or equal to the minimum width.\\n'\r\n            'The maximum height must be greater than or equal to the minimum height.',\r\n          ),\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
+      dart.nullCheck(child).layout(constraints, {parentUsesSize: true});
+      return child.size;
+    }
+    positionChild(childId, offset) {
+      if (childId == null) dart.nullFailed(I[1], 181, 29, "childId");
+      if (offset == null) dart.nullFailed(I[1], 181, 45, "offset");
+      let child = dart.nullCheck(this[_idToChild])[$_get](childId);
+      if (!dart.test(dart.fn(() => {
+        if (child == null) {
+          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate tried to position out a non-existent child:\n" + "There is no child with the id \"" + dart.str(childId) + "\"."));
         }
-        t1$2 = debug.debugOnPaintImage;
-        t1$2 == null ? null : t1$2(sizeInfo);
-        dart.nullCheck(binding.SchedulerBinding.instance).addPostFrameCallback(dart.fn(timeStamp => {
-          if (timeStamp == null) dart.nullFailed(I[0], 538, 65, "timeStamp");
-          decoration_image._lastFrameImageSizeInfo = decoration_image._pendingImageSizeInfo[$values][$toSet]();
-          if (dart.test(decoration_image._pendingImageSizeInfo[$isEmpty])) {
-            return;
+        if (offset == null) {
+          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate provided a null position for the child with id \"" + dart.str(childId) + "\"."));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 183, 12, "() {\r\n      if (child == null) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate tried to position out a non-existent child:\\n'\r\n          'There is no child with the id \"$childId\".',\r\n        );\r\n      }\r\n      if (offset == null) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate provided a null position for the child with id \"$childId\".',\r\n        );\r\n      }\r\n      return true;\r\n    }()");
+      let childParentData = custom_layout.MultiChildLayoutParentData.as(dart.nullCheck(dart.nullCheck(child).parentData));
+      childParentData.offset = offset;
+    }
+    [_debugDescribeChild](child) {
+      if (child == null) dart.nullFailed(I[1], 201, 49, "child");
+      let childParentData = custom_layout.MultiChildLayoutParentData.as(dart.nullCheck(child.parentData));
+      return new (T.DiagnosticsPropertyOfRenderBox()).new(dart.str(childParentData.id), child);
+    }
+    [_callPerformLayout](size, firstChild) {
+      if (size == null) dart.nullFailed(I[1], 206, 32, "size");
+      let previousIdToChild = this[_idToChild];
+      let debugPreviousChildrenNeedingLayout = null;
+      if (!dart.test(dart.fn(() => {
+        debugPreviousChildrenNeedingLayout = this[_debugChildrenNeedingLayout];
+        this[_debugChildrenNeedingLayout] = T.LinkedHashSetOfRenderBox().new();
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 213, 12, "() {\r\n      debugPreviousChildrenNeedingLayout = _debugChildrenNeedingLayout;\r\n      _debugChildrenNeedingLayout = <RenderBox>{};\r\n      return true;\r\n    }()");
+      try {
+        this[_idToChild] = new (T.LinkedMapOfObject$RenderBox()).new();
+        let child = firstChild;
+        while (child != null) {
+          let childParentData = custom_layout.MultiChildLayoutParentData.as(dart.nullCheck(child.parentData));
+          if (!dart.test(dart.fn(() => {
+            if (childParentData.id == null) {
+              dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("Every child of a RenderCustomMultiChildLayoutBox must have an ID in its parent data."), dart.nullCheck(child).describeForError("The following child has no ID")])));
+            }
+            return true;
+          }, T.VoidTobool())())) dart.assertFailed(null, I[1], 224, 16, "() {\r\n          if (childParentData.id == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('Every child of a RenderCustomMultiChildLayoutBox must have an ID in its parent data.'),\r\n              child!.describeForError('The following child has no ID'),\r\n            ]);\r\n          }\r\n          return true;\r\n        }()");
+          dart.nullCheck(this[_idToChild])[$_set](dart.nullCheck(childParentData.id), child);
+          if (!dart.test(dart.fn(() => {
+            dart.nullCheck(this[_debugChildrenNeedingLayout]).add(dart.nullCheck(child));
+            return true;
+          }, T.VoidTobool())())) dart.assertFailed(null, I[1], 234, 16, "() {\r\n          _debugChildrenNeedingLayout!.add(child!);\r\n          return true;\r\n        }()");
+          child = childParentData.nextSibling;
+        }
+        this.performLayout(size);
+        if (!dart.test(dart.fn(() => {
+          if (dart.test(dart.nullCheck(this[_debugChildrenNeedingLayout])[$isNotEmpty])) {
+            dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("Each child must be laid out exactly once."), new diagnostics.DiagnosticsBlock.new({name: "The " + dart.str(this) + " custom multichild layout delegate forgot " + "to lay out the following " + (dart.notNull(dart.nullCheck(this[_debugChildrenNeedingLayout])[$length]) > 1 ? "children" : "child"), properties: dart.nullCheck(this[_debugChildrenNeedingLayout])[$map](diagnostics.DiagnosticsNode, dart.bind(this, _debugDescribeChild))[$toList](), style: diagnostics.DiagnosticsTreeStyle.whitespace})])));
           }
-          developer.postEvent("Flutter.ImageSizesForFrame", (() => {
-            let t1 = new (T.IdentityMapOfString$Object()).new();
-            for (let imageSizeInfo of decoration_image._pendingImageSizeInfo[$values])
-              t1[$_set](dart.nullCheck(imageSizeInfo.source), imageSizeInfo.toJson());
-            return t1;
-          })());
-          decoration_image._pendingImageSizeInfo = new (T.IdentityMapOfString$ImageSizeInfo()).new();
-        }, T.DurationTovoid()));
+          return true;
+        }, T.VoidTobool())())) dart.assertFailed(null, I[1], 241, 14, "() {\r\n        if (_debugChildrenNeedingLayout!.isNotEmpty) {\r\n          throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('Each child must be laid out exactly once.'),\r\n            DiagnosticsBlock(\r\n              name:\r\n                'The $this custom multichild layout delegate forgot '\r\n                'to lay out the following '\r\n                '${_debugChildrenNeedingLayout!.length > 1 ? 'children' : 'child'}',\r\n              properties: _debugChildrenNeedingLayout!.map<DiagnosticsNode>(_debugDescribeChild).toList(),\r\n              style: DiagnosticsTreeStyle.whitespace,\r\n            ),\r\n          ]);\r\n        }\r\n        return true;\r\n      }()");
+      } finally {
+        this[_idToChild] = previousIdToChild;
+        if (!dart.test(dart.fn(() => {
+          this[_debugChildrenNeedingLayout] = debugPreviousChildrenNeedingLayout;
+          return true;
+        }, T.VoidTobool())())) dart.assertFailed(null, I[1], 259, 14, "() {\r\n        _debugChildrenNeedingLayout = debugPreviousChildrenNeedingLayout;\r\n        return true;\r\n      }()");
       }
     }
-    let needSave = centerSlice != null || repeat != decoration_image.ImageRepeat.noRepeat || dart.test(flipHorizontally);
-    if (needSave) canvas.save();
-    if (repeat != decoration_image.ImageRepeat.noRepeat) canvas.clipRect(rect);
-    if (dart.test(flipHorizontally)) {
-      let dx = -(dart.notNull(rect.left) + dart.notNull(rect.width) / 2.0);
-      canvas.translate(-dx, 0.0);
-      canvas.scale(-1.0, 1.0);
-      canvas.translate(dx, 0.0);
+    getSize(constraints) {
+      if (constraints == null) dart.nullFailed(I[1], 275, 31, "constraints");
+      return constraints.biggest;
     }
-    if (centerSlice == null) {
-      let sourceRect = alignment.inscribe(sourceSize, ui.Offset.zero['&'](inputSize));
-      if (repeat == decoration_image.ImageRepeat.noRepeat) {
-        canvas.drawImageRect(image, sourceRect, destinationRect, paint);
-      } else {
-        for (let tileRect of decoration_image._generateImageTileRects(rect, destinationRect, repeat))
-          canvas.drawImageRect(image, sourceRect, tileRect, paint);
-      }
-    } else {
-      canvas.scale(1 / dart.notNull(scale));
-      if (repeat == decoration_image.ImageRepeat.noRepeat) {
-        canvas.drawImageNine(image, decoration_image._scaleRect(centerSlice, scale), decoration_image._scaleRect(destinationRect, scale), paint);
-      } else {
-        for (let tileRect of decoration_image._generateImageTileRects(rect, destinationRect, repeat))
-          canvas.drawImageNine(image, decoration_image._scaleRect(centerSlice, scale), decoration_image._scaleRect(tileRect, scale), paint);
-      }
-    }
-    if (needSave) canvas.restore();
-    if (invertedCanvas) {
-      canvas.restore();
+    toString() {
+      return object$.objectRuntimeType(this, "MultiChildLayoutDelegate");
     }
   };
-  decoration_image._generateImageTileRects = function _generateImageTileRects(outputRect, fundamentalRect, repeat) {
-    if (outputRect == null) dart.nullFailed(I[0], 593, 45, "outputRect");
-    if (fundamentalRect == null) dart.nullFailed(I[0], 593, 62, "fundamentalRect");
-    if (repeat == null) dart.nullFailed(I[0], 593, 91, "repeat");
-    return new (T.SyncIterableOfRect()).new(function* _generateImageTileRects() {
-      let startX = 0;
-      let startY = 0;
-      let stopX = 0;
-      let stopY = 0;
-      let strideX = fundamentalRect.width;
-      let strideY = fundamentalRect.height;
-      if (repeat == decoration_image.ImageRepeat.repeat || repeat == decoration_image.ImageRepeat.repeatX) {
-        startX = ((dart.notNull(outputRect.left) - dart.notNull(fundamentalRect.left)) / dart.notNull(strideX))[$floor]();
-        stopX = ((dart.notNull(outputRect.right) - dart.notNull(fundamentalRect.right)) / dart.notNull(strideX))[$ceil]();
+  (custom_layout.MultiChildLayoutDelegate.new = function(opts) {
+    let relayout = opts && 'relayout' in opts ? opts.relayout : null;
+    this[_idToChild] = null;
+    this[_debugChildrenNeedingLayout] = null;
+    this[_relayout] = relayout;
+    ;
+  }).prototype = custom_layout.MultiChildLayoutDelegate.prototype;
+  dart.addTypeTests(custom_layout.MultiChildLayoutDelegate);
+  dart.addTypeCaches(custom_layout.MultiChildLayoutDelegate);
+  dart.setMethodSignature(custom_layout.MultiChildLayoutDelegate, () => ({
+    __proto__: dart.getMethods(custom_layout.MultiChildLayoutDelegate.__proto__),
+    hasChild: dart.fnType(core.bool, [core.Object]),
+    layoutChild: dart.fnType(ui.Size, [core.Object, box.BoxConstraints]),
+    positionChild: dart.fnType(dart.void, [core.Object, ui.Offset]),
+    [_debugDescribeChild]: dart.fnType(diagnostics.DiagnosticsNode, [box.RenderBox]),
+    [_callPerformLayout]: dart.fnType(dart.void, [ui.Size, dart.nullable(box.RenderBox)]),
+    getSize: dart.fnType(ui.Size, [box.BoxConstraints])
+  }));
+  dart.setLibraryUri(custom_layout.MultiChildLayoutDelegate, I[0]);
+  dart.setFieldSignature(custom_layout.MultiChildLayoutDelegate, () => ({
+    __proto__: dart.getFields(custom_layout.MultiChildLayoutDelegate.__proto__),
+    [_relayout]: dart.finalFieldType(dart.nullable(change_notifier.Listenable)),
+    [_idToChild]: dart.fieldType(dart.nullable(core.Map$(core.Object, box.RenderBox))),
+    [_debugChildrenNeedingLayout]: dart.fieldType(dart.nullable(core.Set$(box.RenderBox)))
+  }));
+  dart.defineExtensionMethods(custom_layout.MultiChildLayoutDelegate, ['toString']);
+  var _delegate = dart.privateName(custom_layout, "_delegate");
+  var _getSize = dart.privateName(custom_layout, "_getSize");
+  const RenderBox_ContainerRenderObjectMixin$36 = class RenderBox_ContainerRenderObjectMixin extends box.RenderBox {};
+  (RenderBox_ContainerRenderObjectMixin$36.new = function() {
+    object.ContainerRenderObjectMixin$(box.RenderBox, custom_layout.MultiChildLayoutParentData)[dart.mixinNew].call(this);
+    RenderBox_ContainerRenderObjectMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox_ContainerRenderObjectMixin$36.prototype;
+  dart.applyMixin(RenderBox_ContainerRenderObjectMixin$36, object.ContainerRenderObjectMixin$(box.RenderBox, custom_layout.MultiChildLayoutParentData));
+  const RenderBox_RenderBoxContainerDefaultsMixin$36 = class RenderBox_RenderBoxContainerDefaultsMixin extends RenderBox_ContainerRenderObjectMixin$36 {};
+  (RenderBox_RenderBoxContainerDefaultsMixin$36.new = function() {
+    RenderBox_RenderBoxContainerDefaultsMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox_RenderBoxContainerDefaultsMixin$36.prototype;
+  dart.applyMixin(RenderBox_RenderBoxContainerDefaultsMixin$36, box.RenderBoxContainerDefaultsMixin$(box.RenderBox, custom_layout.MultiChildLayoutParentData));
+  custom_layout.RenderCustomMultiChildLayoutBox = class RenderCustomMultiChildLayoutBox extends RenderBox_RenderBoxContainerDefaultsMixin$36 {
+    setupParentData(child) {
+      box.RenderBox.as(child);
+      if (child == null) dart.nullFailed(I[1], 321, 34, "child");
+      if (!custom_layout.MultiChildLayoutParentData.is(child.parentData)) child.parentData = new custom_layout.MultiChildLayoutParentData.new();
+    }
+    get delegate() {
+      return this[_delegate];
+    }
+    set delegate(newDelegate) {
+      let t1, t1$;
+      if (newDelegate == null) dart.nullFailed(I[1], 329, 41, "newDelegate");
+      if (!(newDelegate != null)) dart.assertFailed(null, I[1], 330, 12, "newDelegate != null");
+      if (dart.equals(this[_delegate], newDelegate)) return;
+      let oldDelegate = this[_delegate];
+      if (!dart.equals(dart.runtimeType(newDelegate), dart.runtimeType(oldDelegate)) || dart.test(newDelegate.shouldRelayout(oldDelegate))) this.markNeedsLayout();
+      this[_delegate] = newDelegate;
+      if (dart.test(this.attached)) {
+        t1 = oldDelegate[_relayout];
+        t1 == null ? null : t1.removeListener(dart.bind(this, 'markNeedsLayout'));
+        t1$ = newDelegate[_relayout];
+        t1$ == null ? null : t1$.addListener(dart.bind(this, 'markNeedsLayout'));
       }
-      if (repeat == decoration_image.ImageRepeat.repeat || repeat == decoration_image.ImageRepeat.repeatY) {
-        startY = ((dart.notNull(outputRect.top) - dart.notNull(fundamentalRect.top)) / dart.notNull(strideY))[$floor]();
-        stopY = ((dart.notNull(outputRect.bottom) - dart.notNull(fundamentalRect.bottom)) / dart.notNull(strideY))[$ceil]();
-      }
-      for (let i = startX; i <= stopX; i = i + 1) {
-        for (let j = startY; j <= stopY; j = j + 1)
-          yield fundamentalRect.shift(new ui.Offset.new(i * dart.notNull(strideX), j * dart.notNull(strideY)));
-      }
-    });
+    }
+    attach(owner) {
+      let t1;
+      object.PipelineOwner.as(owner);
+      if (owner == null) dart.nullFailed(I[1], 344, 29, "owner");
+      super.attach(owner);
+      t1 = this[_delegate][_relayout];
+      t1 == null ? null : t1.addListener(dart.bind(this, 'markNeedsLayout'));
+    }
+    detach() {
+      let t1;
+      t1 = this[_delegate][_relayout];
+      t1 == null ? null : t1.removeListener(dart.bind(this, 'markNeedsLayout'));
+      super.detach();
+    }
+    [_getSize](constraints) {
+      if (constraints == null) dart.nullFailed(I[1], 355, 32, "constraints");
+      if (!dart.test(constraints.debugAssertIsValid())) dart.assertFailed(null, I[1], 356, 12, "constraints.debugAssertIsValid()");
+      return constraints.constrain(this[_delegate].getSize(constraints));
+    }
+    computeMinIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[1], 365, 42, "height");
+      let width = this[_getSize](new box.BoxConstraints.tightForFinite({height: height})).width;
+      if (width[$isFinite]) return width;
+      return 0.0;
+    }
+    computeMaxIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[1], 373, 42, "height");
+      let width = this[_getSize](new box.BoxConstraints.tightForFinite({height: height})).width;
+      if (width[$isFinite]) return width;
+      return 0.0;
+    }
+    computeMinIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[1], 381, 43, "width");
+      let height = this[_getSize](new box.BoxConstraints.tightForFinite({width: width})).height;
+      if (height[$isFinite]) return height;
+      return 0.0;
+    }
+    computeMaxIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[1], 389, 43, "width");
+      let height = this[_getSize](new box.BoxConstraints.tightForFinite({width: width})).height;
+      if (height[$isFinite]) return height;
+      return 0.0;
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[1], 397, 40, "constraints");
+      return this[_getSize](constraints);
+    }
+    performLayout() {
+      this.size = this[_getSize](this.constraints);
+      this.delegate[_callPerformLayout](this.size, this.firstChild);
+    }
+    paint(context, offset) {
+      if (context == null) dart.nullFailed(I[1], 408, 30, "context");
+      if (offset == null) dart.nullFailed(I[1], 408, 46, "offset");
+      this.defaultPaint(context, offset);
+    }
+    hitTestChildren(result, opts) {
+      if (result == null) dart.nullFailed(I[1], 413, 41, "result");
+      let position = opts && 'position' in opts ? opts.position : null;
+      if (position == null) dart.nullFailed(I[1], 413, 67, "position");
+      return this.defaultHitTestChildren(result, {position: position});
+    }
   };
-  decoration_image._scaleRect = function _scaleRect(rect, scale) {
-    if (rect == null) dart.nullFailed(I[0], 617, 22, "rect");
-    if (scale == null) dart.nullFailed(I[0], 617, 35, "scale");
-    return new ui.Rect.fromLTRB(dart.notNull(rect.left) * dart.notNull(scale), dart.notNull(rect.top) * dart.notNull(scale), dart.notNull(rect.right) * dart.notNull(scale), dart.notNull(rect.bottom) * dart.notNull(scale));
-  };
-  dart.defineLazy(decoration_image, {
-    /*decoration_image._pendingImageSizeInfo*/get _pendingImageSizeInfo() {
-      return new (T.IdentityMapOfString$ImageSizeInfo()).new();
-    },
-    set _pendingImageSizeInfo(_) {},
-    /*decoration_image._lastFrameImageSizeInfo*/get _lastFrameImageSizeInfo() {
-      return T.LinkedHashSetOfImageSizeInfo().new();
-    },
-    set _lastFrameImageSizeInfo(_) {}
-  }, false);
-  dart.trackLibraries("packages/flutter/src/painting/decoration_image.dart", {
-    "package:flutter/src/painting/decoration_image.dart": decoration_image
+  (custom_layout.RenderCustomMultiChildLayoutBox.new = function(opts) {
+    let children = opts && 'children' in opts ? opts.children : null;
+    let delegate = opts && 'delegate' in opts ? opts.delegate : null;
+    if (delegate == null) dart.nullFailed(I[1], 314, 39, "delegate");
+    if (!(delegate != null)) dart.assertFailed(null, I[1], 315, 15, "delegate != null");
+    this[_delegate] = delegate;
+    custom_layout.RenderCustomMultiChildLayoutBox.__proto__.new.call(this);
+    this.addAll(children);
+  }).prototype = custom_layout.RenderCustomMultiChildLayoutBox.prototype;
+  dart.addTypeTests(custom_layout.RenderCustomMultiChildLayoutBox);
+  dart.addTypeCaches(custom_layout.RenderCustomMultiChildLayoutBox);
+  dart.setMethodSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
+    __proto__: dart.getMethods(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
+    [_getSize]: dart.fnType(ui.Size, [box.BoxConstraints])
+  }));
+  dart.setGetterSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
+    __proto__: dart.getGetters(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
+    delegate: custom_layout.MultiChildLayoutDelegate
+  }));
+  dart.setSetterSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
+    __proto__: dart.getSetters(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
+    delegate: custom_layout.MultiChildLayoutDelegate
+  }));
+  dart.setLibraryUri(custom_layout.RenderCustomMultiChildLayoutBox, I[0]);
+  dart.setFieldSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
+    __proto__: dart.getFields(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
+    [_delegate]: dart.fieldType(custom_layout.MultiChildLayoutDelegate)
+  }));
+  dart.trackLibraries("packages/flutter/src/rendering/custom_layout.dart", {
+    "package:flutter/src/rendering/custom_layout.dart": custom_layout
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["decoration_image.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/painting/decoration_image.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["custom_layout.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/rendering/custom_layout.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__decoration_image: decoration_image
+    src__rendering__custom_layout: custom_layout
   };
 }));
 
-//# sourceMappingURL=decoration_image.dart.lib.js.map
+//# sourceMappingURL=custom_layout.dart.lib.js.map

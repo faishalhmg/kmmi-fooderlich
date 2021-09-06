@@ -1,69 +1,65 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/cupertino/text_theme.dart', 'packages/flutter/src/rendering/custom_paint.dart', 'packages/flutter/src/animation/listener_helpers.dart'], (function load__packages__flutter__src__cupertino__activity_indicator_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__cupertino__text_theme$46dart, packages__flutter__src__rendering__custom_paint$46dart, packages__flutter__src__animation__listener_helpers$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/google_fonts/src/google_fonts_base.dart', 'packages/fooderlich/models/grocery_item.dart', 'packages/flutter/src/material/colors.dart', 'packages/intl/src/intl/date_format.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/material/checkbox.dart'], (function load__packages__fooderlich__components__grocery_tile_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__rendering__flex$46dart, packages__google_fonts__src__google_fonts_base$46dart, packages__fooderlich__models__grocery_item$46dart, packages__flutter__src__material__colors$46dart, packages__intl__src__intl__date_format$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__material__checkbox$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _internal = dart_sdk._internal;
   const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
   const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
   const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
-  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
-  const colors = packages__flutter__src__cupertino__text_theme$46dart.src__cupertino__colors;
-  const custom_paint = packages__flutter__src__rendering__custom_paint$46dart.src__rendering__custom_paint;
-  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
-  var activity_indicator = Object.create(dart.library);
-  var $length = dartx.length;
-  var $floor = dartx.floor;
-  var $modulo = dartx['%'];
-  var $_get = dartx._get;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const google_fonts = packages__google_fonts__src__google_fonts_base$46dart.google_fonts;
+  const grocery_item = packages__fooderlich__models__grocery_item$46dart.models__grocery_item;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const date_format = packages__intl__src__intl__date_format$46dart.src__intl__date_format;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const checkbox = packages__flutter__src__material__checkbox$46dart.src__material__checkbox;
+  var grocery_tile = Object.create(dart.library);
+  var $toString = dartx.toString;
   dart._checkModuleNullSafetyMode(false);
   var T = {
     _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))()
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 1000000
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 17,
+        [_Location_line]: 29,
+        [_Location_file]: null
       });
     },
     get C3() {
       return C[3] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "painter",
-        [_Location_column]: 9,
-        [_Location_line]: 119,
+        [_Location_name]: "color",
+        [_Location_column]: 17,
+        [_Location_line]: 30,
         [_Location_file]: null
       });
-    },
-    get C2() {
-      return C[2] = dart.constList([C[3] || CT.C3], T._LocationL());
     },
     get C1() {
-      return C[1] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[2] || CT.C2,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 118,
-        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/cupertino/activity_indicator.dart"
-      });
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
     },
-    get C6() {
-      return C[6] = dart.const({
+    get C0() {
+      return C[0] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 7,
-        [_Location_line]: 116,
-        [_Location_file]: null
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 28,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
       });
     },
     get C7() {
@@ -71,316 +67,579 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "width",
-        [_Location_column]: 7,
-        [_Location_line]: 117,
+        [_Location_column]: 30,
+        [_Location_line]: 32,
         [_Location_file]: null
       });
     },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 118,
-        [_Location_file]: null
-      });
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7], T._LocationL());
     },
     get C5() {
-      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 32,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[5] || CT.C5,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 115,
-        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/cupertino/activity_indicator.dart"
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[5] || CT.C5,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: 16
       });
     },
     get C10() {
       return C[10] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4293651445.0
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 26,
+        [_Location_line]: 38,
+        [_Location_file]: null
       });
     },
     get C11() {
       return C[11] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4282137668.0
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 21,
+        [_Location_line]: 39,
+        [_Location_file]: null
       });
     },
     get C9() {
-      return C[9] = dart.const({
-        __proto__: colors.CupertinoDynamicColor.prototype,
-        [Color_value]: 0,
-        [CupertinoDynamicColor_darkHighContrastElevatedColor]: C[10] || CT.C10,
-        [CupertinoDynamicColor_highContrastElevatedColor]: C[11] || CT.C11,
-        [CupertinoDynamicColor_darkElevatedColor]: C[10] || CT.C10,
-        [CupertinoDynamicColor_elevatedColor]: C[11] || CT.C11,
-        [CupertinoDynamicColor_darkHighContrastColor]: C[10] || CT.C10,
-        [CupertinoDynamicColor_highContrastColor]: C[11] || CT.C11,
-        [CupertinoDynamicColor_darkColor]: C[10] || CT.C10,
-        [CupertinoDynamicColor_color]: C[11] || CT.C11,
-        [CupertinoDynamicColor__debugResolveContext]: null,
-        [CupertinoDynamicColor__debugLabel]: null,
-        [CupertinoDynamicColor__effectiveColor]: C[11] || CT.C11
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 37,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 34,
+        [_Location_line]: 44,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15], T._LocationL());
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 44,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
       });
     },
     get C12() {
-      return C[12] = dart.constList([47, 47, 47, 47, 72, 97, 122, 147], T.intL());
+      return C[12] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[13] || CT.C13,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 4,
+        [SizedBox_width]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 34,
+        [_Location_line]: 46,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.constList([C[19] || CT.C19], T._LocationL());
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[18] || CT.C18,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 46,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[17] || CT.C17,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 4,
+        [SizedBox_width]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 17,
+        [_Location_line]: 34,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 17,
+        [_Location_line]: 35,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 17,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.constList([C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24], T._LocationL());
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[21] || CT.C21,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 33,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 27,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.constList([C[27] || CT.C27], T._LocationL());
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[26] || CT.C26,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 26,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 34,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 19,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.constList([C[30] || CT.C30, C[31] || CT.C31], T._LocationL());
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[29] || CT.C29,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 54,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.constList([C[34] || CT.C34], T._LocationL());
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[33] || CT.C33,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 52,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.constList([C[37] || CT.C37, C[38] || CT.C38], T._LocationL());
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[36] || CT.C36,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 23,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 7,
+        [_Location_line]: 22,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 23,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.constList([C[41] || CT.C41, C[42] || CT.C42], T._LocationL());
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[40] || CT.C40,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 21,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 9,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 69,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.constList([C[45] || CT.C45, C[46] || CT.C46], T._LocationL());
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[44] || CT.C44,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 67,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 9,
+        [_Location_line]: 73,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 74,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.constList([C[49] || CT.C49, C[50] || CT.C50], T._LocationL());
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[48] || CT.C48,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 72,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 9,
+        [_Location_line]: 79,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 80,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.constList([C[53] || CT.C53, C[54] || CT.C54], T._LocationL());
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[52] || CT.C52,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 78,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 7,
+        [_Location_line]: 95,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 7,
+        [_Location_line]: 96,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.constList([C[57] || CT.C57, C[58] || CT.C58], T._LocationL());
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[56] || CT.C56,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 94,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 7,
+        [_Location_line]: 102,
+        [_Location_file]: null
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onChanged",
+        [_Location_column]: 7,
+        [_Location_line]: 103,
+        [_Location_file]: null
+      });
+    },
+    get C60() {
+      return C[60] = dart.constList([C[61] || CT.C61, C[62] || CT.C62], T._LocationL());
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[60] || CT.C60,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 101,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/grocery_tile.dart"
+      });
     }
   }, false);
-  var C = Array(13).fill(void 0);
-  var I = [
-    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/cupertino/activity_indicator.dart",
-    "package:flutter/src/cupertino/activity_indicator.dart"
-  ];
-  var animating$ = dart.privateName(activity_indicator, "CupertinoActivityIndicator.animating");
-  var radius$ = dart.privateName(activity_indicator, "CupertinoActivityIndicator.radius");
-  var progress$ = dart.privateName(activity_indicator, "CupertinoActivityIndicator.progress");
-  activity_indicator.CupertinoActivityIndicator = class CupertinoActivityIndicator extends framework.StatefulWidget {
-    get animating() {
-      return this[animating$];
-    }
-    set animating(value) {
-      super.animating = value;
-    }
-    get radius() {
-      return this[radius$];
-    }
-    set radius(value) {
-      super.radius = value;
-    }
-    get progress() {
-      return this[progress$];
-    }
-    set progress(value) {
-      super.progress = value;
-    }
-    createState() {
-      return new activity_indicator._CupertinoActivityIndicatorState.new();
-    }
-  };
-  (activity_indicator.CupertinoActivityIndicator.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let animating = opts && 'animating' in opts ? opts.animating : true;
-    if (animating == null) dart.nullFailed(I[0], 30, 10, "animating");
-    let radius = opts && 'radius' in opts ? opts.radius : 10;
-    if (radius == null) dart.nullFailed(I[0], 31, 10, "radius");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[animating$] = animating;
-    this[radius$] = radius;
-    if (!(animating != null)) dart.assertFailed(null, I[0], 32, 16, "animating != null");
-    if (!(radius != null)) dart.assertFailed(null, I[0], 33, 16, "radius != null");
-    if (!(dart.notNull(radius) > 0.0)) dart.assertFailed(null, I[0], 34, 16, "radius > 0.0");
-    this[progress$] = 1.0;
-    activity_indicator.CupertinoActivityIndicator.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = activity_indicator.CupertinoActivityIndicator.prototype;
-  (activity_indicator.CupertinoActivityIndicator.partiallyRevealed = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let radius = opts && 'radius' in opts ? opts.radius : 10;
-    if (radius == null) dart.nullFailed(I[0], 46, 10, "radius");
-    let progress = opts && 'progress' in opts ? opts.progress : 1;
-    if (progress == null) dart.nullFailed(I[0], 47, 10, "progress");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[radius$] = radius;
-    this[progress$] = progress;
-    if (!(radius != null)) dart.assertFailed(null, I[0], 48, 16, "radius != null");
-    if (!(dart.notNull(radius) > 0.0)) dart.assertFailed(null, I[0], 49, 16, "radius > 0.0");
-    if (!(progress != null)) dart.assertFailed(null, I[0], 50, 16, "progress != null");
-    if (!(dart.notNull(progress) >= 0.0)) dart.assertFailed(null, I[0], 51, 16, "progress >= 0.0");
-    if (!(dart.notNull(progress) <= 1.0)) dart.assertFailed(null, I[0], 52, 16, "progress <= 1.0");
-    this[animating$] = false;
-    activity_indicator.CupertinoActivityIndicator.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = activity_indicator.CupertinoActivityIndicator.prototype;
-  dart.addTypeTests(activity_indicator.CupertinoActivityIndicator);
-  dart.addTypeCaches(activity_indicator.CupertinoActivityIndicator);
-  dart.setMethodSignature(activity_indicator.CupertinoActivityIndicator, () => ({
-    __proto__: dart.getMethods(activity_indicator.CupertinoActivityIndicator.__proto__),
-    createState: dart.fnType(activity_indicator._CupertinoActivityIndicatorState, [])
-  }));
-  dart.setLibraryUri(activity_indicator.CupertinoActivityIndicator, I[1]);
-  dart.setFieldSignature(activity_indicator.CupertinoActivityIndicator, () => ({
-    __proto__: dart.getFields(activity_indicator.CupertinoActivityIndicator.__proto__),
-    animating: dart.finalFieldType(core.bool),
-    radius: dart.finalFieldType(core.double),
-    progress: dart.finalFieldType(core.double)
-  }));
-  var ___CupertinoActivityIndicatorState__controller = dart.privateName(activity_indicator, "_#_CupertinoActivityIndicatorState#_controller");
-  var ___CupertinoActivityIndicatorState__controller_isSet = dart.privateName(activity_indicator, "_#_CupertinoActivityIndicatorState#_controller#isSet");
-  var _controller = dart.privateName(activity_indicator, "_controller");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var C = Array(63).fill(void 0);
+  var I = ["package:fooderlich/components/grocery_tile.dart"];
+  var item$ = dart.privateName(grocery_tile, "GroceryTile.item");
+  var onComplete$ = dart.privateName(grocery_tile, "GroceryTile.onComplete");
+  var textDecoration = dart.privateName(grocery_tile, "GroceryTile.textDecoration");
   var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
   var _Location_name = dart.privateName(widget_inspector, "_Location.name");
   var _Location_column = dart.privateName(widget_inspector, "_Location.column");
   var _Location_line = dart.privateName(widget_inspector, "_Location.line");
   var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends framework.State$(activity_indicator.CupertinoActivityIndicator) {};
-  (State_SingleTickerProviderStateMixin$36.new = function() {
-    ticker_provider.SingleTickerProviderStateMixin$(activity_indicator.CupertinoActivityIndicator)[dart.mixinNew].call(this);
-    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
-  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
-  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(activity_indicator.CupertinoActivityIndicator));
-  activity_indicator._CupertinoActivityIndicatorState = class _CupertinoActivityIndicatorState extends State_SingleTickerProviderStateMixin$36 {
-    get [_controller]() {
-      let t0;
-      return dart.test(this[___CupertinoActivityIndicatorState__controller_isSet]) ? (t0 = this[___CupertinoActivityIndicatorState__controller], t0) : dart.throw(new _internal.LateError.fieldNI("_controller"));
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  grocery_tile.GroceryTile = class GroceryTile extends framework.StatelessWidget {
+    get item() {
+      return this[item$];
     }
-    set [_controller](t0) {
-      if (t0 == null) dart.nullFailed(I[0], 81, 28, "null");
-      this[___CupertinoActivityIndicatorState__controller_isSet] = true;
-      this[___CupertinoActivityIndicatorState__controller] = t0;
+    set item(value) {
+      super.item = value;
     }
-    initState() {
-      super.initState();
-      this[_controller] = new animation_controller.AnimationController.new({duration: C[0] || CT.C0, vsync: this});
-      if (dart.test(this.widget.animating)) {
-        this[_controller].repeat();
-      }
+    get onComplete() {
+      return this[onComplete$];
     }
-    didUpdateWidget(oldWidget) {
-      activity_indicator.CupertinoActivityIndicator.as(oldWidget);
-      if (oldWidget == null) dart.nullFailed(I[0], 97, 51, "oldWidget");
-      super.didUpdateWidget(oldWidget);
-      if (this.widget.animating != oldWidget.animating) {
-        if (dart.test(this.widget.animating))
-          this[_controller].repeat();
-        else
-          this[_controller].stop();
-      }
+    set onComplete(value) {
+      super.onComplete = value;
     }
-    dispose() {
-      this[_controller].dispose();
-      super.dispose();
+    get textDecoration() {
+      return this[textDecoration];
+    }
+    set textDecoration(value) {
+      super.textDecoration = value;
     }
     build(context) {
-      if (context == null) dart.nullFailed(I[0], 114, 29, "context");
-      return new basic.SizedBox.new({height: dart.notNull(this.widget.radius) * 2, width: dart.notNull(this.widget.radius) * 2, child: new basic.CustomPaint.new({painter: new activity_indicator._CupertinoActivityIndicatorPainter.new({position: this[_controller], activeColor: colors.CupertinoDynamicColor.resolve(activity_indicator._kActiveTickColor, context), radius: this.widget.radius, progress: this.widget.progress}), $creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+      return new basic.SizedBox.new({height: 100.0, child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.spaceBetween, children: T.JSArrayOfWidgetL().of([new basic.Row.new({children: T.JSArrayOfWidgetL().of([new container.Container.new({width: 5.0, color: this.item.color, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), C[4] || CT.C4, new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, crossAxisAlignment: flex.CrossAxisAlignment.start, children: T.JSArrayOfWidgetL().of([new text.Text.new(this.item.name, {style: google_fonts.GoogleFonts.lato({decoration: this.textDecoration, fontSize: 21.0, fontWeight: ui.FontWeight.bold}), $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), C[12] || CT.C12, this.buildDate(), C[16] || CT.C16, this.buildImportance()]), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20})]), $creationLocationd_0dea112b090073317d4: C[25] || CT.C25}), new basic.Row.new({children: T.JSArrayOfWidgetL().of([new text.Text.new(dart.toString(this.item.quantity), {style: google_fonts.GoogleFonts.lato({decoration: this.textDecoration, fontSize: 21.0}), $creationLocationd_0dea112b090073317d4: C[28] || CT.C28}), this.buildCheckbox()]), $creationLocationd_0dea112b090073317d4: C[32] || CT.C32})]), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35}), $creationLocationd_0dea112b090073317d4: C[39] || CT.C39});
     }
-  };
-  (activity_indicator._CupertinoActivityIndicatorState.new = function() {
-    this[___CupertinoActivityIndicatorState__controller] = null;
-    this[___CupertinoActivityIndicatorState__controller_isSet] = false;
-    activity_indicator._CupertinoActivityIndicatorState.__proto__.new.call(this);
-    ;
-  }).prototype = activity_indicator._CupertinoActivityIndicatorState.prototype;
-  dart.addTypeTests(activity_indicator._CupertinoActivityIndicatorState);
-  dart.addTypeCaches(activity_indicator._CupertinoActivityIndicatorState);
-  dart.setMethodSignature(activity_indicator._CupertinoActivityIndicatorState, () => ({
-    __proto__: dart.getMethods(activity_indicator._CupertinoActivityIndicatorState.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
-  }));
-  dart.setGetterSignature(activity_indicator._CupertinoActivityIndicatorState, () => ({
-    __proto__: dart.getGetters(activity_indicator._CupertinoActivityIndicatorState.__proto__),
-    [_controller]: animation_controller.AnimationController
-  }));
-  dart.setSetterSignature(activity_indicator._CupertinoActivityIndicatorState, () => ({
-    __proto__: dart.getSetters(activity_indicator._CupertinoActivityIndicatorState.__proto__),
-    [_controller]: animation_controller.AnimationController
-  }));
-  dart.setLibraryUri(activity_indicator._CupertinoActivityIndicatorState, I[1]);
-  dart.setFieldSignature(activity_indicator._CupertinoActivityIndicatorState, () => ({
-    __proto__: dart.getFields(activity_indicator._CupertinoActivityIndicatorState.__proto__),
-    [___CupertinoActivityIndicatorState__controller]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
-    [___CupertinoActivityIndicatorState__controller_isSet]: dart.fieldType(core.bool)
-  }));
-  activity_indicator._CupertinoActivityIndicatorPainter = class _CupertinoActivityIndicatorPainter extends custom_paint.CustomPainter {
-    paint(canvas, size) {
-      if (canvas == null) dart.nullFailed(I[0], 173, 21, "canvas");
-      if (size == null) dart.nullFailed(I[0], 173, 34, "size");
-      let paint = ui.Paint.new();
-      let tickCount = activity_indicator._kAlphaValues[$length];
-      canvas.save();
-      canvas.translate(dart.notNull(size.width) / 2.0, dart.notNull(size.height) / 2.0);
-      let activeTick = (dart.notNull(tickCount) * dart.notNull(this.position.value))[$floor]();
-      for (let i = 0; i < dart.notNull(tickCount) * dart.notNull(this.progress); i = i + 1) {
-        let t = (i - activeTick)[$modulo](tickCount);
-        paint.color = this.activeColor.withAlpha(dart.notNull(this.progress) < 1 ? 147 : activity_indicator._kAlphaValues[$_get](t));
-        canvas.drawRRect(this.tickFundamentalRRect, paint);
-        canvas.rotate(6.283185307179586 / dart.notNull(tickCount));
+    buildImportance() {
+      if (this.item.importance == grocery_item.Importance.low) {
+        return new text.Text.new("Low", {style: google_fonts.GoogleFonts.lato({decoration: this.textDecoration}), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
+      } else if (this.item.importance == grocery_item.Importance.medium) {
+        return new text.Text.new("Medium", {style: google_fonts.GoogleFonts.lato({fontWeight: ui.FontWeight.w800, decoration: this.textDecoration}), $creationLocationd_0dea112b090073317d4: C[47] || CT.C47});
+      } else if (this.item.importance == grocery_item.Importance.high) {
+        return new text.Text.new("High", {style: google_fonts.GoogleFonts.lato({color: colors.Colors.red, fontWeight: ui.FontWeight.w900, decoration: this.textDecoration}), $creationLocationd_0dea112b090073317d4: C[51] || CT.C51});
+      } else {
+        dart.throw(core.Exception.new("This importance type does not exist"));
       }
-      canvas.restore();
     }
-    shouldRepaint(oldPainter) {
-      activity_indicator._CupertinoActivityIndicatorPainter.as(oldPainter);
-      if (oldPainter == null) dart.nullFailed(I[0], 194, 57, "oldPainter");
-      return !dart.equals(oldPainter.position, this.position) || !dart.equals(oldPainter.activeColor, this.activeColor) || oldPainter.progress != this.progress;
+    buildDate() {
+      let dateFormatter = new date_format.DateFormat.new("MMMM dd h:mm a");
+      let dateString = dateFormatter.format(this.item.date);
+      return new text.Text.new(dateString, {style: new text_style.TextStyle.new({decoration: this.textDecoration}), $creationLocationd_0dea112b090073317d4: C[55] || CT.C55});
+    }
+    buildCheckbox() {
+      return new checkbox.Checkbox.new({value: this.item.isComplete, onChanged: this.onComplete, $creationLocationd_0dea112b090073317d4: C[59] || CT.C59});
     }
   };
-  (activity_indicator._CupertinoActivityIndicatorPainter.new = function(opts) {
-    let position = opts && 'position' in opts ? opts.position : null;
-    if (position == null) dart.nullFailed(I[0], 151, 19, "position");
-    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
-    if (activeColor == null) dart.nullFailed(I[0], 152, 19, "activeColor");
-    let radius = opts && 'radius' in opts ? opts.radius : null;
-    if (radius == null) dart.nullFailed(I[0], 153, 19, "radius");
-    let progress = opts && 'progress' in opts ? opts.progress : null;
-    if (progress == null) dart.nullFailed(I[0], 154, 19, "progress");
-    this.position = position;
-    this.activeColor = activeColor;
-    this.radius = radius;
-    this.progress = progress;
-    this.tickFundamentalRRect = new ui.RRect.fromLTRBXY(-dart.notNull(radius) / 10, -dart.notNull(radius) / 3.0, dart.notNull(radius) / 10, -dart.notNull(radius), dart.notNull(radius) / 10, dart.notNull(radius) / 10);
-    activity_indicator._CupertinoActivityIndicatorPainter.__proto__.new.call(this, {repaint: position});
+  (grocery_tile.GroceryTile.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let item = opts && 'item' in opts ? opts.item : null;
+    let onComplete = opts && 'onComplete' in opts ? opts.onComplete : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[item$] = item;
+    this[onComplete$] = onComplete;
+    this[textDecoration] = dart.test(item.isComplete) ? ui.TextDecoration.lineThrough : ui.TextDecoration.none;
+    grocery_tile.GroceryTile.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = activity_indicator._CupertinoActivityIndicatorPainter.prototype;
-  dart.addTypeTests(activity_indicator._CupertinoActivityIndicatorPainter);
-  dart.addTypeCaches(activity_indicator._CupertinoActivityIndicatorPainter);
-  dart.setMethodSignature(activity_indicator._CupertinoActivityIndicatorPainter, () => ({
-    __proto__: dart.getMethods(activity_indicator._CupertinoActivityIndicatorPainter.__proto__),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Size]),
-    shouldRepaint: dart.fnType(core.bool, [dart.nullable(core.Object)])
+  }).prototype = grocery_tile.GroceryTile.prototype;
+  dart.addTypeTests(grocery_tile.GroceryTile);
+  dart.addTypeCaches(grocery_tile.GroceryTile);
+  dart.setMethodSignature(grocery_tile.GroceryTile, () => ({
+    __proto__: dart.getMethods(grocery_tile.GroceryTile.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]),
+    buildImportance: dart.fnType(dart.legacy(framework.Widget), []),
+    buildDate: dart.fnType(dart.legacy(framework.Widget), []),
+    buildCheckbox: dart.fnType(dart.legacy(framework.Widget), [])
   }));
-  dart.setLibraryUri(activity_indicator._CupertinoActivityIndicatorPainter, I[1]);
-  dart.setFieldSignature(activity_indicator._CupertinoActivityIndicatorPainter, () => ({
-    __proto__: dart.getFields(activity_indicator._CupertinoActivityIndicatorPainter.__proto__),
-    position: dart.finalFieldType(animation.Animation$(core.double)),
-    activeColor: dart.finalFieldType(ui.Color),
-    radius: dart.finalFieldType(core.double),
-    progress: dart.finalFieldType(core.double),
-    tickFundamentalRRect: dart.finalFieldType(ui.RRect)
+  dart.setLibraryUri(grocery_tile.GroceryTile, I[0]);
+  dart.setFieldSignature(grocery_tile.GroceryTile, () => ({
+    __proto__: dart.getFields(grocery_tile.GroceryTile.__proto__),
+    item: dart.finalFieldType(dart.legacy(grocery_item.GroceryItem)),
+    onComplete: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(core.bool)]))),
+    textDecoration: dart.finalFieldType(dart.legacy(ui.TextDecoration))
   }));
-  var Color_value = dart.privateName(ui, "Color.value");
-  var CupertinoDynamicColor_darkHighContrastElevatedColor = dart.privateName(colors, "CupertinoDynamicColor.darkHighContrastElevatedColor");
-  var CupertinoDynamicColor_highContrastElevatedColor = dart.privateName(colors, "CupertinoDynamicColor.highContrastElevatedColor");
-  var CupertinoDynamicColor_darkElevatedColor = dart.privateName(colors, "CupertinoDynamicColor.darkElevatedColor");
-  var CupertinoDynamicColor_elevatedColor = dart.privateName(colors, "CupertinoDynamicColor.elevatedColor");
-  var CupertinoDynamicColor_darkHighContrastColor = dart.privateName(colors, "CupertinoDynamicColor.darkHighContrastColor");
-  var CupertinoDynamicColor_highContrastColor = dart.privateName(colors, "CupertinoDynamicColor.highContrastColor");
-  var CupertinoDynamicColor_darkColor = dart.privateName(colors, "CupertinoDynamicColor.darkColor");
-  var CupertinoDynamicColor_color = dart.privateName(colors, "CupertinoDynamicColor.color");
-  var CupertinoDynamicColor__debugResolveContext = dart.privateName(colors, "CupertinoDynamicColor._debugResolveContext");
-  var CupertinoDynamicColor__debugLabel = dart.privateName(colors, "CupertinoDynamicColor._debugLabel");
-  var CupertinoDynamicColor__effectiveColor = dart.privateName(colors, "CupertinoDynamicColor._effectiveColor");
-  dart.defineLazy(activity_indicator, {
-    /*activity_indicator._kDefaultIndicatorRadius*/get _kDefaultIndicatorRadius() {
-      return 10;
-    },
-    /*activity_indicator._kActiveTickColor*/get _kActiveTickColor() {
-      return C[9] || CT.C9;
-    },
-    /*activity_indicator._kTwoPI*/get _kTwoPI() {
-      return 6.283185307179586;
-    },
-    /*activity_indicator._kAlphaValues*/get _kAlphaValues() {
-      return C[12] || CT.C12;
-    },
-    /*activity_indicator._partiallyRevealedAlpha*/get _partiallyRevealedAlpha() {
-      return 147;
-    }
-  }, false);
-  dart.trackLibraries("packages/flutter/src/cupertino/activity_indicator.dart", {
-    "package:flutter/src/cupertino/activity_indicator.dart": activity_indicator
+  dart.trackLibraries("packages/fooderlich/components/grocery_tile.dart", {
+    "package:fooderlich/components/grocery_tile.dart": grocery_tile
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["activity_indicator.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA0Da;;;;;;IAKE;;;;;;IAQA;;;;;;;AAIT;IAAkC;;;QA/C/B;QACA;;QACA;;;IADA;IACA;UACM,AAAU,SAAD;UACT,AAAO,MAAD;UACC,aAAP,MAAM,IAAG;IACP,kBAAE;AACX,iFAAW,GAAG;;EAAC;;QASd;QACA;;QACA;;;IADA;IACA;UACM,AAAO,MAAD;UACC,aAAP,MAAM,IAAG;UACT,AAAS,QAAD;UACC,aAAT,QAAQ,KAAI;UACH,aAAT,QAAQ,KAAI;IACT,mBAAE;AACZ,iFAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA2BI;IAAW;;;AAAX;;IAAW;;AAIjB,MAAX;AAIL,MAHD,oBAAc,kFAEL;AAGT,oBAAI,AAAO;AACW,QAApB,AAAY;;IAEhB;;uDAGgD;;AACd,MAA1B,sBAAgB,SAAS;AAC/B,UAAI,AAAO,yBAAa,AAAU,SAAD;AAC/B,sBAAI,AAAO;AACW,UAApB,AAAY;;AAEM,UAAlB,AAAY;;IAElB;;AAIuB,MAArB,AAAY;AACG,MAAT;IACR;;UAG0B;AACxB,YAAO,iCACiB,aAAd,AAAO,sBAAS,UACH,aAAd,AAAO,sBAAS,UAChB,oCACI,yEACG,gCAEgB,qCAAQ,sCAAmB,OAAO,WACpD,AAAO,8BACL,AAAO;IAIzB;;;2DA/CyB;;;;EAgD3B;;;;;;;;;;;;;;;;;;;;;;UA4CoB,QAAa;UAAb;UAAa;AACjB,kBAAQ;AACV,sBAAY,AAAc;AAEvB,MAAb,AAAO,MAAD;AAC+C,MAArD,AAAO,MAAD,WAAsB,aAAX,AAAK,IAAD,UAAS,KAAiB,aAAZ,AAAK,IAAD,WAAU;AAEvC,uBAA0C,CAAlB,aAAV,SAAS,iBAAG,AAAS;AAE7C,eAAS,IAAI,GAAG,AAAE,CAAD,GAAa,aAAV,SAAS,iBAAG,gBAAY,IAAF,AAAE,CAAC,GAAH;AAC9B,gBAAqB,CAAhB,AAAE,CAAD,GAAG,UAAU,WAAI,SAAS;AAE+B,QADzE,AAAM,KAAD,SAAS,AACT,2BAAmB,aAAT,iBAAW,UAA8B,AAAa,wCAAC,CAAC;AAC1B,QAA7C,AAAO,MAAD,WAAW,2BAAsB,KAAK;AACV,QAAlC,AAAO,MAAD,QAAgB,iCAAE,SAAS;;AAGnB,MAAhB,AAAO,MAAD;IACR;;+DAGsD;;AACpD,YAC0C,cADnC,AAAW,UAAD,WAAa,+BAC1B,AAAW,UAAD,cAAgB,qBAC1B,AAAW,UAAD,aAAa;IAC7B;;;QA/CgB;;QACA;;QACA;;QACA;;IAHA;IACA;IACA;IACA;IACW,4BAAQ,wBAC3B,AAAQ,cAAP,MAAM,QACP,AAAQ,cAAP,MAAM,IAAG,KACH,aAAP,MAAM,QACN,cAAC,MAAM,GACA,aAAP,MAAM,QACC,aAAP,MAAM;AAER,6FAAe,QAAQ;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAxJnB,2CAAwB;;;MAGzB,oCAAiB;;;MAqHhB,0BAAO;;;MAIJ,gCAAa;;;MAYnB,0CAAuB","file":"../../../../../../../../../packages/flutter/src/cupertino/activity_indicator.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["grocery_tile.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAMoB;;;;;;IACG;;;;;;IACA;;;;;;UAWK;AACxB,YAAO,iCACG,cACD,sCACgC,+CAC3B,yBACR,6BACY,yBACR,oCACS,YACA,AAAK,yFAGd,yCACuC,mDACE,yCAC7B,yBACR,kBACE,AAAK,wBACc,2CACH,+BACF,kBACa,gGAG7B,mCAEA,kJAKR,6BACY,yBACR,kBAAmB,cAAd,AAAK,6BACa,2CACH,+BAA0B,mEAC9C;IAMZ;;AAGE,UAAI,AAAK,AAAW,wBAAc;AAChC,cAAO,mBACL,eACmB,2CAAiB;YAEjC,KAAI,AAAK,AAAW,wBAAc;AACvC,cAAO,mBACL,kBACmB,2CACQ,gCAAkB;YAE1C,KAAI,AAAK,AAAW,wBAAc;AACvC,cAAO,mBACL,gBACmB,sCACH,+BACS,gCACX;;AAIsC,QAAtD,WAAM,mBAAU;;IAEpB;;AAGQ,0BAAgB,+BAAW;AAC3B,uBAAa,AAAc,aAAD,QAAQ,AAAK;AAC7C,YAAO,mBACL,UAAU,UACH,0CAAsB;IAEjC;;AAGE,YAAO,mCACE,AAAK,iCACD;IAEf;;;QA7FM;QACC;QACA;;IADA;IACA;IACc,iCACX,AAAK,IAAD,eAA6B,gCAA6B;AAClE,4DAAW,GAAG;;EAAC","file":"../../../../../../../../../packages/fooderlich/components/grocery_tile.dart.lib.js"}');
   // Exports:
   return {
-    src__cupertino__activity_indicator: activity_indicator
+    components__grocery_tile: grocery_tile
   };
 }));
 
-//# sourceMappingURL=activity_indicator.dart.lib.js.map
+//# sourceMappingURL=grocery_tile.dart.lib.js.map
