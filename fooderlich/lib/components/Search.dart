@@ -14,9 +14,7 @@ class _Search extends State<Search> {
         onSearchChanged: _getRecentSearchesLike,
       ),
     );
-
     await _saveToRecentSearches(searchText);
-
   }
 
   Future<List<String>> _getRecentSearchesLike(String keywords) async {
@@ -25,14 +23,13 @@ class _Search extends State<Search> {
     return allSearches.where((search) => search.startsWith(keywords)).toList();
   }
 
-  Future<void> _saveToRecentSearches(String searchText) async {
-    if (searchText == null) return; 
+  Future<void> _saveToRecentSearches(String keywords) async {
+    if (keywords == null) return;
     final pref = await SharedPreferences.getInstance();
 
     Set<String> allSearches =
         pref.getStringList("recentSearches")?.toSet() ?? {};
-
-    allSearches = {searchText, ...allSearches};
+    allSearches = {keywords, ...allSearches};
     pref.setStringList("recentSearches", allSearches.toList());
   }
 
@@ -40,6 +37,7 @@ class _Search extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xDD004D40),
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         title: Text("Pencarian"),
@@ -76,6 +74,7 @@ class SearchWithSuggestionDelegate extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
+        icon: Icon(Icons.clear),
         onPressed: () => query = "",
       ),
     ];
@@ -102,6 +101,8 @@ class SearchWithSuggestionDelegate extends SearchDelegate<String> {
               leading: Icon(Icons.restore),
               title: Text("${_Keywords[index]}"),
               onTap: () => close(context, _Keywords[index]),
+              tileColor: Color(0xDD004D40),
+              onLongPress: () => _Keywords.removeAt(index),
             );
           },
         );
