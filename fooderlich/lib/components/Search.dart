@@ -100,11 +100,7 @@ class SearchWithSuggestionDelegate extends SearchDelegate<String> {
             return ListTile(
               leading: Icon(Icons.restore),
               title: Text("${_Keywords[index]}"),
-<<<<<<< HEAD
               onTap: () => query = _Keywords[index],
-=======
-              onTap: () => close(context, _Keywords[index]),
->>>>>>> 40d6fb0dba00e9498e6d9fd8ff322a3a5dae532b
               tileColor: Color(0xDD004D40),
               onLongPress: () => _Keywords.removeAt(index),
             );
