@@ -1,480 +1,2042 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/fooderlich/fooderlich_theme.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/decoration_image.dart', 'packages/flutter/src/painting/image_resolution.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/fooderlich/models/explore_recipe.dart'], (function load__packages__fooderlich__components__card1_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__fooderlich__fooderlich_theme$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__decoration_image$46dart, packages__flutter__src__painting__image_resolution$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__painting__border_radius$46dart, packages__fooderlich__models__explore_recipe$46dart) {
+define(['dart_sdk', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/colors.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/widgets/scroll_view.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/box_shadow.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/widgets/implicit_animations.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/material/icons.dart', 'packages/flutter_colorpicker/src/utils.dart'], (function load__packages__flutter_colorpicker__src__block_picker_dart(dart_sdk, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__colors$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__widgets__scroll_view$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__box_shadow$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__widgets__implicit_animations$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__material__icons$46dart, packages__flutter_colorpicker__src__utils$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _interceptors = dart_sdk._interceptors;
   const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
-  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const colors$ = packages__flutter__src__painting__colors$46dart.src__painting__colors;
   const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const fooderlich_theme = packages__fooderlich__fooderlich_theme$46dart.fooderlich_theme;
+  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const scroll_view = packages__flutter__src__widgets__scroll_view$46dart.src__widgets__scroll_view;
   const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
   const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
-  const decoration_image = packages__flutter__src__painting__decoration_image$46dart.src__painting__decoration_image;
-  const image_resolution = packages__flutter__src__painting__image_resolution$46dart.src__painting__image_resolution;
-  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
   const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
-  const explore_recipe = packages__fooderlich__models__explore_recipe$46dart.models__explore_recipe;
-  var card1 = Object.create(dart.library);
+  const box_shadow = packages__flutter__src__painting__box_shadow$46dart.src__painting__box_shadow;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const ink_well = packages__flutter__src__material__icon_button$46dart.src__material__ink_well;
+  const implicit_animations = packages__flutter__src__widgets__implicit_animations$46dart.src__widgets__implicit_animations;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const icons = packages__flutter__src__material__icons$46dart.src__material__icons;
+  const utils = packages__flutter_colorpicker__src__utils$46dart.src__utils;
+  var block_picker = Object.create(dart.library);
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $contains = dartx.contains;
+  var $remove = dartx.remove;
+  var $add = dartx.add;
   dart._checkModuleNullSafetyMode(false);
   var T = {
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))(),
+    ListOfColor: () => (T.ListOfColor = dart.constFn(core.List$(ui.Color)))(),
+    ColorToWidget: () => (T.ColorToWidget = dart.constFn(dart.fnType(framework.Widget, [ui.Color])))(),
+    BuildContextAndListOfColorAndFnToWidget: () => (T.BuildContextAndListOfColorAndFnToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, T.ListOfColor(), T.ColorToWidget()])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    ColorAndboolAndFnToWidget: () => (T.ColorAndboolAndFnToWidget = dart.constFn(dart.fnType(framework.Widget, [ui.Color, core.bool, T.VoidTovoid()])))(),
     _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
-    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
+    JSArrayOfBoxShadow: () => (T.JSArrayOfBoxShadow = dart.constFn(_interceptors.JSArray$(box_shadow.BoxShadow)))(),
+    boolN: () => (T.boolN = dart.constFn(dart.nullable(core.bool)))(),
+    FunctionN: () => (T.FunctionN = dart.constFn(dart.nullable(core.Function)))(),
+    ColorAndboolNAndFunctionNToWidget: () => (T.ColorAndboolNAndFunctionNToWidget = dart.constFn(dart.fnType(framework.Widget, [ui.Color], [T.boolN(), T.FunctionN()])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "data",
-        [_Location_column]: 22,
-        [_Location_line]: 17,
-        [_Location_file]: null
-      });
-    },
     get C3() {
       return C[3] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "style",
-        [_Location_column]: 15,
-        [_Location_line]: 18,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294962158.0
       });
     },
-    get C1() {
-      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294954450.0
+      });
     },
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 13,
-        [_Location_line]: 16,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293892762.0
       });
     },
     get C6() {
       return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "data",
-        [_Location_column]: 24,
-        [_Location_line]: 22,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293227379.0
       });
     },
     get C7() {
       return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "style",
-        [_Location_column]: 17,
-        [_Location_line]: 23,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293874512.0
       });
     },
-    get C5() {
-      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294198070.0
+      });
     },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[5] || CT.C5,
-        [_Location_name]: null,
-        [_Location_column]: 22,
-        [_Location_line]: 21,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293212469.0
       });
     },
     get C10() {
       return C[10] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 15,
-        [_Location_line]: 21,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292030255.0
       });
     },
     get C11() {
       return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "top",
-        [_Location_column]: 15,
-        [_Location_line]: 25,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291176488.0
       });
     },
-    get C9() {
-      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11], T._LocationL());
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[9] || CT.C9,
-        [_Location_name]: null,
-        [_Location_column]: 13,
-        [_Location_line]: 20,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290190364.0
       });
     },
-    get C14() {
-      return C[14] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "data",
-        [_Location_column]: 24,
-        [_Location_line]: 29,
-        [_Location_file]: null
+    get C2() {
+      return C[2] = dart.constMap(T.intL(), T.ColorL(), [50, C[3] || CT.C3, 100, C[4] || CT.C4, 200, C[5] || CT.C5, 300, C[6] || CT.C6, 400, C[7] || CT.C7, 500, C[8] || CT.C8, 600, C[9] || CT.C9, 700, C[10] || CT.C10, 800, C[11] || CT.C11, 900, C[12] || CT.C12]);
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4294198070.0,
+        [ColorSwatch__swatch]: C[2] || CT.C2
       });
     },
     get C15() {
       return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "style",
-        [_Location_column]: 17,
-        [_Location_line]: 30,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294763756.0
       });
     },
-    get C13() {
-      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15], T._LocationL());
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294491088.0
+      });
     },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[13] || CT.C13,
-        [_Location_name]: null,
-        [_Location_column]: 22,
-        [_Location_line]: 28,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294217649.0
       });
     },
     get C18() {
       return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 15,
-        [_Location_line]: 28,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293943954.0
       });
     },
     get C19() {
       return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "bottom",
-        [_Location_column]: 15,
-        [_Location_line]: 32,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293673082.0
       });
     },
     get C20() {
       return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "right",
-        [_Location_column]: 15,
-        [_Location_line]: 33,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293467747.0
       });
     },
-    get C17() {
-      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], T._LocationL());
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292352864.0
+      });
     },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[17] || CT.C17,
-        [_Location_name]: null,
-        [_Location_column]: 13,
-        [_Location_line]: 27,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290910299.0
       });
     },
     get C23() {
       return C[23] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "data",
-        [_Location_column]: 24,
-        [_Location_line]: 37,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289533015.0
       });
     },
     get C24() {
       return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "style",
-        [_Location_column]: 17,
-        [_Location_line]: 38,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287106639.0
       });
     },
-    get C22() {
-      return C[22] = dart.constList([C[23] || CT.C23, C[24] || CT.C24], T._LocationL());
+    get C14() {
+      return C[14] = dart.constMap(T.intL(), T.ColorL(), [50, C[15] || CT.C15, 100, C[16] || CT.C16, 200, C[17] || CT.C17, 300, C[18] || CT.C18, 400, C[19] || CT.C19, 500, C[20] || CT.C20, 600, C[21] || CT.C21, 700, C[22] || CT.C22, 800, C[23] || CT.C23, 900, C[24] || CT.C24]);
     },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[22] || CT.C22,
-        [_Location_name]: null,
-        [_Location_column]: 22,
-        [_Location_line]: 36,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4293467747.0,
+        [ColorSwatch__swatch]: C[14] || CT.C14
       });
     },
     get C27() {
       return C[27] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 15,
-        [_Location_line]: 36,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294174197.0
       });
     },
     get C28() {
       return C[28] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "bottom",
-        [_Location_column]: 15,
-        [_Location_line]: 40,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292984551.0
       });
     },
     get C29() {
       return C[29] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "right",
-        [_Location_column]: 15,
-        [_Location_line]: 41,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291728344.0
       });
     },
-    get C26() {
-      return C[26] = dart.constList([C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29], T._LocationL());
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290406600.0
+      });
     },
-    get C25() {
-      return C[25] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[26] || CT.C26,
-        [_Location_name]: null,
-        [_Location_column]: 13,
-        [_Location_line]: 35,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289415100.0
       });
     },
     get C32() {
       return C[32] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 11,
-        [_Location_line]: 15,
-        [_Location_file]: null
-      });
-    },
-    get C31() {
-      return C[31] = dart.constList([C[32] || CT.C32], T._LocationL());
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[31] || CT.C31,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 14,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288423856.0
       });
     },
     get C33() {
       return C[33] = dart.const({
-        __proto__: edge_insets.EdgeInsets.prototype,
-        [EdgeInsets_bottom]: 16,
-        [EdgeInsets_right]: 16,
-        [EdgeInsets_top]: 16,
-        [EdgeInsets_left]: 16
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287505578.0
       });
     },
     get C34() {
       return C[34] = dart.const({
-        __proto__: box.BoxConstraints.prototype,
-        [BoxConstraints_maxHeight]: 450,
-        [BoxConstraints_minHeight]: 450,
-        [BoxConstraints_maxWidth]: 350,
-        [BoxConstraints_minWidth]: 350
-      });
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: ui.Radius.prototype,
-        [Radius_y]: 10,
-        [Radius_x]: 10
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286259106.0
       });
     },
     get C35() {
       return C[35] = dart.const({
-        __proto__: border_radius.BorderRadius.prototype,
-        [BorderRadius_bottomRight]: C[36] || CT.C36,
-        [BorderRadius_bottomLeft]: C[36] || CT.C36,
-        [BorderRadius_topRight]: C[36] || CT.C36,
-        [BorderRadius_topLeft]: C[36] || CT.C36
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285143962.0
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283045004.0
+      });
+    },
+    get C26() {
+      return C[26] = dart.constMap(T.intL(), T.ColorL(), [50, C[27] || CT.C27, 100, C[28] || CT.C28, 200, C[29] || CT.C29, 300, C[30] || CT.C30, 400, C[31] || CT.C31, 500, C[32] || CT.C32, 600, C[33] || CT.C33, 700, C[34] || CT.C34, 800, C[35] || CT.C35, 900, C[36] || CT.C36]);
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4288423856.0,
+        [ColorSwatch__swatch]: C[26] || CT.C26
       });
     },
     get C39() {
       return C[39] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 14,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293781494.0
       });
     },
     get C40() {
       return C[40] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 9,
-        [_Location_line]: 45,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291937513.0
       });
     },
     get C41() {
       return C[41] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "constraints",
-        [_Location_column]: 9,
-        [_Location_line]: 46,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289961435.0
       });
     },
     get C42() {
       return C[42] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "decoration",
-        [_Location_column]: 9,
-        [_Location_line]: 47,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287985101.0
       });
     },
-    get C38() {
-      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40, C[41] || CT.C41, C[42] || CT.C42], T._LocationL());
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286470082.0
+      });
     },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[38] || CT.C38,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 13,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284955319.0
       });
     },
     get C45() {
       return C[45] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284364209.0
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283510184.0
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282722208.0
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281408402.0
+      });
+    },
+    get C38() {
+      return C[38] = dart.constMap(T.intL(), T.ColorL(), [50, C[39] || CT.C39, 100, C[40] || CT.C40, 200, C[41] || CT.C41, 300, C[42] || CT.C42, 400, C[43] || CT.C43, 500, C[44] || CT.C44, 600, C[45] || CT.C45, 700, C[46] || CT.C46, 800, C[47] || CT.C47, 900, C[48] || CT.C48]);
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4284955319.0,
+        [ColorSwatch__swatch]: C[38] || CT.C38
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293454582.0
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291152617.0
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288653530.0
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286154443.0
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284246976.0
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282339765.0
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281944491.0
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281352095.0
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280825235.0
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279903102.0
+      });
+    },
+    get C50() {
+      return C[50] = dart.constMap(T.intL(), T.ColorL(), [50, C[51] || CT.C51, 100, C[52] || CT.C52, 200, C[53] || CT.C53, 300, C[54] || CT.C54, 400, C[55] || CT.C55, 500, C[56] || CT.C56, 600, C[57] || CT.C57, 700, C[58] || CT.C58, 800, C[59] || CT.C59, 900, C[60] || CT.C60]);
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4282339765.0,
+        [ColorSwatch__swatch]: C[50] || CT.C50
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293128957.0
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290502395.0
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287679225.0
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284790262.0
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282557941.0
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280391411.0
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280191205.0
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279858898.0
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279592384.0
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279060385.0
+      });
+    },
+    get C62() {
+      return C[62] = dart.constMap(T.intL(), T.ColorL(), [50, C[63] || CT.C63, 100, C[64] || CT.C64, 200, C[65] || CT.C65, 300, C[66] || CT.C66, 400, C[67] || CT.C67, 500, C[68] || CT.C68, 600, C[69] || CT.C69, 700, C[70] || CT.C70, 800, C[71] || CT.C71, 900, C[72] || CT.C72]);
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4280391411.0,
+        [ColorSwatch__swatch]: C[62] || CT.C62
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292998654.0
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289979900.0
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286698746.0
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283417591.0
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280923894.0
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278430196.0
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278426597.0
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278356177.0
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278351805.0
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278278043.0
+      });
+    },
+    get C74() {
+      return C[74] = dart.constMap(T.intL(), T.ColorL(), [50, C[75] || CT.C75, 100, C[76] || CT.C76, 200, C[77] || CT.C77, 300, C[78] || CT.C78, 400, C[79] || CT.C79, 500, C[80] || CT.C80, 600, C[81] || CT.C81, 700, C[82] || CT.C82, 800, C[83] || CT.C83, 900, C[84] || CT.C84]);
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4278430196.0,
+        [ColorSwatch__swatch]: C[74] || CT.C74
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292933626.0
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289915890.0
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286635754.0
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283289825.0
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280731354.0
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278238420.0
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278234305.0
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278228903.0
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278223759.0
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278214756.0
+      });
+    },
+    get C86() {
+      return C[86] = dart.constMap(T.intL(), T.ColorL(), [50, C[87] || CT.C87, 100, C[88] || CT.C88, 200, C[89] || CT.C89, 300, C[90] || CT.C90, 400, C[91] || CT.C91, 500, C[92] || CT.C92, 600, C[93] || CT.C93, 700, C[94] || CT.C94, 800, C[95] || CT.C95, 900, C[96] || CT.C96]);
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4278238420.0,
+        [ColorSwatch__swatch]: C[86] || CT.C86
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292932337.0
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289912795.0
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286630852.0
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283283116.0
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280723098.0
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278228616.0
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278225275.0
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278221163.0
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278217052.0
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278209856.0
+      });
+    },
+    get C98() {
+      return C[98] = dart.constMap(T.intL(), T.ColorL(), [50, C[99] || CT.C99, 100, C[100] || CT.C100, 200, C[101] || CT.C101, 300, C[102] || CT.C102, 400, C[103] || CT.C103, 500, C[104] || CT.C104, 600, C[105] || CT.C105, 700, C[106] || CT.C106, 800, C[107] || CT.C107, 900, C[108] || CT.C108]);
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4278228616.0,
+        [ColorSwatch__swatch]: C[98] || CT.C98
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293457385.0
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291356361.0
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289058471.0
+      });
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286695300.0
+      });
+    },
+    get C115() {
+      return C[115] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284922730.0
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283215696.0
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282622023.0
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281896508.0
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281236786.0
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279983648.0
+      });
+    },
+    get C110() {
+      return C[110] = dart.constMap(T.intL(), T.ColorL(), [50, C[111] || CT.C111, 100, C[112] || CT.C112, 200, C[113] || CT.C113, 300, C[114] || CT.C114, 400, C[115] || CT.C115, 500, C[116] || CT.C116, 600, C[117] || CT.C117, 700, C[118] || CT.C118, 800, C[119] || CT.C119, 900, C[120] || CT.C120]);
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4283215696.0,
+        [ColorSwatch__swatch]: C[110] || CT.C110
+      });
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294047977.0
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292668872.0
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291158437.0
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289648001.0
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288466021.0
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287349578.0
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286362434.0
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285046584.0
+      });
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283796271.0
+      });
+    },
+    get C132() {
+      return C[132] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281559326.0
+      });
+    },
+    get C122() {
+      return C[122] = dart.constMap(T.intL(), T.ColorL(), [50, C[123] || CT.C123, 100, C[124] || CT.C124, 200, C[125] || CT.C125, 300, C[126] || CT.C126, 400, C[127] || CT.C127, 500, C[128] || CT.C128, 600, C[129] || CT.C129, 700, C[130] || CT.C130, 800, C[131] || CT.C131, 900, C[132] || CT.C132]);
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4287349578.0,
+        [ColorSwatch__swatch]: C[122] || CT.C122
+      });
+    },
+    get C135() {
+      return C[135] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294573031.0
+      });
+    },
+    get C136() {
+      return C[136] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293981379.0
+      });
+    },
+    get C137() {
+      return C[137] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293324444.0
+      });
+    },
+    get C138() {
+      return C[138] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292667253.0
+      });
+    },
+    get C139() {
+      return C[139] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292141399.0
+      });
+    },
+    get C140() {
+      return C[140] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291681337.0
+      });
+    },
+    get C141() {
+      return C[141] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290824755.0
+      });
+    },
+    get C142() {
+      return C[142] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289705003.0
+      });
+    },
+    get C143() {
+      return C[143] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288584996.0
+      });
+    },
+    get C144() {
+      return C[144] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286740247.0
+      });
+    },
+    get C134() {
+      return C[134] = dart.constMap(T.intL(), T.ColorL(), [50, C[135] || CT.C135, 100, C[136] || CT.C136, 200, C[137] || CT.C137, 300, C[138] || CT.C138, 400, C[139] || CT.C139, 500, C[140] || CT.C140, 600, C[141] || CT.C141, 700, C[142] || CT.C142, 800, C[143] || CT.C143, 900, C[144] || CT.C144]);
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4291681337.0,
+        [ColorSwatch__swatch]: C[134] || CT.C134
+      });
+    },
+    get C147() {
+      return C[147] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294966759.0
+      });
+    },
+    get C148() {
+      return C[148] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294965700.0
+      });
+    },
+    get C149() {
+      return C[149] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294964637.0
+      });
+    },
+    get C150() {
+      return C[150] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294963574.0
+      });
+    },
+    get C151() {
+      return C[151] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294962776.0
+      });
+    },
+    get C152() {
+      return C[152] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294961979.0
+      });
+    },
+    get C153() {
+      return C[153] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294826037.0
+      });
+    },
+    get C154() {
+      return C[154] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294688813.0
+      });
+    },
+    get C155() {
+      return C[155] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294551589.0
+      });
+    },
+    get C156() {
+      return C[156] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294278935.0
+      });
+    },
+    get C146() {
+      return C[146] = dart.constMap(T.intL(), T.ColorL(), [50, C[147] || CT.C147, 100, C[148] || CT.C148, 200, C[149] || CT.C149, 300, C[150] || CT.C150, 400, C[151] || CT.C151, 500, C[152] || CT.C152, 600, C[153] || CT.C153, 700, C[154] || CT.C154, 800, C[155] || CT.C155, 900, C[156] || CT.C156]);
+    },
+    get C145() {
+      return C[145] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4294961979.0,
+        [ColorSwatch__swatch]: C[146] || CT.C146
+      });
+    },
+    get C159() {
+      return C[159] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294965473.0
+      });
+    },
+    get C160() {
+      return C[160] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294962355.0
+      });
+    },
+    get C161() {
+      return C[161] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294959234.0
+      });
+    },
+    get C162() {
+      return C[162] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294956367.0
+      });
+    },
+    get C163() {
+      return C[163] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294953512.0
+      });
+    },
+    get C164() {
+      return C[164] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294951175.0
+      });
+    },
+    get C165() {
+      return C[165] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294947584.0
+      });
+    },
+    get C166() {
+      return C[166] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294942720.0
+      });
+    },
+    get C167() {
+      return C[167] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294938368.0
+      });
+    },
+    get C168() {
+      return C[168] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294930176.0
+      });
+    },
+    get C158() {
+      return C[158] = dart.constMap(T.intL(), T.ColorL(), [50, C[159] || CT.C159, 100, C[160] || CT.C160, 200, C[161] || CT.C161, 300, C[162] || CT.C162, 400, C[163] || CT.C163, 500, C[164] || CT.C164, 600, C[165] || CT.C165, 700, C[166] || CT.C166, 800, C[167] || CT.C167, 900, C[168] || CT.C168]);
+    },
+    get C157() {
+      return C[157] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4294951175.0,
+        [ColorSwatch__swatch]: C[158] || CT.C158
+      });
+    },
+    get C171() {
+      return C[171] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294964192.0
+      });
+    },
+    get C172() {
+      return C[172] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294959282.0
+      });
+    },
+    get C173() {
+      return C[173] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294954112.0
+      });
+    },
+    get C174() {
+      return C[174] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294948685.0
+      });
+    },
+    get C175() {
+      return C[175] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294944550.0
+      });
+    },
+    get C176() {
+      return C[176] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294940672.0
+      });
+    },
+    get C177() {
+      return C[177] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294675456.0
+      });
+    },
+    get C178() {
+      return C[178] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294278144.0
+      });
+    },
+    get C179() {
+      return C[179] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293880832.0
+      });
+    },
+    get C180() {
+      return C[180] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293284096.0
+      });
+    },
+    get C170() {
+      return C[170] = dart.constMap(T.intL(), T.ColorL(), [50, C[171] || CT.C171, 100, C[172] || CT.C172, 200, C[173] || CT.C173, 300, C[174] || CT.C174, 400, C[175] || CT.C175, 500, C[176] || CT.C176, 600, C[177] || CT.C177, 700, C[178] || CT.C178, 800, C[179] || CT.C179, 900, C[180] || CT.C180]);
+    },
+    get C169() {
+      return C[169] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4294940672.0,
+        [ColorSwatch__swatch]: C[170] || CT.C170
+      });
+    },
+    get C183() {
+      return C[183] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294699495.0
+      });
+    },
+    get C184() {
+      return C[184] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294954172.0
+      });
+    },
+    get C185() {
+      return C[185] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294945681.0
+      });
+    },
+    get C186() {
+      return C[186] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294937189.0
+      });
+    },
+    get C187() {
+      return C[187] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294930499.0
+      });
+    },
+    get C188() {
+      return C[188] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294924066.0
+      });
+    },
+    get C189() {
+      return C[189] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294201630.0
+      });
+    },
+    get C190() {
+      return C[190] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293282329.0
+      });
+    },
+    get C191() {
+      return C[191] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292363029.0
+      });
+    },
+    get C192() {
+      return C[192] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290721292.0
+      });
+    },
+    get C182() {
+      return C[182] = dart.constMap(T.intL(), T.ColorL(), [50, C[183] || CT.C183, 100, C[184] || CT.C184, 200, C[185] || CT.C185, 300, C[186] || CT.C186, 400, C[187] || CT.C187, 500, C[188] || CT.C188, 600, C[189] || CT.C189, 700, C[190] || CT.C190, 800, C[191] || CT.C191, 900, C[192] || CT.C192]);
+    },
+    get C181() {
+      return C[181] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4294924066.0,
+        [ColorSwatch__swatch]: C[182] || CT.C182
+      });
+    },
+    get C195() {
+      return C[195] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293913577.0
+      });
+    },
+    get C196() {
+      return C[196] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292332744.0
+      });
+    },
+    get C197() {
+      return C[197] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290554532.0
+      });
+    },
+    get C198() {
+      return C[198] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288776319.0
+      });
+    },
+    get C199() {
+      return C[199] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287458915.0
+      });
+    },
+    get C200() {
+      return C[200] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286141768.0
+      });
+    },
+    get C201() {
+      return C[201] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285353025.0
+      });
+    },
+    get C202() {
+      return C[202] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284301367.0
+      });
+    },
+    get C203() {
+      return C[203] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283315246.0
+      });
+    },
+    get C204() {
+      return C[204] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282263331.0
+      });
+    },
+    get C194() {
+      return C[194] = dart.constMap(T.intL(), T.ColorL(), [50, C[195] || CT.C195, 100, C[196] || CT.C196, 200, C[197] || CT.C197, 300, C[198] || CT.C198, 400, C[199] || CT.C199, 500, C[200] || CT.C200, 600, C[201] || CT.C201, 700, C[202] || CT.C202, 800, C[203] || CT.C203, 900, C[204] || CT.C204]);
+    },
+    get C193() {
+      return C[193] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4286141768.0,
+        [ColorSwatch__swatch]: C[194] || CT.C194
+      });
+    },
+    get C207() {
+      return C[207] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294638330.0
+      });
+    },
+    get C208() {
+      return C[208] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294309365.0
+      });
+    },
+    get C209() {
+      return C[209] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293848814.0
+      });
+    },
+    get C210() {
+      return C[210] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292927712.0
+      });
+    },
+    get C211() {
+      return C[211] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292269782.0
+      });
+    },
+    get C212() {
+      return C[212] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290624957.0
+      });
+    },
+    get C213() {
+      return C[213] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288585374.0
+      });
+    },
+    get C214() {
+      return C[214] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285887861.0
+      });
+    },
+    get C215() {
+      return C[215] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284572001.0
+      });
+    },
+    get C216() {
+      return C[216] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282532418.0
+      });
+    },
+    get C217() {
+      return C[217] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281348144.0
+      });
+    },
+    get C218() {
+      return C[218] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280361249.0
+      });
+    },
+    get C206() {
+      return C[206] = dart.constMap(T.intL(), T.ColorL(), [50, C[207] || CT.C207, 100, C[208] || CT.C208, 200, C[209] || CT.C209, 300, C[210] || CT.C210, 350, C[211] || CT.C211, 400, C[212] || CT.C212, 500, C[213] || CT.C213, 600, C[214] || CT.C214, 700, C[215] || CT.C215, 800, C[216] || CT.C216, 850, C[217] || CT.C217, 900, C[218] || CT.C218]);
+    },
+    get C205() {
+      return C[205] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4288585374.0,
+        [ColorSwatch__swatch]: C[206] || CT.C206
+      });
+    },
+    get C221() {
+      return C[221] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293718001.0
+      });
+    },
+    get C222() {
+      return C[222] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291811548.0
+      });
+    },
+    get C223() {
+      return C[223] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289773253.0
+      });
+    },
+    get C224() {
+      return C[224] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287669422.0
+      });
+    },
+    get C225() {
+      return C[225] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286091420.0
+      });
+    },
+    get C226() {
+      return C[226] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284513675.0
+      });
+    },
+    get C227() {
+      return C[227] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283723386.0
+      });
+    },
+    get C228() {
+      return C[228] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282735204.0
+      });
+    },
+    get C229() {
+      return C[229] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281812815.0
+      });
+    },
+    get C230() {
+      return C[230] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280693304.0
+      });
+    },
+    get C220() {
+      return C[220] = dart.constMap(T.intL(), T.ColorL(), [50, C[221] || CT.C221, 100, C[222] || CT.C222, 200, C[223] || CT.C223, 300, C[224] || CT.C224, 400, C[225] || CT.C225, 500, C[226] || CT.C226, 600, C[227] || CT.C227, 700, C[228] || CT.C228, 800, C[229] || CT.C229, 900, C[230] || CT.C230]);
+    },
+    get C219() {
+      return C[219] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4284513675.0,
+        [ColorSwatch__swatch]: C[220] || CT.C220
+      });
+    },
+    get C231() {
+      return C[231] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C0() {
+      return C[0] = dart.constList([C[1] || CT.C1, C[13] || CT.C13, C[25] || CT.C25, C[37] || CT.C37, C[49] || CT.C49, C[61] || CT.C61, C[73] || CT.C73, C[85] || CT.C85, C[97] || CT.C97, C[109] || CT.C109, C[121] || CT.C121, C[133] || CT.C133, C[145] || CT.C145, C[157] || CT.C157, C[169] || CT.C169, C[181] || CT.C181, C[193] || CT.C193, C[205] || CT.C205, C[219] || CT.C219, C[231] || CT.C231], T.ColorL());
+    },
+    get C232() {
+      return C[232] = dart.fn(block_picker.BlockPicker.defaultLayoutBuilder, T.BuildContextAndListOfColorAndFnToWidget());
+    },
+    get C233() {
+      return C[233] = dart.fn(block_picker.BlockPicker.defaultItemBuilder, T.ColorAndboolAndFnToWidget());
+    },
+    get C236() {
+      return C[236] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisCount",
+        [_Location_column]: 9,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C237() {
+      return C[237] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisSpacing",
+        [_Location_column]: 9,
+        [_Location_line]: 62,
+        [_Location_file]: null
+      });
+    },
+    get C238() {
+      return C[238] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSpacing",
+        [_Location_column]: 9,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C239() {
+      return C[239] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 64,
+        [_Location_file]: null
+      });
+    },
+    get C235() {
+      return C[235] = dart.constList([C[236] || CT.C236, C[237] || CT.C237, C[238] || CT.C238, C[239] || CT.C239], T._LocationL());
+    },
+    get C234() {
+      return C[234] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[235] || CT.C235,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 60,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_colorpicker-0.4.0/lib/src/block_picker.dart"
+      });
+    },
+    get C242() {
+      return C[242] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 7,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C243() {
+      return C[243] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 7,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C244() {
+      return C[244] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "child",
         [_Location_column]: 7,
-        [_Location_line]: 13,
+        [_Location_line]: 60,
         [_Location_file]: null
       });
     },
-    get C44() {
-      return C[44] = dart.constList([C[45] || CT.C45], T._LocationL());
+    get C241() {
+      return C[241] = dart.constList([C[242] || CT.C242, C[243] || CT.C243, C[244] || CT.C244], T._LocationL());
     },
-    get C43() {
-      return C[43] = dart.const({
+    get C240() {
+      return C[240] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[44] || CT.C44,
+        [_Location_parameterLocations]: C[241] || CT.C241,
         [_Location_name]: null,
         [_Location_column]: 12,
-        [_Location_line]: 12,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/components/card1.dart"
+        [_Location_line]: 57,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_colorpicker-0.4.0/lib/src/block_picker.dart"
+      });
+    },
+    get C245() {
+      return C[245] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 210000
+      });
+    },
+    get C248() {
+      return C[248] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 21,
+        [_Location_line]: 93,
+        [_Location_file]: null
+      });
+    },
+    get C249() {
+      return C[249] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 15,
+        [_Location_line]: 94,
+        [_Location_file]: null
+      });
+    },
+    get C247() {
+      return C[247] = dart.constList([C[248] || CT.C248, C[249] || CT.C249], T._LocationL());
+    },
+    get C246() {
+      return C[246] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[247] || CT.C247,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 92,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_colorpicker-0.4.0/lib/src/block_picker.dart"
+      });
+    },
+    get C252() {
+      return C[252] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 13,
+        [_Location_line]: 90,
+        [_Location_file]: null
+      });
+    },
+    get C253() {
+      return C[253] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 13,
+        [_Location_line]: 91,
+        [_Location_file]: null
+      });
+    },
+    get C254() {
+      return C[254] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 92,
+        [_Location_file]: null
+      });
+    },
+    get C251() {
+      return C[251] = dart.constList([C[252] || CT.C252, C[253] || CT.C253, C[254] || CT.C254], T._LocationL());
+    },
+    get C250() {
+      return C[250] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[251] || CT.C251,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 89,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_colorpicker-0.4.0/lib/src/block_picker.dart"
+      });
+    },
+    get C257() {
+      return C[257] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 11,
+        [_Location_line]: 87,
+        [_Location_file]: null
+      });
+    },
+    get C258() {
+      return C[258] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderRadius",
+        [_Location_column]: 11,
+        [_Location_line]: 88,
+        [_Location_file]: null
+      });
+    },
+    get C259() {
+      return C[259] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 89,
+        [_Location_file]: null
+      });
+    },
+    get C256() {
+      return C[256] = dart.constList([C[257] || CT.C257, C[258] || CT.C258, C[259] || CT.C259], T._LocationL());
+    },
+    get C255() {
+      return C[255] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[256] || CT.C256,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 86,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_colorpicker-0.4.0/lib/src/block_picker.dart"
+      });
+    },
+    get C262() {
+      return C[262] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 9,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C263() {
+      return C[263] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 86,
+        [_Location_file]: null
+      });
+    },
+    get C261() {
+      return C[261] = dart.constList([C[262] || CT.C262, C[263] || CT.C263], T._LocationL());
+    },
+    get C260() {
+      return C[260] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[261] || CT.C261,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 84,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_colorpicker-0.4.0/lib/src/block_picker.dart"
+      });
+    },
+    get C266() {
+      return C[266] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 7,
+        [_Location_line]: 72,
+        [_Location_file]: null
+      });
+    },
+    get C267() {
+      return C[267] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 7,
+        [_Location_line]: 73,
+        [_Location_file]: null
+      });
+    },
+    get C268() {
+      return C[268] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 84,
+        [_Location_file]: null
+      });
+    },
+    get C265() {
+      return C[265] = dart.constList([C[266] || CT.C266, C[267] || CT.C267, C[268] || CT.C268], T._LocationL());
+    },
+    get C264() {
+      return C[264] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[265] || CT.C265,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 71,
+        [_Location_file]: "file:///C:/Users/lenovo/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_colorpicker-0.4.0/lib/src/block_picker.dart"
       });
     }
   }, false);
-  var C = Array(46).fill(void 0);
-  var I = ["package:fooderlich/components/card1.dart"];
-  var recipe$ = dart.privateName(card1, "Card1.recipe");
+  var C = Array(269).fill(void 0);
+  var I = [
+    "file:///C:/Users/lenovo/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_colorpicker-0.4.0/lib/src/block_picker.dart",
+    "package:flutter_colorpicker/src/block_picker.dart"
+  ];
+  var pickerColor$ = dart.privateName(block_picker, "BlockPicker.pickerColor");
+  var onColorChanged$ = dart.privateName(block_picker, "BlockPicker.onColorChanged");
+  var availableColors$ = dart.privateName(block_picker, "BlockPicker.availableColors");
+  var layoutBuilder$ = dart.privateName(block_picker, "BlockPicker.layoutBuilder");
+  var itemBuilder$ = dart.privateName(block_picker, "BlockPicker.itemBuilder");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var ColorSwatch__swatch = dart.privateName(colors$, "ColorSwatch._swatch");
   var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
   var _Location_name = dart.privateName(widget_inspector, "_Location.name");
   var _Location_column = dart.privateName(widget_inspector, "_Location.column");
   var _Location_line = dart.privateName(widget_inspector, "_Location.line");
   var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
-  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
-  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
-  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
-  var BoxConstraints_maxHeight = dart.privateName(box, "BoxConstraints.maxHeight");
-  var BoxConstraints_minHeight = dart.privateName(box, "BoxConstraints.minHeight");
-  var BoxConstraints_maxWidth = dart.privateName(box, "BoxConstraints.maxWidth");
-  var BoxConstraints_minWidth = dart.privateName(box, "BoxConstraints.minWidth");
-  var Radius_y = dart.privateName(ui, "Radius.y");
-  var Radius_x = dart.privateName(ui, "Radius.x");
-  var BorderRadius_bottomRight = dart.privateName(border_radius, "BorderRadius.bottomRight");
-  var BorderRadius_bottomLeft = dart.privateName(border_radius, "BorderRadius.bottomLeft");
-  var BorderRadius_topRight = dart.privateName(border_radius, "BorderRadius.topRight");
-  var BorderRadius_topLeft = dart.privateName(border_radius, "BorderRadius.topLeft");
-  card1.Card1 = class Card1 extends framework.StatelessWidget {
-    get recipe() {
-      return this[recipe$];
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  block_picker.BlockPicker = class BlockPicker extends framework.StatefulWidget {
+    get pickerColor() {
+      return this[pickerColor$];
     }
-    set recipe(value) {
-      super.recipe = value;
+    set pickerColor(value) {
+      super.pickerColor = value;
     }
-    build(context) {
-      return new basic.Center.new({child: new container.Container.new({child: new basic.Stack.new({children: T.JSArrayOfWidgetL().of([new text.Text.new(this.recipe.subtitle, {style: fooderlich_theme.FooderlichTheme.darkTextTheme.bodyText1, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), new basic.Positioned.new({child: new text.Text.new(this.recipe.title, {style: fooderlich_theme.FooderlichTheme.darkTextTheme.headline2, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), top: 20.0, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), new basic.Positioned.new({child: new text.Text.new(this.recipe.message, {style: fooderlich_theme.FooderlichTheme.darkTextTheme.bodyText1, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12}), bottom: 30.0, right: 0.0, $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}), new basic.Positioned.new({child: new text.Text.new(this.recipe.authorName, {style: fooderlich_theme.FooderlichTheme.darkTextTheme.bodyText1, $creationLocationd_0dea112b090073317d4: C[21] || CT.C21}), bottom: 10.0, right: 0.0, $creationLocationd_0dea112b090073317d4: C[25] || CT.C25})]), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30}), padding: C[33] || CT.C33, constraints: C[34] || CT.C34, decoration: new box_decoration.BoxDecoration.new({image: new decoration_image.DecorationImage.new({image: new image_resolution.AssetImage.new(this.recipe.backgroundImage), fit: box_fit.BoxFit.cover}), borderRadius: C[35] || CT.C35}), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37}), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
+    get onColorChanged() {
+      return this[onColorChanged$];
+    }
+    set onColorChanged(value) {
+      super.onColorChanged = value;
+    }
+    get availableColors() {
+      return this[availableColors$];
+    }
+    set availableColors(value) {
+      super.availableColors = value;
+    }
+    get layoutBuilder() {
+      return this[layoutBuilder$];
+    }
+    set layoutBuilder(value) {
+      super.layoutBuilder = value;
+    }
+    get itemBuilder() {
+      return this[itemBuilder$];
+    }
+    set itemBuilder(value) {
+      super.itemBuilder = value;
+    }
+    static defaultLayoutBuilder(context, colors, child) {
+      if (context == null) dart.nullFailed(I[0], 54, 20, "context");
+      if (colors == null) dart.nullFailed(I[0], 54, 41, "colors");
+      if (child == null) dart.nullFailed(I[0], 54, 60, "child");
+      let orientation = media_query.MediaQuery.of(context).orientation;
+      return new container.Container.new({width: orientation == media_query.Orientation.portrait ? 300.0 : 300.0, height: orientation == media_query.Orientation.portrait ? 360.0 : 200.0, child: new scroll_view.GridView.count({crossAxisCount: orientation == media_query.Orientation.portrait ? 4 : 6, crossAxisSpacing: 5.0, mainAxisSpacing: 5.0, children: colors[$map](framework.Widget, dart.fn(color => {
+            if (color == null) dart.nullFailed(I[0], 64, 37, "color");
+            return child(color);
+          }, T.ColorToWidget()))[$toList](), $creationLocationd_0dea112b090073317d4: C[234] || CT.C234}), $creationLocationd_0dea112b090073317d4: C[240] || CT.C240});
+    }
+    static defaultItemBuilder(color, isCurrentColor, changeColor) {
+      if (color == null) dart.nullFailed(I[0], 70, 13, "color");
+      if (isCurrentColor == null) dart.nullFailed(I[0], 70, 25, "isCurrentColor");
+      if (changeColor == null) dart.nullFailed(I[0], 70, 57, "changeColor");
+      return new container.Container.new({margin: new edge_insets.EdgeInsets.all(5.0), decoration: new box_decoration.BoxDecoration.new({borderRadius: new border_radius.BorderRadius.circular(50.0), color: color, boxShadow: T.JSArrayOfBoxShadow().of([new box_shadow.BoxShadow.new({color: color.withOpacity(0.8), offset: new ui.Offset.new(1.0, 2.0), blurRadius: 3.0})])}), child: new material.Material.new({color: colors.Colors.transparent, child: new ink_well.InkWell.new({onTap: changeColor, borderRadius: new border_radius.BorderRadius.circular(50.0), child: new implicit_animations.AnimatedOpacity.new({duration: C[245] || CT.C245, opacity: dart.test(isCurrentColor) ? 1.0 : 0.0, child: new icon.Icon.new(icons.Icons.done, {color: dart.test(utils.useWhiteForeground(color)) ? colors.Colors.white : colors.Colors.black, $creationLocationd_0dea112b090073317d4: C[246] || CT.C246}), $creationLocationd_0dea112b090073317d4: C[250] || CT.C250}), $creationLocationd_0dea112b090073317d4: C[255] || CT.C255}), $creationLocationd_0dea112b090073317d4: C[260] || CT.C260}), $creationLocationd_0dea112b090073317d4: C[264] || CT.C264});
+    }
+    createState() {
+      return new block_picker._BlockPickerState.new();
     }
   };
-  (card1.Card1.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let recipe = opts && 'recipe' in opts ? opts.recipe : null;
+  (block_picker.BlockPicker.new = function(opts) {
+    let pickerColor = opts && 'pickerColor' in opts ? opts.pickerColor : null;
+    if (pickerColor == null) dart.nullFailed(I[0], 40, 19, "pickerColor");
+    let onColorChanged = opts && 'onColorChanged' in opts ? opts.onColorChanged : null;
+    if (onColorChanged == null) dart.nullFailed(I[0], 41, 19, "onColorChanged");
+    let availableColors = opts && 'availableColors' in opts ? opts.availableColors : C[0] || CT.C0;
+    if (availableColors == null) dart.nullFailed(I[0], 42, 10, "availableColors");
+    let layoutBuilder = opts && 'layoutBuilder' in opts ? opts.layoutBuilder : C[232] || CT.C232;
+    if (layoutBuilder == null) dart.nullFailed(I[0], 43, 10, "layoutBuilder");
+    let itemBuilder = opts && 'itemBuilder' in opts ? opts.itemBuilder : C[233] || CT.C233;
+    if (itemBuilder == null) dart.nullFailed(I[0], 44, 10, "itemBuilder");
     let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[recipe$] = recipe;
-    card1.Card1.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    this[pickerColor$] = pickerColor;
+    this[onColorChanged$] = onColorChanged;
+    this[availableColors$] = availableColors;
+    this[layoutBuilder$] = layoutBuilder;
+    this[itemBuilder$] = itemBuilder;
+    block_picker.BlockPicker.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = card1.Card1.prototype;
-  dart.addTypeTests(card1.Card1);
-  dart.addTypeCaches(card1.Card1);
-  dart.setMethodSignature(card1.Card1, () => ({
-    __proto__: dart.getMethods(card1.Card1.__proto__),
-    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }).prototype = block_picker.BlockPicker.prototype;
+  dart.addTypeTests(block_picker.BlockPicker);
+  dart.addTypeCaches(block_picker.BlockPicker);
+  dart.setMethodSignature(block_picker.BlockPicker, () => ({
+    __proto__: dart.getMethods(block_picker.BlockPicker.__proto__),
+    createState: dart.fnType(framework.State$(framework.StatefulWidget), [])
   }));
-  dart.setLibraryUri(card1.Card1, I[0]);
-  dart.setFieldSignature(card1.Card1, () => ({
-    __proto__: dart.getFields(card1.Card1.__proto__),
-    recipe: dart.finalFieldType(dart.legacy(explore_recipe.ExploreRecipe))
+  dart.setLibraryUri(block_picker.BlockPicker, I[1]);
+  dart.setFieldSignature(block_picker.BlockPicker, () => ({
+    __proto__: dart.getFields(block_picker.BlockPicker.__proto__),
+    pickerColor: dart.finalFieldType(ui.Color),
+    onColorChanged: dart.finalFieldType(dart.fnType(dart.void, [ui.Color])),
+    availableColors: dart.finalFieldType(core.List$(ui.Color)),
+    layoutBuilder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, core.List$(ui.Color), dart.fnType(framework.Widget, [ui.Color])])),
+    itemBuilder: dart.finalFieldType(dart.fnType(framework.Widget, [ui.Color, core.bool, dart.fnType(dart.void, [])]))
   }));
-  dart.trackLibraries("packages/fooderlich/components/card1.dart", {
-    "package:fooderlich/components/card1.dart": card1
+  var ___BlockPickerState__currentColor = dart.privateName(block_picker, "_#_BlockPickerState#_currentColor");
+  var ___BlockPickerState__currentColor_isSet = dart.privateName(block_picker, "_#_BlockPickerState#_currentColor#isSet");
+  var _currentColor = dart.privateName(block_picker, "_currentColor");
+  block_picker._BlockPickerState = class _BlockPickerState extends framework.State$(block_picker.BlockPicker) {
+    get [_currentColor]() {
+      let t0;
+      return dart.test(this[___BlockPickerState__currentColor_isSet]) ? (t0 = this[___BlockPickerState__currentColor], t0) : dart.throw(new _internal.LateError.fieldNI("_currentColor"));
+    }
+    set [_currentColor](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 107, 14, "null");
+      this[___BlockPickerState__currentColor_isSet] = true;
+      this[___BlockPickerState__currentColor] = t0;
+    }
+    initState() {
+      this[_currentColor] = this.widget.pickerColor;
+      super.initState();
+    }
+    changeColor(color) {
+      let t2, t1;
+      if (color == null) dart.nullFailed(I[0], 115, 26, "color");
+      this.setState(dart.fn(() => this[_currentColor] = color, T.VoidTovoid()));
+      t1 = this.widget;
+      t2 = color;
+      t1.onColorChanged(t2);
+    }
+    build(context) {
+      let t4, t3, t2, t1;
+      if (context == null) dart.nullFailed(I[0], 121, 29, "context");
+      t1 = this.widget;
+      t2 = context;
+      t3 = this.widget.availableColors;
+      t4 = dart.fn((color, _ = null, __ = null) => {
+        let t4, t3, t2, t1;
+        if (color == null) dart.nullFailed(I[0], 125, 14, "color");
+        t1 = this.widget;
+        t2 = color;
+        t3 = this[_currentColor].value == color.value;
+        t4 = dart.fn(() => this.changeColor(color), T.VoidTovoid());
+        return t1.itemBuilder(t2, t3, t4);
+      }, T.ColorAndboolNAndFunctionNToWidget());
+      return t1.layoutBuilder(t2, t3, t4);
+    }
+  };
+  (block_picker._BlockPickerState.new = function() {
+    this[___BlockPickerState__currentColor] = null;
+    this[___BlockPickerState__currentColor_isSet] = false;
+    block_picker._BlockPickerState.__proto__.new.call(this);
+    ;
+  }).prototype = block_picker._BlockPickerState.prototype;
+  dart.addTypeTests(block_picker._BlockPickerState);
+  dart.addTypeCaches(block_picker._BlockPickerState);
+  dart.setMethodSignature(block_picker._BlockPickerState, () => ({
+    __proto__: dart.getMethods(block_picker._BlockPickerState.__proto__),
+    changeColor: dart.fnType(dart.void, [ui.Color]),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(block_picker._BlockPickerState, () => ({
+    __proto__: dart.getGetters(block_picker._BlockPickerState.__proto__),
+    [_currentColor]: ui.Color
+  }));
+  dart.setSetterSignature(block_picker._BlockPickerState, () => ({
+    __proto__: dart.getSetters(block_picker._BlockPickerState.__proto__),
+    [_currentColor]: ui.Color
+  }));
+  dart.setLibraryUri(block_picker._BlockPickerState, I[1]);
+  dart.setFieldSignature(block_picker._BlockPickerState, () => ({
+    __proto__: dart.getFields(block_picker._BlockPickerState.__proto__),
+    [___BlockPickerState__currentColor]: dart.fieldType(dart.nullable(ui.Color)),
+    [___BlockPickerState__currentColor_isSet]: dart.fieldType(core.bool)
+  }));
+  var pickerColors$ = dart.privateName(block_picker, "MultipleChoiceBlockPicker.pickerColors");
+  var onColorsChanged$ = dart.privateName(block_picker, "MultipleChoiceBlockPicker.onColorsChanged");
+  var availableColors$0 = dart.privateName(block_picker, "MultipleChoiceBlockPicker.availableColors");
+  var layoutBuilder$0 = dart.privateName(block_picker, "MultipleChoiceBlockPicker.layoutBuilder");
+  var itemBuilder$0 = dart.privateName(block_picker, "MultipleChoiceBlockPicker.itemBuilder");
+  block_picker.MultipleChoiceBlockPicker = class MultipleChoiceBlockPicker extends framework.StatefulWidget {
+    get pickerColors() {
+      return this[pickerColors$];
+    }
+    set pickerColors(value) {
+      super.pickerColors = value;
+    }
+    get onColorsChanged() {
+      return this[onColorsChanged$];
+    }
+    set onColorsChanged(value) {
+      super.onColorsChanged = value;
+    }
+    get availableColors() {
+      return this[availableColors$0];
+    }
+    set availableColors(value) {
+      super.availableColors = value;
+    }
+    get layoutBuilder() {
+      return this[layoutBuilder$0];
+    }
+    set layoutBuilder(value) {
+      super.layoutBuilder = value;
+    }
+    get itemBuilder() {
+      return this[itemBuilder$0];
+    }
+    set itemBuilder(value) {
+      super.itemBuilder = value;
+    }
+    createState() {
+      return new block_picker._MultipleChoiceBlockPickerState.new();
+    }
+  };
+  (block_picker.MultipleChoiceBlockPicker.new = function(opts) {
+    let pickerColors = opts && 'pickerColors' in opts ? opts.pickerColors : null;
+    if (pickerColors == null) dart.nullFailed(I[0], 133, 19, "pickerColors");
+    let onColorsChanged = opts && 'onColorsChanged' in opts ? opts.onColorsChanged : null;
+    if (onColorsChanged == null) dart.nullFailed(I[0], 134, 19, "onColorsChanged");
+    let availableColors = opts && 'availableColors' in opts ? opts.availableColors : C[0] || CT.C0;
+    if (availableColors == null) dart.nullFailed(I[0], 135, 10, "availableColors");
+    let layoutBuilder = opts && 'layoutBuilder' in opts ? opts.layoutBuilder : C[232] || CT.C232;
+    if (layoutBuilder == null) dart.nullFailed(I[0], 136, 10, "layoutBuilder");
+    let itemBuilder = opts && 'itemBuilder' in opts ? opts.itemBuilder : C[233] || CT.C233;
+    if (itemBuilder == null) dart.nullFailed(I[0], 137, 10, "itemBuilder");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[pickerColors$] = pickerColors;
+    this[onColorsChanged$] = onColorsChanged;
+    this[availableColors$0] = availableColors;
+    this[layoutBuilder$0] = layoutBuilder;
+    this[itemBuilder$0] = itemBuilder;
+    block_picker.MultipleChoiceBlockPicker.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = block_picker.MultipleChoiceBlockPicker.prototype;
+  dart.addTypeTests(block_picker.MultipleChoiceBlockPicker);
+  dart.addTypeCaches(block_picker.MultipleChoiceBlockPicker);
+  dart.setMethodSignature(block_picker.MultipleChoiceBlockPicker, () => ({
+    __proto__: dart.getMethods(block_picker.MultipleChoiceBlockPicker.__proto__),
+    createState: dart.fnType(framework.State$(framework.StatefulWidget), [])
+  }));
+  dart.setLibraryUri(block_picker.MultipleChoiceBlockPicker, I[1]);
+  dart.setFieldSignature(block_picker.MultipleChoiceBlockPicker, () => ({
+    __proto__: dart.getFields(block_picker.MultipleChoiceBlockPicker.__proto__),
+    pickerColors: dart.finalFieldType(core.List$(ui.Color)),
+    onColorsChanged: dart.finalFieldType(dart.fnType(dart.void, [core.List$(ui.Color)])),
+    availableColors: dart.finalFieldType(core.List$(ui.Color)),
+    layoutBuilder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, core.List$(ui.Color), dart.fnType(framework.Widget, [ui.Color])])),
+    itemBuilder: dart.finalFieldType(dart.fnType(framework.Widget, [ui.Color, core.bool, dart.fnType(dart.void, [])]))
+  }));
+  var ___MultipleChoiceBlockPickerState__currentColors = dart.privateName(block_picker, "_#_MultipleChoiceBlockPickerState#_currentColors");
+  var ___MultipleChoiceBlockPickerState__currentColors_isSet = dart.privateName(block_picker, "_#_MultipleChoiceBlockPickerState#_currentColors#isSet");
+  var _currentColors = dart.privateName(block_picker, "_currentColors");
+  block_picker._MultipleChoiceBlockPickerState = class _MultipleChoiceBlockPickerState extends framework.State$(block_picker.MultipleChoiceBlockPicker) {
+    get [_currentColors]() {
+      let t1;
+      return dart.test(this[___MultipleChoiceBlockPickerState__currentColors_isSet]) ? (t1 = this[___MultipleChoiceBlockPickerState__currentColors], t1) : dart.throw(new _internal.LateError.fieldNI("_currentColors"));
+    }
+    set [_currentColors](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 151, 20, "null");
+      this[___MultipleChoiceBlockPickerState__currentColors_isSet] = true;
+      this[___MultipleChoiceBlockPickerState__currentColors] = t1;
+    }
+    initState() {
+      this[_currentColors] = this.widget.pickerColors;
+      super.initState();
+    }
+    toggleColor(color) {
+      let t3, t2;
+      if (color == null) dart.nullFailed(I[0], 159, 26, "color");
+      this.setState(dart.fn(() => {
+        dart.test(this[_currentColors][$contains](color)) ? this[_currentColors][$remove](color) : this[_currentColors][$add](color);
+      }, T.VoidTovoid()));
+      t2 = this.widget;
+      t3 = this[_currentColors];
+      t2.onColorsChanged(t3);
+    }
+    build(context) {
+      let t5, t4, t3, t2;
+      if (context == null) dart.nullFailed(I[0], 169, 29, "context");
+      t2 = this.widget;
+      t3 = context;
+      t4 = this.widget.availableColors;
+      t5 = dart.fn((color, _ = null, __ = null) => {
+        let t5, t4, t3, t2;
+        if (color == null) dart.nullFailed(I[0], 173, 14, "color");
+        t2 = this.widget;
+        t3 = color;
+        t4 = this[_currentColors][$contains](color);
+        t5 = dart.fn(() => this.toggleColor(color), T.VoidTovoid());
+        return t2.itemBuilder(t3, t4, t5);
+      }, T.ColorAndboolNAndFunctionNToWidget());
+      return t2.layoutBuilder(t3, t4, t5);
+    }
+  };
+  (block_picker._MultipleChoiceBlockPickerState.new = function() {
+    this[___MultipleChoiceBlockPickerState__currentColors] = null;
+    this[___MultipleChoiceBlockPickerState__currentColors_isSet] = false;
+    block_picker._MultipleChoiceBlockPickerState.__proto__.new.call(this);
+    ;
+  }).prototype = block_picker._MultipleChoiceBlockPickerState.prototype;
+  dart.addTypeTests(block_picker._MultipleChoiceBlockPickerState);
+  dart.addTypeCaches(block_picker._MultipleChoiceBlockPickerState);
+  dart.setMethodSignature(block_picker._MultipleChoiceBlockPickerState, () => ({
+    __proto__: dart.getMethods(block_picker._MultipleChoiceBlockPickerState.__proto__),
+    toggleColor: dart.fnType(dart.void, [ui.Color]),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(block_picker._MultipleChoiceBlockPickerState, () => ({
+    __proto__: dart.getGetters(block_picker._MultipleChoiceBlockPickerState.__proto__),
+    [_currentColors]: core.List$(ui.Color)
+  }));
+  dart.setSetterSignature(block_picker._MultipleChoiceBlockPickerState, () => ({
+    __proto__: dart.getSetters(block_picker._MultipleChoiceBlockPickerState.__proto__),
+    [_currentColors]: core.List$(ui.Color)
+  }));
+  dart.setLibraryUri(block_picker._MultipleChoiceBlockPickerState, I[1]);
+  dart.setFieldSignature(block_picker._MultipleChoiceBlockPickerState, () => ({
+    __proto__: dart.getFields(block_picker._MultipleChoiceBlockPickerState.__proto__),
+    [___MultipleChoiceBlockPickerState__currentColors]: dart.fieldType(dart.nullable(core.List$(ui.Color))),
+    [___MultipleChoiceBlockPickerState__currentColors_isSet]: dart.fieldType(core.bool)
+  }));
+  dart.defineLazy(block_picker, {
+    /*block_picker._defaultColors*/get _defaultColors() {
+      return C[0] || CT.C0;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter_colorpicker/src/block_picker.dart", {
+    "package:flutter_colorpicker/src/block_picker.dart": block_picker
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["card1.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAKsB;;;;;;UAKM;AACxB,YAAO,8BACE,oCACE,+BACK,yBACR,kBACE,AAAO,8BACgB,AAAc,mHAEvC,iCACS,kBACL,AAAO,2BACgB,AAAc,wHAElC,+DAEP,iCACS,kBACL,AAAO,6BACgB,AAAc,6HAE/B,aACD,gEAET,iCACS,kBACL,AAAO,gCACgB,AAAc,6HAE/B,aACD,iMAMD,6CACH,iDACE,oCAAW,AAAO,mCACb;IAMtB;;;QAhDiB;QAAU;;;AAAW,+CAAW,GAAG;;EAAC","file":"../../../../../../../../../packages/fooderlich/components/card1.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["block_picker.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA8Cc;;;;;;IACc;;;;;;IACR;;;;;;IACQ;;;;;;IACF;;;;;;gCAGP,SAAqB,QAAmB;UAAxC;UAAqB;UAAmB;AAC3C,wBAAyB,AAAY,0BAAT,OAAO;AAE/C,YAAO,qCACE,AAAY,WAAD,IAAgB,mCAAW,QAAQ,eAC7C,AAAY,WAAD,IAAgB,mCAAW,QAAQ,cACtC,gDACE,AAAY,WAAD,IAAgB,mCAAW,IAAI,qBACxC,sBACD,eACP,AAAO,AAAmC,MAApC,yBAAK;gBAAO;AAAU,kBAAA,AAAK,MAAA,CAAC,KAAK;;IAGvD;8BAGU,OAAY,gBAAgC;UAA5C;UAAY;UAAgC;AACpD,YAAO,sCACc,+BAAI,kBACX,oDACiB,wCAAS,cAC7B,KAAK,aACD,2BACT,qCACS,AAAM,KAAD,aAAa,cACjB,kBAAO,KAAK,kBACR,kBAIX,kCACS,kCACP,iCACE,WAAW,gBACS,wCAAS,cAC7B,6FAEI,cAAc,IAAG,MAAM,YACzB,kBACC,oCACC,yBAAmB,KAAK,KAAW,sBAAe;IAMrE;;AAGuC;IAAmB;;;QA/D1C;;QACA;;QACT;;QACA;;QACA;;;IAJS;IACA;IACT;IACA;IACA;AALD;;EAMJ;;;;;;;;;;;;;;;;;;;;;;AA8DS;IAAa;;;AAAb;;IAAa;;AAIY,MAAlC,sBAAgB,AAAO;AACN,MAAX;IACR;gBAEuB;;;AACgB,MAArC,cAAS,cAAM,sBAAgB,KAAK;AACR,WAA5B;WAAsB,KAAK;MAAN;IACvB;UAG0B;;;AACxB,WAAO;WACL,OAAO;WACP,AAAO;WACP,SAAO,OAAc,UAAa;;YAA3B;AAAmC;aACtC,KAAK;aAAE,AAAc,AAAM,6BAAG,AAAM,KAAD;aAAQ,cAAM,iBAAY,KAAK;cADV;;YAHnC;IAM7B;;;8CArBW;;;;EAsBb;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAWoB;;;;;;IACc;;;;;;IACd;;;;;;IACQ;;;;;;IACF;;;;;;;AAGe;IAAiC;;;QAdxD;;QACA;;QACT;;QACA;;QACA;;;IAJS;IACA;IACT;IACA;IACA;AALD;;EAMJ;;;;;;;;;;;;;;;;;;;;;;AAae;IAAc;;;AAAd;;IAAc;;AAIO,MAApC,uBAAiB,AAAO;AACP,MAAX;IACR;gBAEuB;;;AAKnB,MAJF,cAAS;AAGwB,kBAF/B,AAAe,gCAAS,KAAK,KACvB,AAAe,8BAAO,KAAK,IAC3B,AAAe,2BAAI,KAAK;;AAEM,WAAtC;WAAuB;MAAD;IACxB;UAG0B;;;AACxB,WAAO;WACL,OAAO;WACP,AAAO;WACP,SAAO,OAAc,UAAa;;YAA3B;AAAmC;aACxC,KAAK;aACL,AAAe,gCAAS,KAAK;aAC7B,cAAM,iBAAY,KAAK;cAHmC;;YAHnC;IAS7B;;;6DA5BiB;;;;EA6BnB;;;;;;;;;;;;;;;;;;;;;;;MA3KkB,2BAAc","file":"../../../../../../../../../../packages/flutter_colorpicker/src/block_picker.dart.lib.js"}');
   // Exports:
   return {
-    components__card1: card1
+    src__block_picker: block_picker
   };
 }));
 
-//# sourceMappingURL=card1.dart.lib.js.map
+//# sourceMappingURL=block_picker.dart.lib.js.map

@@ -1,23 +1,34 @@
-define(['dart_sdk', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/edge_insets.dart'], (function load__packages__flutter__src__rendering__sliver_padding_dart(dart_sdk, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__edge_insets$46dart) {
+define(['dart_sdk', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/gestures/velocity_tracker.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/gestures/drag_details.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__gestures__monodrag_dart(dart_sdk, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__gestures__velocity_tracker$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__gestures__arena$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__gestures__drag_details$46dart, packages__flutter__src__foundation__debug$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const collection = dart_sdk.collection;
   const _internal = dart_sdk._internal;
-  const math = dart_sdk.math;
   const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
-  const sliver = packages__flutter__src__rendering__sliver$46dart.src__rendering__sliver;
-  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  const debug = packages__flutter__src__rendering__layer$46dart.src__rendering__debug;
+  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
+  const velocity_tracker = packages__flutter__src__gestures__velocity_tracker$46dart.src__gestures__velocity_tracker;
+  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
+  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
+  const drag_details = packages__flutter__src__gestures__drag_details$46dart.src__gestures__drag_details;
   const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  var sliver_padding = Object.create(dart.library);
+  var monodrag = Object.create(dart.library);
+  var $_set = dartx._set;
+  var $_get = dartx._get;
+  var $sign = dartx.sign;
+  var $clear = dartx.clear;
+  var $abs = dartx.abs;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    DiagnosticsPropertyOfEdgeInsetsGeometry: () => (T.DiagnosticsPropertyOfEdgeInsetsGeometry = dart.constFn(diagnostics.DiagnosticsProperty$(edge_insets.EdgeInsetsGeometry)))(),
-    EnumPropertyOfTextDirection: () => (T.EnumPropertyOfTextDirection = dart.constFn(diagnostics.EnumProperty$(ui.TextDirection)))()
+    _DragStateL: () => (T._DragStateL = dart.constFn(dart.legacy(monodrag._DragState)))(),
+    PointerEventToVelocityTracker: () => (T.PointerEventToVelocityTracker = dart.constFn(dart.fnType(velocity_tracker.VelocityTracker, [events.PointerEvent])))(),
+    IdentityMapOfint$VelocityTracker: () => (T.IdentityMapOfint$VelocityTracker = dart.constFn(_js_helper.IdentityMap$(core.int, velocity_tracker.VelocityTracker)))(),
+    LinkedHashSetOfint: () => (T.LinkedHashSetOfint = dart.constFn(collection.LinkedHashSet$(core.int)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    VoidToString: () => (T.VoidToString = dart.constFn(dart.fnType(core.String, [])))(),
+    EnumPropertyOfDragStartBehavior: () => (T.EnumPropertyOfDragStartBehavior = dart.constFn(diagnostics.EnumProperty$(recognizer.DragStartBehavior)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -25,414 +36,646 @@ define(['dart_sdk', 'packages/flutter/src/painting/basic_types.dart', 'packages/
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.up",
+        __proto__: monodrag._DragState.prototype,
+        [_name$]: "_DragState.ready",
         index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.right",
+        __proto__: monodrag._DragState.prototype,
+        [_name$]: "_DragState.possible",
         index: 1
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.down",
+        __proto__: monodrag._DragState.prototype,
+        [_name$]: "_DragState.accepted",
         index: 2
       });
     },
     get C3() {
-      return C[3] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.left",
-        index: 3
-      });
+      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], T._DragStateL());
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: basic_types.Axis.prototype,
-        [_name]: "Axis.horizontal",
-        index: 0
+        __proto__: recognizer.DragStartBehavior.prototype,
+        [_name]: "DragStartBehavior.start",
+        index: 1
       });
     },
     get C5() {
-      return C[5] = dart.const({
-        __proto__: basic_types.Axis.prototype,
-        [_name]: "Axis.vertical",
-        index: 1
+      return C[5] = dart.fn(monodrag.DragGestureRecognizer._defaultBuilder, T.PointerEventToVelocityTracker());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: recognizer.DragStartBehavior.prototype,
+        [_name]: "DragStartBehavior.down",
+        index: 0
       });
     }
   }, false);
-  var C = Array(6).fill(void 0);
+  var C = Array(7).fill(void 0);
   var I = [
-    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/rendering/sliver_padding.dart",
-    "package:flutter/src/rendering/sliver_padding.dart"
+    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/gestures/monodrag.dart",
+    "package:flutter/src/gestures/monodrag.dart"
   ];
-  var _name = dart.privateName(basic_types, "_name");
-  const RenderSliver_RenderObjectWithChildMixin$36 = class RenderSliver_RenderObjectWithChildMixin extends sliver.RenderSliver {};
-  (RenderSliver_RenderObjectWithChildMixin$36.new = function() {
-    object.RenderObjectWithChildMixin$(sliver.RenderSliver)[dart.mixinNew].call(this);
-    RenderSliver_RenderObjectWithChildMixin$36.__proto__.new.call(this);
-  }).prototype = RenderSliver_RenderObjectWithChildMixin$36.prototype;
-  dart.applyMixin(RenderSliver_RenderObjectWithChildMixin$36, object.RenderObjectWithChildMixin$(sliver.RenderSliver));
-  sliver_padding.RenderSliverEdgeInsetsPadding = class RenderSliverEdgeInsetsPadding extends RenderSliver_RenderObjectWithChildMixin$36 {
-    get beforePadding() {
-      if (!(this.constraints != null)) dart.assertFailed(null, I[0], 38, 12, "constraints != null");
-      if (!(this.constraints.axisDirection != null)) dart.assertFailed(null, I[0], 39, 12, "constraints.axisDirection != null");
-      if (!(this.constraints.growthDirection != null)) dart.assertFailed(null, I[0], 40, 12, "constraints.growthDirection != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 41, 12, "resolvedPadding != null");
-      switch (sliver.applyGrowthDirectionToAxisDirection(this.constraints.axisDirection, this.constraints.growthDirection)) {
-        case C[0] || CT.C0:
-        {
-          return dart.nullCheck(this.resolvedPadding).bottom;
-        }
-        case C[1] || CT.C1:
-        {
-          return dart.nullCheck(this.resolvedPadding).left;
-        }
-        case C[2] || CT.C2:
-        {
-          return dart.nullCheck(this.resolvedPadding).top;
-        }
-        case C[3] || CT.C3:
-        {
-          return dart.nullCheck(this.resolvedPadding).right;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-    }
-    get afterPadding() {
-      if (!(this.constraints != null)) dart.assertFailed(null, I[0], 59, 12, "constraints != null");
-      if (!(this.constraints.axisDirection != null)) dart.assertFailed(null, I[0], 60, 12, "constraints.axisDirection != null");
-      if (!(this.constraints.growthDirection != null)) dart.assertFailed(null, I[0], 61, 12, "constraints.growthDirection != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 62, 12, "resolvedPadding != null");
-      switch (sliver.applyGrowthDirectionToAxisDirection(this.constraints.axisDirection, this.constraints.growthDirection)) {
-        case C[0] || CT.C0:
-        {
-          return dart.nullCheck(this.resolvedPadding).top;
-        }
-        case C[1] || CT.C1:
-        {
-          return dart.nullCheck(this.resolvedPadding).right;
-        }
-        case C[2] || CT.C2:
-        {
-          return dart.nullCheck(this.resolvedPadding).bottom;
-        }
-        case C[3] || CT.C3:
-        {
-          return dart.nullCheck(this.resolvedPadding).left;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-    }
-    get mainAxisPadding() {
-      if (!(this.constraints != null)) dart.assertFailed(null, I[0], 82, 12, "constraints != null");
-      if (!(this.constraints.axis != null)) dart.assertFailed(null, I[0], 83, 12, "constraints.axis != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 84, 12, "resolvedPadding != null");
-      return dart.nullCheck(this.resolvedPadding).along(this.constraints.axis);
-    }
-    get crossAxisPadding() {
-      if (!(this.constraints != null)) dart.assertFailed(null, I[0], 95, 12, "constraints != null");
-      if (!(this.constraints.axis != null)) dart.assertFailed(null, I[0], 96, 12, "constraints.axis != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 97, 12, "resolvedPadding != null");
-      switch (this.constraints.axis) {
-        case C[4] || CT.C4:
-        {
-          return dart.nullCheck(this.resolvedPadding).vertical;
-        }
-        case C[5] || CT.C5:
-        {
-          return dart.nullCheck(this.resolvedPadding).horizontal;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-    }
-    setupParentData(child) {
-      object.RenderObject.as(child);
-      if (child == null) dart.nullFailed(I[0], 107, 37, "child");
-      if (!sliver.SliverPhysicalParentData.is(child.parentData)) child.parentData = new sliver.SliverPhysicalParentData.new();
-    }
-    performLayout() {
-      let constraints = this.constraints;
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 115, 12, "resolvedPadding != null");
-      let beforePadding = this.beforePadding;
-      let afterPadding = this.afterPadding;
-      let mainAxisPadding = this.mainAxisPadding;
-      let crossAxisPadding = this.crossAxisPadding;
-      if (this.child == null) {
-        this.geometry = new sliver.SliverGeometry.new({scrollExtent: mainAxisPadding, paintExtent: math.min(core.double, mainAxisPadding, constraints.remainingPaintExtent), maxPaintExtent: mainAxisPadding});
-        return;
-      }
-      let beforePaddingPaintExtent = this.calculatePaintOffset(constraints, {from: 0.0, to: beforePadding});
-      let overlap = constraints.overlap;
-      if (dart.notNull(overlap) > 0) {
-        overlap = math.max(core.double, 0.0, dart.notNull(constraints.overlap) - dart.notNull(beforePaddingPaintExtent));
-      }
-      dart.nullCheck(this.child).layout(constraints.copyWith({scrollOffset: math.max(core.double, 0.0, dart.notNull(constraints.scrollOffset) - dart.notNull(beforePadding)), cacheOrigin: math.min(core.double, 0.0, dart.notNull(constraints.cacheOrigin) + dart.notNull(beforePadding)), overlap: overlap, remainingPaintExtent: dart.notNull(constraints.remainingPaintExtent) - dart.notNull(this.calculatePaintOffset(constraints, {from: 0.0, to: beforePadding})), remainingCacheExtent: dart.notNull(constraints.remainingCacheExtent) - dart.notNull(this.calculateCacheOffset(constraints, {from: 0.0, to: beforePadding})), crossAxisExtent: math.max(core.double, 0.0, dart.notNull(constraints.crossAxisExtent) - dart.notNull(crossAxisPadding)), precedingScrollExtent: dart.notNull(beforePadding) + dart.notNull(constraints.precedingScrollExtent)}), {parentUsesSize: true});
-      let childLayoutGeometry = dart.nullCheck(dart.nullCheck(this.child).geometry);
-      if (childLayoutGeometry.scrollOffsetCorrection != null) {
-        this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: childLayoutGeometry.scrollOffsetCorrection});
-        return;
-      }
-      let afterPaddingPaintExtent = this.calculatePaintOffset(constraints, {from: dart.notNull(beforePadding) + dart.notNull(childLayoutGeometry.scrollExtent), to: dart.notNull(mainAxisPadding) + dart.notNull(childLayoutGeometry.scrollExtent)});
-      let mainAxisPaddingPaintExtent = dart.notNull(beforePaddingPaintExtent) + dart.notNull(afterPaddingPaintExtent);
-      let beforePaddingCacheExtent = this.calculateCacheOffset(constraints, {from: 0.0, to: beforePadding});
-      let afterPaddingCacheExtent = this.calculateCacheOffset(constraints, {from: dart.notNull(beforePadding) + dart.notNull(childLayoutGeometry.scrollExtent), to: dart.notNull(mainAxisPadding) + dart.notNull(childLayoutGeometry.scrollExtent)});
-      let mainAxisPaddingCacheExtent = dart.notNull(afterPaddingCacheExtent) + dart.notNull(beforePaddingCacheExtent);
-      let paintExtent = math.min(core.double, dart.notNull(beforePaddingPaintExtent) + math.max(core.num, childLayoutGeometry.paintExtent, dart.notNull(childLayoutGeometry.layoutExtent) + dart.notNull(afterPaddingPaintExtent)), constraints.remainingPaintExtent);
-      this.geometry = new sliver.SliverGeometry.new({paintOrigin: childLayoutGeometry.paintOrigin, scrollExtent: dart.notNull(mainAxisPadding) + dart.notNull(childLayoutGeometry.scrollExtent), paintExtent: paintExtent, layoutExtent: math.min(core.double, mainAxisPaddingPaintExtent + dart.notNull(childLayoutGeometry.layoutExtent), paintExtent), cacheExtent: math.min(core.double, mainAxisPaddingCacheExtent + dart.notNull(childLayoutGeometry.cacheExtent), constraints.remainingCacheExtent), maxPaintExtent: dart.notNull(mainAxisPadding) + dart.notNull(childLayoutGeometry.maxPaintExtent), hitTestExtent: math.max(core.double, mainAxisPaddingPaintExtent + dart.notNull(childLayoutGeometry.paintExtent), dart.notNull(beforePaddingPaintExtent) + dart.notNull(childLayoutGeometry.hitTestExtent)), hasVisualOverflow: childLayoutGeometry.hasVisualOverflow});
-      let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-      if (!(constraints.axisDirection != null)) dart.assertFailed(null, I[0], 192, 12, "constraints.axisDirection != null");
-      if (!(constraints.growthDirection != null)) dart.assertFailed(null, I[0], 193, 12, "constraints.growthDirection != null");
-      switch (sliver.applyGrowthDirectionToAxisDirection(constraints.axisDirection, constraints.growthDirection)) {
-        case C[0] || CT.C0:
-        {
-          childParentData.paintOffset = new ui.Offset.new(dart.nullCheck(this.resolvedPadding).left, this.calculatePaintOffset(constraints, {from: dart.notNull(dart.nullCheck(this.resolvedPadding).bottom) + dart.notNull(childLayoutGeometry.scrollExtent), to: dart.notNull(dart.nullCheck(this.resolvedPadding).bottom) + dart.notNull(childLayoutGeometry.scrollExtent) + dart.notNull(dart.nullCheck(this.resolvedPadding).top)}));
-          break;
-        }
-        case C[1] || CT.C1:
-        {
-          childParentData.paintOffset = new ui.Offset.new(this.calculatePaintOffset(constraints, {from: 0.0, to: dart.nullCheck(this.resolvedPadding).left}), dart.nullCheck(this.resolvedPadding).top);
-          break;
-        }
-        case C[2] || CT.C2:
-        {
-          childParentData.paintOffset = new ui.Offset.new(dart.nullCheck(this.resolvedPadding).left, this.calculatePaintOffset(constraints, {from: 0.0, to: dart.nullCheck(this.resolvedPadding).top}));
-          break;
-        }
-        case C[3] || CT.C3:
-        {
-          childParentData.paintOffset = new ui.Offset.new(this.calculatePaintOffset(constraints, {from: dart.notNull(dart.nullCheck(this.resolvedPadding).right) + dart.notNull(childLayoutGeometry.scrollExtent), to: dart.notNull(dart.nullCheck(this.resolvedPadding).right) + dart.notNull(childLayoutGeometry.scrollExtent) + dart.notNull(dart.nullCheck(this.resolvedPadding).left)}), dart.nullCheck(this.resolvedPadding).top);
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-      if (!(childParentData.paintOffset != null)) dart.assertFailed(null, I[0], 208, 12, "childParentData.paintOffset != null");
-      if (!(beforePadding == this.beforePadding)) dart.assertFailed(null, I[0], 209, 12, "beforePadding == this.beforePadding");
-      if (!(afterPadding == this.afterPadding)) dart.assertFailed(null, I[0], 210, 12, "afterPadding == this.afterPadding");
-      if (!(mainAxisPadding == this.mainAxisPadding)) dart.assertFailed(null, I[0], 211, 12, "mainAxisPadding == this.mainAxisPadding");
-      if (!(crossAxisPadding == this.crossAxisPadding)) dart.assertFailed(null, I[0], 212, 12, "crossAxisPadding == this.crossAxisPadding");
-    }
-    hitTestChildren(result, opts) {
-      if (result == null) dart.nullFailed(I[0], 216, 44, "result");
-      let mainAxisPosition = opts && 'mainAxisPosition' in opts ? opts.mainAxisPosition : null;
-      if (mainAxisPosition == null) dart.nullFailed(I[0], 216, 70, "mainAxisPosition");
-      let crossAxisPosition = opts && 'crossAxisPosition' in opts ? opts.crossAxisPosition : null;
-      if (crossAxisPosition == null) dart.nullFailed(I[0], 216, 104, "crossAxisPosition");
-      if (this.child != null && dart.notNull(dart.nullCheck(dart.nullCheck(this.child).geometry).hitTestExtent) > 0.0) {
-        let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-        result.addWithAxisOffset({mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition, mainAxisOffset: this.childMainAxisPosition(dart.nullCheck(this.child)), crossAxisOffset: this.childCrossAxisPosition(dart.nullCheck(this.child)), paintOffset: childParentData.paintOffset, hitTest: dart.bind(dart.nullCheck(this.child), 'hitTest')});
-      }
-      return false;
-    }
-    childMainAxisPosition(child) {
-      sliver.RenderSliver.as(child);
-      if (child == null) dart.nullFailed(I[0], 232, 45, "child");
-      if (!(child != null)) dart.assertFailed(null, I[0], 233, 12, "child != null");
-      if (!dart.equals(child, this.child)) dart.assertFailed(null, I[0], 234, 12, "child == this.child");
-      return this.calculatePaintOffset(this.constraints, {from: 0.0, to: this.beforePadding});
-    }
-    childCrossAxisPosition(child) {
-      sliver.RenderSliver.as(child);
-      if (child == null) dart.nullFailed(I[0], 239, 46, "child");
-      if (!(child != null)) dart.assertFailed(null, I[0], 240, 12, "child != null");
-      if (!dart.equals(child, this.child)) dart.assertFailed(null, I[0], 241, 12, "child == this.child");
-      if (!(this.constraints != null)) dart.assertFailed(null, I[0], 242, 12, "constraints != null");
-      if (!(this.constraints.axisDirection != null)) dart.assertFailed(null, I[0], 243, 12, "constraints.axisDirection != null");
-      if (!(this.constraints.growthDirection != null)) dart.assertFailed(null, I[0], 244, 12, "constraints.growthDirection != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 245, 12, "resolvedPadding != null");
-      switch (sliver.applyGrowthDirectionToAxisDirection(this.constraints.axisDirection, this.constraints.growthDirection)) {
-        case C[0] || CT.C0:
-        case C[2] || CT.C2:
-        {
-          return dart.nullCheck(this.resolvedPadding).left;
-        }
-        case C[3] || CT.C3:
-        case C[1] || CT.C1:
-        {
-          return dart.nullCheck(this.resolvedPadding).top;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-    }
-    childScrollOffset(child) {
-      object.RenderObject.as(child);
-      if (child == null) dart.nullFailed(I[0], 257, 42, "child");
-      if (!dart.equals(child.parent, this)) dart.assertFailed(null, I[0], 258, 12, "child.parent == this");
-      return this.beforePadding;
-    }
-    applyPaintTransform(child, transform) {
-      object.RenderObject.as(child);
-      if (child == null) dart.nullFailed(I[0], 263, 41, "child");
-      if (transform == null) dart.nullFailed(I[0], 263, 56, "transform");
-      if (!(child != null)) dart.assertFailed(null, I[0], 264, 12, "child != null");
-      if (!dart.equals(child, this.child)) dart.assertFailed(null, I[0], 265, 12, "child == this.child");
-      let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(child.parentData));
-      childParentData.applyPaintTransform(transform);
-    }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(I[0], 271, 30, "context");
-      if (offset == null) dart.nullFailed(I[0], 271, 46, "offset");
-      if (this.child != null && dart.test(dart.nullCheck(dart.nullCheck(this.child).geometry).visible)) {
-        let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-        context.paintChild(dart.nullCheck(this.child), offset['+'](childParentData.paintOffset));
-      }
-    }
-    debugPaint(context, offset) {
-      if (context == null) dart.nullFailed(I[0], 279, 35, "context");
-      if (offset == null) dart.nullFailed(I[0], 279, 51, "offset");
-      super.debugPaint(context, offset);
-      if (!dart.test(dart.fn(() => {
-        if (dart.test(debug.debugPaintSizeEnabled)) {
-          let parentSize = this.getAbsoluteSize();
-          let outerRect = offset['&'](parentSize);
-          let innerRect = null;
-          if (this.child != null) {
-            let childSize = dart.nullCheck(this.child).getAbsoluteSize();
-            let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-            innerRect = offset['+'](childParentData.paintOffset)['&'](childSize);
-            if (!(dart.notNull(innerRect.top) >= dart.notNull(outerRect.top))) dart.assertFailed(null, I[0], 290, 18, "innerRect.top >= outerRect.top");
-            if (!(dart.notNull(innerRect.left) >= dart.notNull(outerRect.left))) dart.assertFailed(null, I[0], 291, 18, "innerRect.left >= outerRect.left");
-            if (!(dart.notNull(innerRect.right) <= dart.notNull(outerRect.right))) dart.assertFailed(null, I[0], 292, 18, "innerRect.right <= outerRect.right");
-            if (!(dart.notNull(innerRect.bottom) <= dart.notNull(outerRect.bottom))) dart.assertFailed(null, I[0], 293, 18, "innerRect.bottom <= outerRect.bottom");
-          }
-          debug.debugPaintPadding(context.canvas, outerRect, innerRect);
-        }
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 281, 12, "() {\r\n      if (debugPaintSizeEnabled) {\r\n        final Size parentSize = getAbsoluteSize();\r\n        final Rect outerRect = offset & parentSize;\r\n        Rect? innerRect;\r\n        if (child != null) {\r\n          final Size childSize = child!.getAbsoluteSize();\r\n          final SliverPhysicalParentData childParentData = child!.parentData! as SliverPhysicalParentData;\r\n          innerRect = (offset + childParentData.paintOffset) & childSize;\r\n          assert(innerRect.top >= outerRect.top);\r\n          assert(innerRect.left >= outerRect.left);\r\n          assert(innerRect.right <= outerRect.right);\r\n          assert(innerRect.bottom <= outerRect.bottom);\r\n        }\r\n        debugPaintPadding(context.canvas, outerRect, innerRect);\r\n      }\r\n      return true;\r\n    }()");
+  var _name$ = dart.privateName(monodrag, "_name");
+  monodrag._DragState = class _DragState extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (sliver_padding.RenderSliverEdgeInsetsPadding.new = function() {
-    sliver_padding.RenderSliverEdgeInsetsPadding.__proto__.new.call(this);
+  (monodrag._DragState.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 15, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 15, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = sliver_padding.RenderSliverEdgeInsetsPadding.prototype;
-  dart.addTypeTests(sliver_padding.RenderSliverEdgeInsetsPadding);
-  dart.addTypeCaches(sliver_padding.RenderSliverEdgeInsetsPadding);
-  dart.setMethodSignature(sliver_padding.RenderSliverEdgeInsetsPadding, () => ({
-    __proto__: dart.getMethods(sliver_padding.RenderSliverEdgeInsetsPadding.__proto__),
-    performLayout: dart.fnType(dart.void, [])
+  }).prototype = monodrag._DragState.prototype;
+  dart.addTypeTests(monodrag._DragState);
+  dart.addTypeCaches(monodrag._DragState);
+  dart.setLibraryUri(monodrag._DragState, I[1]);
+  dart.setFieldSignature(monodrag._DragState, () => ({
+    __proto__: dart.getFields(monodrag._DragState.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setGetterSignature(sliver_padding.RenderSliverEdgeInsetsPadding, () => ({
-    __proto__: dart.getGetters(sliver_padding.RenderSliverEdgeInsetsPadding.__proto__),
-    beforePadding: core.double,
-    afterPadding: core.double,
-    mainAxisPadding: core.double,
-    crossAxisPadding: core.double
-  }));
-  dart.setLibraryUri(sliver_padding.RenderSliverEdgeInsetsPadding, I[1]);
-  var _resolvedPadding = dart.privateName(sliver_padding, "_resolvedPadding");
-  var _padding = dart.privateName(sliver_padding, "_padding");
-  var _textDirection = dart.privateName(sliver_padding, "_textDirection");
-  var _resolve = dart.privateName(sliver_padding, "_resolve");
-  var _markNeedsResolution = dart.privateName(sliver_padding, "_markNeedsResolution");
-  sliver_padding.RenderSliverPadding = class RenderSliverPadding extends sliver_padding.RenderSliverEdgeInsetsPadding {
-    get resolvedPadding() {
-      return this[_resolvedPadding];
+  dart.defineExtensionMethods(monodrag._DragState, ['toString']);
+  monodrag._DragState.ready = C[0] || CT.C0;
+  monodrag._DragState.possible = C[1] || CT.C1;
+  monodrag._DragState.accepted = C[2] || CT.C2;
+  monodrag._DragState.values = C[3] || CT.C3;
+  var dragStartBehavior$ = dart.privateName(monodrag, "DragGestureRecognizer.dragStartBehavior");
+  var onDown = dart.privateName(monodrag, "DragGestureRecognizer.onDown");
+  var onStart = dart.privateName(monodrag, "DragGestureRecognizer.onStart");
+  var onUpdate = dart.privateName(monodrag, "DragGestureRecognizer.onUpdate");
+  var onEnd = dart.privateName(monodrag, "DragGestureRecognizer.onEnd");
+  var onCancel = dart.privateName(monodrag, "DragGestureRecognizer.onCancel");
+  var minFlingDistance = dart.privateName(monodrag, "DragGestureRecognizer.minFlingDistance");
+  var minFlingVelocity = dart.privateName(monodrag, "DragGestureRecognizer.minFlingVelocity");
+  var maxFlingVelocity = dart.privateName(monodrag, "DragGestureRecognizer.maxFlingVelocity");
+  var velocityTrackerBuilder$ = dart.privateName(monodrag, "DragGestureRecognizer.velocityTrackerBuilder");
+  var _name = dart.privateName(recognizer, "_name");
+  var _state = dart.privateName(monodrag, "_state");
+  var __DragGestureRecognizer__initialPosition = dart.privateName(monodrag, "_#DragGestureRecognizer#_initialPosition");
+  var __DragGestureRecognizer__initialPosition_isSet = dart.privateName(monodrag, "_#DragGestureRecognizer#_initialPosition#isSet");
+  var __DragGestureRecognizer__pendingDragOffset = dart.privateName(monodrag, "_#DragGestureRecognizer#_pendingDragOffset");
+  var __DragGestureRecognizer__pendingDragOffset_isSet = dart.privateName(monodrag, "_#DragGestureRecognizer#_pendingDragOffset#isSet");
+  var _lastPendingEventTimestamp = dart.privateName(monodrag, "_lastPendingEventTimestamp");
+  var _initialButtons = dart.privateName(monodrag, "_initialButtons");
+  var _lastTransform = dart.privateName(monodrag, "_lastTransform");
+  var __DragGestureRecognizer__globalDistanceMoved = dart.privateName(monodrag, "_#DragGestureRecognizer#_globalDistanceMoved");
+  var __DragGestureRecognizer__globalDistanceMoved_isSet = dart.privateName(monodrag, "_#DragGestureRecognizer#_globalDistanceMoved#isSet");
+  var _velocityTrackers = dart.privateName(monodrag, "_velocityTrackers");
+  var _acceptedActivePointers = dart.privateName(monodrag, "_acceptedActivePointers");
+  var _initialPosition = dart.privateName(monodrag, "_initialPosition");
+  var _pendingDragOffset = dart.privateName(monodrag, "_pendingDragOffset");
+  var _globalDistanceMoved = dart.privateName(monodrag, "_globalDistanceMoved");
+  var _checkDown = dart.privateName(monodrag, "_checkDown");
+  var _giveUpPointer = dart.privateName(monodrag, "_giveUpPointer");
+  var _getDeltaForDetails = dart.privateName(monodrag, "_getDeltaForDetails");
+  var _getPrimaryValueFromOffset = dart.privateName(monodrag, "_getPrimaryValueFromOffset");
+  var _checkUpdate = dart.privateName(monodrag, "_checkUpdate");
+  var _hasSufficientGlobalDistanceToAccept = dart.privateName(monodrag, "_hasSufficientGlobalDistanceToAccept");
+  var _checkStart = dart.privateName(monodrag, "_checkStart");
+  var _checkCancel = dart.privateName(monodrag, "_checkCancel");
+  var _checkEnd = dart.privateName(monodrag, "_checkEnd");
+  monodrag.DragGestureRecognizer = class DragGestureRecognizer extends recognizer.OneSequenceGestureRecognizer {
+    get dragStartBehavior() {
+      return this[dragStartBehavior$];
     }
-    [_resolve]() {
-      if (this.resolvedPadding != null) return;
-      this[_resolvedPadding] = this.padding.resolve(this.textDirection);
-      if (!dart.test(dart.nullCheck(this.resolvedPadding).isNonNegative)) dart.assertFailed(null, I[0], 332, 12, "resolvedPadding!.isNonNegative");
+    set dragStartBehavior(value) {
+      this[dragStartBehavior$] = value;
     }
-    [_markNeedsResolution]() {
-      this[_resolvedPadding] = null;
-      this.markNeedsLayout();
+    get onDown() {
+      return this[onDown];
     }
-    get padding() {
-      return this[_padding];
+    set onDown(value) {
+      this[onDown] = value;
     }
-    set padding(value) {
-      if (value == null) dart.nullFailed(I[0], 346, 34, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 347, 12, "value != null");
-      if (!dart.test(this.padding.isNonNegative)) dart.assertFailed(null, I[0], 348, 12, "padding.isNonNegative");
-      if (dart.equals(this[_padding], value)) return;
-      this[_padding] = value;
-      this[_markNeedsResolution]();
+    get onStart() {
+      return this[onStart];
     }
-    get textDirection() {
-      return this[_textDirection];
+    set onStart(value) {
+      this[onStart] = value;
     }
-    set textDirection(value) {
-      if (this[_textDirection] == value) return;
-      this[_textDirection] = value;
-      this[_markNeedsResolution]();
+    get onUpdate() {
+      return this[onUpdate];
     }
-    performLayout() {
-      this[_resolve]();
-      super.performLayout();
+    set onUpdate(value) {
+      this[onUpdate] = value;
+    }
+    get onEnd() {
+      return this[onEnd];
+    }
+    set onEnd(value) {
+      this[onEnd] = value;
+    }
+    get onCancel() {
+      return this[onCancel];
+    }
+    set onCancel(value) {
+      this[onCancel] = value;
+    }
+    get minFlingDistance() {
+      return this[minFlingDistance];
+    }
+    set minFlingDistance(value) {
+      this[minFlingDistance] = value;
+    }
+    get minFlingVelocity() {
+      return this[minFlingVelocity];
+    }
+    set minFlingVelocity(value) {
+      this[minFlingVelocity] = value;
+    }
+    get maxFlingVelocity() {
+      return this[maxFlingVelocity];
+    }
+    set maxFlingVelocity(value) {
+      this[maxFlingVelocity] = value;
+    }
+    get velocityTrackerBuilder() {
+      return this[velocityTrackerBuilder$];
+    }
+    set velocityTrackerBuilder(value) {
+      this[velocityTrackerBuilder$] = value;
+    }
+    static _defaultBuilder(event) {
+      if (event == null) dart.nullFailed(I[0], 75, 55, "event");
+      return new velocity_tracker.VelocityTracker.withKind(event.kind);
+    }
+    get [_initialPosition]() {
+      let t0;
+      return dart.test(this[__DragGestureRecognizer__initialPosition_isSet]) ? (t0 = this[__DragGestureRecognizer__initialPosition], t0) : dart.throw(new _internal.LateError.fieldNI("_initialPosition"));
+    }
+    set [_initialPosition](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 204, 19, "null");
+      this[__DragGestureRecognizer__initialPosition_isSet] = true;
+      this[__DragGestureRecognizer__initialPosition] = t0;
+    }
+    get [_pendingDragOffset]() {
+      let t1;
+      return dart.test(this[__DragGestureRecognizer__pendingDragOffset_isSet]) ? (t1 = this[__DragGestureRecognizer__pendingDragOffset], t1) : dart.throw(new _internal.LateError.fieldNI("_pendingDragOffset"));
+    }
+    set [_pendingDragOffset](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 205, 19, "null");
+      this[__DragGestureRecognizer__pendingDragOffset_isSet] = true;
+      this[__DragGestureRecognizer__pendingDragOffset] = t1;
+    }
+    get [_globalDistanceMoved]() {
+      let t2;
+      return dart.test(this[__DragGestureRecognizer__globalDistanceMoved_isSet]) ? (t2 = this[__DragGestureRecognizer__globalDistanceMoved], t2) : dart.throw(new _internal.LateError.fieldNI("_globalDistanceMoved"));
+    }
+    set [_globalDistanceMoved](t2) {
+      if (t2 == null) dart.nullFailed(I[0], 216, 15, "null");
+      this[__DragGestureRecognizer__globalDistanceMoved_isSet] = true;
+      this[__DragGestureRecognizer__globalDistanceMoved] = t2;
+    }
+    isPointerAllowed(event) {
+      if (event == null) dart.nullFailed(I[0], 232, 38, "event");
+      if (this[_initialButtons] == null) {
+        switch (event.buttons) {
+          case 1:
+          {
+            if (this.onDown == null && this.onStart == null && this.onUpdate == null && this.onEnd == null && this.onCancel == null) return false;
+            break;
+          }
+          default:
+          {
+            return false;
+          }
+        }
+      } else {
+        if (event.buttons != this[_initialButtons]) {
+          return false;
+        }
+      }
+      return super.isPointerAllowed(events.PointerDownEvent.as(event));
+    }
+    addAllowedPointer(event) {
+      let t3;
+      if (event == null) dart.nullFailed(I[0], 256, 39, "event");
+      this.startTrackingPointer(event.pointer, event.transform);
+      this[_velocityTrackers][$_set](event.pointer, (t3 = event, this.velocityTrackerBuilder(t3)));
+      if (this[_state] == monodrag._DragState.ready) {
+        this[_state] = monodrag._DragState.possible;
+        this[_initialPosition] = new recognizer.OffsetPair.new({global: event.position, local: event.localPosition});
+        this[_initialButtons] = event.buttons;
+        this[_pendingDragOffset] = recognizer.OffsetPair.zero;
+        this[_globalDistanceMoved] = 0.0;
+        this[_lastPendingEventTimestamp] = event.timeStamp;
+        this[_lastTransform] = event.transform;
+        this[_checkDown]();
+      } else if (this[_state] == monodrag._DragState.accepted) {
+        this.resolve(arena.GestureDisposition.accepted);
+      }
+    }
+    handleEvent(event) {
+      let t3;
+      if (event == null) dart.nullFailed(I[0], 274, 33, "event");
+      if (!(this[_state] != monodrag._DragState.ready)) dart.assertFailed(null, I[0], 275, 12, "_state != _DragState.ready");
+      if (!dart.test(event.synthesized) && (events.PointerDownEvent.is(event) || events.PointerMoveEvent.is(event))) {
+        let tracker = dart.nullCheck(this[_velocityTrackers][$_get](event.pointer));
+        if (!(tracker !== null)) dart.assertFailed(null, I[0], 279, 14, "tracker != null");
+        tracker.addPosition(event.timeStamp, event.localPosition);
+      }
+      if (events.PointerMoveEvent.is(event)) {
+        if (event.buttons != this[_initialButtons]) {
+          this[_giveUpPointer](event.pointer);
+          return;
+        }
+        if (this[_state] == monodrag._DragState.accepted) {
+          this[_checkUpdate]({sourceTimeStamp: event.timeStamp, delta: this[_getDeltaForDetails](event.localDelta), primaryDelta: this[_getPrimaryValueFromOffset](event.localDelta), globalPosition: event.position, localPosition: event.localPosition});
+        } else {
+          this[_pendingDragOffset] = this[_pendingDragOffset]['+'](new recognizer.OffsetPair.new({local: event.localDelta, global: event.delta}));
+          this[_lastPendingEventTimestamp] = event.timeStamp;
+          this[_lastTransform] = event.transform;
+          let movedLocally = this[_getDeltaForDetails](event.localDelta);
+          let localToGlobalTransform = event.transform == null ? null : vector_math_64.Matrix4.tryInvert(dart.nullCheck(event.transform));
+          this[_globalDistanceMoved] = dart.notNull(this[_globalDistanceMoved]) + dart.notNull(events.PointerEvent.transformDeltaViaPositions({transform: localToGlobalTransform, untransformedDelta: movedLocally, untransformedEndPosition: event.localPosition}).distance) * (t3 = this[_getPrimaryValueFromOffset](movedLocally), t3 == null ? 1.0 : t3)[$sign];
+          if (dart.test(this[_hasSufficientGlobalDistanceToAccept](event.kind))) this.resolve(arena.GestureDisposition.accepted);
+        }
+      }
+      if (events.PointerUpEvent.is(event) || events.PointerCancelEvent.is(event)) {
+        this[_giveUpPointer](event.pointer);
+      }
+    }
+    acceptGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 319, 26, "pointer");
+      if (!!dart.test(this[_acceptedActivePointers].contains(pointer))) dart.assertFailed(null, I[0], 320, 12, "!_acceptedActivePointers.contains(pointer)");
+      this[_acceptedActivePointers].add(pointer);
+      if (this[_state] != monodrag._DragState.accepted) {
+        this[_state] = monodrag._DragState.accepted;
+        let delta = this[_pendingDragOffset];
+        let timestamp = dart.nullCheck(this[_lastPendingEventTimestamp]);
+        let transform = this[_lastTransform];
+        let localUpdateDelta = null;
+        switch (this.dragStartBehavior) {
+          case C[4] || CT.C4:
+          {
+            this[_initialPosition] = this[_initialPosition]['+'](delta);
+            localUpdateDelta = ui.Offset.zero;
+            break;
+          }
+          case C[6] || CT.C6:
+          {
+            localUpdateDelta = this[_getDeltaForDetails](delta.local);
+            break;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
+        this[_pendingDragOffset] = recognizer.OffsetPair.zero;
+        this[_lastPendingEventTimestamp] = null;
+        this[_lastTransform] = null;
+        this[_checkStart](timestamp, pointer);
+        if (!dart.equals(localUpdateDelta, ui.Offset.zero) && this.onUpdate != null) {
+          let localToGlobal = transform != null ? vector_math_64.Matrix4.tryInvert(transform) : null;
+          let correctedLocalPosition = this[_initialPosition].local['+'](localUpdateDelta);
+          let globalUpdateDelta = events.PointerEvent.transformDeltaViaPositions({untransformedEndPosition: correctedLocalPosition, untransformedDelta: localUpdateDelta, transform: localToGlobal});
+          let updateDelta = new recognizer.OffsetPair.new({local: localUpdateDelta, global: globalUpdateDelta});
+          let correctedPosition = this[_initialPosition]['+'](updateDelta);
+          this[_checkUpdate]({sourceTimeStamp: timestamp, delta: localUpdateDelta, primaryDelta: this[_getPrimaryValueFromOffset](localUpdateDelta), globalPosition: correctedPosition.global, localPosition: correctedPosition.local});
+        }
+      }
+    }
+    rejectGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 363, 26, "pointer");
+      this[_giveUpPointer](pointer);
+    }
+    didStopTrackingLastPointer(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 368, 39, "pointer");
+      if (!(this[_state] != monodrag._DragState.ready)) dart.assertFailed(null, I[0], 369, 12, "_state != _DragState.ready");
+      switch (this[_state]) {
+        case C[0] || CT.C0:
+        {
+          break;
+        }
+        case C[1] || CT.C1:
+        {
+          this.resolve(arena.GestureDisposition.rejected);
+          this[_checkCancel]();
+          break;
+        }
+        case C[2] || CT.C2:
+        {
+          this[_checkEnd](pointer);
+          break;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+      this[_velocityTrackers][$clear]();
+      this[_initialButtons] = null;
+      this[_state] = monodrag._DragState.ready;
+    }
+    [_giveUpPointer](pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 388, 27, "pointer");
+      this.stopTrackingPointer(pointer);
+      if (!dart.test(this[_acceptedActivePointers].remove(pointer))) this.resolvePointer(pointer, arena.GestureDisposition.rejected);
+    }
+    [_checkDown]() {
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 397, 12, "_initialButtons == kPrimaryButton");
+      if (this.onDown != null) {
+        let details = new drag_details.DragDownDetails.new({globalPosition: this[_initialPosition].global, localPosition: this[_initialPosition].local});
+        this.invokeCallback(dart.void, "onDown", dart.fn(() => dart.nullCheck(this.onDown)(details), T.VoidTovoid()));
+      }
+    }
+    [_checkStart](timestamp, pointer) {
+      if (timestamp == null) dart.nullFailed(I[0], 407, 29, "timestamp");
+      if (pointer == null) dart.nullFailed(I[0], 407, 44, "pointer");
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 408, 12, "_initialButtons == kPrimaryButton");
+      if (this.onStart != null) {
+        let details = new drag_details.DragStartDetails.new({sourceTimeStamp: timestamp, globalPosition: this[_initialPosition].global, localPosition: this[_initialPosition].local, kind: this.getKindForPointer(pointer)});
+        this.invokeCallback(dart.void, "onStart", dart.fn(() => dart.nullCheck(this.onStart)(details), T.VoidTovoid()));
+      }
+    }
+    [_checkUpdate](opts) {
+      let sourceTimeStamp = opts && 'sourceTimeStamp' in opts ? opts.sourceTimeStamp : null;
+      let delta = opts && 'delta' in opts ? opts.delta : null;
+      if (delta == null) dart.nullFailed(I[0], 422, 21, "delta");
+      let primaryDelta = opts && 'primaryDelta' in opts ? opts.primaryDelta : null;
+      let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : null;
+      if (globalPosition == null) dart.nullFailed(I[0], 424, 21, "globalPosition");
+      let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 427, 12, "_initialButtons == kPrimaryButton");
+      if (this.onUpdate != null) {
+        let details = new drag_details.DragUpdateDetails.new({sourceTimeStamp: sourceTimeStamp, delta: delta, primaryDelta: primaryDelta, globalPosition: globalPosition, localPosition: localPosition});
+        this.invokeCallback(dart.void, "onUpdate", dart.fn(() => dart.nullCheck(this.onUpdate)(details), T.VoidTovoid()));
+      }
+    }
+    [_checkEnd](pointer) {
+      let t3, t3$;
+      if (pointer == null) dart.nullFailed(I[0], 440, 22, "pointer");
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 441, 12, "_initialButtons == kPrimaryButton");
+      if (this.onEnd == null) return;
+      let tracker = dart.nullCheck(this[_velocityTrackers][$_get](pointer));
+      if (!(tracker !== null)) dart.assertFailed(null, I[0], 446, 12, "tracker != null");
+      let details = null;
+      let debugReport = null;
+      let estimate = tracker.getVelocityEstimate();
+      if (estimate != null && dart.test(this.isFlingGesture(estimate, tracker.kind))) {
+        let velocity = new velocity_tracker.Velocity.new({pixelsPerSecond: estimate.pixelsPerSecond}).clampMagnitude((t3 = this.minFlingVelocity, t3 == null ? 50 : t3), (t3$ = this.maxFlingVelocity, t3$ == null ? 8000 : t3$));
+        details = new drag_details.DragEndDetails.new({velocity: velocity, primaryVelocity: this[_getPrimaryValueFromOffset](velocity.pixelsPerSecond)});
+        debugReport = dart.fn(() => dart.str(estimate) + "; fling at " + dart.str(velocity) + ".", T.VoidToString());
+      } else {
+        details = new drag_details.DragEndDetails.new({velocity: velocity_tracker.Velocity.zero, primaryVelocity: 0.0});
+        debugReport = dart.fn(() => {
+          if (estimate == null) return "Could not estimate velocity.";
+          return dart.str(estimate) + "; judged to not be a fling.";
+        }, T.VoidToString());
+      }
+      this.invokeCallback(dart.void, "onEnd", dart.fn(() => dart.nullCheck(this.onEnd)(details), T.VoidTovoid()), {debugReport: debugReport});
+    }
+    [_checkCancel]() {
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 477, 12, "_initialButtons == kPrimaryButton");
+      if (this.onCancel != null) this.invokeCallback(dart.void, "onCancel", dart.nullCheck(this.onCancel));
+    }
+    dispose() {
+      this[_velocityTrackers][$clear]();
+      super.dispose();
     }
     debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 375, 56, "properties");
+      if (properties == null) dart.nullFailed(I[0], 488, 56, "properties");
       super.debugFillProperties(properties);
-      properties.add(new (T.DiagnosticsPropertyOfEdgeInsetsGeometry()).new("padding", this.padding));
-      properties.add(new (T.EnumPropertyOfTextDirection()).new("textDirection", this.textDirection, {defaultValue: null}));
+      properties.add(new (T.EnumPropertyOfDragStartBehavior()).new("start behavior", this.dragStartBehavior));
     }
   };
-  (sliver_padding.RenderSliverPadding.new = function(opts) {
-    let padding = opts && 'padding' in opts ? opts.padding : null;
-    if (padding == null) dart.nullFailed(I[0], 314, 33, "padding");
-    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-    let child = opts && 'child' in opts ? opts.child : null;
-    this[_resolvedPadding] = null;
-    if (!(padding != null)) dart.assertFailed(null, I[0], 317, 15, "padding != null");
-    if (!dart.test(padding.isNonNegative)) dart.assertFailed(null, I[0], 318, 15, "padding.isNonNegative");
-    this[_padding] = padding;
-    this[_textDirection] = textDirection;
-    sliver_padding.RenderSliverPadding.__proto__.new.call(this);
-    this.child = child;
-  }).prototype = sliver_padding.RenderSliverPadding.prototype;
-  dart.addTypeTests(sliver_padding.RenderSliverPadding);
-  dart.addTypeCaches(sliver_padding.RenderSliverPadding);
-  dart.setMethodSignature(sliver_padding.RenderSliverPadding, () => ({
-    __proto__: dart.getMethods(sliver_padding.RenderSliverPadding.__proto__),
-    [_resolve]: dart.fnType(dart.void, []),
-    [_markNeedsResolution]: dart.fnType(dart.void, [])
+  (monodrag.DragGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    let dragStartBehavior = opts && 'dragStartBehavior' in opts ? opts.dragStartBehavior : C[4] || CT.C4;
+    if (dragStartBehavior == null) dart.nullFailed(I[0], 70, 10, "dragStartBehavior");
+    let velocityTrackerBuilder = opts && 'velocityTrackerBuilder' in opts ? opts.velocityTrackerBuilder : C[5] || CT.C5;
+    if (velocityTrackerBuilder == null) dart.nullFailed(I[0], 71, 10, "velocityTrackerBuilder");
+    this[onDown] = null;
+    this[onStart] = null;
+    this[onUpdate] = null;
+    this[onEnd] = null;
+    this[onCancel] = null;
+    this[minFlingDistance] = null;
+    this[minFlingVelocity] = null;
+    this[maxFlingVelocity] = null;
+    this[_state] = monodrag._DragState.ready;
+    this[__DragGestureRecognizer__initialPosition] = null;
+    this[__DragGestureRecognizer__initialPosition_isSet] = false;
+    this[__DragGestureRecognizer__pendingDragOffset] = null;
+    this[__DragGestureRecognizer__pendingDragOffset_isSet] = false;
+    this[_lastPendingEventTimestamp] = null;
+    this[_initialButtons] = null;
+    this[_lastTransform] = null;
+    this[__DragGestureRecognizer__globalDistanceMoved] = null;
+    this[__DragGestureRecognizer__globalDistanceMoved_isSet] = false;
+    this[_velocityTrackers] = new (T.IdentityMapOfint$VelocityTracker()).new();
+    this[_acceptedActivePointers] = T.LinkedHashSetOfint().new();
+    this[dragStartBehavior$] = dragStartBehavior;
+    this[velocityTrackerBuilder$] = velocityTrackerBuilder;
+    if (!(dragStartBehavior != null)) dart.assertFailed(null, I[0], 72, 15, "dragStartBehavior != null");
+    monodrag.DragGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
+    ;
+  }).prototype = monodrag.DragGestureRecognizer.prototype;
+  dart.addTypeTests(monodrag.DragGestureRecognizer);
+  dart.addTypeCaches(monodrag.DragGestureRecognizer);
+  dart.setMethodSignature(monodrag.DragGestureRecognizer, () => ({
+    __proto__: dart.getMethods(monodrag.DragGestureRecognizer.__proto__),
+    isPointerAllowed: dart.fnType(core.bool, [events.PointerEvent]),
+    addAllowedPointer: dart.fnType(dart.void, [events.PointerEvent]),
+    handleEvent: dart.fnType(dart.void, [events.PointerEvent]),
+    didStopTrackingLastPointer: dart.fnType(dart.void, [core.int]),
+    [_giveUpPointer]: dart.fnType(dart.void, [core.int]),
+    [_checkDown]: dart.fnType(dart.void, []),
+    [_checkStart]: dart.fnType(dart.void, [core.Duration, core.int]),
+    [_checkUpdate]: dart.fnType(dart.void, [], {localPosition: dart.nullable(ui.Offset), primaryDelta: dart.nullable(core.double), sourceTimeStamp: dart.nullable(core.Duration)}, {delta: ui.Offset, globalPosition: ui.Offset}),
+    [_checkEnd]: dart.fnType(dart.void, [core.int]),
+    [_checkCancel]: dart.fnType(dart.void, [])
   }));
-  dart.setGetterSignature(sliver_padding.RenderSliverPadding, () => ({
-    __proto__: dart.getGetters(sliver_padding.RenderSliverPadding.__proto__),
-    resolvedPadding: dart.nullable(edge_insets.EdgeInsets),
-    padding: edge_insets.EdgeInsetsGeometry,
-    textDirection: dart.nullable(ui.TextDirection)
+  dart.setGetterSignature(monodrag.DragGestureRecognizer, () => ({
+    __proto__: dart.getGetters(monodrag.DragGestureRecognizer.__proto__),
+    [_initialPosition]: recognizer.OffsetPair,
+    [_pendingDragOffset]: recognizer.OffsetPair,
+    [_globalDistanceMoved]: core.double
   }));
-  dart.setSetterSignature(sliver_padding.RenderSliverPadding, () => ({
-    __proto__: dart.getSetters(sliver_padding.RenderSliverPadding.__proto__),
-    padding: edge_insets.EdgeInsetsGeometry,
-    textDirection: dart.nullable(ui.TextDirection)
+  dart.setSetterSignature(monodrag.DragGestureRecognizer, () => ({
+    __proto__: dart.getSetters(monodrag.DragGestureRecognizer.__proto__),
+    [_initialPosition]: recognizer.OffsetPair,
+    [_pendingDragOffset]: recognizer.OffsetPair,
+    [_globalDistanceMoved]: core.double
   }));
-  dart.setLibraryUri(sliver_padding.RenderSliverPadding, I[1]);
-  dart.setFieldSignature(sliver_padding.RenderSliverPadding, () => ({
-    __proto__: dart.getFields(sliver_padding.RenderSliverPadding.__proto__),
-    [_resolvedPadding]: dart.fieldType(dart.nullable(edge_insets.EdgeInsets)),
-    [_padding]: dart.fieldType(edge_insets.EdgeInsetsGeometry),
-    [_textDirection]: dart.fieldType(dart.nullable(ui.TextDirection))
+  dart.setLibraryUri(monodrag.DragGestureRecognizer, I[1]);
+  dart.setFieldSignature(monodrag.DragGestureRecognizer, () => ({
+    __proto__: dart.getFields(monodrag.DragGestureRecognizer.__proto__),
+    dragStartBehavior: dart.fieldType(recognizer.DragStartBehavior),
+    onDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [drag_details.DragDownDetails]))),
+    onStart: dart.fieldType(dart.nullable(dart.fnType(dart.void, [drag_details.DragStartDetails]))),
+    onUpdate: dart.fieldType(dart.nullable(dart.fnType(dart.void, [drag_details.DragUpdateDetails]))),
+    onEnd: dart.fieldType(dart.nullable(dart.fnType(dart.void, [drag_details.DragEndDetails]))),
+    onCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    minFlingDistance: dart.fieldType(dart.nullable(core.double)),
+    minFlingVelocity: dart.fieldType(dart.nullable(core.double)),
+    maxFlingVelocity: dart.fieldType(dart.nullable(core.double)),
+    velocityTrackerBuilder: dart.fieldType(dart.fnType(velocity_tracker.VelocityTracker, [events.PointerEvent])),
+    [_state]: dart.fieldType(monodrag._DragState),
+    [__DragGestureRecognizer__initialPosition]: dart.fieldType(dart.nullable(recognizer.OffsetPair)),
+    [__DragGestureRecognizer__initialPosition_isSet]: dart.fieldType(core.bool),
+    [__DragGestureRecognizer__pendingDragOffset]: dart.fieldType(dart.nullable(recognizer.OffsetPair)),
+    [__DragGestureRecognizer__pendingDragOffset_isSet]: dart.fieldType(core.bool),
+    [_lastPendingEventTimestamp]: dart.fieldType(dart.nullable(core.Duration)),
+    [_initialButtons]: dart.fieldType(dart.nullable(core.int)),
+    [_lastTransform]: dart.fieldType(dart.nullable(vector_math_64.Matrix4)),
+    [__DragGestureRecognizer__globalDistanceMoved]: dart.fieldType(dart.nullable(core.double)),
+    [__DragGestureRecognizer__globalDistanceMoved_isSet]: dart.fieldType(core.bool),
+    [_velocityTrackers]: dart.finalFieldType(core.Map$(core.int, velocity_tracker.VelocityTracker)),
+    [_acceptedActivePointers]: dart.finalFieldType(core.Set$(core.int))
   }));
-  dart.trackLibraries("packages/flutter/src/rendering/sliver_padding.dart", {
-    "package:flutter/src/rendering/sliver_padding.dart": sliver_padding
+  monodrag.VerticalDragGestureRecognizer = class VerticalDragGestureRecognizer extends monodrag.DragGestureRecognizer {
+    isFlingGesture(estimate, kind) {
+      let t3, t3$;
+      if (estimate == null) dart.nullFailed(I[0], 514, 40, "estimate");
+      if (kind == null) dart.nullFailed(I[0], 514, 68, "kind");
+      let minVelocity = (t3 = this.minFlingVelocity, t3 == null ? 50 : t3);
+      let minDistance = (t3$ = this.minFlingDistance, t3$ == null ? events.computeHitSlop(kind) : t3$);
+      return estimate.pixelsPerSecond.dy[$abs]() > dart.notNull(minVelocity) && estimate.offset.dy[$abs]() > dart.notNull(minDistance);
+    }
+    [_hasSufficientGlobalDistanceToAccept](pointerDeviceKind) {
+      if (pointerDeviceKind == null) dart.nullFailed(I[0], 521, 63, "pointerDeviceKind");
+      return this[_globalDistanceMoved][$abs]() > dart.notNull(events.computeHitSlop(pointerDeviceKind));
+    }
+    [_getDeltaForDetails](delta) {
+      if (delta == null) dart.nullFailed(I[0], 526, 37, "delta");
+      return new ui.Offset.new(0.0, delta.dy);
+    }
+    [_getPrimaryValueFromOffset](value) {
+      if (value == null) dart.nullFailed(I[0], 529, 44, "value");
+      return value.dy;
+    }
+    get debugDescription() {
+      return "vertical drag";
+    }
+  };
+  (monodrag.VerticalDragGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    monodrag.VerticalDragGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
+    ;
+  }).prototype = monodrag.VerticalDragGestureRecognizer.prototype;
+  dart.addTypeTests(monodrag.VerticalDragGestureRecognizer);
+  dart.addTypeCaches(monodrag.VerticalDragGestureRecognizer);
+  dart.setMethodSignature(monodrag.VerticalDragGestureRecognizer, () => ({
+    __proto__: dart.getMethods(monodrag.VerticalDragGestureRecognizer.__proto__),
+    isFlingGesture: dart.fnType(core.bool, [velocity_tracker.VelocityEstimate, ui.PointerDeviceKind]),
+    [_hasSufficientGlobalDistanceToAccept]: dart.fnType(core.bool, [ui.PointerDeviceKind]),
+    [_getDeltaForDetails]: dart.fnType(ui.Offset, [ui.Offset]),
+    [_getPrimaryValueFromOffset]: dart.fnType(core.double, [ui.Offset])
+  }));
+  dart.setGetterSignature(monodrag.VerticalDragGestureRecognizer, () => ({
+    __proto__: dart.getGetters(monodrag.VerticalDragGestureRecognizer.__proto__),
+    debugDescription: core.String
+  }));
+  dart.setLibraryUri(monodrag.VerticalDragGestureRecognizer, I[1]);
+  monodrag.HorizontalDragGestureRecognizer = class HorizontalDragGestureRecognizer extends monodrag.DragGestureRecognizer {
+    isFlingGesture(estimate, kind) {
+      let t3, t3$;
+      if (estimate == null) dart.nullFailed(I[0], 555, 40, "estimate");
+      if (kind == null) dart.nullFailed(I[0], 555, 68, "kind");
+      let minVelocity = (t3 = this.minFlingVelocity, t3 == null ? 50 : t3);
+      let minDistance = (t3$ = this.minFlingDistance, t3$ == null ? events.computeHitSlop(kind) : t3$);
+      return estimate.pixelsPerSecond.dx[$abs]() > dart.notNull(minVelocity) && estimate.offset.dx[$abs]() > dart.notNull(minDistance);
+    }
+    [_hasSufficientGlobalDistanceToAccept](pointerDeviceKind) {
+      if (pointerDeviceKind == null) dart.nullFailed(I[0], 562, 63, "pointerDeviceKind");
+      return this[_globalDistanceMoved][$abs]() > dart.notNull(events.computeHitSlop(pointerDeviceKind));
+    }
+    [_getDeltaForDetails](delta) {
+      if (delta == null) dart.nullFailed(I[0], 567, 37, "delta");
+      return new ui.Offset.new(delta.dx, 0.0);
+    }
+    [_getPrimaryValueFromOffset](value) {
+      if (value == null) dart.nullFailed(I[0], 570, 44, "value");
+      return value.dx;
+    }
+    get debugDescription() {
+      return "horizontal drag";
+    }
+  };
+  (monodrag.HorizontalDragGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    monodrag.HorizontalDragGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
+    ;
+  }).prototype = monodrag.HorizontalDragGestureRecognizer.prototype;
+  dart.addTypeTests(monodrag.HorizontalDragGestureRecognizer);
+  dart.addTypeCaches(monodrag.HorizontalDragGestureRecognizer);
+  dart.setMethodSignature(monodrag.HorizontalDragGestureRecognizer, () => ({
+    __proto__: dart.getMethods(monodrag.HorizontalDragGestureRecognizer.__proto__),
+    isFlingGesture: dart.fnType(core.bool, [velocity_tracker.VelocityEstimate, ui.PointerDeviceKind]),
+    [_hasSufficientGlobalDistanceToAccept]: dart.fnType(core.bool, [ui.PointerDeviceKind]),
+    [_getDeltaForDetails]: dart.fnType(ui.Offset, [ui.Offset]),
+    [_getPrimaryValueFromOffset]: dart.fnType(core.double, [ui.Offset])
+  }));
+  dart.setGetterSignature(monodrag.HorizontalDragGestureRecognizer, () => ({
+    __proto__: dart.getGetters(monodrag.HorizontalDragGestureRecognizer.__proto__),
+    debugDescription: core.String
+  }));
+  dart.setLibraryUri(monodrag.HorizontalDragGestureRecognizer, I[1]);
+  monodrag.PanGestureRecognizer = class PanGestureRecognizer extends monodrag.DragGestureRecognizer {
+    isFlingGesture(estimate, kind) {
+      let t3, t3$;
+      if (estimate == null) dart.nullFailed(I[0], 590, 40, "estimate");
+      if (kind == null) dart.nullFailed(I[0], 590, 68, "kind");
+      let minVelocity = (t3 = this.minFlingVelocity, t3 == null ? 50 : t3);
+      let minDistance = (t3$ = this.minFlingDistance, t3$ == null ? events.computeHitSlop(kind) : t3$);
+      return dart.notNull(estimate.pixelsPerSecond.distanceSquared) > dart.notNull(minVelocity) * dart.notNull(minVelocity) && dart.notNull(estimate.offset.distanceSquared) > dart.notNull(minDistance) * dart.notNull(minDistance);
+    }
+    [_hasSufficientGlobalDistanceToAccept](pointerDeviceKind) {
+      if (pointerDeviceKind == null) dart.nullFailed(I[0], 598, 63, "pointerDeviceKind");
+      return this[_globalDistanceMoved][$abs]() > dart.notNull(events.computePanSlop(pointerDeviceKind));
+    }
+    [_getDeltaForDetails](delta) {
+      if (delta == null) dart.nullFailed(I[0], 603, 37, "delta");
+      return delta;
+    }
+    [_getPrimaryValueFromOffset](value) {
+      if (value == null) dart.nullFailed(I[0], 606, 45, "value");
+      return null;
+    }
+    get debugDescription() {
+      return "pan";
+    }
+  };
+  (monodrag.PanGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    monodrag.PanGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner});
+    ;
+  }).prototype = monodrag.PanGestureRecognizer.prototype;
+  dart.addTypeTests(monodrag.PanGestureRecognizer);
+  dart.addTypeCaches(monodrag.PanGestureRecognizer);
+  dart.setMethodSignature(monodrag.PanGestureRecognizer, () => ({
+    __proto__: dart.getMethods(monodrag.PanGestureRecognizer.__proto__),
+    isFlingGesture: dart.fnType(core.bool, [velocity_tracker.VelocityEstimate, ui.PointerDeviceKind]),
+    [_hasSufficientGlobalDistanceToAccept]: dart.fnType(core.bool, [ui.PointerDeviceKind]),
+    [_getDeltaForDetails]: dart.fnType(ui.Offset, [ui.Offset]),
+    [_getPrimaryValueFromOffset]: dart.fnType(dart.nullable(core.double), [ui.Offset])
+  }));
+  dart.setGetterSignature(monodrag.PanGestureRecognizer, () => ({
+    __proto__: dart.getGetters(monodrag.PanGestureRecognizer.__proto__),
+    debugDescription: core.String
+  }));
+  dart.setLibraryUri(monodrag.PanGestureRecognizer, I[1]);
+  dart.trackLibraries("packages/flutter/src/gestures/monodrag.dart", {
+    "package:flutter/src/gestures/monodrag.dart": monodrag
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["sliver_padding.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/rendering/sliver_padding.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["monodrag.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/gestures/monodrag.dart.lib.js"}');
   // Exports:
   return {
-    src__rendering__sliver_padding: sliver_padding
+    src__gestures__monodrag: monodrag
   };
 }));
 
-//# sourceMappingURL=sliver_padding.dart.lib.js.map
+//# sourceMappingURL=monodrag.dart.lib.js.map

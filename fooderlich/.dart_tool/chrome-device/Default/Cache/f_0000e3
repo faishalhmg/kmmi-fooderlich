@@ -1,255 +1,240 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/rounded_rectangle_border.dart', 'packages/flutter/src/painting/border_radius.dart'], (function load__packages__fooderlich__screens__empty_grocery_screen_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__rounded_rectangle_border$46dart, packages__flutter__src__painting__border_radius$46dart) {
+define(['dart_sdk', 'packages/fooderlich/api/mock_fooderlich_service.dart', 'packages/flutter/src/widgets/async.dart', 'packages/fooderlich/models/explore_data.dart', 'packages/flutter/src/widgets/scroll_view.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/fooderlich/components/recipes_grid_view.dart', 'packages/fooderlich/models/explore_recipe.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/fooderlich/models/post.dart', 'packages/flutter/src/material/progress_indicator.dart', 'packages/flutter/src/painting/alignment.dart'], (function load__packages__fooderlich__screens__explore_screen_dart(dart_sdk, packages__fooderlich__api__mock_fooderlich_service$46dart, packages__flutter__src__widgets__async$46dart, packages__fooderlich__models__explore_data$46dart, packages__flutter__src__widgets__scroll_view$46dart, packages__flutter__src__painting__basic_types$46dart, packages__fooderlich__components__recipes_grid_view$46dart, packages__fooderlich__models__explore_recipe$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__fooderlich__models__post$46dart, packages__flutter__src__material__progress_indicator$46dart, packages__flutter__src__painting__alignment$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
   const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const image = packages__flutter__src__widgets__widget_span$46dart.src__widgets__image;
+  const mock_fooderlich_service = packages__fooderlich__api__mock_fooderlich_service$46dart.api__mock_fooderlich_service;
+  const async = packages__flutter__src__widgets__async$46dart.src__widgets__async;
+  const explore_data = packages__fooderlich__models__explore_data$46dart.models__explore_data;
+  const scroll_view = packages__flutter__src__widgets__scroll_view$46dart.src__widgets__scroll_view;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const today_recipe_list_view = packages__fooderlich__components__recipes_grid_view$46dart.components__today_recipe_list_view;
+  const friend_post_list_view = packages__fooderlich__components__recipes_grid_view$46dart.components__friend_post_list_view;
+  const explore_recipe = packages__fooderlich__models__explore_recipe$46dart.models__explore_recipe;
   const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
   const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
-  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
-  const material_button = packages__flutter__src__material__icon_button$46dart.src__material__material_button;
-  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
-  const rounded_rectangle_border = packages__flutter__src__painting__rounded_rectangle_border$46dart.src__painting__rounded_rectangle_border;
-  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
-  var empty_grocery_screen = Object.create(dart.library);
+  const post = packages__fooderlich__models__post$46dart.models__post;
+  const progress_indicator = packages__flutter__src__material__progress_indicator$46dart.src__material__progress_indicator;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  var explore_screen = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
   var T = {
+    ExploreDataL: () => (T.ExploreDataL = dart.constFn(dart.legacy(explore_data.ExploreData)))(),
+    FutureBuilderOfExploreDataL: () => (T.FutureBuilderOfExploreDataL = dart.constFn(async.FutureBuilder$(T.ExploreDataL())))(),
+    ExploreRecipeL: () => (T.ExploreRecipeL = dart.constFn(dart.legacy(explore_recipe.ExploreRecipe)))(),
+    ListOfExploreRecipeL: () => (T.ListOfExploreRecipeL = dart.constFn(core.List$(T.ExploreRecipeL())))(),
+    ListLOfExploreRecipeL: () => (T.ListLOfExploreRecipeL = dart.constFn(dart.legacy(T.ListOfExploreRecipeL())))(),
     _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    PostL: () => (T.PostL = dart.constFn(dart.legacy(post.Post)))(),
+    ListOfPostL: () => (T.ListOfPostL = dart.constFn(core.List$(T.PostL())))(),
+    ListLOfPostL: () => (T.ListLOfPostL = dart.constFn(dart.legacy(T.ListOfPostL())))(),
     WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
-    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    AsyncSnapshotL: () => (T.AsyncSnapshotL = dart.constFn(dart.legacy(async.AsyncSnapshot)))(),
+    BuildContextLAndAsyncSnapshotLToWidgetL: () => (T.BuildContextLAndAsyncSnapshotLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.AsyncSnapshotL()])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: edge_insets.EdgeInsets.prototype,
-        [EdgeInsets_bottom]: 30,
-        [EdgeInsets_right]: 30,
-        [EdgeInsets_top]: 30,
-        [EdgeInsets_left]: 30
-      });
-    },
-    get C3() {
-      return C[3] = dart.const({
+    get C2() {
+      return C[2] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "name",
-        [_Location_column]: 34,
-        [_Location_line]: 18,
+        [_Location_name]: "recipes",
+        [_Location_column]: 35,
+        [_Location_line]: 17,
         [_Location_file]: null
       });
     },
-    get C2() {
-      return C[2] = dart.constList([C[3] || CT.C3], T._LocationL());
-    },
     get C1() {
-      return C[1] = dart.const({
+      return C[1] = dart.constList([C[2] || CT.C2], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[2] || CT.C2,
+        [_Location_parameterLocations]: C[1] || CT.C1,
         [_Location_name]: null,
-        [_Location_column]: 28,
-        [_Location_line]: 18,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
+        [_Location_column]: 15,
+        [_Location_line]: 17,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/screens/explore_screen.dart"
       });
     },
     get C6() {
       return C[6] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "aspectRatio",
-        [_Location_column]: 15,
-        [_Location_line]: 17,
-        [_Location_file]: null
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 15,
+        [_Location_name]: "height",
+        [_Location_column]: 30,
         [_Location_line]: 18,
         [_Location_file]: null
       });
     },
     get C5() {
-      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+      return C[5] = dart.constList([C[6] || CT.C6], T._LocationL());
     },
     get C4() {
       return C[4] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: C[5] || CT.C5,
         [_Location_name]: null,
-        [_Location_column]: 13,
-        [_Location_line]: 16,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
+        [_Location_column]: 21,
+        [_Location_line]: 18,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/screens/explore_screen.dart"
       });
     },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 28,
-        [_Location_line]: 20,
-        [_Location_file]: null
-      });
-    },
-    get C10() {
-      return C[10] = dart.constList([C[11] || CT.C11], T._LocationL());
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[10] || CT.C10,
-        [_Location_name]: null,
-        [_Location_column]: 19,
-        [_Location_line]: 20,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
-      });
-    },
-    get C8() {
-      return C[8] = dart.const({
+    get C3() {
+      return C[3] = dart.const({
         __proto__: basic.SizedBox.prototype,
-        [Widget__location]: C[9] || CT.C9,
-        [Widget_key]: null,
-        [SingleChildRenderObjectWidget_child]: null,
-        [SizedBox_height]: 8,
-        [SizedBox_width]: null
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "data",
-        [_Location_column]: 15,
-        [_Location_line]: 22,
-        [_Location_file]: null
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "style",
-        [_Location_column]: 15,
-        [_Location_line]: 23,
-        [_Location_file]: null
-      });
-    },
-    get C14() {
-      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16], T._LocationL());
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[14] || CT.C14,
-        [_Location_name]: null,
-        [_Location_column]: 19,
-        [_Location_line]: 21,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: text_style.TextStyle.prototype,
-        [TextStyle_fontFeatures]: null,
-        [TextStyle_shadows]: null,
-        [TextStyle_debugLabel]: null,
-        [TextStyle_decorationThickness]: null,
-        [TextStyle_decorationStyle]: null,
-        [TextStyle_decorationColor]: null,
-        [TextStyle_decoration]: null,
-        [TextStyle_background]: null,
-        [TextStyle_foreground]: null,
-        [TextStyle_locale]: null,
-        [TextStyle_leadingDistribution]: null,
-        [TextStyle_height]: null,
-        [TextStyle_textBaseline]: null,
-        [TextStyle_wordSpacing]: null,
-        [TextStyle_letterSpacing]: null,
-        [TextStyle_fontStyle]: null,
-        [TextStyle_fontWeight]: null,
-        [TextStyle_fontSize]: 21,
-        [TextStyle__package]: null,
-        [TextStyle__fontFamilyFallback]: null,
-        [TextStyle_fontFamily]: null,
-        [TextStyle_backgroundColor]: null,
-        [TextStyle_color]: null,
-        [TextStyle_inherit]: true
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: text.Text.prototype,
-        [Widget__location]: C[13] || CT.C13,
-        [Widget_key]: null,
-        [Text_textHeightBehavior]: null,
-        [Text_textWidthBasis]: null,
-        [Text_semanticsLabel]: null,
-        [Text_maxLines]: null,
-        [Text_textScaleFactor]: null,
-        [Text_overflow]: null,
-        [Text_softWrap]: null,
-        [Text_locale]: null,
-        [Text_textDirection]: null,
-        [Text_textAlign]: null,
-        [Text_strutStyle]: null,
-        [Text_style]: C[17] || CT.C17,
-        [Text_textSpan]: null,
-        [Text_data]: "No Groceries"
-      });
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 28,
-        [_Location_line]: 25,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.constList([C[21] || CT.C21], T._LocationL());
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[20] || CT.C20,
-        [_Location_name]: null,
-        [_Location_column]: 19,
-        [_Location_line]: 25,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: basic.SizedBox.prototype,
-        [Widget__location]: C[19] || CT.C19,
+        [Widget__location]: C[4] || CT.C4,
         [Widget_key]: null,
         [SingleChildRenderObjectWidget_child]: null,
         [SizedBox_height]: 16,
         [SizedBox_width]: null
       });
     },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "friendPosts",
+        [_Location_column]: 34,
+        [_Location_line]: 19,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.constList([C[9] || CT.C9], T._LocationL());
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[8] || CT.C8,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 19,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/screens/explore_screen.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 29,
+        [_Location_line]: 16,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 61,
+        [_Location_line]: 16,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 16,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/screens/explore_screen.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 33,
+        [_Location_line]: 22,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.constList([C[17] || CT.C17], T._LocationL());
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 22,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/screens/explore_screen.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.constList([], T._LocationL());
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[20] || CT.C20,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 22,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/screens/explore_screen.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: progress_indicator._ActivityIndicatorType.prototype,
+        [_name]: "_ActivityIndicatorType.material",
+        index: 0
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: progress_indicator.CircularProgressIndicator.prototype,
+        [Widget__location]: C[19] || CT.C19,
+        [Widget_key]: null,
+        [ProgressIndicator_semanticsValue]: null,
+        [ProgressIndicator_semanticsLabel]: null,
+        [ProgressIndicator_valueColor]: null,
+        [ProgressIndicator_color]: null,
+        [ProgressIndicator_backgroundColor]: null,
+        [ProgressIndicator_value]: null,
+        [CircularProgressIndicator_strokeWidth]: 4,
+        [CircularProgressIndicator__indicatorType]: C[21] || CT.C21
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: basic.Center.prototype,
+        [Widget__location]: C[15] || CT.C15,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: C[18] || CT.C18,
+        [Align_heightFactor]: null,
+        [Align_widthFactor]: null,
+        [Align_alignment]: C[22] || CT.C22
+      });
+    },
     get C25() {
       return C[25] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "data",
-        [_Location_column]: 23,
-        [_Location_line]: 26,
+        [_Location_name]: "future",
+        [_Location_column]: 9,
+        [_Location_line]: 13,
         [_Location_file]: null
       });
     },
@@ -257,9 +242,9 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
       return C[26] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "textAlign",
-        [_Location_column]: 15,
-        [_Location_line]: 29,
+        [_Location_name]: "builder",
+        [_Location_column]: 9,
+        [_Location_line]: 14,
         [_Location_file]: null
       });
     },
@@ -271,242 +256,15 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: C[24] || CT.C24,
         [_Location_name]: null,
-        [_Location_column]: 19,
-        [_Location_line]: 26,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
-      });
-    },
-    get C27() {
-      return C[27] = dart.const({
-        __proto__: ui.TextAlign.prototype,
-        [_name]: "TextAlign.center",
-        index: 2
-      });
-    },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: text.Text.prototype,
-        [Widget__location]: C[23] || CT.C23,
-        [Widget_key]: null,
-        [Text_textHeightBehavior]: null,
-        [Text_textWidthBasis]: null,
-        [Text_semanticsLabel]: null,
-        [Text_maxLines]: null,
-        [Text_textScaleFactor]: null,
-        [Text_overflow]: null,
-        [Text_softWrap]: null,
-        [Text_locale]: null,
-        [Text_textDirection]: null,
-        [Text_textAlign]: C[27] || CT.C27,
-        [Text_strutStyle]: null,
-        [Text_style]: null,
-        [Text_textSpan]: null,
-        [Text_data]: "Shopping for ingredients?\nTap the + button to write them down!"
-      });
-    },
-    get C31() {
-      return C[31] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "data",
-        [_Location_column]: 33,
-        [_Location_line]: 33,
-        [_Location_file]: null
-      });
-    },
-    get C30() {
-      return C[30] = dart.constList([C[31] || CT.C31], T._LocationL());
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[30] || CT.C30,
-        [_Location_name]: null,
-        [_Location_column]: 28,
-        [_Location_line]: 33,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: text.Text.prototype,
-        [Widget__location]: C[29] || CT.C29,
-        [Widget_key]: null,
-        [Text_textHeightBehavior]: null,
-        [Text_textWidthBasis]: null,
-        [Text_semanticsLabel]: null,
-        [Text_maxLines]: null,
-        [Text_textScaleFactor]: null,
-        [Text_overflow]: null,
-        [Text_softWrap]: null,
-        [Text_locale]: null,
-        [Text_textDirection]: null,
-        [Text_textAlign]: null,
-        [Text_strutStyle]: null,
-        [Text_style]: null,
-        [Text_textSpan]: null,
-        [Text_data]: "Browse Recipes"
-      });
-    },
-    get C34() {
-      return C[34] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "textColor",
-        [_Location_column]: 15,
-        [_Location_line]: 32,
-        [_Location_file]: null
-      });
-    },
-    get C35() {
-      return C[35] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 15,
-        [_Location_line]: 33,
-        [_Location_file]: null
-      });
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "shape",
-        [_Location_column]: 15,
-        [_Location_line]: 34,
-        [_Location_file]: null
-      });
-    },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "color",
-        [_Location_column]: 15,
-        [_Location_line]: 37,
-        [_Location_file]: null
-      });
-    },
-    get C38() {
-      return C[38] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onPressed",
-        [_Location_column]: 15,
-        [_Location_line]: 38,
-        [_Location_file]: null
-      });
-    },
-    get C33() {
-      return C[33] = dart.constList([C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36, C[37] || CT.C37, C[38] || CT.C38], T._LocationL());
-    },
-    get C32() {
-      return C[32] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[33] || CT.C33,
-        [_Location_name]: null,
-        [_Location_column]: 13,
-        [_Location_line]: 31,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
-      });
-    },
-    get C41() {
-      return C[41] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "mainAxisAlignment",
-        [_Location_column]: 11,
-        [_Location_line]: 14,
-        [_Location_file]: null
-      });
-    },
-    get C42() {
-      return C[42] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 11,
-        [_Location_line]: 15,
-        [_Location_file]: null
-      });
-    },
-    get C40() {
-      return C[40] = dart.constList([C[41] || CT.C41, C[42] || CT.C42], T._LocationL());
-    },
-    get C39() {
-      return C[39] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[40] || CT.C40,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 13,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
-      });
-    },
-    get C45() {
-      return C[45] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 13,
-        [_Location_file]: null
-      });
-    },
-    get C44() {
-      return C[44] = dart.constList([C[45] || CT.C45], T._LocationL());
-    },
-    get C43() {
-      return C[43] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[44] || CT.C44,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 11,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
-      });
-    },
-    get C48() {
-      return C[48] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 7,
-        [_Location_line]: 9,
-        [_Location_file]: null
-      });
-    },
-    get C49() {
-      return C[49] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 11,
-        [_Location_file]: null
-      });
-    },
-    get C47() {
-      return C[47] = dart.constList([C[48] || CT.C48, C[49] || CT.C49], T._LocationL());
-    },
-    get C46() {
-      return C[46] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[47] || CT.C47,
-        [_Location_name]: null,
         [_Location_column]: 12,
-        [_Location_line]: 8,
-        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich/fooderlich/lib/screens/empty_grocery_screen.dart"
+        [_Location_line]: 12,
+        [_Location_file]: "file:///C:/Users/lenovo/Documents/Andoid%20Flutter/Fooderlich2/Fooderlich/fooderlich/lib/screens/explore_screen.dart"
       });
     }
   }, false);
-  var C = Array(50).fill(void 0);
-  var I = ["package:fooderlich/screens/empty_grocery_screen.dart"];
-  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
-  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
-  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
-  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var C = Array(27).fill(void 0);
+  var I = ["package:fooderlich/screens/explore_screen.dart"];
+  var mockService = dart.privateName(explore_screen, "ExploreScreen.mockService");
   var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
   var _Location_name = dart.privateName(widget_inspector, "_Location.name");
   var _Location_column = dart.privateName(widget_inspector, "_Location.column");
@@ -517,72 +275,63 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
   var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
   var SizedBox_height = dart.privateName(basic, "SizedBox.height");
   var SizedBox_width = dart.privateName(basic, "SizedBox.width");
-  var Text_textHeightBehavior = dart.privateName(text, "Text.textHeightBehavior");
-  var Text_textWidthBasis = dart.privateName(text, "Text.textWidthBasis");
-  var Text_semanticsLabel = dart.privateName(text, "Text.semanticsLabel");
-  var Text_maxLines = dart.privateName(text, "Text.maxLines");
-  var Text_textScaleFactor = dart.privateName(text, "Text.textScaleFactor");
-  var Text_overflow = dart.privateName(text, "Text.overflow");
-  var Text_softWrap = dart.privateName(text, "Text.softWrap");
-  var Text_locale = dart.privateName(text, "Text.locale");
-  var Text_textDirection = dart.privateName(text, "Text.textDirection");
-  var Text_textAlign = dart.privateName(text, "Text.textAlign");
-  var Text_strutStyle = dart.privateName(text, "Text.strutStyle");
-  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
-  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
-  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
-  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
-  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
-  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
-  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
-  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
-  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
-  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
-  var TextStyle_leadingDistribution = dart.privateName(text_style, "TextStyle.leadingDistribution");
-  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
-  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
-  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
-  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
-  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
-  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
-  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
-  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
-  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
-  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
-  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
-  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
-  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
-  var Text_style = dart.privateName(text, "Text.style");
-  var Text_textSpan = dart.privateName(text, "Text.textSpan");
-  var Text_data = dart.privateName(text, "Text.data");
-  var _name = dart.privateName(ui, "_name");
-  empty_grocery_screen.EmptyGroceryScreen = class EmptyGroceryScreen extends framework.StatelessWidget {
+  var ProgressIndicator_semanticsValue = dart.privateName(progress_indicator, "ProgressIndicator.semanticsValue");
+  var ProgressIndicator_semanticsLabel = dart.privateName(progress_indicator, "ProgressIndicator.semanticsLabel");
+  var ProgressIndicator_valueColor = dart.privateName(progress_indicator, "ProgressIndicator.valueColor");
+  var ProgressIndicator_color = dart.privateName(progress_indicator, "ProgressIndicator.color");
+  var ProgressIndicator_backgroundColor = dart.privateName(progress_indicator, "ProgressIndicator.backgroundColor");
+  var ProgressIndicator_value = dart.privateName(progress_indicator, "ProgressIndicator.value");
+  var CircularProgressIndicator_strokeWidth = dart.privateName(progress_indicator, "CircularProgressIndicator.strokeWidth");
+  var _name = dart.privateName(progress_indicator, "_name");
+  var CircularProgressIndicator__indicatorType = dart.privateName(progress_indicator, "CircularProgressIndicator._indicatorType");
+  var Align_heightFactor = dart.privateName(basic, "Align.heightFactor");
+  var Align_widthFactor = dart.privateName(basic, "Align.widthFactor");
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  var Align_alignment = dart.privateName(basic, "Align.alignment");
+  explore_screen.ExploreScreen = class ExploreScreen extends framework.StatelessWidget {
+    get mockService() {
+      return this[mockService];
+    }
+    set mockService(value) {
+      super.mockService = value;
+    }
     build(context) {
-      return new basic.Padding.new({padding: C[0] || CT.C0, child: new basic.Center.new({child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, children: T.JSArrayOfWidgetL().of([new basic.AspectRatio.new({aspectRatio: 1 / 1, child: new image.Image.asset("assets/fooderlich_assets/empty_list.png", {$creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), C[8] || CT.C8, C[12] || CT.C12, C[18] || CT.C18, C[22] || CT.C22, new material_button.MaterialButton.new({textColor: colors.Colors.white, child: C[28] || CT.C28, shape: new rounded_rectangle_border.RoundedRectangleBorder.new({borderRadius: new border_radius.BorderRadius.circular(30.0)}), color: colors.Colors.green, onPressed: dart.fn(() => {
-                }, T.VoidToNull()), $creationLocationd_0dea112b090073317d4: C[32] || CT.C32})]), $creationLocationd_0dea112b090073317d4: C[39] || CT.C39}), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43}), $creationLocationd_0dea112b090073317d4: C[46] || CT.C46});
+      return new (T.FutureBuilderOfExploreDataL()).new({future: this.mockService.getExploreData(), builder: dart.fn((context, snapshot) => {
+          if (snapshot.connectionState == async.ConnectionState.done) {
+            return new scroll_view.ListView.new({scrollDirection: basic_types.Axis.vertical, children: T.JSArrayOfWidgetL().of([new today_recipe_list_view.TodayRecipeListView.new({recipes: T.ListLOfExploreRecipeL().as(dart.dload(snapshot.data, 'todayRecipes')), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), C[3] || CT.C3, new friend_post_list_view.FriendPostListView.new({friendPosts: T.ListLOfPostL().as(dart.dload(snapshot.data, 'friendPosts')), $creationLocationd_0dea112b090073317d4: C[7] || CT.C7})]), $creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+          } else {
+            return C[14] || CT.C14;
+          }
+        }, T.BuildContextLAndAsyncSnapshotLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[23] || CT.C23});
     }
   };
-  (empty_grocery_screen.EmptyGroceryScreen.new = function(opts) {
+  (explore_screen.ExploreScreen.new = function(opts) {
     let key = opts && 'key' in opts ? opts.key : null;
     let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    empty_grocery_screen.EmptyGroceryScreen.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    this[mockService] = new mock_fooderlich_service.MockFooderlichService.new();
+    explore_screen.ExploreScreen.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = empty_grocery_screen.EmptyGroceryScreen.prototype;
-  dart.addTypeTests(empty_grocery_screen.EmptyGroceryScreen);
-  dart.addTypeCaches(empty_grocery_screen.EmptyGroceryScreen);
-  dart.setMethodSignature(empty_grocery_screen.EmptyGroceryScreen, () => ({
-    __proto__: dart.getMethods(empty_grocery_screen.EmptyGroceryScreen.__proto__),
+  }).prototype = explore_screen.ExploreScreen.prototype;
+  dart.addTypeTests(explore_screen.ExploreScreen);
+  dart.addTypeCaches(explore_screen.ExploreScreen);
+  dart.setMethodSignature(explore_screen.ExploreScreen, () => ({
+    __proto__: dart.getMethods(explore_screen.ExploreScreen.__proto__),
     build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  dart.setLibraryUri(empty_grocery_screen.EmptyGroceryScreen, I[0]);
-  dart.trackLibraries("packages/fooderlich/screens/empty_grocery_screen.dart", {
-    "package:fooderlich/screens/empty_grocery_screen.dart": empty_grocery_screen
+  dart.setLibraryUri(explore_screen.ExploreScreen, I[0]);
+  dart.setFieldSignature(explore_screen.ExploreScreen, () => ({
+    __proto__: dart.getFields(explore_screen.ExploreScreen.__proto__),
+    mockService: dart.finalFieldType(dart.legacy(mock_fooderlich_service.MockFooderlichService))
+  }));
+  dart.trackLibraries("packages/fooderlich/screens/explore_screen.dart", {
+    "package:fooderlich/screens/explore_screen.dart": explore_screen
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["empty_grocery_screen.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;UAK4B;AAExB,YAAO,uDAGE,6BAEE,yCACgC,yCAC3B,yBACR,wCACe,AAAE,IAAE,UACJ,sBAAM,gOAarB,mDACoB,oDAEX,uEACsB,wCAAS,gBAExB,gCACH;;IAMvB;;;QAxC8B;;AAAQ,2EAAW,GAAG;;EAAC","file":"../../../../../../../../packages/fooderlich/screens/empty_grocery_screen.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["explore_screen.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAKQ;;;;;;UAKoB;AACxB,YAAO,oDACK,AAAY,4CACX,SAAC,SAAS;AACjB,cAAI,AAAS,AAAgB,QAAjB,oBAAoC;AAC9C,kBAAO,gDAA+B,qCAAoB,yBACxD,0FAA2C,WAAd,AAAS,QAAD,iGAErC,mFAA8C,WAAd,AAAS,QAAD;;AAG1C;;;IAGV;;;QAjBmB;;IAFb,oBAAc;AAEO,gEAAW,GAAG;;EAAC","file":"../../../../../../../../../packages/fooderlich/screens/explore_screen.dart.lib.js"}');
   // Exports:
   return {
-    screens__empty_grocery_screen: empty_grocery_screen
+    screens__explore_screen: explore_screen
   };
 }));
 
-//# sourceMappingURL=empty_grocery_screen.dart.lib.js.map
+//# sourceMappingURL=explore_screen.dart.lib.js.map

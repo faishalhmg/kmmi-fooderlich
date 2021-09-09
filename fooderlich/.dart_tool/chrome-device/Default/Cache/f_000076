@@ -1,383 +1,248 @@
-define(['dart_sdk'], (function load__packages__fooderlich__models__explore_recipe_dart(dart_sdk) {
+define(['dart_sdk', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/rendering/sliver_multi_box_adaptor.dart'], (function load__packages__flutter__src__rendering__sliver_fixed_extent_list_dart(dart_sdk, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _interceptors = dart_sdk._interceptors;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var explore_recipe = Object.create(dart.library);
-  var $_get = dartx._get;
-  var $add = dartx.add;
+  const sliver = packages__flutter__src__rendering__sliver$46dart.src__rendering__sliver;
+  const sliver_multi_box_adaptor = packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart.src__rendering__sliver_multi_box_adaptor;
+  var sliver_fixed_extent_list = Object.create(dart.library);
+  var $round = dartx.round;
+  var $abs = dartx.abs;
+  var $floor = dartx.floor;
+  var $ceil = dartx.ceil;
+  var $isFinite = dartx.isFinite;
   dart._checkModuleNullSafetyMode(false);
-  var T = {
-    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
-    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
-    ListOfStringL: () => (T.ListOfStringL = dart.constFn(core.List$(T.StringL())))(),
-    ListLOfStringL: () => (T.ListLOfStringL = dart.constFn(dart.legacy(T.ListOfStringL())))(),
-    IngredientsL: () => (T.IngredientsL = dart.constFn(dart.legacy(explore_recipe.Ingredients)))(),
-    JSArrayOfIngredientsL: () => (T.JSArrayOfIngredientsL = dart.constFn(_interceptors.JSArray$(T.IngredientsL())))(),
-    MapOfStringL$dynamic: () => (T.MapOfStringL$dynamic = dart.constFn(core.Map$(T.StringL(), dart.dynamic)))(),
-    MapLOfStringL$dynamic: () => (T.MapLOfStringL$dynamic = dart.constFn(dart.legacy(T.MapOfStringL$dynamic())))(),
-    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
-    InstructionL: () => (T.InstructionL = dart.constFn(dart.legacy(explore_recipe.Instruction)))(),
-    JSArrayOfInstructionL: () => (T.JSArrayOfInstructionL = dart.constFn(_interceptors.JSArray$(T.InstructionL())))()
-  };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  var I = ["package:fooderlich/models/explore_recipe.dart"];
-  explore_recipe.RecipeCardType = class RecipeCardType extends core.Object {};
-  (explore_recipe.RecipeCardType.new = function() {
-    ;
-  }).prototype = explore_recipe.RecipeCardType.prototype;
-  dart.addTypeTests(explore_recipe.RecipeCardType);
-  dart.addTypeCaches(explore_recipe.RecipeCardType);
-  dart.setLibraryUri(explore_recipe.RecipeCardType, I[0]);
-  dart.defineLazy(explore_recipe.RecipeCardType, {
-    /*explore_recipe.RecipeCardType.card1*/get card1() {
-      return "card1";
-    },
-    /*explore_recipe.RecipeCardType.card2*/get card2() {
-      return "card2";
-    },
-    /*explore_recipe.RecipeCardType.card3*/get card3() {
-      return "card3";
+  var I = [
+    "file:///C:/Users/lenovo/Downloads/flutter/packages/flutter/lib/src/rendering/sliver_fixed_extent_list.dart",
+    "package:flutter/src/rendering/sliver_fixed_extent_list.dart"
+  ];
+  var _calculateLeadingGarbage = dart.privateName(sliver_fixed_extent_list, "_calculateLeadingGarbage");
+  var _calculateTrailingGarbage = dart.privateName(sliver_fixed_extent_list, "_calculateTrailingGarbage");
+  sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor = class RenderSliverFixedExtentBoxAdaptor extends sliver_multi_box_adaptor.RenderSliverMultiBoxAdaptor {
+    indexToLayoutOffset(itemExtent, index) {
+      if (itemExtent == null) dart.nullFailed(I[0], 57, 37, "itemExtent");
+      if (index == null) dart.nullFailed(I[0], 57, 53, "index");
+      return dart.notNull(itemExtent) * dart.notNull(index);
     }
-  }, true);
-  var cardType$ = dart.privateName(explore_recipe, "ExploreRecipe.cardType");
-  var title$ = dart.privateName(explore_recipe, "ExploreRecipe.title");
-  var subtitle$ = dart.privateName(explore_recipe, "ExploreRecipe.subtitle");
-  var backgroundImage$ = dart.privateName(explore_recipe, "ExploreRecipe.backgroundImage");
-  var backgroundImageSource$ = dart.privateName(explore_recipe, "ExploreRecipe.backgroundImageSource");
-  var message$ = dart.privateName(explore_recipe, "ExploreRecipe.message");
-  var authorName$ = dart.privateName(explore_recipe, "ExploreRecipe.authorName");
-  var role$ = dart.privateName(explore_recipe, "ExploreRecipe.role");
-  var profileImage$ = dart.privateName(explore_recipe, "ExploreRecipe.profileImage");
-  var durationInMinutes$ = dart.privateName(explore_recipe, "ExploreRecipe.durationInMinutes");
-  var dietType$ = dart.privateName(explore_recipe, "ExploreRecipe.dietType");
-  var calories$ = dart.privateName(explore_recipe, "ExploreRecipe.calories");
-  var tags$ = dart.privateName(explore_recipe, "ExploreRecipe.tags");
-  var description$ = dart.privateName(explore_recipe, "ExploreRecipe.description");
-  var source$ = dart.privateName(explore_recipe, "ExploreRecipe.source");
-  var ingredients$ = dart.privateName(explore_recipe, "ExploreRecipe.ingredients");
-  var instructions$ = dart.privateName(explore_recipe, "ExploreRecipe.instructions");
-  explore_recipe.ExploreRecipe = class ExploreRecipe extends core.Object {
-    get cardType() {
-      return this[cardType$];
+    getMinChildIndexForScrollOffset(scrollOffset, itemExtent) {
+      if (scrollOffset == null) dart.nullFailed(I[0], 67, 46, "scrollOffset");
+      if (itemExtent == null) dart.nullFailed(I[0], 67, 67, "itemExtent");
+      if (dart.notNull(itemExtent) > 0.0) {
+        let actual = dart.notNull(scrollOffset) / dart.notNull(itemExtent);
+        let round = actual[$round]();
+        if ((actual - round)[$abs]() < 1e-10) {
+          return round;
+        }
+        return actual[$floor]();
+      }
+      return 0;
     }
-    set cardType(value) {
-      this[cardType$] = value;
+    getMaxChildIndexForScrollOffset(scrollOffset, itemExtent) {
+      if (scrollOffset == null) dart.nullFailed(I[0], 87, 46, "scrollOffset");
+      if (itemExtent == null) dart.nullFailed(I[0], 87, 67, "itemExtent");
+      if (dart.notNull(itemExtent) > 0.0) {
+        let actual = dart.notNull(scrollOffset) / dart.notNull(itemExtent) - 1;
+        let round = actual[$round]();
+        if (dart.test(sliver_fixed_extent_list._isWithinPrecisionErrorTolerance(actual, round))) {
+          return math.max(core.int, 0, round);
+        }
+        return math.max(core.int, 0, actual[$ceil]());
+      }
+      return 0;
     }
-    get title() {
-      return this[title$];
+    estimateMaxScrollOffset(constraints, opts) {
+      if (constraints == null) dart.nullFailed(I[0], 113, 23, "constraints");
+      let firstIndex = opts && 'firstIndex' in opts ? opts.firstIndex : null;
+      let lastIndex = opts && 'lastIndex' in opts ? opts.lastIndex : null;
+      let leadingScrollOffset = opts && 'leadingScrollOffset' in opts ? opts.leadingScrollOffset : null;
+      let trailingScrollOffset = opts && 'trailingScrollOffset' in opts ? opts.trailingScrollOffset : null;
+      return this.childManager.estimateMaxScrollOffset(constraints, {firstIndex: firstIndex, lastIndex: lastIndex, leadingScrollOffset: leadingScrollOffset, trailingScrollOffset: trailingScrollOffset});
     }
-    set title(value) {
-      this[title$] = value;
+    computeMaxScrollOffset(constraints, itemExtent) {
+      if (constraints == null) dart.nullFailed(I[0], 149, 51, "constraints");
+      if (itemExtent == null) dart.nullFailed(I[0], 149, 71, "itemExtent");
+      return dart.notNull(this.childManager.childCount) * dart.notNull(itemExtent);
     }
-    get subtitle() {
-      return this[subtitle$];
+    [_calculateLeadingGarbage](firstIndex) {
+      if (firstIndex == null) dart.nullFailed(I[0], 153, 36, "firstIndex");
+      let walker = this.firstChild;
+      let leadingGarbage = 0;
+      while (walker != null && dart.notNull(this.indexOf(walker)) < dart.notNull(firstIndex)) {
+        leadingGarbage = leadingGarbage + 1;
+        walker = this.childAfter(walker);
+      }
+      return leadingGarbage;
     }
-    set subtitle(value) {
-      this[subtitle$] = value;
+    [_calculateTrailingGarbage](targetLastIndex) {
+      if (targetLastIndex == null) dart.nullFailed(I[0], 163, 37, "targetLastIndex");
+      let walker = this.lastChild;
+      let trailingGarbage = 0;
+      while (walker != null && dart.notNull(this.indexOf(walker)) > dart.notNull(targetLastIndex)) {
+        trailingGarbage = trailingGarbage + 1;
+        walker = this.childBefore(walker);
+      }
+      return trailingGarbage;
     }
-    get backgroundImage() {
-      return this[backgroundImage$];
-    }
-    set backgroundImage(value) {
-      this[backgroundImage$] = value;
-    }
-    get backgroundImageSource() {
-      return this[backgroundImageSource$];
-    }
-    set backgroundImageSource(value) {
-      this[backgroundImageSource$] = value;
-    }
-    get message() {
-      return this[message$];
-    }
-    set message(value) {
-      this[message$] = value;
-    }
-    get authorName() {
-      return this[authorName$];
-    }
-    set authorName(value) {
-      this[authorName$] = value;
-    }
-    get role() {
-      return this[role$];
-    }
-    set role(value) {
-      this[role$] = value;
-    }
-    get profileImage() {
-      return this[profileImage$];
-    }
-    set profileImage(value) {
-      this[profileImage$] = value;
-    }
-    get durationInMinutes() {
-      return this[durationInMinutes$];
-    }
-    set durationInMinutes(value) {
-      this[durationInMinutes$] = value;
-    }
-    get dietType() {
-      return this[dietType$];
-    }
-    set dietType(value) {
-      this[dietType$] = value;
-    }
-    get calories() {
-      return this[calories$];
-    }
-    set calories(value) {
-      this[calories$] = value;
-    }
-    get tags() {
-      return this[tags$];
-    }
-    set tags(value) {
-      this[tags$] = value;
-    }
-    get description() {
-      return this[description$];
-    }
-    set description(value) {
-      this[description$] = value;
-    }
-    get source() {
-      return this[source$];
-    }
-    set source(value) {
-      this[source$] = value;
-    }
-    get ingredients() {
-      return this[ingredients$];
-    }
-    set ingredients(value) {
-      this[ingredients$] = value;
-    }
-    get instructions() {
-      return this[instructions$];
-    }
-    set instructions(value) {
-      this[instructions$] = value;
-    }
-  };
-  (explore_recipe.ExploreRecipe.new = function(opts) {
-    let cardType = opts && 'cardType' in opts ? opts.cardType : null;
-    let title = opts && 'title' in opts ? opts.title : null;
-    let subtitle = opts && 'subtitle' in opts ? opts.subtitle : null;
-    let backgroundImage = opts && 'backgroundImage' in opts ? opts.backgroundImage : null;
-    let backgroundImageSource = opts && 'backgroundImageSource' in opts ? opts.backgroundImageSource : null;
-    let message = opts && 'message' in opts ? opts.message : null;
-    let authorName = opts && 'authorName' in opts ? opts.authorName : null;
-    let role = opts && 'role' in opts ? opts.role : null;
-    let profileImage = opts && 'profileImage' in opts ? opts.profileImage : null;
-    let durationInMinutes = opts && 'durationInMinutes' in opts ? opts.durationInMinutes : null;
-    let dietType = opts && 'dietType' in opts ? opts.dietType : null;
-    let calories = opts && 'calories' in opts ? opts.calories : null;
-    let tags = opts && 'tags' in opts ? opts.tags : null;
-    let description = opts && 'description' in opts ? opts.description : null;
-    let source = opts && 'source' in opts ? opts.source : null;
-    let ingredients = opts && 'ingredients' in opts ? opts.ingredients : null;
-    let instructions = opts && 'instructions' in opts ? opts.instructions : null;
-    this[cardType$] = cardType;
-    this[title$] = title;
-    this[subtitle$] = subtitle;
-    this[backgroundImage$] = backgroundImage;
-    this[backgroundImageSource$] = backgroundImageSource;
-    this[message$] = message;
-    this[authorName$] = authorName;
-    this[role$] = role;
-    this[profileImage$] = profileImage;
-    this[durationInMinutes$] = durationInMinutes;
-    this[dietType$] = dietType;
-    this[calories$] = calories;
-    this[tags$] = tags;
-    this[description$] = description;
-    this[source$] = source;
-    this[ingredients$] = ingredients;
-    this[instructions$] = instructions;
-    ;
-  }).prototype = explore_recipe.ExploreRecipe.prototype;
-  (explore_recipe.ExploreRecipe.fromJson = function(json) {
-    this[instructions$] = null;
-    this[ingredients$] = null;
-    this[source$] = null;
-    this[description$] = null;
-    this[tags$] = null;
-    this[calories$] = null;
-    this[dietType$] = null;
-    this[durationInMinutes$] = null;
-    this[profileImage$] = null;
-    this[role$] = null;
-    this[authorName$] = null;
-    this[message$] = null;
-    this[backgroundImageSource$] = null;
-    this[backgroundImage$] = null;
-    this[subtitle$] = null;
-    this[title$] = null;
-    this[cardType$] = null;
-    this.cardType = T.StringL().as(json[$_get]("cardType"));
-    this.title = T.StringL().as(json[$_get]("title"));
-    this.subtitle = T.StringL().as(json[$_get]("subtitle"));
-    this.backgroundImage = T.StringL().as(json[$_get]("backgroundImage"));
-    this.backgroundImageSource = T.StringL().as(json[$_get]("backgroundImageSource"));
-    this.message = T.StringL().as(json[$_get]("message"));
-    this.authorName = T.StringL().as(json[$_get]("authorName"));
-    this.role = T.StringL().as(json[$_get]("role"));
-    this.profileImage = T.StringL().as(json[$_get]("profileImage"));
-    this.durationInMinutes = T.intL().as(json[$_get]("durationInMinutes"));
-    this.dietType = T.StringL().as(json[$_get]("dietType"));
-    this.calories = T.intL().as(json[$_get]("calories"));
-    this.tags = T.ListLOfStringL().as(dart.dgsend(json[$_get]("tags"), [T.StringL()], 'cast', []));
-    this.description = T.StringL().as(json[$_get]("description"));
-    this.source = T.StringL().as(json[$_get]("source"));
-    if (json[$_get]("ingredients") != null) {
-      this.ingredients = T.JSArrayOfIngredientsL().of([]);
-      dart.dsend(json[$_get]("ingredients"), 'forEach', [dart.fn(v => {
-          this.ingredients[$add](new explore_recipe.Ingredients.fromJson(T.MapLOfStringL$dynamic().as(v)));
-        }, T.dynamicToNull())]);
-    }
-    if (json[$_get]("instructions") != null) {
-      this.instructions = T.JSArrayOfInstructionL().of([]);
-      dart.dsend(json[$_get]("instructions"), 'forEach', [dart.fn(v => {
-          this.instructions[$add](new explore_recipe.Instruction.fromJson(T.MapLOfStringL$dynamic().as(v)));
-        }, T.dynamicToNull())]);
-    }
-  }).prototype = explore_recipe.ExploreRecipe.prototype;
-  dart.addTypeTests(explore_recipe.ExploreRecipe);
-  dart.addTypeCaches(explore_recipe.ExploreRecipe);
-  dart.setLibraryUri(explore_recipe.ExploreRecipe, I[0]);
-  dart.setFieldSignature(explore_recipe.ExploreRecipe, () => ({
-    __proto__: dart.getFields(explore_recipe.ExploreRecipe.__proto__),
-    cardType: dart.fieldType(dart.legacy(core.String)),
-    title: dart.fieldType(dart.legacy(core.String)),
-    subtitle: dart.fieldType(dart.legacy(core.String)),
-    backgroundImage: dart.fieldType(dart.legacy(core.String)),
-    backgroundImageSource: dart.fieldType(dart.legacy(core.String)),
-    message: dart.fieldType(dart.legacy(core.String)),
-    authorName: dart.fieldType(dart.legacy(core.String)),
-    role: dart.fieldType(dart.legacy(core.String)),
-    profileImage: dart.fieldType(dart.legacy(core.String)),
-    durationInMinutes: dart.fieldType(dart.legacy(core.int)),
-    dietType: dart.fieldType(dart.legacy(core.String)),
-    calories: dart.fieldType(dart.legacy(core.int)),
-    tags: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    description: dart.fieldType(dart.legacy(core.String)),
-    source: dart.fieldType(dart.legacy(core.String)),
-    ingredients: dart.fieldType(dart.legacy(core.List$(dart.legacy(explore_recipe.Ingredients)))),
-    instructions: dart.fieldType(dart.legacy(core.List$(dart.legacy(explore_recipe.Instruction))))
-  }));
-  var imageUrl$ = dart.privateName(explore_recipe, "Ingredients.imageUrl");
-  var title$0 = dart.privateName(explore_recipe, "Ingredients.title");
-  var source$0 = dart.privateName(explore_recipe, "Ingredients.source");
-  explore_recipe.Ingredients = class Ingredients extends core.Object {
-    get imageUrl() {
-      return this[imageUrl$];
-    }
-    set imageUrl(value) {
-      this[imageUrl$] = value;
-    }
-    get title() {
-      return this[title$0];
-    }
-    set title(value) {
-      this[title$0] = value;
-    }
-    get source() {
-      return this[source$0];
-    }
-    set source(value) {
-      this[source$0] = value;
+    performLayout() {
+      let constraints = this.constraints;
+      this.childManager.didStartLayout();
+      this.childManager.setDidUnderflow(false);
+      let itemExtent = this.itemExtent;
+      let scrollOffset = dart.notNull(constraints.scrollOffset) + dart.notNull(constraints.cacheOrigin);
+      if (!(scrollOffset >= 0.0)) dart.assertFailed(null, I[0], 182, 12, "scrollOffset >= 0.0");
+      let remainingExtent = constraints.remainingCacheExtent;
+      if (!(dart.notNull(remainingExtent) >= 0.0)) dart.assertFailed(null, I[0], 184, 12, "remainingExtent >= 0.0");
+      let targetEndScrollOffset = scrollOffset + dart.notNull(remainingExtent);
+      let childConstraints = constraints.asBoxConstraints({minExtent: itemExtent, maxExtent: itemExtent});
+      let firstIndex = this.getMinChildIndexForScrollOffset(scrollOffset, itemExtent);
+      let targetLastIndex = targetEndScrollOffset[$isFinite] ? this.getMaxChildIndexForScrollOffset(targetEndScrollOffset, itemExtent) : null;
+      if (this.firstChild != null) {
+        let leadingGarbage = this[_calculateLeadingGarbage](firstIndex);
+        let trailingGarbage = targetLastIndex != null ? this[_calculateTrailingGarbage](targetLastIndex) : 0;
+        this.collectGarbage(leadingGarbage, trailingGarbage);
+      } else {
+        this.collectGarbage(0, 0);
+      }
+      if (this.firstChild == null) {
+        if (!dart.test(this.addInitialChild({index: firstIndex, layoutOffset: this.indexToLayoutOffset(itemExtent, firstIndex)}))) {
+          let max = null;
+          if (dart.notNull(firstIndex) <= 0) {
+            max = 0.0;
+          } else {
+            max = this.computeMaxScrollOffset(constraints, itemExtent);
+          }
+          this.geometry = new sliver.SliverGeometry.new({scrollExtent: max, maxPaintExtent: max});
+          this.childManager.didFinishLayout();
+          return;
+        }
+      }
+      let trailingChildWithLayout = null;
+      for (let index = dart.notNull(this.indexOf(dart.nullCheck(this.firstChild))) - 1; index >= dart.notNull(firstIndex); index = index - 1) {
+        let child = this.insertAndLayoutLeadingChild(childConstraints);
+        if (child == null) {
+          this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: index * dart.notNull(itemExtent)});
+          return;
+        }
+        let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(child.parentData));
+        childParentData.layoutOffset = this.indexToLayoutOffset(itemExtent, index);
+        if (!(childParentData.index === index)) dart.assertFailed(null, I[0], 235, 14, "childParentData.index == index");
+        trailingChildWithLayout == null ? trailingChildWithLayout = child : null;
+      }
+      if (trailingChildWithLayout == null) {
+        dart.nullCheck(this.firstChild).layout(childConstraints);
+        let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(dart.nullCheck(this.firstChild).parentData));
+        childParentData.layoutOffset = this.indexToLayoutOffset(itemExtent, firstIndex);
+        trailingChildWithLayout = this.firstChild;
+      }
+      let estimatedMaxScrollOffset = 1 / 0;
+      for (let index = dart.notNull(this.indexOf(dart.nullCheck(trailingChildWithLayout))) + 1; targetLastIndex == null || index <= dart.notNull(targetLastIndex); index = index + 1) {
+        let child = this.childAfter(dart.nullCheck(trailingChildWithLayout));
+        if (child == null || this.indexOf(child) !== index) {
+          child = this.insertAndLayoutChild(childConstraints, {after: trailingChildWithLayout});
+          if (child == null) {
+            estimatedMaxScrollOffset = index * dart.notNull(itemExtent);
+            break;
+          }
+        } else {
+          child.layout(childConstraints);
+        }
+        trailingChildWithLayout = child;
+        if (!(child != null)) dart.assertFailed(null, I[0], 260, 14, "child != null");
+        let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(child.parentData));
+        if (!(childParentData.index === index)) dart.assertFailed(null, I[0], 262, 14, "childParentData.index == index");
+        childParentData.layoutOffset = this.indexToLayoutOffset(itemExtent, dart.nullCheck(childParentData.index));
+      }
+      let lastIndex = this.indexOf(dart.nullCheck(this.lastChild));
+      let leadingScrollOffset = this.indexToLayoutOffset(itemExtent, firstIndex);
+      let trailingScrollOffset = this.indexToLayoutOffset(itemExtent, dart.notNull(lastIndex) + 1);
+      if (!(firstIndex === 0 || dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild))) - scrollOffset <= 1e-10)) dart.assertFailed(null, I[0], 270, 12, "firstIndex == 0 || childScrollOffset(firstChild!)! - scrollOffset <= precisionErrorTolerance");
+      if (!dart.test(this.debugAssertChildListIsNonEmptyAndContiguous())) dart.assertFailed(null, I[0], 271, 12, "debugAssertChildListIsNonEmptyAndContiguous()");
+      if (!(this.indexOf(dart.nullCheck(this.firstChild)) == firstIndex)) dart.assertFailed(null, I[0], 272, 12, "indexOf(firstChild!) == firstIndex");
+      if (!(targetLastIndex == null || dart.notNull(lastIndex) <= dart.notNull(targetLastIndex))) dart.assertFailed(null, I[0], 273, 12, "targetLastIndex == null || lastIndex <= targetLastIndex");
+      estimatedMaxScrollOffset = math.min(core.double, estimatedMaxScrollOffset, this.estimateMaxScrollOffset(constraints, {firstIndex: firstIndex, lastIndex: lastIndex, leadingScrollOffset: leadingScrollOffset, trailingScrollOffset: trailingScrollOffset}));
+      let paintExtent = this.calculatePaintOffset(constraints, {from: leadingScrollOffset, to: trailingScrollOffset});
+      let cacheExtent = this.calculateCacheOffset(constraints, {from: leadingScrollOffset, to: trailingScrollOffset});
+      let targetEndScrollOffsetForPaint = dart.notNull(constraints.scrollOffset) + dart.notNull(constraints.remainingPaintExtent);
+      let targetLastIndexForPaint = targetEndScrollOffsetForPaint[$isFinite] ? this.getMaxChildIndexForScrollOffset(targetEndScrollOffsetForPaint, itemExtent) : null;
+      this.geometry = new sliver.SliverGeometry.new({scrollExtent: estimatedMaxScrollOffset, paintExtent: paintExtent, cacheExtent: cacheExtent, maxPaintExtent: estimatedMaxScrollOffset, hasVisualOverflow: targetLastIndexForPaint != null && dart.notNull(lastIndex) >= dart.notNull(targetLastIndexForPaint) || dart.notNull(constraints.scrollOffset) > 0.0});
+      if (estimatedMaxScrollOffset === trailingScrollOffset) this.childManager.setDidUnderflow(true);
+      this.childManager.didFinishLayout();
     }
   };
-  (explore_recipe.Ingredients.new = function(opts) {
-    let imageUrl = opts && 'imageUrl' in opts ? opts.imageUrl : null;
-    let title = opts && 'title' in opts ? opts.title : null;
-    let source = opts && 'source' in opts ? opts.source : null;
-    this[imageUrl$] = imageUrl;
-    this[title$0] = title;
-    this[source$0] = source;
+  (sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor.new = function(opts) {
+    let childManager = opts && 'childManager' in opts ? opts.childManager : null;
+    if (childManager == null) dart.nullFailed(I[0], 43, 42, "childManager");
+    sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor.__proto__.new.call(this, {childManager: childManager});
     ;
-  }).prototype = explore_recipe.Ingredients.prototype;
-  (explore_recipe.Ingredients.fromJson = function(json) {
-    this[source$0] = null;
-    this[title$0] = null;
-    this[imageUrl$] = null;
-    this.imageUrl = T.StringL().as(json[$_get]("imageUrl"));
-    this.title = T.StringL().as(json[$_get]("title"));
-    this.source = T.StringL().as(json[$_get]("source"));
-  }).prototype = explore_recipe.Ingredients.prototype;
-  dart.addTypeTests(explore_recipe.Ingredients);
-  dart.addTypeCaches(explore_recipe.Ingredients);
-  dart.setLibraryUri(explore_recipe.Ingredients, I[0]);
-  dart.setFieldSignature(explore_recipe.Ingredients, () => ({
-    __proto__: dart.getFields(explore_recipe.Ingredients.__proto__),
-    imageUrl: dart.fieldType(dart.legacy(core.String)),
-    title: dart.fieldType(dart.legacy(core.String)),
-    source: dart.fieldType(dart.legacy(core.String))
+  }).prototype = sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor.prototype;
+  dart.addTypeTests(sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor);
+  dart.addTypeCaches(sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor);
+  dart.setMethodSignature(sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor, () => ({
+    __proto__: dart.getMethods(sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor.__proto__),
+    indexToLayoutOffset: dart.fnType(core.double, [core.double, core.int]),
+    getMinChildIndexForScrollOffset: dart.fnType(core.int, [core.double, core.double]),
+    getMaxChildIndexForScrollOffset: dart.fnType(core.int, [core.double, core.double]),
+    estimateMaxScrollOffset: dart.fnType(core.double, [sliver.SliverConstraints], {firstIndex: dart.nullable(core.int), lastIndex: dart.nullable(core.int), leadingScrollOffset: dart.nullable(core.double), trailingScrollOffset: dart.nullable(core.double)}, {}),
+    computeMaxScrollOffset: dart.fnType(core.double, [sliver.SliverConstraints, core.double]),
+    [_calculateLeadingGarbage]: dart.fnType(core.int, [core.int]),
+    [_calculateTrailingGarbage]: dart.fnType(core.int, [core.int]),
+    performLayout: dart.fnType(dart.void, [])
   }));
-  var imageUrl$0 = dart.privateName(explore_recipe, "Instruction.imageUrl");
-  var description$0 = dart.privateName(explore_recipe, "Instruction.description");
-  var durationInMinutes$0 = dart.privateName(explore_recipe, "Instruction.durationInMinutes");
-  explore_recipe.Instruction = class Instruction extends core.Object {
-    get imageUrl() {
-      return this[imageUrl$0];
+  dart.setLibraryUri(sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor, I[1]);
+  var _itemExtent = dart.privateName(sliver_fixed_extent_list, "_itemExtent");
+  sliver_fixed_extent_list.RenderSliverFixedExtentList = class RenderSliverFixedExtentList extends sliver_fixed_extent_list.RenderSliverFixedExtentBoxAdaptor {
+    get itemExtent() {
+      return this[_itemExtent];
     }
-    set imageUrl(value) {
-      this[imageUrl$0] = value;
-    }
-    get description() {
-      return this[description$0];
-    }
-    set description(value) {
-      this[description$0] = value;
-    }
-    get durationInMinutes() {
-      return this[durationInMinutes$0];
-    }
-    set durationInMinutes(value) {
-      this[durationInMinutes$0] = value;
+    set itemExtent(value) {
+      if (value == null) dart.nullFailed(I[0], 353, 25, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 354, 12, "value != null");
+      if (this[_itemExtent] == value) return;
+      this[_itemExtent] = value;
+      this.markNeedsLayout();
     }
   };
-  (explore_recipe.Instruction.new = function(opts) {
-    let imageUrl = opts && 'imageUrl' in opts ? opts.imageUrl : null;
-    let description = opts && 'description' in opts ? opts.description : null;
-    let durationInMinutes = opts && 'durationInMinutes' in opts ? opts.durationInMinutes : null;
-    this[imageUrl$0] = imageUrl;
-    this[description$0] = description;
-    this[durationInMinutes$0] = durationInMinutes;
+  (sliver_fixed_extent_list.RenderSliverFixedExtentList.new = function(opts) {
+    let childManager = opts && 'childManager' in opts ? opts.childManager : null;
+    if (childManager == null) dart.nullFailed(I[0], 345, 42, "childManager");
+    let itemExtent = opts && 'itemExtent' in opts ? opts.itemExtent : null;
+    if (itemExtent == null) dart.nullFailed(I[0], 346, 21, "itemExtent");
+    this[_itemExtent] = itemExtent;
+    sliver_fixed_extent_list.RenderSliverFixedExtentList.__proto__.new.call(this, {childManager: childManager});
     ;
-  }).prototype = explore_recipe.Instruction.prototype;
-  (explore_recipe.Instruction.fromJson = function(json) {
-    let t0, t0$, t0$0;
-    this[durationInMinutes$0] = null;
-    this[description$0] = null;
-    this[imageUrl$0] = null;
-    this.imageUrl = T.StringL().as((t0 = json[$_get]("imageUrl"), t0 == null ? "" : t0));
-    this.description = T.StringL().as((t0$ = json[$_get]("description"), t0$ == null ? "" : t0$));
-    this.durationInMinutes = T.intL().as((t0$0 = json[$_get]("durationInMinutes"), t0$0 == null ? 0 : t0$0));
-  }).prototype = explore_recipe.Instruction.prototype;
-  dart.addTypeTests(explore_recipe.Instruction);
-  dart.addTypeCaches(explore_recipe.Instruction);
-  dart.setLibraryUri(explore_recipe.Instruction, I[0]);
-  dart.setFieldSignature(explore_recipe.Instruction, () => ({
-    __proto__: dart.getFields(explore_recipe.Instruction.__proto__),
-    imageUrl: dart.fieldType(dart.legacy(core.String)),
-    description: dart.fieldType(dart.legacy(core.String)),
-    durationInMinutes: dart.fieldType(dart.legacy(core.int))
+  }).prototype = sliver_fixed_extent_list.RenderSliverFixedExtentList.prototype;
+  dart.addTypeTests(sliver_fixed_extent_list.RenderSliverFixedExtentList);
+  dart.addTypeCaches(sliver_fixed_extent_list.RenderSliverFixedExtentList);
+  dart.setGetterSignature(sliver_fixed_extent_list.RenderSliverFixedExtentList, () => ({
+    __proto__: dart.getGetters(sliver_fixed_extent_list.RenderSliverFixedExtentList.__proto__),
+    itemExtent: core.double
   }));
-  dart.trackLibraries("packages/fooderlich/models/explore_recipe.dart", {
-    "package:fooderlich/models/explore_recipe.dart": explore_recipe
+  dart.setSetterSignature(sliver_fixed_extent_list.RenderSliverFixedExtentList, () => ({
+    __proto__: dart.getSetters(sliver_fixed_extent_list.RenderSliverFixedExtentList.__proto__),
+    itemExtent: core.double
+  }));
+  dart.setLibraryUri(sliver_fixed_extent_list.RenderSliverFixedExtentList, I[1]);
+  dart.setFieldSignature(sliver_fixed_extent_list.RenderSliverFixedExtentList, () => ({
+    __proto__: dart.getFields(sliver_fixed_extent_list.RenderSliverFixedExtentList.__proto__),
+    [_itemExtent]: dart.fieldType(core.double)
+  }));
+  sliver_fixed_extent_list._isWithinPrecisionErrorTolerance = function _isWithinPrecisionErrorTolerance(actual, round) {
+    if (actual == null) dart.nullFailed(I[0], 362, 46, "actual");
+    if (round == null) dart.nullFailed(I[0], 362, 58, "round");
+    return (dart.notNull(actual) - dart.notNull(round))[$abs]() < 1e-10;
+  };
+  dart.trackLibraries("packages/flutter/src/rendering/sliver_fixed_extent_list.dart", {
+    "package:flutter/src/rendering/sliver_fixed_extent_list.dart": sliver_fixed_extent_list
   }, {
-    "package:fooderlich/models/explore_recipe.dart": ["ingredient.dart", "instruction.dart"]
-  }, '{"version":3,"sourceRoot":"","sources":["explore_recipe.dart","ingredient.dart","instruction.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAOA;;;;;MAHsB,mCAAK;;;MACL,mCAAK;;;MACL,mCAAK;;;;;;;;;;;;;;;;;;;;;;IAIlB;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACH;;;;;;IACG;;;;;;IACH;;;;;;IACS;;;;;;IACN;;;;;;IACA;;;;;;IACW;;;;;;IACA;;;;;;;;QAGR;QACD;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;IAhBC;IACD;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EAAc;oDAEqB;;;;;;;;;;;;;;;;;;AACf,oBAA3B,eAAW,AAAI,IAAA,QAAC;AACK,iBAArB,eAAQ,AAAI,IAAA,QAAC;AACc,oBAA3B,eAAW,AAAI,IAAA,QAAC;AACyB,2BAAzC,eAAkB,AAAI,IAAA,QAAC;AAC8B,iCAArD,eAAwB,AAAI,IAAA,QAAC;AACJ,mBAAzB,eAAU,AAAI,IAAA,QAAC;AACgB,sBAA/B,eAAa,AAAI,IAAA,QAAC;AACC,gBAAnB,eAAO,AAAI,IAAA,QAAC;AACuB,wBAAnC,eAAe,AAAI,IAAA,QAAC;AACyB,6BAA7C,YAAoB,AAAI,IAAA,QAAC;AACE,oBAA3B,eAAW,AAAI,IAAA,QAAC;AACW,oBAA3B,YAAW,AAAI,IAAA,QAAC;AACkB,gBAAlC,sBAAoB,YAAb,AAAI,IAAA,QAAC;AACqB,uBAAjC,eAAc,AAAI,IAAA,QAAC;AACI,kBAAvB,eAAS,AAAI,IAAA,QAAC;AACd,QAAI,AAAI,IAAA,QAAC;AACsB,MAA7B,mBAA2B;AAGzB,MAFkB,WAApB,AAAI,IAAA,QAAC,4BAAuB,QAAC;AACa,UAAxC,AAAY,uBAAgB,qEAAS,CAAC;;;AAG1C,QAAI,AAAI,IAAA,QAAC;AACuB,MAA9B,oBAA4B;AAG1B,MAFmB,WAArB,AAAI,IAAA,QAAC,6BAAwB,QAAC;AACa,UAAzC,AAAa,wBAAgB,qEAAS,CAAC;;;EAG7C;;;;;;;;;;;;;;;;;;;;;;;;;;;;ICxEO;;;;;;IACA;;;;;;IACA;;;;;;;;QAEW;QAAe;QAAY;IAA3B;IAAe;IAAY;;EAAQ;kDAEX;;;;AACb,oBAA3B,eAAW,AAAI,IAAA,QAAC;AACK,iBAArB,eAAQ,AAAI,IAAA,QAAC;AACU,kBAAvB,eAAS,AAAI,IAAA,QAAC;EAChB;;;;;;;;;;;;;;ICVO;;;;;;IACA;;;;;;IACH;;;;;;;;QAEc;QAAe;QAAkB;IAAjC;IAAe;IAAkB;;EAAmB;kDAE5B;;;;;AACP,oBAAjC,gBAA4B,KAAjB,AAAI,IAAA,QAAC,aAAD,aAAgB;AACQ,uBAAvC,gBAAkC,MAApB,AAAI,IAAA,QAAC,gBAAD,cAAmB;AACa,6BAAlD,aAA8C,OAA1B,AAAI,IAAA,QAAC,sBAAD,eAAyB;EACnD","file":"../../../../../../../../../packages/fooderlich/models/explore_recipe.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["sliver_fixed_extent_list.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/rendering/sliver_fixed_extent_list.dart.lib.js"}');
   // Exports:
   return {
-    models__explore_recipe: explore_recipe
+    src__rendering__sliver_fixed_extent_list: sliver_fixed_extent_list
   };
 }));
 
-//# sourceMappingURL=explore_recipe.dart.lib.js.map
+//# sourceMappingURL=sliver_fixed_extent_list.dart.lib.js.map
